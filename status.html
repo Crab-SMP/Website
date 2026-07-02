@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrabSMP | Server Status</title>
+  <meta name="description" content="Check the live status of CrabSMP: Bedrock server uptime and connection info (play.crabsmp.net)." />
+  <meta name="keywords" content="CrabSMP status, CrabSMP online, Minecraft Bedrock server status, play.crabsmp.net, is CrabSMP down" />
+  <meta property="og:title" content="CrabSMP: Server Status" />
+  <meta property="og:description" content="Live Bedrock server status for CrabSMP." />
+  <meta property="og:image" content="https://i.redd.it/17ynicvnmcud1.jpeg" />
+  <meta property="og:url" content="https://crabsmp.net/status" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/png" href="media/logo.png" />
+  <link rel="canonical" href="https://crabsmp.net/status" />
+  <link href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400|nunito:400,600,700,800" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/status.css" />
+</head>
+<body>
+
+<a id="skip-navigation-link" href="#main-content">Skip navigation</a>
+
+<div id="loading" aria-label="Loading CrabSMP">
+  <img class="loading-logo" src="media/logo.png" alt="" />
+  <div class="loading-bar" role="progressbar" aria-label="Loading progress">
+    <span class="loading-bar__fill"></span>
+  </div>
+  <p class="loading-text">Generating world…</p>
+</div>
+
+<header id="site-header">
+  <div class="mobile-bar">
+    <img class="header-mobile-logo" src="media/logo.png" alt="CrabSMP" />
+    <button class="header-mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li class="header-logo-outer">
+        <a href="/"><img class="header-logo" src="media/logo.png" alt="CrabSMP" /></a>
+      </li>
+      <li><a href="index.html"><img class="header-ico" src="media/icons/castle.png" alt="" />Home</a></li>
+      <li><a href="about.html"><img class="header-ico" src="media/icons/billboard.png" alt="" />About</a></li>
+      <li><a href="https://store.crabsmp.net" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/shop.png" alt="" />Store</a></li>
+      <li><a href="vote.html"><img class="header-ico" src="media/icons/star.png" alt="" />Vote</a></li>
+      <li><a href="status.html" class="active"><img class="header-ico" src="media/icons/mt.png" alt="" />Status</a></li>
+      <li><a href="verixen.html"><img class="header-ico" src="media/icons/shield.png" alt="" />Verixen</a></li>
+      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
+      <li><a href="https://paypal.me/ozorical" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/money.png" alt="" />Donate<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
+      <li class="header-cta-outer"><a class="header-cta" href="about.html#how-to-join">▶ Join Server</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero-section" id="main-content" aria-label="Server Status">
+  <div class="hero-bg-img" aria-hidden="true"></div>
+  <div class="hero-content">
+    <img class="hero-logo-img" src="media/logo.png" alt="CrabSMP logo" />
+    <h1 class="hero-title">Server Status</h1>
+    <p class="hero-desc">Live status for CrabSMP. Check before you join.</p>
+
+    <div class="status-hero-stats">
+      <div class="status-hero-stat">
+        <span class="status-hero-stat__value">play.crabsmp.net</span>
+        <small class="status-hero-stat__label">Server IP</small>
+      </div>
+      <div class="status-hero-stat">
+        <span class="status-hero-stat__value">19132</span>
+        <small class="status-hero-stat__label">Port</small>
+      </div>
+      <div class="status-hero-stat">
+        <span class="status-hero-stat__value">Bedrock</span>
+        <small class="status-hero-stat__label">Edition</small>
+      </div>
+      <div class="status-hero-stat" id="hero-status-stat">
+        <span class="status-hero-stat__value" id="hero-status-val">—</span>
+        <small class="status-hero-stat__label">Status</small>
+      </div>
+    </div>
+
+    <div class="status-last-checked">
+      <i class="fa-solid fa-rotate" id="status-spinner"></i>
+      <span id="last-checked-text">Checking…</span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <section class="section" aria-label="Live server status">
+    <div class="shell">
+
+      <div class="status-panel fade-up" id="status-panel" role="status" aria-live="polite">
+        <div class="status-panel-indicator">
+          <span class="status-panel-dot" id="panel-dot"></span>
+          <span class="status-panel-text" id="panel-text">Checking server…</span>
+        </div>
+        <p class="status-panel-sub" id="panel-sub">Connecting to play.crabsmp.net…</p>
+        <div class="status-panel-players" id="player-count-wrap" aria-hidden="true">
+          <i class="fa-solid fa-users"></i>
+          <span id="player-count">—</span>
+          <span class="players-label">players online</span>
+        </div>
+        <div class="status-panel-actions">
+          <button class="mc-btn" data-copy="play.crabsmp.net">
+            <i class="fa-solid fa-copy"></i> Copy IP
+          </button>
+          <a class="mc-btn mc-btn--ghost" href="about.html#how-to-join">
+            <i class="fa-solid fa-circle-info"></i> How to Join
+          </a>
+        </div>
+      </div>
+
+      <div class="status-detail-row fade-up" style="transition-delay:0.1s" aria-label="Connection details">
+        <div class="status-detail-chip">
+          <span class="sdc-label"><i class="fa-solid fa-network-wired"></i> IP Address</span>
+          <span class="sdc-value">play.crabsmp.net</span>
+        </div>
+        <div class="status-detail-chip">
+          <span class="sdc-label"><i class="fa-solid fa-door-open"></i> Port</span>
+          <span class="sdc-value">19132</span>
+        </div>
+        <div class="status-detail-chip">
+          <span class="sdc-label"><i class="fa-solid fa-gamepad"></i> Console</span>
+          <span class="sdc-value">Join via Realm</span>
+        </div>
+        <div class="status-detail-chip">
+          <span class="sdc-label"><i class="fa-solid fa-cube"></i> Edition</span>
+          <span class="sdc-value">Bedrock</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section--alt" aria-label="Get help connecting">
+    <div class="shell">
+      <div class="section-head">
+        <span class="eyebrow">Support</span>
+        <h2 class="s-headline">Having Trouble?</h2>
+      </div>
+      <div class="status-help-grid">
+        <div class="status-help-card fade-up">
+          <span class="status-help-icon status-help-icon--blue">
+            <img src="media/icons/discord.png" alt="" />
+          </span>
+          <h3>Ask in Discord</h3>
+          <p>Post in #support and the team will get you connected.</p>
+          <a class="mc-btn mc-btn--sm mc-btn--blue" href="https://discord.gg/CeP7RjUkk3" target="_blank" rel="noopener">
+            <i class="fa-brands fa-discord"></i> Open Discord
+          </a>
+        </div>
+        <div class="status-help-card fade-up" style="transition-delay:0.08s">
+          <span class="status-help-icon">
+            <img src="media/icons/logs.png" alt="" />
+          </span>
+          <h3>Read the Join Guide</h3>
+          <p>Step-by-step connection instructions for all Bedrock platforms.</p>
+          <a class="mc-btn mc-btn--sm mc-btn--ghost" href="about.html#how-to-join">
+            <i class="fa-solid fa-circle-info"></i> View Guide
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener" class="footer-link">
+      <i class="fa-brands fa-tiktok"></i> TikTok
+    </a>
+    <a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener" class="footer-link">
+      <i class="fa-brands fa-youtube"></i> YouTube
+    </a>
+    <a href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener" class="footer-link">
+      <img class="mc-ico" src="media/icons/discord.png" alt="" /> Discord
+    </a>
+    <a href="verixen.html" class="footer-link">
+      <img class="mc-ico" src="media/icons/shield.png" alt="" /> Verixen
+    </a>
+    <a href="privacy.html" class="footer-link">
+      <img class="mc-ico" src="media/icons/vault.png" alt="" /> Privacy
+    </a>
+    <a href="index.html?intro=1" class="footer-link" data-replay-intro>
+      <i class="fa-solid fa-rotate-right"></i> Replay Intro
+    </a>
+  </div>
+  <p class="footer-copy">© 2026 CrabSMP · All rights reserved · Not affiliated with Mojang or Microsoft.</p>
+</footer>
+
+<dialog id="store-dialog">
+  <h1 class="dialog-title"><img class="mc-ico" src="media/icons/shop.png" alt="" /> Opening the Store</h1>
+  <p>You are about to leave crabsmp.net. Our official store lives at <strong>store.crabsmp.net</strong>, where every purchase goes straight back into the server.</p>
+  <div class="dialog-actions">
+    <button class="mc-btn mc-btn--ghost" data-dialog-close>Stay Here</button>
+    <a class="mc-btn" id="store-dialog-go" href="https://store.crabsmp.net" target="_blank" rel="noopener">Continue</a>
+  </div>
+</dialog>
+
+<script src="javascript/crab.js" defer></script>
+</body>
+</html>
