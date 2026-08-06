@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bgH" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#123a1c"/>
+      <stop offset="100%" stop-color="#050a06"/>
+    </linearGradient>
+    <linearGradient id="faceH" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eafff0"/>
+      <stop offset="100%" stop-color="#8fd9a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bgH)"/>
+  <!-- glow -->
+  <circle cx="100" cy="95" r="86" fill="#3aad4e" opacity="0.12"/>
+  <!-- mitten hand -->
+  <path d="M126 150 L152 122 L172 138 L168 168 L150 176 Z" fill="#dff5e4"/>
+  <path d="M126 150 L152 122 L163 130 L140 156 Z" fill="#b9e6c4"/>
+  <!-- round blob head -->
+  <circle cx="94" cy="92" r="60" fill="url(#faceH)"/>
+  <path d="M94 32 A60 60 0 0 1 94 152 Z" fill="#0d2e15" opacity="0.14"/>
+  <!-- angled eyes -->
+  <path d="M62 78 L90 92 L62 104 Z" fill="#0d2e15"/>
+  <path d="M126 78 L98 92 L126 104 Z" fill="#0d2e15"/>
+  <!-- chevron mouth -->
+  <path d="M66 118 L94 138 L122 118 L94 128 Z" fill="#0d2e15"/>
+</svg>

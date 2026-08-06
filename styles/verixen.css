@@ -77,7 +77,7 @@ dialog { border-top-color: var(--vx); }
   position: absolute;
   inset: 0;
   background: url('../media/assets/background.jpg') center / cover no-repeat;
-  filter: saturate(0.3) brightness(0.38) contrast(1.05);
+  filter: saturate(0.5) brightness(0.76) contrast(1.05);
   transform: scale(1.06);
 }
 
@@ -88,7 +88,7 @@ dialog { border-top-color: var(--vx); }
   background:
     radial-gradient(ellipse 70% 55% at 50% 0%, var(--vx-glow), transparent 70%),
     radial-gradient(ellipse 55% 45% at 85% 100%, rgba(91, 33, 182, 0.22), transparent 70%),
-    linear-gradient(180deg, rgba(16, 15, 18, 0.55) 0%, rgba(16, 15, 18, 0.8) 60%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(16, 15, 18, 0.18) 0%, rgba(16, 15, 18, 0.42) 60%, var(--bg) 100%);
 }
 
 .vx-hero-logo {
@@ -145,9 +145,10 @@ dialog { border-top-color: var(--vx); }
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 30px 26px;
+  padding: 28px 26px;
   background: var(--panel);
   border: var(--border);
+  border-top: 3px solid var(--vx);
   box-shadow: var(--shadow-card);
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
 }
@@ -194,9 +195,10 @@ dialog { border-top-color: var(--vx); }
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  padding: 34px 28px;
+  padding: 30px 28px;
   background: var(--panel);
   border: var(--border);
+  border-top: 3px solid var(--vx);
   box-shadow: var(--shadow-card);
   text-align: center;
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);

@@ -118,6 +118,71 @@
       setTimeout(hideLoader, 4000);
     }
 
+    // Hero background slideshow: crossfades through media/slideshow/ every 4s.
+    (function heroSlideshow() {
+      var containers = document.querySelectorAll('.hero-bg-img');
+      if (!containers.length) return;
+
+      var FILES = ['slide1.webp', 'slide2.webp', 'slide3.webp', 'slide4.webp'];
+
+      containers.forEach(function (container) {
+        var slides = FILES.map(function (file, i) {
+          var slide = document.createElement('div');
+          slide.className = 'hero-bg-slide' + (i === 0 ? ' is-active' : '');
+          slide.style.backgroundImage = "url('media/slideshow/" + file + "')";
+          container.appendChild(slide);
+          return slide;
+        });
+        if (slides.length < 2) return;
+
+        var index = 0;
+        setInterval(function () {
+          slides[index].classList.remove('is-active');
+          index = (index + 1) % slides.length;
+          slides[index].classList.add('is-active');
+        }, 4000);
+      });
+    })();
+
+    // Mouse-parallax on the hero background: the image drifts a few pixels
+    // opposite the cursor so it reads as sitting behind the foreground UI.
+    (function heroParallax() {
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var finePointer = !window.matchMedia || window.matchMedia('(pointer: fine)').matches;
+      if (reduceMotion || !finePointer) return;
+
+      var layers = document.querySelectorAll('.hero-bg-img, .vx-hero-bg');
+      if (!layers.length) return;
+
+      var STRENGTH = 16; // max px drift from center
+      var EASE = 0.08;
+      var targetX = 0, targetY = 0, curX = 0, curY = 0, raf = null;
+
+      function onMove(e) {
+        var hero = document.querySelector('.hero-section');
+        if (!hero) return;
+        var rect = hero.getBoundingClientRect();
+        if (e.clientY < rect.top || e.clientY > rect.bottom) return;
+        targetX = ((e.clientX - rect.left) / rect.width - 0.5) * STRENGTH;
+        targetY = ((e.clientY - rect.top) / rect.height - 0.5) * STRENGTH;
+        if (!raf) raf = requestAnimationFrame(tick);
+      }
+
+      function tick() {
+        curX += (targetX - curX) * EASE;
+        curY += (targetY - curY) * EASE;
+        var transform = 'scale(1.06) translate(' + (-curX).toFixed(2) + 'px, ' + (-curY).toFixed(2) + 'px)';
+        layers.forEach(function (l) { l.style.transform = transform; });
+        if (Math.abs(targetX - curX) > 0.05 || Math.abs(targetY - curY) > 0.05) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = null;
+        }
+      }
+
+      window.addEventListener('mousemove', onMove, { passive: true });
+    })();
+
     var header = document.getElementById('site-header');
     var toggle = document.querySelector('.header-mobile-toggle');
     if (header && toggle) {
@@ -141,7 +206,7 @@
     var splash = document.querySelector('.hero-splash');
     if (splash) {
       var splashes = [
-        'No pay-to-win!',
+        'Free to play!',
         'Crabtastic!',
         'Fight for hearts!',
         'Watch your back!',

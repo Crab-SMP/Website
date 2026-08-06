@@ -103,11 +103,11 @@ strong { color: var(--white); font-weight: 800; }
 }
 
 .section {
-  padding-block: clamp(64px, 9vw, 116px);
+  padding-block: clamp(52px, 6.5vw, 92px);
   background: var(--bg);
 }
 .section--alt    { background: var(--surface); }
-.section--tight  { padding-block: clamp(48px, 6vw, 80px); }
+.section--tight  { padding-block: clamp(40px, 5vw, 64px); }
 
 .section {
   background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 4px);
@@ -138,7 +138,7 @@ strong { color: var(--white); font-weight: 800; }
 .section-head {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto clamp(40px, 6vw, 66px);
+  margin: 0 auto clamp(32px, 4.5vw, 48px);
 }
 
 .eyebrow {
@@ -487,9 +487,23 @@ strong { color: var(--white); font-weight: 800; }
 .hero-bg-img {
   position: absolute;
   inset: 0;
-  background: url('../media/assets/background.jpg') center / cover no-repeat;
-  filter: saturate(0.5) brightness(0.4) contrast(1.05);
+  overflow: hidden;
+  filter: saturate(0.65) brightness(0.78) contrast(1.05);
   transform: scale(1.06);
+}
+/* Crossfading slideshow layers, injected by crab.js from media/slideshow/. */
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+.hero-bg-slide.is-active { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-slide { transition: none; }
 }
 .hero-bg-img::after {
   content: "";
@@ -497,7 +511,7 @@ strong { color: var(--white); font-weight: 800; }
   inset: 0;
   background:
     radial-gradient(ellipse 70% 55% at 50% 0%, var(--red-soft), transparent 70%),
-    linear-gradient(180deg, rgba(16,15,18,0.55) 0%, rgba(16,15,18,0.8) 60%, var(--bg) 100%);
+    linear-gradient(180deg, rgba(16,15,18,0.18) 0%, rgba(16,15,18,0.42) 60%, var(--bg) 100%);
 }
 
 .hero-content {
