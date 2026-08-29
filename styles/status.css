@@ -31,29 +31,30 @@
 .status-hero-stat {
   background: rgba(34, 35, 41, 0.88);
   border: var(--border);
-  border-top: 3px solid var(--red);
+  border-top: 4px solid var(--red);
   box-shadow: var(--shadow-card);
   padding: 14px 22px;
   min-width: 110px;
   text-align: center;
   backdrop-filter: blur(6px);
-  transition: border-top-color 0.35s var(--ease);
+  transition: border-top-color var(--dur-lift) var(--ease);
 }
 
 .status-hero-stat__value {
   display: block;
   font-family: var(--font-mono);
-  font-size: 1.7rem;
+  font-size: 1.33rem;
   line-height: 1.2;
   color: var(--white);
   letter-spacing: 0.5px;
-  transition: color 0.35s var(--ease);
+  transition: color var(--dur-lift) var(--ease);
 }
 
 .status-hero-stat__label {
   display: block;
-  font-family: var(--font-pixel);
-  font-size: 7px;
+  font-family: var(--font-ui);
+  text-shadow: var(--txt-shadow-sm);
+  font-size: 13px;
   color: var(--text-dim);
   margin-top: 6px;
   letter-spacing: 0.5px;
@@ -71,7 +72,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 1.2rem;
+  font-size: 0.94rem;
   color: var(--text-faint);
   letter-spacing: 0.5px;
   margin-top: 14px;
@@ -83,7 +84,12 @@
 .status-panel {
   max-width: 680px;
   margin: 0 auto 32px;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   border-top: 4px solid var(--line);
   box-shadow: var(--shadow-card);
@@ -93,7 +99,7 @@
   align-items: center;
   text-align: center;
   gap: 22px;
-  transition: border-top-color 0.35s var(--ease), background 0.35s var(--ease);
+  transition: border-top-color var(--dur-lift) var(--ease), background var(--dur-lift) var(--ease);
 }
 
 .status-panel.panel-online  {
@@ -113,13 +119,15 @@
   gap: 18px;
 }
 
+/* A single block of "redstone lamp", lit or unlit. */
 .status-panel-dot {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   background: var(--line);
   border: 3px solid var(--black);
+  box-shadow: var(--bevel);
   flex-shrink: 0;
-  transition: background 0.35s var(--ease);
+  transition: background var(--dur-lift) var(--ease);
 }
 .status-panel-dot.dot-online {
   background: var(--green);
@@ -132,12 +140,12 @@
 
 .status-panel-text {
   font-family: var(--font-pixel);
-  font-size: clamp(13px, 2vw, 19px);
-  line-height: 1.7;
+  font-size: clamp(23px, 3.2vw, 34px);
+  line-height: 1.2;
   color: var(--text-dim);
-  text-shadow: 2px 2px 0 var(--black);
+  text-shadow: var(--txt-shadow-lg);
   letter-spacing: 0.5px;
-  transition: color 0.35s var(--ease);
+  transition: color var(--dur-lift) var(--ease);
 }
 .panel-online  .status-panel-text { color: var(--green-bright); }
 .panel-offline .status-panel-text { color: var(--red-bright);   }
@@ -158,17 +166,19 @@
   gap: 10px;
   padding: 10px 22px;
   background: var(--green-deep);
-  border: 2px solid var(--green-dark);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
   font-family: var(--font-mono);
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   color: var(--green-bright);
+  text-shadow: var(--txt-shadow);
 }
 .status-panel-players.is-visible { display: inline-flex; }
-.status-panel-players i { color: var(--green-dark); font-size: 1rem; }
+.status-panel-players i { color: var(--green); font-size: 1rem; }
 .players-label {
   font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: rgba(77, 204, 99, 0.7);
+  font-size: 0.95rem;
+  color: rgba(77, 204, 99, 0.75);
 }
 
 /* action buttons */
@@ -195,29 +205,35 @@
   align-items: center;
   gap: 14px;
   padding: 14px 20px;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   box-shadow: var(--shadow-card);
-  flex: 1 1 160px;
+  flex: 1 1 220px;
 }
 
 .sdc-label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   font-family: var(--font-body);
-  font-size: 0.82rem;
+  font-size: 0.95rem;
   color: var(--text-faint);
   white-space: nowrap;
 }
-.sdc-label i { width: 13px; text-align: center; }
+.sdc-label i { width: 14px; text-align: center; }
 
 .sdc-value {
   font-family: var(--font-mono);
-  font-size: 1.15rem;
+  font-size: 0.98rem;
   color: var(--blue-text);
   margin-left: auto;
   text-align: right;
+  white-space: nowrap;
 }
 
 /* ── Help section ───────────────────────────────────────────────────── */
@@ -225,12 +241,17 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 22px;
-  max-width: 680px;
+  max-width: 1000px;
   margin-inline: auto;
 }
 
 .status-help-card {
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   border-top: 4px solid var(--red);
   box-shadow: var(--shadow-card);
@@ -240,27 +261,29 @@
   align-items: center;
   gap: 14px;
   text-align: center;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  transition: transform var(--dur-move) var(--ease), box-shadow var(--dur-move) var(--ease);
 }
 .status-help-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-pop);
 }
 
+/* Reads as an inventory slot holding the icon. */
 .status-help-icon {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--red-soft);
-  border: 2px solid var(--red-dark);
+  background: #3a1c18;
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel-in);
 }
 .status-help-icon--blue {
-  background: rgba(52, 70, 95, 0.3);
-  border-color: var(--blue);
+  background: var(--blue-deep);
 }
 .status-help-icon img {
+  image-rendering: pixelated;
   width: 30px;
   height: 30px;
   object-fit: contain;
@@ -268,17 +291,17 @@
 }
 
 .status-help-card h3 {
-  font-family: var(--font-pixel);
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: 16px;
   color: var(--white);
   text-shadow: 2px 2px 0 var(--black);
-  line-height: 1.8;
+  line-height: 1.25;
 }
 .status-help-card p {
   font-family: var(--font-body);
   color: var(--text-dim);
-  font-size: 0.95rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.6;
   flex: 1;
 }
 

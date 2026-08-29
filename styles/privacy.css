@@ -1,7 +1,7 @@
 .privacy-effective {
   margin-top: 2px;
   font-family: var(--font-mono);
-  font-size: 1.2rem;
+  font-size: 0.94rem;
   color: var(--text-faint);
   letter-spacing: 0.5px;
 }
@@ -26,9 +26,9 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  line-height: 1.8;
+  font-family: var(--font-ui);
+  font-size: 18px;
+  line-height: 1.25;
   color: var(--white);
   text-shadow: 2px 2px 0 var(--black);
   margin-bottom: 20px;
@@ -51,7 +51,7 @@
 }
 .toc-list a {
   color: var(--blue-text);
-  transition: color 0.14s var(--ease);
+  transition: color var(--dur-tap) var(--ease);
 }
 .toc-list a:hover {
   color: var(--white);
@@ -75,7 +75,7 @@
 
 .policy-section-num {
   font-family: var(--font-pixel);
-  font-size: 13px;
+  font-size: 23px;
   color: var(--red);
   text-shadow: 2px 2px 0 var(--red-deep);
   min-width: 44px;
@@ -91,18 +91,18 @@
 }
 
 .policy-section-body h2 {
-  font-family: var(--font-pixel);
-  font-size: 11px;
-  line-height: 1.8;
+  font-family: var(--font-ui);
+  font-size: 20px;
+  line-height: 1.25;
   color: var(--white);
   text-shadow: 2px 2px 0 var(--black);
   margin-bottom: 16px;
 }
 
 .policy-section-body h3 {
-  font-family: var(--font-pixel);
-  font-size: 9px;
-  line-height: 1.8;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.25;
   color: var(--blue-text);
   text-shadow: 1px 1px 0 var(--black);
   margin: 22px 0 10px;
@@ -120,7 +120,7 @@
 .policy-section-body a {
   color: var(--blue-text);
   border-bottom: 1px solid var(--blue);
-  transition: color 0.14s var(--ease), border-color 0.14s var(--ease);
+  transition: color var(--dur-tap) var(--ease), border-color var(--dur-tap) var(--ease);
 }
 .policy-section-body a:hover {
   color: var(--white);
@@ -184,7 +184,8 @@
   align-items: flex-start;
   padding: 18px 20px;
   background: var(--panel-hi);
-  border: 2px solid var(--line);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
 }
 
 .third-party-icon {
@@ -196,6 +197,7 @@
   flex-shrink: 0;
 }
 img.third-party-icon {
+  image-rendering: pixelated;
   width: 28px;
   height: 28px;
   object-fit: contain;
@@ -231,13 +233,19 @@ img.third-party-icon {
   align-items: flex-start;
   padding: 20px 22px;
   background: var(--panel-hi);
-  border: 2px solid var(--line);
-  transition: border-color 0.14s var(--ease), background 0.14s var(--ease);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
+  transition: border-color var(--dur-tap) var(--ease), background var(--dur-tap) var(--ease);
 }
 
 a.contact-method:hover {
   border-color: var(--red-dark);
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
 }
 
 .contact-method i {
@@ -249,6 +257,7 @@ a.contact-method:hover {
   flex-shrink: 0;
 }
 .contact-ico {
+  image-rendering: pixelated;
   width: 26px;
   height: 26px;
   object-fit: contain;

@@ -30,7 +30,8 @@
   <meta name="twitter:description" content="A free Bedrock lifesteal factions server with player-run factions, a real economy, and 24/7 uptime. Play on console, mobile, and PC." />
   <meta name="twitter:image" content="https://crabsmp.net/media/assets/background.jpg" />
 
-  <link href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400|nunito:400,600,700,800" rel="stylesheet" />
+  <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/about.css" />
@@ -70,13 +71,13 @@
       <li class="header-logo-outer">
         <a href="/"><img class="header-logo" src="media/logo.png" alt="CrabSMP" /></a>
       </li>
-      <li><a href="index.html"><img class="header-ico" src="media/icons/castle.png" alt="" />Home</a></li>
-      <li><a href="about.html" class="active"><img class="header-ico" src="media/icons/billboard.png" alt="" />About</a></li>
-      <li><a href="https://store.crabsmp.net" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/shop.png" alt="" />Store</a></li>
-      <li><a href="vote.html"><img class="header-ico" src="media/icons/star.png" alt="" />Vote</a></li>
-      <li><a href="status.html"><img class="header-ico" src="media/icons/mt.png" alt="" />Status</a></li>
-      <li><a href="verixen.html"><img class="header-ico" src="media/icons/shield.png" alt="" />Verixen</a></li>
-      <li><a href="https://discord.gg/CeP7RjUkk3" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
+      <li><a href="index.html"><img class="header-ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
+      <li><a href="about.html" class="active"><img class="header-ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+      <li><a href="store.html"><img class="header-ico" src="media/icons/glyph/shop.png" alt="" />Store</a></li>
+      <li><a href="vote.html"><img class="header-ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
+      <li><a href="status.html"><img class="header-ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
+      <li><a href="verixen.html"><img class="header-ico" src="media/icons/glyph/shield.png" alt="" />Verixen</a></li>
+      <li><a href="https://discord.gg/CeP7RjUkk3" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/glyph/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
       <li class="header-cta-outer"><a class="header-cta" href="#how-to-join">▶ Join Server</a></li>
     </ul>
   </nav>
@@ -122,26 +123,26 @@
 
     <div class="about-concept-grid">
 
-      <div class="about-concept-card fade-up">
-        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg" src="media/icons/freeplay.png" alt="" /></div>
+      <div class="about-concept-card" data-reveal="drop">
+        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg" src="media/icons/glyph/freeplay.png" alt="" /></div>
         <h3 class="about-concept-title">Bedrock Native</h3>
         <p class="about-concept-text">Built for Bedrock from the ground up. Xbox, PlayStation, Switch, Mobile, and Windows 10/11 players all share one world and one economy.</p>
       </div>
 
-      <div class="about-concept-card fade-up" style="transition-delay:0.08s">
-        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg ico-px" src="media/icons/lifesteal_heart.png" alt="" /></div>
+      <div class="about-concept-card" data-reveal="drop">
+        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg ico-px" src="media/icons/glyph/lifesteal_heart.png" alt="" /></div>
         <h3 class="about-concept-title">Lifesteal</h3>
         <p class="about-concept-text">Start on 10 hearts and climb toward a 30 heart cap. Every kill steals a heart, every death gives one away. Lose your last life and you are down until a teammate revives you.</p>
       </div>
 
-      <div class="about-concept-card fade-up" style="transition-delay:0.16s">
-        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg" src="media/icons/money.png" alt="" /></div>
+      <div class="about-concept-card" data-reveal="drop">
+        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg" src="media/icons/glyph/money.png" alt="" /></div>
         <h3 class="about-concept-title">Player-Run Economy</h3>
         <p class="about-concept-text">List loot on the auction house, post coin bounties on your rivals, and send coins straight to friends. Prices are set by the people playing, not by staff.</p>
       </div>
 
-      <div class="about-concept-card fade-up" style="transition-delay:0.24s">
-        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg ico-px" src="media/icons/key_common.png" alt="" /></div>
+      <div class="about-concept-card" data-reveal="drop">
+        <div class="about-concept-icon"><img class="mc-ico mc-ico--lg ico-px" src="media/icons/glyph/key_common.png" alt="" /></div>
         <h3 class="about-concept-title">Progression, Not Paywall</h3>
         <p class="about-concept-text">Crate keys come from voting, playtime milestones, and daily rewards. Quests grant XP toward 100 RPG levels. Donations keep the lights on, nothing more.</p>
       </div>
@@ -149,6 +150,8 @@
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section section--alt" aria-label="The Crab Philosophy">
   <div class="shell">
@@ -164,13 +167,15 @@
         The economy is yours. The stories are yours. We just keep the lights on and the lag low.
       </p>
       <div class="about-philosophy-badges">
-        <span class="chip chip--red"><img class="mc-ico mc-ico--sm ico-px" src="media/icons/lifesteal_heart.png" alt="" /> Free To Play. Always.</span>
-        <span class="chip chip--red"><img class="mc-ico mc-ico--sm ico-px" src="media/icons/lifesteal_heart.png" alt="" /> Community Votes Matter.</span>
-        <span class="chip chip--red"><img class="mc-ico mc-ico--sm ico-px" src="media/icons/lifesteal_heart.png" alt="" /> Backend Updated Weekly.</span>
+        <span class="chip chip--red"><img class="mc-ico mc-ico--sm ico-px" src="media/icons/glyph/lifesteal_heart.png" alt="" /> Free To Play. Always.</span>
+        <span class="chip chip--red"><img class="mc-ico mc-ico--sm ico-px" src="media/icons/glyph/lifesteal_heart.png" alt="" /> Community Votes Matter.</span>
+        <span class="chip chip--red"><img class="mc-ico mc-ico--sm ico-px" src="media/icons/glyph/lifesteal_heart.png" alt="" /> Backend Updated Weekly.</span>
       </div>
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section" aria-label="What makes CrabSMP tick">
   <div class="shell">
@@ -182,57 +187,47 @@
 
     <div class="about-feature-grid">
 
-      <div class="about-feature-box fade-up">
-        <img class="mc-ico mc-ico--lg" src="media/icons/clan.png" alt="" />
+      <div class="about-feature-box" data-reveal="zoom">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/clan.png" alt="" />
         <h3>Factions &amp; Land Claims</h3>
         <p>Found a faction for 10,000 coins, recruit a crew, and claim the land around your base in 16, 32, or 64 block plots. Shared faction bank, faction homes, and roles from member to leader.</p>
       </div>
 
-      <div class="about-feature-box fade-up" style="transition-delay:0.06s">
-        <img class="mc-ico mc-ico--lg ico-px" src="media/icons/revive_beacon.png" alt="" />
+      <div class="about-feature-box" data-reveal="zoom">
+        <img class="mc-ico mc-ico--lg ico-px" src="media/icons/glyph/revive_beacon.png" alt="" />
         <h3>Lifesteal &amp; Revives</h3>
         <p>Hearts are the prize. Win fights to push toward a 30 heart cap. Lose your last life and you are out until a teammate gathers revive souls and builds a revive beacon to bring you back.</p>
       </div>
 
-      <div class="about-feature-box fade-up" style="transition-delay:0.12s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/coins_transfer.png" alt="" />
+      <div class="about-feature-box" data-reveal="zoom">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/coins_transfer.png" alt="" />
         <h3>Player-Run Economy</h3>
         <p>An auction house, coin bounties, player to player transfers, and a coin shop. Prices move with the playerbase, and staff never undercut the market.</p>
       </div>
 
-      <div class="about-feature-box fade-up" style="transition-delay:0.18s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/closed_chest.png" alt="" />
+      <div class="about-feature-box" data-reveal="zoom">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/closed_chest.png" alt="" />
         <h3>Crates, Quests &amp; Levels</h3>
         <p>Roll crate keys earned from voting, playtime, and daily rewards for loot. Complete quests for XP and grind your way through 100 RPG levels.</p>
       </div>
 
-      <div class="about-feature-box fade-up" style="transition-delay:0.24s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/open_chest.png" alt="" />
+      <div class="about-feature-box" data-reveal="zoom">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/open_chest.png" alt="" />
         <h3>Smart Spawners</h3>
         <p>Mine mob spawners, stack them together, and let them bank loot and XP while you are away. The whole stack is managed from a clean in game menu.</p>
       </div>
 
-      <div class="about-feature-box fade-up" style="transition-delay:0.30s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/tpa.png" alt="" />
+      <div class="about-feature-box" data-reveal="zoom">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/tpa.png" alt="" />
         <h3>Teleports &amp; Homes</h3>
         <p>Set multiple homes, send TPA requests, jump to warps, return to your last spot with back, or wild teleport into untouched land.</p>
-      </div>
-
-      <div class="about-feature-box fade-up" style="transition-delay:0.36s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/shield.png" alt="" />
-        <h3>Anti-Cheat &amp; Protection</h3>
-        <p>Anti-dupe, anti-combat-log, spawn protection, a world border, and a staff team that actually investigates keep the world fair.</p>
-      </div>
-
-      <div class="about-feature-box fade-up" style="transition-delay:0.42s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/discord.png" alt="" />
-        <h3>Discord Integration</h3>
-        <p>Chat, joins, deaths, and staff actions relay live to Discord through our custom bot. Link your account in game to claim the bonus Discord kit.</p>
       </div>
 
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section section--alt" id="how-to-join" aria-label="How to join CrabSMP">
   <div class="shell">
@@ -243,39 +238,43 @@
 
     <div class="about-join-grid">
 
-      <div class="about-join-card fade-up">
-        <img class="mc-ico mc-ico--lg" src="media/icons/freeplay.png" alt="" />
-        <h3>Console (Xbox / PlayStation / Switch)</h3>
+      <div class="about-join-card" data-reveal="flip">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/tpa.png" alt="" />
+        <h3>PC &amp; Mobile</h3>
         <ul>
-          <li>Open our Realm invite link <code>realms.gg/vDruZhrrg9W64Zs</code> on your console's browser or phone</li>
-          <li>Tap to join the Realm, then open Minecraft and <strong>accept the game invite</strong> to play. No connector app needed</li>
-          <li>Works on Xbox, PlayStation, and Nintendo Switch</li>
+          <li>Open Minecraft Bedrock → Servers → Add Server</li>
+          <li>Server IP: <code>play.crabsmp.net</code></li>
+          <li>Port: <code>19132</code> (leave it at the default)</li>
         </ul>
       </div>
 
-      <div class="about-join-card fade-up" style="transition-delay:0.08s">
-        <img class="mc-ico mc-ico--lg" src="media/icons/tpa.png" alt="" />
-        <h3>Mobile &amp; Windows (PC)</h3>
+      <div class="about-join-card" data-reveal="flip">
+        <img class="mc-ico mc-ico--lg" src="media/icons/glyph/freeplay.png" alt="" />
+        <h3>Console (Xbox, PlayStation, etc)</h3>
         <ul>
-          <li>Open Minecraft Bedrock → Servers → Add Server</li>
-          <li>Server IP: <code>play.crabsmp.net</code> · Port: <code>19132</code></li>
-          <li>No port required when entering the IP: default Bedrock port</li>
+          <li><strong>Method 1:</strong> Join through the Realm code <code>vDruZhrrg9W64Zs</code> and accept the invite</li>
+          <li><strong>Method 2:</strong> Add <code>JoinCrabMC</code> as a friend on Minecraft, wait 30 seconds, then join their world</li>
+          <li><strong>Method 3:</strong> Use BedrockTogether with the IP and port above</li>
         </ul>
       </div>
 
     </div>
 
     <div class="about-info-box">
-      <p><img class="about-info-ico" src="media/icons/daily_rewards.png" alt="" /> <strong>First thing to do:</strong> Your one time starter kit is handed to you the moment you join. Type <code>/wild</code> to teleport into fresh land, then link your Discord account in game to claim the bonus Discord kit.</p>
+      <p><img class="about-info-ico" src="media/icons/glyph/daily_rewards.png" alt="" /> <strong>First thing to do:</strong> Your one time starter kit is handed to you the moment you join. Type <code>/wild</code> to teleport into fresh land, then link your Discord account in game to claim the bonus Discord kit.</p>
+      <p><img class="about-info-ico" src="media/icons/glyph/tpa.png" alt="" /> <strong>Game acting up?</strong> Restart Minecraft before asking staff for help. It fixes most connection problems on its own.</p>
+      <p><img class="about-info-ico" src="media/icons/glyph/friends.png" alt="" /> <strong>Sharing Wi-Fi with a sibling?</strong> Open a ticket in our Discord support channel so we can whitelist both accounts, otherwise the anti-alt system will flag you.</p>
       <p class="about-info-note">No whitelist. Just join and play.</p>
     </div>
   </div>
 </section>
 
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
+
 <section class="section" aria-label="Where your money goes">
   <div class="shell">
     <div class="about-support">
-      <img class="mc-ico mc-ico--xl ico-px" src="media/icons/crab_chestplate.png" alt="" />
+      <img class="mc-ico mc-ico--xl ico-px" src="media/icons/glyph/crab_chestplate.png" alt="" />
       <h2 class="s-headline">Where Your Money Goes</h2>
       <p class="about-support-text">
         CrabSMP is free to play and always will be. Ranks are quality-of-life and cosmetics,
@@ -284,7 +283,7 @@
         penny goes straight into hosting, upkeep and development.
       </p>
       <a href="https://paypal.me/ozorical" target="_blank" rel="noopener" class="mc-btn">
-        <img class="btn-ico ico-px" src="media/icons/lifesteal_heart.png" alt="" /> Support The Server
+        <img class="btn-ico ico-px" src="media/icons/glyph/lifesteal_heart.png" alt="" /> Support The Server
       </a>
     </div>
   </div>
@@ -299,13 +298,13 @@
       <i class="fa-brands fa-youtube"></i> YouTube
     </a>
     <a href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener" class="footer-link">
-      <img class="mc-ico" src="media/icons/discord.png" alt="" /> Discord
+      <img class="mc-ico" src="media/icons/glyph/discord.png" alt="" /> Discord
     </a>
     <a href="verixen.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/shield.png" alt="" /> Verixen
+      <img class="mc-ico" src="media/icons/glyph/shield.png" alt="" /> Verixen
     </a>
     <a href="privacy.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/vault.png" alt="" /> Privacy
+      <img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /> Privacy
     </a>
     <a href="index.html?intro=1" class="footer-link" data-replay-intro>
       <i class="fa-solid fa-rotate-right"></i> Replay Intro
@@ -314,14 +313,6 @@
   <p class="footer-copy">© 2026 CrabSMP · All rights reserved · Not affiliated with Mojang or Microsoft.</p>
 </footer>
 
-<dialog id="store-dialog">
-  <h1 class="dialog-title"><img class="mc-ico" src="media/icons/shop.png" alt="" /> Opening the Store</h1>
-  <p>You are about to leave crabsmp.net. Our official store lives at <strong>store.crabsmp.net</strong>, where every purchase goes straight back into the server.</p>
-  <div class="dialog-actions">
-    <button class="mc-btn mc-btn--ghost" data-dialog-close>Stay Here</button>
-    <a class="mc-btn" id="store-dialog-go" href="https://store.crabsmp.net" target="_blank" rel="noopener">Continue</a>
-  </div>
-</dialog>
 
 <script src="javascript/crab.js" defer></script>
 </body>

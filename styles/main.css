@@ -1,3 +1,23 @@
+/* ── Fonts ──────────────────────────────────────────────────────────────
+   MinecraftTen is the chunky display face used for headings and UI labels;
+   Mojangles is the in-game text face used for body copy. Both are served
+   locally from media/fonts so the site has no webfont dependency.          */
+@font-face {
+  font-family: 'MinecraftTen';
+  src: url('../media/fonts/MinecraftTen.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mojangles';
+  src: url('../media/fonts/Mojangles.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --red:          #e23b2c;
   --red-bright:   #f1543f;
@@ -23,15 +43,81 @@
   --text-dim:     #94959c;
   --text-faint:   #66676e;
 
-  --font-pixel:   'Press Start 2P', 'Courier New', monospace;
-  --font-mono:    'VT323', 'Courier New', monospace;
-  --font-body:    'Nunito', system-ui, -apple-system, Segoe UI, sans-serif;
+  /* ── Type ─────────────────────────────────────────────────────────────
+     Two faces, and the split between them is by size, not by importance.
+
+     MinecraftTen is a caps-only display face with very heavy strokes. It
+     looks great large, and turns to mush small: by about 20px the counters
+     inside a, e, o and s have closed up and a heading reads as a dark bar.
+     So it is reserved for text at 22px and up — hero titles, section
+     headlines, the intro.
+
+     Everything below that — card headings, nav, buttons, labels, badges —
+     uses --font-ui, which is Mojangles, the actual in-game text face. It
+     stays legible down to 13px and is what Minecraft itself uses for buttons
+     and menus, so this is the more faithful choice as well as the readable
+     one. Reach for --font-pixel only when the text is genuinely large.     */
+  --font-pixel:   'MinecraftTen', 'Press Start 2P', 'Courier New', monospace;
+  --font-ui:      'Mojangles', ui-monospace, 'Courier New', monospace;
+  --font-mono:    'Mojangles', ui-monospace, 'Courier New', monospace;
+  --font-body:    'Mojangles', ui-monospace, 'Courier New', monospace;
 
   --shell:        1200px;
   --border:       2px solid var(--black);
-  --shadow-card:  0 10px 26px rgba(0, 0, 0, 0.5);
-  --shadow-pop:   0 18px 40px rgba(0, 0, 0, 0.62);
+
+  /* Minecraft GUI bevel: lit on the top-left, shaded on the bottom-right.
+     --bevel reads as a raised panel, --bevel-in as a sunken slot.          */
+  --bevel:        inset 2px 2px 0 rgba(255, 255, 255, 0.10), inset -2px -2px 0 rgba(0, 0, 0, 0.55);
+  --bevel-in:     inset 2px 2px 0 rgba(0, 0, 0, 0.70), inset -2px -2px 0 rgba(255, 255, 255, 0.07);
+
+  /* The bevel is folded into the card shadows so every panel on every page
+     picks up the GUI edge without repeating itself. */
+  --shadow-card:  var(--bevel), 0 5px 0 rgba(0, 0, 0, 0.55), 0 12px 26px rgba(0, 0, 0, 0.45);
+  --shadow-pop:   var(--bevel), 0 9px 0 rgba(0, 0, 0, 0.6), 0 20px 40px rgba(0, 0, 0, 0.6);
+
+  /* Minecraft renders text with a hard diagonal drop shadow, never a blur.
+     The offset has to scale with the text: 2px under 15px type is nearly as
+     thick as the strokes themselves and closes up the letters, which is half
+     of why the small headings were unreadable. --txt-shadow-sm goes with
+     --font-ui, --txt-shadow and -lg with display type. */
+  --txt-shadow-sm: 1px 1px 0 rgba(0, 0, 0, 0.75);
+  --txt-shadow:    2px 2px 0 rgba(0, 0, 0, 0.75);
+  --txt-shadow-lg: 4px 4px 0 rgba(0, 0, 0, 0.85);
+
+  --tex-stone:     url('../media/ui/textures/stone.png');
+  --tex-deepslate: url('../media/ui/textures/deepslate.png');
+  --tex-nether:    url('../media/ui/textures/nether.png');
+  --tex-water:     url('../media/ui/textures/water.png');
+  --tex-crab:      url('../media/ui/textures/crab.png');
+
   --ease:         cubic-bezier(.2, .7, .2, 1);
+  --ease-pop:     cubic-bezier(.34, 1.56, .64, 1);
+  --ease-pop-lg:  cubic-bezier(.28, 1.85, .5, 1);
+
+  /* ── Motion scale ─────────────────────────────────────────────────────
+     Five durations cover the whole site, and every transition picks one of
+     them. They scale with weight: the bigger the thing that moves, the
+     longer it is allowed to take.
+
+       --dur-tap     keeping up with the pointer: colour, opacity, a marker
+       --dur-move    a small shift: an icon, an underline, a nudge
+       --dur-lift    a whole panel rising off the page under the cursor
+       --dur-enter   something arriving on screen for the first time
+       --dur-stage   the set pieces: the intro, the hero dealing itself out
+
+     Reaching for a number outside this list is what makes a page read as a
+     pile of unrelated effects instead of one system.                       */
+  --dur-tap:      120ms;
+  --dur-move:     220ms;
+  --dur-lift:     340ms;
+  --dur-enter:    420ms;
+  --dur-stage:    620ms;
+
+  /* Gap between one revealed element and the next in the same group. */
+  --stagger:      70ms;
+
+  /* Scroll progress, 0–1, written by crab.js on :root each frame. */
+  --scroll-progress: 0;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -43,22 +129,31 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+html.has-smooth-scroll { scroll-behavior: auto; }
+
 body {
   font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.65;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
   color: var(--text);
   background: var(--bg);
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+}
+
+#smooth-scroll-wrap {
+  will-change: transform;
 }
 
 img, svg, iframe { display: block; max-width: 100%; }
 img { height: auto; }
+/* Textured containers set image-rendering: pixelated; keep real artwork
+   smooth unless a rule opts it in explicitly. */
+img, iframe { image-rendering: auto; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
-button { font: inherit; color: inherit; }
-strong { color: var(--white); font-weight: 800; }
+button { font: inherit; color: inherit; letter-spacing: inherit; }
+strong { color: var(--white); }
 
 ::selection { background: var(--red); color: var(--white); }
 
@@ -67,14 +162,21 @@ strong { color: var(--white); font-weight: 800; }
   outline-offset: 2px;
 }
 
-::-webkit-scrollbar { width: 14px; }
-::-webkit-scrollbar-track { background: var(--bg); border-left: 2px solid var(--black); }
-::-webkit-scrollbar-thumb {
-  background: var(--panel-hi);
-  border: 2px solid var(--black);
-  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.09), inset -2px -2px 0 rgba(0, 0, 0, 0.45);
+::-webkit-scrollbar { width: 16px; }
+::-webkit-scrollbar-track {
+  background-color: var(--bg);
+  background-image: var(--tex-deepslate);
+  background-size: 16px 16px;
+  border-left: 2px solid var(--black);
 }
-::-webkit-scrollbar-thumb:hover { background: var(--line); }
+::-webkit-scrollbar-thumb {
+  background-color: var(--red-dark);
+  background-image: var(--tex-crab);
+  background-size: 16px 16px;
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
+}
+::-webkit-scrollbar-thumb:hover { background-color: var(--red); }
 
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
@@ -88,10 +190,12 @@ strong { color: var(--white); font-weight: 800; }
   padding: 12px 18px;
   background: var(--red);
   color: var(--white);
-  font-family: var(--font-pixel);
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: 15px;
   border: var(--border);
-  transition: top 0.18s var(--ease);
+  box-shadow: var(--bevel);
+  text-shadow: var(--txt-shadow-sm);
+  transition: top var(--dur-move) var(--ease);
 }
 #skip-navigation-link:focus { top: 12px; }
 
@@ -104,78 +208,177 @@ strong { color: var(--white); font-weight: 800; }
 
 .section {
   padding-block: clamp(52px, 6.5vw, 92px);
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 4px);
 }
-.section--alt    { background: var(--surface); }
 .section--tight  { padding-block: clamp(40px, 5vw, 64px); }
 
-.section {
-  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 4px);
+/* Alternate sections show the block texture through a heavy dark wash, so it
+   reads as stone without fighting the text on top of it. */
+.section--alt {
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(rgba(23, 23, 27, 0.9), rgba(23, 23, 27, 0.9)),
+    var(--tex-deepslate);
+  background-size: auto, 48px 48px;
+  image-rendering: pixelated;
+}
+
+/* ── Block separator ────────────────────────────────────────────────────
+   A strip of world between two sections, the way the reference site breaks
+   its page up. Drop <div class="mc-sep"><span></span>x3</div> between
+   sections; it is purely decorative.                                      */
+.mc-sep {
+  height: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1fr;
+  align-items: center;
+  gap: 14px;
+  padding-inline: clamp(14px, 4vw, 30px);
+  background-color: #14151a;
+  background-image:
+    linear-gradient(rgba(16, 17, 21, 0.72), rgba(16, 17, 21, 0.72)),
+    var(--tex-deepslate);
+  background-size: auto, 32px 32px;
+  border-top: 2px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 2px solid var(--black);
+  image-rendering: pixelated;
+  overflow: hidden;
+}
+.mc-sep span {
+  height: 14px;
+  border: 2px solid var(--black);
+  background-repeat: repeat;
+  background-size: 14px 14px;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.16), inset -1px -1px 0 rgba(0, 0, 0, 0.5);
+}
+.mc-sep span:nth-child(1) { background-image: var(--tex-crab); }
+.mc-sep span:nth-child(2) { background-image: var(--tex-stone); }
+.mc-sep span:nth-child(3) { background-image: var(--tex-water); }
+
+/* Each strip pans its own tiles as the separator crosses the viewport, with
+   the middle one running the other way, so the three read as layers of world
+   sliding past at different depths.
+
+   It pans the background rather than moving the element: the tiles repeat, so
+   shifting by a whole number of them (4 x 14px) is seamless and can never
+   open a gap or collide with a neighbour. Scroll-driven timelines are pure
+   decoration here, so browsers without them simply get static strips.      */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* The timeline has to be named on the separator and referenced from the
+       strips, rather than each strip just asking for view(). A bare view()
+       resolves against the nearest ancestor scroll container, and .mc-sep is
+       one of those: overflow: hidden makes an element a scroll container even
+       though it never scrolls, so every strip would sit frozen at the middle
+       of a timeline that can never advance. Naming it here anchors the
+       timeline to the separator's own trip through the viewport. */
+    .mc-sep { view-timeline-name: --mc-sep; }
+    .mc-sep span {
+      animation: sepPan linear both;
+      animation-timeline: --mc-sep;
+      animation-range: cover 0% cover 100%;
+    }
+    .mc-sep span:nth-child(2) { animation-name: sepPanReverse; }
+  }
+}
+@keyframes sepPan        { to { background-position-x: 56px; } }
+@keyframes sepPanReverse { to { background-position-x: -56px; } }
+
+/* The stone behind an alternate section drifts one tile over the whole trip
+   across the viewport. Same trick as the separator strips — the background
+   moves, not the box, so a repeating texture can never open a gap — and the
+   travel is exactly 48px, one tile, so the loop is seamless.
+
+   A bare view() is correct here, unlike on .mc-sep span: a section is not a
+   scroll container, so the timeline resolves against the page. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .section--alt {
+      animation: sectionDrift linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes sectionDrift {
+  from { background-position: 0 0, 0 -24px; }
+  to   { background-position: 0 0, 0  24px; }
 }
 
 .mc-ico {
+  image-rendering: pixelated;
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.45));
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.5));
 }
-.mc-ico--sm { width: 14px; height: 14px; }
-.mc-ico--lg { width: 36px; height: 36px; }
-.mc-ico--xl { width: 56px; height: 56px; }
+.mc-ico--sm { width: 15px; height: 15px; }
+.mc-ico--lg { width: 38px; height: 38px; }
+.mc-ico--xl { width: 58px; height: 58px; }
 
 .ico-px { image-rendering: pixelated; }
 
 .btn-ico {
-  width: 16px;
-  height: 16px;
+  image-rendering: pixelated;
+  width: 18px;
+  height: 18px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.55));
 }
 
 .section-head {
   text-align: center;
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto clamp(32px, 4.5vw, 48px);
 }
 
+/* The eyebrow is a kicker: it wants to read as a small caps label above the
+   headline. The old display face only had capitals, so it got that for free;
+   --font-ui has real lowercase, so the caps have to be asked for. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  font-family: var(--font-pixel);
-  font-size: 9px;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1;
   letter-spacing: 1.5px;
+  text-transform: uppercase;
   color: var(--red);
-  margin-bottom: 18px;
+  text-shadow: var(--txt-shadow-sm);
+  margin-bottom: 16px;
 }
 .eyebrow::before {
   content: "";
-  width: 9px; height: 9px;
+  width: 12px; height: 12px;
   background: var(--red);
-  box-shadow: 2px 2px 0 var(--red-deep);
+  border: 2px solid var(--black);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 .s-headline {
   font-family: var(--font-pixel);
-  font-size: clamp(15px, 2.2vw, 23px);
-  line-height: 1.7;
+  font-size: clamp(26px, 3.4vw, 40px);
+  line-height: 1.18;
+  letter-spacing: 0.5px;
   color: var(--white);
-  text-shadow: 3px 3px 0 var(--black);
+  text-shadow: var(--txt-shadow-lg);
 }
 
 .s-sub {
   margin: 18px auto 0;
-  max-width: 620px;
+  max-width: 640px;
   font-size: 1.05rem;
   color: var(--text-dim);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .panel {
-  background: var(--panel);
+  background-color: var(--panel);
   border: var(--border);
   box-shadow: var(--shadow-card);
 }
@@ -183,33 +386,138 @@ strong { color: var(--white); font-weight: 800; }
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  gap: 9px;
+  padding: 9px 15px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1;
   letter-spacing: 0.5px;
   color: var(--text-dim);
   background: var(--panel);
-  border: 2px solid var(--line);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
+  text-shadow: var(--txt-shadow-sm);
 }
 .chip i { color: var(--red); }
 .chip--red {
   color: #f1b9b1;
-  background: var(--red-soft);
-  border-color: var(--red-dark);
+  background: #3a1c18;
+  border-color: var(--black);
 }
 .chip--red i { color: var(--red-bright); }
 
-.fade-up {
+/* ── Reveal on scroll ───────────────────────────────────────────────────
+   Everything that arrives on scroll runs through one primitive. Mark the
+   element with [data-reveal] (or the older .fade-up, kept as an alias so
+   existing markup keeps working) and crab.js adds .is-revealed the first
+   time it crosses into view.
+
+   Siblings in the same container are handed a --step index by crab.js, so
+   a row of cards lands one after another. That index is why no page
+   hard-codes a transition-delay any more: retune --stagger once and every
+   grid on the site re-times with it.
+
+   The feel is deliberately blocky rather than floaty. A short drop, a
+   fraction of a scale, and a small overshoot as it lands. No blur, no long
+   slide, nothing still drifting after it has arrived.
+
+   Every rule that hides something is scoped to html.js, a class crab.js sets
+   on itself. With scripting off or broken the class never lands, nothing is
+   ever hidden, and the page reads as plain static content.                 */
+html.js [data-reveal],
+html.js .fade-up {
+  --step: 0;
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transform: translate3d(0, 26px, 0) scale(0.97);
+  transition:
+    opacity var(--dur-enter) var(--ease),
+    transform var(--dur-stage) var(--ease-pop);
+  transition-delay: calc(var(--step) * var(--stagger));
 }
-.fade-up.in-view {
+
+/* Blocks fall into place from above, the way one lands when you place it. */
+html.js [data-reveal="drop"]  { transform: translate3d(0, -22px, 0) scale(0.97); }
+html.js [data-reveal="left"]  { transform: translate3d(-30px, 0, 0); }
+html.js [data-reveal="right"] { transform: translate3d(30px, 0, 0); }
+html.js [data-reveal="zoom"]  { transform: scale(0.9); }
+
+/* A wipe uncovers left to right with a hard edge and no movement at all,
+   which is what a screenshot or a wide slab wants: sliding a picture around
+   pulls the eye to the frame instead of to the picture. clip-path is not a
+   transform, so this variant carries its own transition, and it needs its
+   own line in the reduced-motion reset further down. */
+html.js [data-reveal="wipe"] {
+  transform: none;
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity var(--dur-enter) var(--ease),
+    transform var(--dur-move) var(--ease),
+    clip-path var(--dur-stage) var(--ease);
+}
+html.js [data-reveal="wipe"].is-revealed { clip-path: inset(0 0 0 0); }
+
+/* A panel swinging down on its top edge, like a sign dropping into place.
+   The perspective is on the element rather than on a parent so the variant
+   works wherever it is dropped, without the parent having to know. */
+html.js [data-reveal="flip"] {
+  transform: perspective(700px) rotateX(-16deg) translate3d(0, 14px, 0);
+  transform-origin: 50% 0;
+}
+
+/* Section headings lead their own section, so they rise on their own and
+   without the scale: the eyebrow, headline and blurb move as one slab. */
+html.js .section-head {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity var(--dur-enter) var(--ease),
+    transform var(--dur-stage) var(--ease-pop);
+}
+
+html.js [data-reveal].is-revealed,
+html.js .fade-up.is-revealed,
+html.js .section-head.is-revealed {
   opacity: 1;
   transform: none;
 }
 
+/* Two details that make a section arrive rather than simply appear, and both
+   ride the heading's own reveal rather than a second observer.
+
+   The headline draws its rule as it lands, growing from the centre, so the
+   eye is led along the title instead of finding a bar that was always there.
+   The eyebrow's block is placed at an angle and settles square, the way a
+   piece does when you put it down. The delays are picked from the motion
+   scale like everything else, so both stay in step if the scale is retuned. */
+/* Scoped to the section heading rather than to .s-headline itself: a couple
+   of pages use the class for a standalone call to action, and those are not
+   leading a section, so they get no rule to draw. */
+.section-head .s-headline::after {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 10px;
+  margin: 20px auto 0;
+  background: var(--red);
+  border: 2px solid var(--black);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+html.js .section-head .s-headline::after {
+  transform: scaleX(0);
+  transition: transform var(--dur-stage) var(--ease-pop);
+  transition-delay: var(--dur-move);
+}
+html.js .section-head.is-revealed .s-headline::after { transform: none; }
+
+html.js .section-head .eyebrow::before {
+  transform: rotate(45deg) scale(0.72);
+  transition: transform var(--dur-lift) var(--ease-pop);
+}
+html.js .section-head.is-revealed .eyebrow::before { transform: none; }
+
+/* ── Loading screen ─────────────────────────────────────────────────────
+   Modelled on Minecraft's "Building terrain" bar: a sunken black slot with
+   a textured bar filling it.                                              */
 #loading {
   position: fixed;
   inset: 0;
@@ -219,10 +527,16 @@ strong { color: var(--white); font-weight: 800; }
   align-items: center;
   justify-content: center;
   gap: 30px;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(16, 15, 18, 0.93), rgba(16, 15, 18, 0.93)),
+    var(--tex-deepslate);
+  background-size: auto, 48px 48px;
+  image-rendering: pixelated;
 }
 .loading-logo {
   width: clamp(120px, 22vw, 168px);
+  image-rendering: auto;
   filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.7));
   animation: loadBob 1.1s ease-in-out infinite alternate;
 }
@@ -232,19 +546,21 @@ strong { color: var(--white); font-weight: 800; }
 }
 .loading-bar {
   position: relative;
-  width: min(320px, 70vw);
-  height: 20px;
+  width: min(340px, 74vw);
+  height: 24px;
   padding: 4px;
   background: var(--black);
   border: var(--border);
-  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: var(--bevel-in);
 }
 .loading-bar__fill {
   display: block;
   height: 100%;
   width: 0;
-  background: var(--red);
-  box-shadow: inset 0 -4px 0 var(--red-dark), inset 0 2px 0 var(--red-bright);
+  background-color: var(--red);
+  background-image: var(--tex-crab);
+  background-size: 16px 16px;
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.25), inset 0 -3px 0 rgba(0, 0, 0, 0.4);
   animation: loadFill 1.7s var(--ease) forwards;
 }
 .loading-bar::after {
@@ -256,124 +572,250 @@ strong { color: var(--white); font-weight: 800; }
 }
 @keyframes loadFill { to { width: 100%; } }
 .loading-text {
-  font-family: var(--font-pixel);
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: 16px;
   letter-spacing: 1px;
   color: var(--text-dim);
-  text-shadow: 2px 2px 0 var(--black);
+  text-shadow: var(--txt-shadow-sm);
 }
 
+/* ── Header ─────────────────────────────────────────────────────────────
+   A carved stone bar: textured, hard black edge, and a shadow lip hanging
+   underneath so the page below reads as sitting further back.             */
 #site-header {
   position: sticky;
   top: 0;
   z-index: 200;
-  background: rgba(16, 15, 18, 0.94);
-  backdrop-filter: blur(10px);
+  background-color: #191a1f;
+  background-image:
+    linear-gradient(rgba(20, 21, 26, 0.9), rgba(14, 15, 19, 0.94)),
+    var(--tex-deepslate);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border-bottom: 2px solid var(--black);
-  box-shadow: 0 2px 0 var(--red), 0 10px 26px rgba(0, 0, 0, 0.55);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.07), 0 10px 26px rgba(0, 0, 0, 0.55);
+  transition: box-shadow var(--dur-move) var(--ease);
+}
+
+/* ── Header entrance ────────────────────────────────────────────────────
+   The bar drops in from above the top of the screen, then deals its items
+   out left to right, so the page assembles itself instead of appearing
+   whole. It runs off the same html.is-ready signal and the same --step index
+   as the hero, which is what keeps the two reading as one sequence rather
+   than two things that happened to animate at once.
+
+   Only the hiding half is scoped to html.js, so a failed script leaves the
+   nav sitting there normally. The bar itself is deliberately quicker than
+   its contents — it has to arrive before anything can land on it.        */
+/* No overshoot on the bar itself. It sits flush against the top of the
+   viewport, so an --ease-pop bounce would carry it a few pixels past its
+   resting place and flash a sliver of the page above it. The items inside
+   can bounce freely; the bar cannot. */
+html.js #site-header {
+  transform: translate3d(0, -100%, 0);
+  transition: transform var(--dur-enter) var(--ease),
+              box-shadow var(--dur-move) var(--ease);
+}
+html.is-ready #site-header { transform: none; }
+
+html.js #site-header nav ul > li,
+html.js .mobile-bar > * {
+  opacity: 0;
+  transform: translate3d(0, -8px, 0);
+  transition: opacity var(--dur-move) var(--ease),
+              transform var(--dur-enter) var(--ease-pop);
+  /* Wait for the bar to land, then follow it across. */
+  transition-delay: calc(220ms + var(--step, 0) * 45ms);
+}
+html.is-ready #site-header nav ul > li,
+html.is-ready .mobile-bar > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Scroll progress: a red seam that runs across the bottom edge of the bar as
+   the page scrolls. crab.js writes --scroll-progress (0–1) onto :root, so
+   this costs one custom property write per frame and no layout. */
+#site-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--red-bright);
+  transform: scaleX(var(--scroll-progress));
+  transform-origin: 0 50%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Once the hero is behind you the bar tightens and its shadow deepens, so it
+   reads as pinned over the page rather than as part of the hero. */
+#site-header.is-scrolled {
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.07), 0 14px 34px rgba(0, 0, 0, 0.75);
+}
+@media (min-width: 1001px) {
+  #site-header.is-scrolled nav ul { height: 60px; }
+  #site-header.is-scrolled .header-logo { height: 34px; }
+}
+
+#site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 10px;
+  background-color: #0c0c0f;
+  background-image: linear-gradient(180deg, rgba(226, 59, 44, 0.5), rgba(0, 0, 0, 0.65));
+  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  pointer-events: none;
 }
 
 #site-header nav ul {
   display: flex;
   align-items: center;
-  gap: 4px;
-  height: 72px;
+  gap: 0;
+  height: 74px;
   max-width: var(--shell);
   margin-inline: auto;
   padding-inline: clamp(16px, 4vw, 34px);
+  image-rendering: auto;
+  transition: height var(--dur-move) var(--ease);
 }
 
-.header-logo-outer { margin-right: 14px; }
-.header-logo-outer a { display: flex; align-items: center; }
-.header-logo { height: 42px; width: auto; }
+/* Nav items keep their intrinsic width; without this the flex row squeezes the
+   wordmark down to a sliver once the bar gets crowded. */
+#site-header nav ul > li { flex: 0 0 auto; }
 
-#site-header nav ul li > a {
+.header-logo-outer { margin-right: 16px; }
+.header-logo-outer a { display: flex; align-items: center; }
+.header-logo {
+  height: 44px;
+  width: auto;
+  max-width: none;
+  transition: transform var(--dur-enter) var(--ease-pop), height var(--dur-move) var(--ease);
+}
+.header-logo-outer a:hover .header-logo { transform: scale(1.1) rotate(-4deg); }
+
+#site-header nav ul li > a:not(.header-cta) {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 11px 14px;
-  font-family: var(--font-pixel);
-  font-size: 9.5px;
+  gap: 10px;
+  height: 100%;
+  padding: 0 16px;
+  font-family: var(--font-ui);
+  font-size: 17px;
   letter-spacing: 0.4px;
   color: var(--text-dim);
+  text-shadow: var(--txt-shadow-sm);
   white-space: nowrap;
-  border-bottom: 2px solid transparent;
-  transition: color 0.14s var(--ease), border-color 0.14s var(--ease);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.55);
+  transition: color var(--dur-tap) var(--ease), background var(--dur-tap) var(--ease);
 }
-#site-header nav ul li > a:hover { color: var(--white); }
-#site-header nav ul li > a.active {
-  color: var(--white);
-  border-bottom-color: var(--red);
-}
-.header-icon { font-size: 12px; color: var(--red); }
-.header-small-icon { font-size: 8px; opacity: 0.5; margin-left: 2px; }
 
+/* The marker under the current page wipes out from the middle instead of
+   snapping on, which is the one place a slower move reads better than a cut. */
+#site-header nav ul li > a:not(.header-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--red);
+  transform: scaleX(0);
+  transition: transform var(--dur-move) var(--ease);
+}
+#site-header nav ul li > a:not(.header-cta):hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
+}
+#site-header nav ul li > a:not(.header-cta).active {
+  color: var(--white);
+  background: rgba(226, 59, 44, 0.1);
+}
+#site-header nav ul li > a:not(.header-cta):hover::after,
+#site-header nav ul li > a:not(.header-cta).active::after {
+  transform: scaleX(1);
+}
+.header-icon { font-size: 13px; color: var(--red); }
+.header-small-icon { font-size: 10px; opacity: 0.5; margin-left: 2px; }
+
+/* The glyph icons carry their own strong colour, so idle nav items only need a
+   light knock-back rather than the heavy desaturation the old art wanted. */
 .header-ico {
-  width: 19px;
-  height: 19px;
+  image-rendering: pixelated;
+  width: 23px;
+  height: 23px;
   object-fit: contain;
   flex-shrink: 0;
-  filter: grayscale(0.55) brightness(0.92) drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.5));
-  opacity: 0.75;
-  transition: filter 0.14s var(--ease), opacity 0.14s var(--ease), transform 0.14s var(--ease);
+  filter: grayscale(0.3) drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.6));
+  opacity: 0.85;
+  transition: filter var(--dur-tap) var(--ease), opacity var(--dur-tap) var(--ease), transform var(--dur-tap) var(--ease);
 }
-#site-header nav ul li > a:hover .header-ico,
-#site-header nav ul li > a.active .header-ico {
-  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.5));
+#site-header nav ul li > a:not(.header-cta):hover .header-ico,
+#site-header nav ul li > a:not(.header-cta).active .header-ico {
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.6));
   opacity: 1;
   transform: scale(1.12) rotate(-5deg);
 }
 
-.header-cta-outer { margin-left: auto; padding-left: 28px; }
-.header-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  font-family: var(--font-pixel);
-  font-size: 9.5px;
-  color: var(--white) !important;
-  background: var(--red);
-  border: 2px solid var(--red-dark);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.22), inset 0 -3px 0 rgba(0, 0, 0, 0.28), 0 4px 0 var(--red-deep);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.45);
-  transition: background 0.12s var(--ease), transform 0.07s var(--ease), box-shadow 0.07s var(--ease);
-}
-.header-cta:hover { background: var(--red-bright); }
-.header-cta:active {
-  transform: translateY(4px);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.12), inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 0 0 var(--red-deep);
-}
+.header-cta-outer { margin-left: auto; padding-left: 24px; }
 
 .mobile-bar {
   display: none;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 66px;
   padding-inline: 18px;
 }
-.header-mobile-logo { height: 38px; width: auto; }
+.header-mobile-logo { height: 40px; width: auto; }
 .header-mobile-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 46px; height: 46px;
+  width: 48px; height: 48px;
   background: var(--panel);
-  border: 2px solid var(--line);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
   color: var(--white);
   font-size: 20px;
   cursor: pointer;
-  transition: border-color 0.14s var(--ease);
+  transition: background var(--dur-tap) var(--ease);
 }
-.header-mobile-toggle:hover { border-color: var(--red); }
+.header-mobile-toggle:hover { background: var(--panel-hi); }
+.header-mobile-toggle:active { box-shadow: var(--bevel-in); }
 
-@media (max-width: 920px) {
+/* Between the mobile breakpoint and full width the nav is tight, so the labels
+   and icons step down rather than pushing the CTA off the bar. */
+@media (min-width: 1001px) and (max-width: 1230px) {
+  #site-header nav ul li > a:not(.header-cta) {
+    padding: 0 11px;
+    font-size: 15px;
+    gap: 7px;
+  }
+  .header-ico { width: 19px; height: 19px; }
+  .header-logo { height: 38px; }
+  .header-logo-outer { margin-right: 8px; }
+  .header-cta-outer { padding-left: 12px; }
+  .header-cta { padding: 10px 14px 15px; font-size: 14px; }
+}
+
+@media (max-width: 1000px) {
   .mobile-bar { display: flex; }
   #site-header nav {
     display: none;
     position: absolute;
     top: 100%; left: 0; right: 0;
-    background: rgba(16, 15, 18, 0.99);
+    background-color: #16171c;
+    background-image:
+      linear-gradient(rgba(18, 19, 23, 0.96), rgba(12, 13, 16, 0.98)),
+      var(--tex-deepslate);
+    background-size: auto, 32px 32px;
     border-bottom: 2px solid var(--black);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
   }
@@ -386,82 +828,175 @@ strong { color: var(--white); font-weight: 800; }
     padding: 16px;
   }
   .header-logo-outer { display: none; }
-  #site-header nav ul li > a {
-    padding: 14px 16px;
-    font-size: 10px;
+  #site-header nav ul li > a:not(.header-cta) {
+    height: auto;
+    padding: 15px 16px;
+    font-size: 18px;
     border: 2px solid transparent;
   }
-  #site-header nav ul li > a:hover,
-  #site-header nav ul li > a.active {
-    border-color: var(--line);
-    border-bottom-color: var(--red);
+  /* Stacked items are full-width slabs, so the underline marker has nothing
+     left to mark; the panel background carries the active state instead. */
+  #site-header nav ul li > a:not(.header-cta)::after { display: none; }
+  #site-header nav ul li > a:not(.header-cta):hover,
+  #site-header nav ul li > a:not(.header-cta).active {
+    border-color: var(--black);
     background: var(--panel);
+    box-shadow: var(--bevel);
   }
-  .header-cta-outer { margin: 6px 0 0; }
-  .header-cta { width: 100%; justify-content: center; }
+
+  /* Opening the menu deals the items out one at a time rather than dumping
+     the whole stack in at once, reusing the --step index crab.js stamps on
+     grouped children for the scroll reveals. */
+  #site-header.navigation-open nav ul > li {
+    animation: navItemIn var(--dur-enter) var(--ease-pop) backwards;
+    animation-delay: calc(var(--step, 0) * 40ms);
+  }
+  @keyframes navItemIn {
+    from { opacity: 0; transform: translate3d(0, -10px, 0); }
+    to   { opacity: 1; transform: none; }
+  }
+  .header-cta-outer { margin: 6px 0 0; padding-left: 0; }
+  .header-cta { width: 100%; }
 }
 
-.mc-btn {
+/* ── Buttons ────────────────────────────────────────────────────────────
+   Real Minecraft buttons: a 5x7 pixel sprite stretched as a nine-slice, so
+   the 1px outline and the 2px bottom lip stay pixel-crisp at any size.
+   Pressing swaps to the lip-less sprite and drops the label, exactly like
+   the in-game widget. Re-skin by overriding the three --btn-* variables.  */
+.mc-btn,
+.header-cta {
+  --btn-face:       url('../media/ui/buttons/red/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/red/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/red/default.png');
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 15px 26px;
-  font-family: var(--font-pixel);
-  font-size: 10px;
+  gap: 11px;
+  padding: 16px 26px 22px;
+  font-family: var(--font-ui);
+  font-size: 18px;
   line-height: 1;
   letter-spacing: 0.5px;
   color: var(--white);
-  background: var(--red);
-  border: 2px solid var(--red-dark);
-  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.22), inset 0 -4px 0 rgba(0, 0, 0, 0.28), 0 5px 0 var(--red-deep), 0 8px 14px rgba(0, 0, 0, 0.4);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  text-shadow: var(--txt-shadow-sm);
+  background: none;
+  border: 0 solid transparent;
+  border-image-source: var(--btn-face);
+  border-image-slice: 2 2 4 2 fill;
+  border-image-width: 6px 6px 12px 6px;
+  border-image-repeat: stretch;
+  image-rendering: pixelated;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: background 0.12s var(--ease), transform 0.07s var(--ease), box-shadow 0.07s var(--ease);
+  transition: transform var(--dur-move) var(--ease-pop);
 }
-.mc-btn i { font-size: 0.95em; }
-.mc-btn:hover { background: var(--red-bright); }
-.mc-btn:active {
-  transform: translateY(5px);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.12), inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 0 0 var(--red-deep), 0 3px 8px rgba(0, 0, 0, 0.4);
+.mc-btn > *,
+.mc-btn i { font-size: 0.85em; }
+
+/* The icon leans towards wherever the button is about to take you. Small
+   enough to read as the button being alive rather than as an effect. */
+.mc-btn .btn-ico,
+.mc-btn i { transition: transform var(--dur-move) var(--ease-pop); }
+.mc-btn:hover .btn-ico,
+.mc-btn:hover i { transform: translateX(3px); }
+
+.mc-btn:hover,
+.header-cta:hover {
+  border-image-source: var(--btn-face-hover);
+  transform: translateY(-2px);
+}
+
+.mc-btn:active,
+.header-cta:active {
+  border-image-source: var(--btn-face-down);
+  border-image-slice: 2 2 2 2 fill;
+  border-image-width: 6px;
+  padding: 22px 26px 16px;
+  transform: none;
+  transition: none;
 }
 
 .mc-btn--ghost {
+  --btn-face:       url('../media/ui/buttons/dark/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/dark/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/dark/default.png');
   color: var(--text);
-  background: var(--panel);
-  border-color: var(--line);
-  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.07), inset 0 -4px 0 rgba(0, 0, 0, 0.35), 0 5px 0 var(--black), 0 8px 14px rgba(0, 0, 0, 0.4);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
 }
-.mc-btn--ghost:hover {
-  background: var(--panel-hi);
-  border-color: var(--red);
-  color: var(--white);
-}
-.mc-btn--ghost:active { box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.05), inset 0 -2px 0 rgba(0, 0, 0, 0.35), 0 0 0 var(--black), 0 3px 8px rgba(0, 0, 0, 0.4); }
+.mc-btn--ghost:hover { color: var(--white); }
 
 .mc-btn--blue {
-  background: var(--blue);
-  border-color: var(--blue-deep);
-  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.16), inset 0 -4px 0 rgba(0, 0, 0, 0.3), 0 5px 0 var(--blue-deep), 0 8px 14px rgba(0, 0, 0, 0.4);
+  --btn-face:       url('../media/ui/buttons/blue/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/blue/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/blue/default.png');
 }
-.mc-btn--blue:hover { background: var(--blue-hi); }
-.mc-btn--blue:active { box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1), inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 0 0 var(--blue-deep), 0 3px 8px rgba(0, 0, 0, 0.4); }
 
-.mc-btn--sm  { padding: 11px 18px; font-size: 9px; box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.22), inset 0 -3px 0 rgba(0, 0, 0, 0.28), 0 4px 0 var(--red-deep), 0 6px 10px rgba(0,0,0,.4); }
-.mc-btn--sm.mc-btn--ghost { box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.07), inset 0 -3px 0 rgba(0, 0, 0, 0.35), 0 4px 0 var(--black), 0 6px 10px rgba(0,0,0,.4); }
-.mc-btn--sm.mc-btn--blue { box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.16), inset 0 -3px 0 rgba(0, 0, 0, 0.3), 0 4px 0 var(--blue-deep), 0 6px 10px rgba(0,0,0,.4); }
-.mc-btn--lg  { padding: 18px 34px; font-size: 11px; }
+.mc-btn--green {
+  --btn-face:       url('../media/ui/buttons/green/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/green/default.png');
+}
+
+.mc-btn--gold {
+  --btn-face:       url('../media/ui/buttons/gold/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/gold/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/gold/default.png');
+  color: #23180a;
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.25);
+}
+
+.mc-btn--sm {
+  padding: 12px 18px 17px;
+  font-size: 15px;
+  gap: 9px;
+  border-image-width: 5px 5px 10px 5px;
+}
+.mc-btn--sm:active {
+  padding: 17px 18px 12px;
+  border-image-width: 5px;
+}
+
+.mc-btn--lg {
+  padding: 20px 34px 27px;
+  font-size: 21px;
+  border-image-width: 7px 7px 14px 7px;
+}
+.mc-btn--lg:active {
+  padding: 27px 34px 20px;
+  border-image-width: 7px;
+}
+
 .mc-btn--block { display: flex; width: 100%; }
 
+/* Copy confirmed: the button turns green and gives one short nod, so the
+   result registers even if you were looking at the field you copied. */
 .mc-btn.is-success {
-  background: #2f7d2a;
-  border-color: #1c4d19;
-  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.2), inset 0 -4px 0 rgba(0, 0, 0, 0.3), 0 5px 0 #123010, 0 8px 14px rgba(0, 0, 0, 0.4);
+  --btn-face:       url('../media/ui/buttons/green/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/green/default.png');
   pointer-events: none;
+  animation: btnConfirm var(--dur-enter) var(--ease-pop);
+}
+@keyframes btnConfirm {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
+.header-cta {
+  padding: 12px 20px 17px;
+  font-size: 16px;
+  white-space: nowrap;
+  border-image-width: 5px 5px 10px 5px;
+  color: var(--white) !important;
+}
+.header-cta:active {
+  padding: 17px 20px 12px;
+  border-image-width: 5px;
+}
+
+/* ── Hero ───────────────────────────────────────────────────────────────*/
 .hero-section {
   position: relative;
   display: flex;
@@ -472,24 +1007,57 @@ strong { color: var(--white); font-weight: 800; }
   overflow: hidden;
   background: var(--bg);
 }
+/* A seam of bedrock closing off the hero. */
 .hero-section::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 12px;
-  background: repeating-conic-gradient(var(--red-deep) 0% 25%, var(--red-dark) 25% 50%) 0 0 / 12px 12px;
-  border-top: 2px solid rgba(0, 0, 0, 0.4);
+  height: 16px;
+  background-color: var(--red-deep);
+  background-image: var(--tex-nether);
+  background-size: 16px 16px;
+  image-rendering: pixelated;
+  border-top: 2px solid var(--black);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.08);
   z-index: 2;
+}
+
+/* Two independent inputs move the hero backdrop, and both are composed into a
+   single transform here so neither can clobber the other:
+
+     --par-x / --par-y   cursor drift, eased toward the pointer
+     --scroll-y          parallax, the layer lagging the page as it scrolls
+
+   crab.js only ever writes those three custom properties, on the wrapper;
+   they inherit down to whichever layer actually holds the image. All three
+   default to 0, so with no script the backdrop is simply a static,
+   slightly over-scaled photo.
+
+   Only the photo layer moves. The wrapper stays put because it carries the
+   gradient that fades the hero into the page, and scaling that would push
+   its bottom edge below the fold of the section. The over-scale on the photo
+   is the budget the drift moves inside: at 1.18 there is 9% of the hero
+   hidden past each edge, and crab.js clamps its output to stay well within
+   that, so an edge is never exposed.                                       */
+.hero-bg-img,
+.vx-hero-bg {
+  --par-x: 0px;
+  --par-y: 0px;
+  --scroll-y: 0px;
+}
+.hero-bg-slide,
+.vx-hero-bg::before {
+  transform: scale(1.18) translate3d(var(--par-x), calc(var(--par-y) + var(--scroll-y)), 0);
+  will-change: transform;
 }
 
 .hero-bg-img {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  filter: saturate(0.65) brightness(0.78) contrast(1.05);
-  transform: scale(1.06);
+  filter: saturate(0.65) brightness(0.7) contrast(1.05);
 }
 /* Crossfading slideshow layers, injected by crab.js from media/slideshow/. */
 .hero-bg-slide {
@@ -505,13 +1073,20 @@ strong { color: var(--white); font-weight: 800; }
 @media (prefers-reduced-motion: reduce) {
   .hero-bg-slide { transition: none; }
 }
+/* Darkens the photo so the hero copy stays readable, and fades the bottom
+   edge into the page.
+
+   There used to be a red radial wash over the top of this. It was meant to
+   read as a glow, but an ellipse sized 70% from the top centre stops well
+   short of the left and right edges, so its soft boundary showed up against
+   the dark photo as a big translucent red rectangle floating over the scene.
+   The linear fade below does the actual work; the tint only added the
+   artefact. */
 .hero-bg-img::after {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% 0%, var(--red-soft), transparent 70%),
-    linear-gradient(180deg, rgba(16,15,18,0.18) 0%, rgba(16,15,18,0.42) 60%, var(--bg) 100%);
+  background: linear-gradient(180deg, rgba(16, 15, 18, 0.42) 0%, rgba(16, 15, 18, 0.6) 60%, var(--bg) 100%);
 }
 
 .hero-content {
@@ -520,8 +1095,8 @@ strong { color: var(--white); font-weight: 800; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 26px;
-  max-width: 880px;
+  gap: 24px;
+  max-width: 900px;
   text-align: center;
 }
 .hero-logo-img {
@@ -530,15 +1105,48 @@ strong { color: var(--white); font-weight: 800; }
   filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.75));
 }
 
+/* ── Hero entrance ──────────────────────────────────────────────────────
+   The hero deals itself out once the curtain is gone: the logo pops in, then
+   the headline, blurb and join panels rise under it. crab.js sets
+   html.is-ready at that moment — after the loader fades, or after the intro
+   finishes on a first visit — and stamps --step on each child, so the order
+   follows the DOM and nothing carries a hard-coded delay.
+
+   As with the scroll reveals, only the hidden half is scoped to html.js, so
+   a broken script leaves a fully visible hero rather than an empty one.   */
+html.js .hero-content > *:not(.hero-splash) {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity var(--dur-enter) var(--ease),
+    transform var(--dur-stage) var(--ease-pop);
+  transition-delay: calc(var(--step, 0) * 90ms);
+}
+/* The logo lands rather than rises, so it arrives ahead of the copy. */
+html.js .hero-content > .hero-logo-img,
+html.js .hero-content > .vx-hero-logo {
+  transform: translate3d(0, 8px, 0) scale(0.88);
+}
+/* The splash tag is the punchline, so it waits for everything else. */
+html.js .hero-splash {
+  opacity: 0;
+  transition: opacity var(--dur-enter) var(--ease) 780ms;
+}
+html.is-ready .hero-content > *:not(.hero-splash) {
+  opacity: 1;
+  transform: none;
+}
+html.is-ready .hero-splash { opacity: 1; }
+
 .hero-splash {
   position: absolute;
   top: clamp(58px, 9vw, 104px);
   left: 58%;
-  font-family: var(--font-pixel);
-  font-size: clamp(8px, 1vw, 11px);
+  font-family: var(--font-ui);
+  font-size: clamp(15px, 1.7vw, 21px);
   line-height: 1;
-  color: var(--red-bright);
-  text-shadow: 2px 2px 0 var(--red-deep), 4px 4px 0 rgba(0, 0, 0, 0.55);
+  color: #ffd94d;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
   white-space: nowrap;
   pointer-events: none;
   z-index: 3;
@@ -551,16 +1159,18 @@ strong { color: var(--white); font-weight: 800; }
 }
 .hero-title {
   font-family: var(--font-pixel);
-  font-size: clamp(15px, 2.7vw, 26px);
-  line-height: 1.85;
+  font-size: clamp(30px, 4.6vw, 54px);
+  line-height: 1.14;
+  letter-spacing: 0.5px;
   color: var(--white);
-  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.85);
+  text-shadow: var(--txt-shadow-lg);
 }
 .hero-desc {
-  max-width: 600px;
-  font-size: 1.1rem;
-  line-height: 1.75;
+  max-width: 640px;
+  font-size: 1.12rem;
+  line-height: 1.6;
   color: var(--text);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
 }
 
 .hero-hearts {
@@ -570,8 +1180,8 @@ strong { color: var(--white); font-weight: 800; }
   margin-top: -8px;
 }
 .hero-hearts img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   image-rendering: pixelated;
   filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.6));
   animation: heartPulse 2.4s ease-in-out infinite;
@@ -582,6 +1192,7 @@ strong { color: var(--white); font-weight: 800; }
   50%      { transform: scale(1.09); }
 }
 
+/* The two join panels read as in-game GUI windows. */
 .hero-join-container {
   display: flex;
   flex-wrap: wrap;
@@ -591,50 +1202,106 @@ strong { color: var(--white); font-weight: 800; }
 }
 .hero-join-panel {
   flex: 1 1 280px;
-  max-width: 360px;
-  padding: 28px 30px;
+  max-width: 370px;
+  padding: 26px 28px 28px;
   text-align: center;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.9), rgba(26, 27, 32, 0.94)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
-  border-top: 4px solid var(--red);
   box-shadow: var(--shadow-card);
+  transition: transform var(--dur-lift) var(--ease-pop), box-shadow var(--dur-lift) var(--ease);
+}
+.hero-join-panel:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-pop);
 }
 .hero-join-panel h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  font-family: var(--font-pixel);
-  font-size: 11px;
+  gap: 11px;
+  font-family: var(--font-ui);
+  font-size: 21px;
+  line-height: 1.2;
   color: var(--white);
+  text-shadow: var(--txt-shadow-sm);
   margin-bottom: 12px;
 }
-.hero-join-panel h3 .mc-ico { width: 26px; height: 26px; }
+.hero-join-panel h3 .mc-ico { width: 28px; height: 28px; }
 .hero-join-panel p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-dim);
-  min-height: 2.6em;
+  min-height: 3em;
 }
+/* The two extra console join methods, listed under the panels. */
+.hero-join-alts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  max-width: 780px;
+}
+.hero-join-alts li {
+  flex: 1 1 320px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 0.98rem;
+  color: var(--text-dim);
+  background: rgba(16, 15, 18, 0.72);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
+}
+.hero-join-alt-num {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1;
+  color: var(--white);
+  text-shadow: var(--txt-shadow-sm);
+  background: var(--red-dark);
+  border: 2px solid var(--black);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Sunken slot, like a Minecraft text field. */
 .join-value {
   display: block;
   margin: 14px 0 18px;
-  padding: 10px 14px;
+  padding: 11px 14px;
   font-family: var(--font-mono);
-  font-size: 1.85rem;
+  font-size: 1.4rem;
   letter-spacing: 1px;
   color: var(--white);
+  text-shadow: var(--txt-shadow);
   background: var(--bg);
   border: 2px solid var(--black);
-  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.65), inset -2px -2px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: var(--bevel-in);
   word-break: break-all;
 }
 
+/* ── Footer ─────────────────────────────────────────────────────────────*/
 footer {
   position: relative;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(rgba(16, 15, 18, 0.93), rgba(16, 15, 18, 0.97)),
+    var(--tex-deepslate);
+  background-size: auto, 48px 48px;
+  image-rendering: pixelated;
   border-top: 2px solid var(--black);
-  box-shadow: inset 0 2px 0 var(--red-dark);
-  padding: clamp(52px, 7vw, 72px) clamp(20px, 5vw, 40px) 40px;
+  padding: clamp(58px, 7vw, 78px) clamp(20px, 5vw, 40px) 40px;
   text-align: center;
 }
 footer::before {
@@ -643,9 +1310,13 @@ footer::before {
   top: 0;
   left: 0;
   right: 0;
-  height: 10px;
-  background: repeating-conic-gradient(var(--panel) 0% 25%, var(--panel-hi) 25% 50%) 0 0 / 10px 10px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+  height: 14px;
+  background-color: var(--panel-hi);
+  background-image: var(--tex-stone);
+  background-size: 14px 14px;
+  image-rendering: pixelated;
+  border-bottom: 2px solid var(--black);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1);
 }
 .footer-links {
   display: flex;
@@ -657,57 +1328,67 @@ footer::before {
 .footer-link {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 10px;
   padding: 12px 18px;
-  font-family: var(--font-pixel);
-  font-size: 9px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1;
   color: var(--text-dim);
+  text-shadow: var(--txt-shadow-sm);
   background: var(--panel);
-  border: 2px solid var(--line);
-  transition: color 0.14s var(--ease), border-color 0.14s var(--ease), transform 0.07s var(--ease);
+  border: 2px solid var(--black);
+  box-shadow: var(--bevel);
+  transition: color var(--dur-tap) var(--ease), background var(--dur-tap) var(--ease), transform var(--dur-move) var(--ease-pop);
 }
 .footer-link i { color: var(--red); }
-.footer-link .mc-ico { width: 16px; height: 16px; }
+.footer-link .mc-ico { width: 18px; height: 18px; }
 .footer-link:hover {
   color: var(--white);
-  border-color: var(--red);
-  transform: translateY(-2px);
+  background: var(--panel-hi);
+  transform: translateY(-3px);
 }
+.footer-link:active { box-shadow: var(--bevel-in); transform: none; }
 .footer-copy {
   font-family: var(--font-mono);
-  font-size: 1.05rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
   color: var(--text-faint);
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
+/* ── Dialogs ────────────────────────────────────────────────────────────*/
 dialog {
   margin: auto;
-  max-width: 520px;
+  max-width: 540px;
   width: 90%;
-  padding: 36px;
+  padding: 34px;
   color: var(--text);
-  background: var(--panel);
-  border: var(--border);
-  border-top: 4px solid var(--red);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
+  border: 3px solid var(--black);
   box-shadow: var(--shadow-pop);
 }
 dialog::backdrop { background: rgba(0, 0, 0, 0.82); }
 dialog h1 {
   font-family: var(--font-pixel);
-  font-size: 13px;
-  line-height: 1.9;
+  font-size: 24px;
+  line-height: 1.3;
   color: var(--white);
+  text-shadow: var(--txt-shadow);
   margin-bottom: 18px;
 }
-dialog p { font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
+dialog p { font-size: 1.02rem; color: var(--text-dim); line-height: 1.6; }
 
 .dialog-title {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.dialog-title .mc-ico { width: 24px; height: 24px; }
+.dialog-title .mc-ico { width: 26px; height: 26px; }
 
 .dialog-actions {
   display: flex;
@@ -720,17 +1401,31 @@ dialog p { font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
   display: inline-flex;
   align-items: center;
   margin: 0 0 12px 14px;
-  padding: 9px 13px;
-  background: var(--red);
-  border: 2px solid var(--red-dark);
-  box-shadow: 0 3px 0 var(--red-deep);
+  padding: 10px 14px 15px;
   color: var(--white);
+  background: none;
+  border: 0 solid transparent;
+  border-image-source: url('../media/ui/buttons/red/unchecked.png');
+  border-image-slice: 2 2 4 2 fill;
+  border-image-width: 5px 5px 10px 5px;
+  image-rendering: pixelated;
+  text-shadow: var(--txt-shadow);
   cursor: pointer;
-  transition: background 0.12s var(--ease), transform 0.07s var(--ease), box-shadow 0.07s var(--ease);
 }
-.dialog-close:hover { background: var(--red-bright); }
-.dialog-close:active { transform: translateY(3px); box-shadow: 0 0 0 var(--red-deep); }
+.dialog-close:hover { border-image-source: url('../media/ui/buttons/red/unchecked_hover.png'); }
+.dialog-close:active {
+  border-image-source: url('../media/ui/buttons/red/default.png');
+  border-image-slice: 2 2 2 2 fill;
+  border-image-width: 5px;
+  padding: 15px 14px 10px;
+}
 
+/* ── Reduced motion ─────────────────────────────────────────────────────
+   Kill the movement, keep the content. Everything the motion system hides on
+   its way in is forced visible here, because with transitions flattened to
+   nothing an element that starts at opacity 0 would otherwise depend on a
+   class arriving to ever be seen. crab.js checks the same query and skips
+   the parallax and wheel easing entirely.                                  */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -738,12 +1433,29 @@ dialog p { font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .fade-up { opacity: 1; transform: none; }
+  html.js [data-reveal],
+  html.js .fade-up,
+  html.js .section-head,
+  html.js .hero-content > *:not(.hero-splash),
+  html.js #site-header,
+  html.js #site-header nav ul > li,
+  html.js .mobile-bar > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  html.js .hero-splash { opacity: 1 !important; }
+  /* transform: none cannot reach either of these: one is a clip and the
+     other is the headline's own rule, drawn in a pseudo-element. */
+  html.js [data-reveal="wipe"] { clip-path: none !important; }
+  html.js .section-head .s-headline::after,
+  html.js .eyebrow::before { transform: none !important; }
   .loading-bar__fill { width: 100%; }
 }
 
 @media (max-width: 680px) {
   .hero-splash { display: none; }
+  .mc-sep { height: 24px; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .mc-sep span:nth-child(3) { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -752,4 +1464,5 @@ dialog p { font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
   .hero-join-container { flex-direction: column; align-items: center; }
   .hero-join-panel { max-width: 100%; width: 100%; }
   .hero-desc { font-size: 1.02rem; }
+  .mc-btn { font-size: 17px; }
 }

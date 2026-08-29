@@ -18,52 +18,41 @@
 #skip-navigation-link { background: var(--vx); }
 
 .loading-bar__fill {
-  background: linear-gradient(90deg, var(--red), #d44aaa 50%, var(--vx));
-  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.35), inset 0 2px 0 rgba(255, 255, 255, 0.22);
+  background-color: var(--vx);
+  background-image: linear-gradient(90deg, var(--red), #d44aaa 50%, var(--vx));
 }
 
-#site-header {
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
-}
+/* Tint the header's shadow lip from CrabSMP red over to Verixen purple. */
 #site-header::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--red), #d44aaa 50%, var(--vx));
+  background-image: linear-gradient(180deg, rgba(155, 79, 240, 0.55), rgba(0, 0, 0, 0.65));
 }
 
-.header-mobile-toggle:hover { border-color: var(--vx); }
-
-#site-header nav ul li > a.active { border-bottom-color: var(--vx); }
-
-.header-cta {
-  background: var(--vx);
-  border-color: var(--vx-dark);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.22), inset 0 -3px 0 rgba(0, 0, 0, 0.28), 0 4px 0 var(--vx-deep);
+#site-header nav ul li > a:not(.header-cta).active {
+  background: rgba(155, 79, 240, 0.12);
 }
-.header-cta:hover { background: var(--vx-bright); }
-.header-cta:active {
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.12), inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 0 0 var(--vx-deep);
-}
+/* The marker under the current page is a ::after in main.css, not an inset
+   shadow, so recolour that — otherwise this page shows a crab-red underline
+   on a purple header. */
+#site-header nav ul li > a:not(.header-cta)::after { background: var(--vx); }
 
-@media (max-width: 920px) {
-  #site-header nav ul li > a:hover,
-  #site-header nav ul li > a.active {
-    border-bottom-color: var(--vx);
+@media (max-width: 1000px) {
+  #site-header nav ul li > a:not(.header-cta).active {
+    box-shadow: var(--bevel);
   }
 }
 
-footer { box-shadow: inset 0 2px 0 var(--vx-dark); }
 .footer-link i { color: var(--vx-bright); }
-.footer-link:hover { border-color: var(--vx); }
 
-dialog { border-top-color: var(--vx); }
+/* Swap the separator's crab-red block for a Verixen one. */
+.mc-sep span:nth-child(1) {
+  background-image: none;
+  background-color: var(--vx-dark);
+}
 
 .hero-section::after {
-  background: repeating-conic-gradient(var(--vx-deep) 0% 25%, var(--vx-dark) 25% 50%) 0 0 / 12px 12px;
+  background-color: var(--vx-deep);
+  background-image: none;
+  box-shadow: inset 0 2px 0 rgba(184, 101, 247, 0.35);
 }
 
 .vx-hero-bg {
@@ -78,7 +67,8 @@ dialog { border-top-color: var(--vx); }
   inset: 0;
   background: url('../media/assets/background.jpg') center / cover no-repeat;
   filter: saturate(0.5) brightness(0.76) contrast(1.05);
-  transform: scale(1.06);
+  /* The over-scale and the parallax transform both live on the shared hero
+     backdrop rule in main.css; setting one here would replace it. */
 }
 
 .vx-hero-bg::after {
@@ -106,9 +96,14 @@ dialog { border-top-color: var(--vx); }
 }
 
 .vx-stat {
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
-  border-top: 3px solid var(--vx);
+  border-top: 4px solid var(--vx);
   box-shadow: var(--shadow-card);
   padding: 18px 28px;
   min-width: 110px;
@@ -118,7 +113,7 @@ dialog { border-top-color: var(--vx); }
 .vx-stat__value {
   display: block;
   font-family: var(--font-mono);
-  font-size: 2.2rem;
+  font-size: 1.72rem;
   line-height: 1.1;
   color: var(--vx-bright);
   letter-spacing: 1px;
@@ -126,8 +121,9 @@ dialog { border-top-color: var(--vx); }
 
 .vx-stat__label {
   display: block;
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  font-family: var(--font-ui);
+  text-shadow: var(--txt-shadow-sm);
+  font-size: 14px;
   color: var(--text-dim);
   margin-top: 6px;
   letter-spacing: 0.5px;
@@ -146,11 +142,16 @@ dialog { border-top-color: var(--vx); }
   flex-direction: column;
   gap: 14px;
   padding: 28px 26px;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
-  border-top: 3px solid var(--vx);
+  border-top: 4px solid var(--vx);
   box-shadow: var(--shadow-card);
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+  transition: transform var(--dur-move) var(--ease), box-shadow var(--dur-move) var(--ease), border-color var(--dur-move) var(--ease);
 }
 
 .vx-card:hover {
@@ -163,9 +164,10 @@ dialog { border-top-color: var(--vx); }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  line-height: 1.7;
+  font-family: var(--font-ui);
+  text-shadow: var(--txt-shadow-sm);
+  font-size: 18px;
+  line-height: 1.25;
   color: var(--white);
   letter-spacing: 0.5px;
 }
@@ -196,12 +198,17 @@ dialog { border-top-color: var(--vx); }
   align-items: center;
   gap: 14px;
   padding: 30px 28px;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
-  border-top: 3px solid var(--vx);
+  border-top: 4px solid var(--vx);
   box-shadow: var(--shadow-card);
   text-align: center;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+  transition: transform var(--dur-move) var(--ease), box-shadow var(--dur-move) var(--ease), border-color var(--dur-move) var(--ease);
 }
 
 .vx-feature-box:hover {
@@ -211,9 +218,10 @@ dialog { border-top-color: var(--vx); }
 }
 
 .vx-feature-box h3 {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  line-height: 1.7;
+  font-family: var(--font-ui);
+  text-shadow: var(--txt-shadow-sm);
+  font-size: 18px;
+  line-height: 1.25;
   color: var(--white);
   letter-spacing: 0.5px;
 }
@@ -233,11 +241,16 @@ dialog { border-top-color: var(--vx); }
 }
 
 .vx-shot {
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   border-top: 4px solid var(--vx);
   box-shadow: var(--shadow-card);
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  transition: transform var(--dur-move) var(--ease), box-shadow var(--dur-move) var(--ease);
 }
 
 .vx-shot:hover {
@@ -257,8 +270,9 @@ dialog { border-top-color: var(--vx); }
   justify-content: center;
   gap: 10px;
   padding: 14px 18px;
-  font-family: var(--font-pixel);
-  font-size: 8px;
+  font-family: var(--font-ui);
+  text-shadow: var(--txt-shadow-sm);
+  font-size: 14px;
   letter-spacing: 0.5px;
   color: var(--text-dim);
   border-top: 2px solid var(--black);
@@ -277,12 +291,17 @@ dialog { border-top-color: var(--vx); }
   flex-direction: column;
   gap: 16px;
   padding: 32px 28px;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   border-top: 4px solid var(--vx);
   box-shadow: var(--shadow-card);
   text-align: center;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  transition: transform var(--dur-move) var(--ease), box-shadow var(--dur-move) var(--ease);
 }
 
 .vx-price-card:hover {
@@ -298,15 +317,16 @@ dialog { border-top-color: var(--vx); }
 .vx-price-card > .mc-ico { margin-inline: auto; }
 
 .vx-price-name {
-  font-family: var(--font-pixel);
-  font-size: 11px;
+  font-family: var(--font-ui);
+  text-shadow: var(--txt-shadow-sm);
+  font-size: 20px;
   color: var(--white);
   letter-spacing: 0.5px;
 }
 
 .vx-price-value {
   font-family: var(--font-mono);
-  font-size: 2.6rem;
+  font-size: 2.03rem;
   line-height: 1;
   color: var(--vx-bright);
   letter-spacing: 1px;
@@ -345,16 +365,13 @@ dialog { border-top-color: var(--vx); }
   text-align: center;
 }
 
-.mc-btn:not(.mc-btn--ghost) {
-  background: var(--vx);
-  border-color: var(--vx-dark);
-  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.18), inset 0 -4px 0 rgba(0, 0, 0, 0.28), 0 5px 0 var(--vx-deep), 0 8px 14px rgba(0, 0, 0, 0.4);
+/* Re-skin the nine-slice buttons to Verixen purple. */
+.mc-btn:not(.mc-btn--ghost),
+.header-cta {
+  --btn-face:       url('../media/ui/buttons/purple/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/purple/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/purple/default.png');
 }
-.mc-btn:not(.mc-btn--ghost):hover { background: var(--vx-bright); }
-.mc-btn:not(.mc-btn--ghost):active {
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1), inset 0 -2px 0 rgba(0, 0, 0, 0.3), 0 0 0 var(--vx-deep), 0 3px 8px rgba(0, 0, 0, 0.4);
-}
-.mc-btn--ghost:hover { border-color: var(--vx); }
 
 .vx-cta {
   display: flex;

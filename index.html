@@ -14,7 +14,8 @@
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="media/logo.png" />
   <link rel="canonical" href="https://crabsmp.net" />
-  <link href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400|nunito:400,600,700,800" rel="stylesheet" />
+  <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <meta name="robots" content="index, follow" />
   <link rel="stylesheet" href="styles/main.css" />
@@ -58,13 +59,13 @@
       <li class="header-logo-outer">
         <a href="/"><img class="header-logo" src="media/logo.png" alt="CrabSMP" /></a>
       </li>
-      <li><a href="index.html" class="active"><img class="header-ico" src="media/icons/castle.png" alt="" />Home</a></li>
-      <li><a href="about.html"><img class="header-ico" src="media/icons/billboard.png" alt="" />About</a></li>
-      <li><a href="https://store.crabsmp.net" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/shop.png" alt="" />Store</a></li>
-      <li><a href="vote.html"><img class="header-ico" src="media/icons/star.png" alt="" />Vote</a></li>
-      <li><a href="status.html"><img class="header-ico" src="media/icons/mt.png" alt="" />Status</a></li>
-      <li><a href="verixen.html"><img class="header-ico" src="media/icons/shield.png" alt="" />Verixen</a></li>
-      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
+      <li><a href="index.html" class="active"><img class="header-ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
+      <li><a href="about.html"><img class="header-ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+      <li><a href="store.html"><img class="header-ico" src="media/icons/glyph/shop.png" alt="" />Store</a></li>
+      <li><a href="vote.html"><img class="header-ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
+      <li><a href="status.html"><img class="header-ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
+      <li><a href="verixen.html"><img class="header-ico" src="media/icons/glyph/shield.png" alt="" />Verixen</a></li>
+      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/glyph/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
       <li class="header-cta-outer"><a class="header-cta" href="#join">▶ Join Server</a></li>
     </ul>
   </nav>
@@ -84,24 +85,75 @@
 
     <div class="hero-join-container" id="join">
       <div class="hero-join-panel">
-        <h3><img class="mc-ico" src="media/icons/freeplay.png" alt="" /> Console</h3>
-        <p>Console players can join through our <strong>Realm</strong>. Open the invite link below, join the Realm, then accept the game invite to play.</p>
-        <span class="join-value">vDruZhrrg9W64Zs</span>
-        <a class="mc-btn mc-btn--block" href="https://realms.gg/vDruZhrrg9W64Zs" target="_blank" rel="noopener">
-          <img class="btn-ico" src="media/icons/warps.png" alt="" /> Join Realm
-        </a>
-      </div>
-      <div class="hero-join-panel">
-        <h3><img class="mc-ico" src="media/icons/tpa.png" alt="" /> PC &amp; Mobile</h3>
-        <p>Join using the server IP. Remember to leave the port at the default value, which is <strong>19132</strong></p>
+        <h3><img class="mc-ico" src="media/icons/glyph/tpa.png" alt="" /> PC &amp; Mobile</h3>
+        <p>Open the server list, hit <strong>Add Server</strong>, and enter the IP below. Leave the port at the default value, <strong>19132</strong>.</p>
         <span class="join-value">play.crabsmp.net</span>
         <button class="mc-btn mc-btn--block" data-copy="play.crabsmp.net">
           <i class="fa-solid fa-copy"></i> Copy IP
         </button>
       </div>
+      <div class="hero-join-panel">
+        <h3><img class="mc-ico" src="media/icons/glyph/freeplay.png" alt="" /> Console</h3>
+        <p>Xbox, PlayStation and the rest: join our <strong>Realm</strong> with the code below and accept the invite. Join Discord if you need help!</p>
+        <span class="join-value">vDruZhrrg9W64Zs</span>
+        <a class="mc-btn mc-btn--block" href="https://realms.gg/vDruZhrrg9W64Zs" target="_blank" rel="noopener">
+          <img class="btn-ico" src="media/icons/glyph/warps.png" alt="" /> Join Realm
+        </a>
+      </div>
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<section class="section section--alt" id="fair-play" aria-labelledby="fair-play-heading">
+  <div class="shell">
+    <div class="section-head">
+      <span class="eyebrow">Fair Play</span>
+      <h2 class="s-headline" id="fair-play-heading">Not Pay To Win</h2>
+      <p class="s-sub">
+        Nobody buys their way past you on CrabSMP. Ranks are quality of life and cosmetics,
+        they never touch combat, and the strongest players on the server are the ones who
+        put the hours in. That is the whole point.
+      </p>
+    </div>
+
+    <div class="fairplay-grid">
+
+      <article class="fairplay-card" data-reveal="drop">
+        <img class="fairplay-ico" src="media/icons/glyph/sword.png" alt="" />
+        <h3>Ranks Never Touch Combat</h3>
+        <p>No bought damage, no bought hearts, no stat multipliers. A rank gets you convenience and cosmetics, and that is where it stops.</p>
+      </article>
+
+      <article class="fairplay-card" data-reveal="drop">
+        <img class="fairplay-ico" src="media/icons/glyph/key_common.png" alt="" />
+        <h3>Everything Is Earnable</h3>
+        <p>Crate keys come from voting, playtime milestones, and daily rewards. Quests grant XP toward 100 RPG levels. You never have to spend a penny to get any of it.</p>
+      </article>
+
+      <article class="fairplay-card" data-reveal="drop">
+        <img class="fairplay-ico" src="media/icons/glyph/closed_chest.png" alt="" />
+        <h3>Free From The First Second</h3>
+        <p>No whitelist, no paywall, no trial. Join, take your free starter kit, link Discord for the bonus kit, and go build something.</p>
+      </article>
+
+      <article class="fairplay-card" data-reveal="drop">
+        <img class="fairplay-ico" src="media/icons/glyph/vault.png" alt="" />
+        <h3>Your Money Runs The Server</h3>
+        <p>Every penny goes into hosting, upkeep and development. It buys uptime for everyone, not an advantage for one person.</p>
+      </article>
+
+    </div>
+
+    <p class="fairplay-note">
+      <img class="mc-ico" src="media/icons/glyph/revive_beacon.png" alt="" />
+      Free to play. Always. The leaderboard is earned, not bought.
+    </p>
+  </div>
+</section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section" id="features" aria-label="What CrabSMP has">
   <div class="shell">
@@ -112,56 +164,56 @@
 
     <div class="features-grid">
 
-      <article class="feature-card fade-up">
+      <article class="feature-card" data-reveal="zoom">
         <img class="feature-img" loading="lazy" src="media/features/feature.webp" alt="CrabSMP chat relayed into Discord" />
         <span class="feature-num" aria-hidden="true">01</span>
         <div class="feature-body">
-          <h3 class="feature-title"><img class="feature-ico" src="media/icons/discord.png" alt="" />Discord Integration</h3>
+          <h3 class="feature-title"><img class="feature-ico" src="media/icons/glyph/discord.png" alt="" />Discord Integration</h3>
           <p class="feature-desc">Chat, joins, deaths, and staff actions relay straight to Discord through our own custom bot. Talk to the server from your phone, even when you are not in the game.</p>
         </div>
       </article>
 
-      <article class="feature-card fade-up" style="transition-delay:0.06s">
+      <article class="feature-card" data-reveal="zoom">
         <img class="feature-img" loading="lazy" src="media/features/feature2.webp" alt="A custom CrabSMP cave" />
         <span class="feature-num" aria-hidden="true">02</span>
         <div class="feature-body">
-          <h3 class="feature-title"><img class="feature-ico" src="media/icons/freeplay.png" alt="" />A World To Conquer</h3>
+          <h3 class="feature-title"><img class="feature-ico" src="media/icons/glyph/freeplay.png" alt="" />A World To Conquer</h3>
           <p class="feature-desc">Mine deep caves, push out to a 7,000 block border, and claim the land as your own. The Nether and End are open and waiting.</p>
         </div>
       </article>
 
-      <article class="feature-card fade-up" style="transition-delay:0.12s">
+      <article class="feature-card" data-reveal="zoom">
         <img class="feature-img" loading="lazy" src="media/features/feature3.webp" alt="The CrabSMP starter kit menu" />
         <span class="feature-num" aria-hidden="true">03</span>
         <div class="feature-body">
-          <h3 class="feature-title"><img class="feature-ico" src="media/icons/closed_chest.png" alt="" />Free Starter Kit</h3>
+          <h3 class="feature-title"><img class="feature-ico" src="media/icons/glyph/closed_chest.png" alt="" />Free Starter Kit</h3>
           <p class="feature-desc">Every new player is handed a one time starter kit the moment they join. Link your Discord account in game to unlock an even stronger bonus kit.</p>
         </div>
       </article>
 
-      <article class="feature-card fade-up" style="transition-delay:0.18s">
+      <article class="feature-card" data-reveal="zoom">
         <img class="feature-img" loading="lazy" src="media/features/feature5.webp" alt="The CrabSMP spawn from above" />
         <span class="feature-num" aria-hidden="true">04</span>
         <div class="feature-body">
-          <h3 class="feature-title"><img class="feature-ico" src="media/icons/castle.png" alt="" />A Spawn Built To Last</h3>
+          <h3 class="feature-title"><img class="feature-ico" src="media/icons/glyph/castle.png" alt="" />A Spawn Built To Last</h3>
           <p class="feature-desc">A hand built spawn with the shop, warps, NPCs, and a PvP arena. The whole zone is grief and PvP protected, so you always start safe.</p>
         </div>
       </article>
 
-      <article class="feature-card fade-up" style="transition-delay:0.24s">
+      <article class="feature-card" data-reveal="zoom">
         <img class="feature-img" loading="lazy" src="media/features/feature6.webp" alt="Detailed CrabSMP builds" />
         <span class="feature-num" aria-hidden="true">05</span>
         <div class="feature-body">
-          <h3 class="feature-title"><img class="feature-ico" src="media/icons/star.png" alt="" />Stunning Visuals</h3>
+          <h3 class="feature-title"><img class="feature-ico" src="media/icons/glyph/star.png" alt="" />Stunning Visuals</h3>
           <p class="feature-desc">Cherry blossom hills, balloon dotted skies, and detailed builds. CrabSMP looks sharp whether you play on console, mobile, or PC.</p>
         </div>
       </article>
 
-      <article class="feature-card fade-up" style="transition-delay:0.30s">
+      <article class="feature-card" data-reveal="zoom">
         <img class="feature-img" loading="lazy" src="media/features/feature7.webp" alt="The Crab Engine" />
         <span class="feature-num" aria-hidden="true">06</span>
         <div class="feature-body">
-          <h3 class="feature-title"><img class="feature-ico ico-px" src="media/icons/crab_chestplate.png" alt="" />The Crab Engine</h3>
+          <h3 class="feature-title"><img class="feature-ico ico-px" src="media/icons/glyph/crab_chestplate.png" alt="" />The Crab Engine</h3>
           <p class="feature-desc">CrabSMP runs on our own TypeScript engine. Factions, lifesteal, the economy, crates, spawners, and anti-cheat are all built in house and updated constantly.</p>
         </div>
       </article>
@@ -169,6 +221,8 @@
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section section--alt" aria-label="What players say">
   <div class="shell">
@@ -178,42 +232,44 @@
     </div>
 
     <div class="reviews-grid">
-      <article class="review-card fade-up">
+      <article class="review-card" data-reveal="left">
         <div class="review-header">
           <img class="review-avatar" loading="lazy" src="media/reviews/review1.webp" alt="Dungeness Crash avatar" />
           <span class="review-username">Dungeness Crash</span>
-          <span class="review-stars" role="img" aria-label="5 out of 5 hearts"><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /></span>
+          <span class="review-stars" role="img" aria-label="5 out of 5 hearts"><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /></span>
         </div>
         <p class="review-text">"9/10: I love this server, it's my first SMP and I refuse to switch. I love the chaos, the active player base, and the shop lets you buy back lost items while still encouraging grinding."</p>
       </article>
-      <article class="review-card fade-up" style="transition-delay:0.1s">
+      <article class="review-card" data-reveal="left">
         <div class="review-header">
 
           <img class="review-avatar" loading="lazy" src="media/reviews/review2.webp" alt="TheSlimeBeans avatar" />
           <span class="review-username">TheSlimeBeans</span>
-          <span class="review-stars" role="img" aria-label="5 out of 5 hearts"><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /></span>
+          <span class="review-stars" role="img" aria-label="5 out of 5 hearts"><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /></span>
         </div>
         <p class="review-text">"9.5/10: Very nice server with a great community. Most people are friendly and fun to play with. The overall experience is enjoyable and keeps me coming back for more."</p>
       </article>
-      <article class="review-card fade-up" style="transition-delay:0.2s">
+      <article class="review-card" data-reveal="left">
         <div class="review-header">
           <img class="review-avatar" loading="lazy" src="media/reviews/avatar-admin.svg" alt="UPJAY2012 avatar" />
           <span class="review-username">[Admin] UPJAY2012</span>
-          <span class="review-stars" role="img" aria-label="4 out of 5 hearts"><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /></span>
+          <span class="review-stars" role="img" aria-label="4 out of 5 hearts"><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /></span>
         </div>
         <p class="review-text">"8.5/10: I love the community and especially the owner Ozz, great guy. The only thing that brings down my grade is the anti-cheat isn't that great."</p>
       </article>
-      <article class="review-card fade-up" style="transition-delay:0.3s">
+      <article class="review-card" data-reveal="left">
         <div class="review-header">
           <img class="review-avatar" loading="lazy" src="media/reviews/avatar-helper.svg" alt="Mike avatar" />
           <span class="review-username">[Helper] Mike [CRAB]</span>
-          <span class="review-stars" role="img" aria-label="5 out of 5 hearts"><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /><img src="media/icons/lifesteal_heart.png" alt="" /></span>
+          <span class="review-stars" role="img" aria-label="5 out of 5 hearts"><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /><img src="media/icons/glyph/lifesteal_heart.png" alt="" /></span>
         </div>
         <p class="review-text">"10/10: CrabSMP is a really good server. When I first started playing I knew from the beginning this was going to be an amazing journey. I love how the admins and owners always listen to people to try to make the server better and keep improving it. There's way more to come, very good server, I recommend it."</p>
       </article>
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section" id="about" aria-label="The CrabSMP team">
   <div class="shell">
@@ -223,17 +279,20 @@
     </div>
 
     <div class="team-grid">
-      <article class="team-card fade-up">
-        <img class="team-avatar" loading="lazy" src="media/team/owner1.webp" alt="Ozorical, Owner" />
+      <article class="team-card" data-reveal="right">
+        <img class="team-avatar" loading="lazy" src="https://relaxed-kataifi-f99935.netlify.app/avatar.png" alt="Ozorical, Owner" />
         <div class="team-info">
-          <span class="team-badge owner"><img class="mc-ico ico-px" src="media/icons/crab_chestplate.png" alt="" />[ Owner ]</span>
+          <span class="team-badge owner"><img class="mc-ico ico-px" src="media/icons/glyph/crab_chestplate.png" alt="" />[ Owner ]</span>
           <a class="team-name" href="https://relaxed-kataifi-f99935.netlify.app/">Ozorical</a>
-          <p class="team-desc">Hi, I'm Ozz (Jacob). I'm the manager and sole operator of our mainstream Minecraft server. From funding and development to social media strategy and community engagement, every aspect of the project is personally handled by me.</p>
+          <p class="team-desc">Hi, I'm Ozz (Jacob). I'm the manager and sole operator of our mainstream Minecraft server, handling everything from funding and development to infrastructure, branding, social media, and community engagement. I'm currently studying Computer Science and IT systems, with a strong interest in software development, backend systems, cybersecurity, and automation.</p>
+          <p class="team-desc">I work across technologies including JavaScript, TypeScript, Python, Java, Node.js, Discord.js, MongoDB, Redis, and the Minecraft Script API. Outside of CrabSMP, I enjoy building websites, experimenting with new technologies, and working on personal projects. My goal is to keep improving CrabSMP and build a community that players genuinely enjoy being part of.</p>
         </div>
       </article>
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section section--alt" id="discord" aria-labelledby="discord-heading">
   <div class="shell">
@@ -243,7 +302,7 @@
     </div>
 
     <div class="discord-inner">
-      <div class="discord-widget-wrap fade-up">
+      <div class="discord-widget-wrap" data-reveal="left">
         <iframe
           class="discord-widget"
           src="https://discord.com/widget?id=1440040951547691109&theme=dark"
@@ -257,20 +316,20 @@
         <p class="discord-widget-note">Live preview: see who's online now!</p>
       </div>
 
-      <div class="discord-features-wrap fade-up" style="transition-delay:0.1s">
+      <div class="discord-features-wrap" data-reveal="right">
         <h3 class="discord-title">Fully Integrated &amp; Reliable Platform</h3>
         <ul class="discord-feat-list">
-          <li><img class="mc-ico" src="media/icons/friends.png" alt="" /><span>Meet other CrabSMP members</span></li>
-          <li><img class="mc-ico ico-px" src="media/icons/incoming.png" alt="" /><span>Real-time realm chat integration</span></li>
-          <li><img class="mc-ico" src="media/icons/billboard.png" alt="" /><span>Instant update notifications</span></li>
-          <li><img class="mc-ico" src="media/icons/bounty.png" alt="" /><span>Help shape our growing community</span></li>
-          <li><img class="mc-ico" src="media/icons/shield.png" alt="" /><span>Priority technical support</span></li>
-          <li><img class="mc-ico" src="media/icons/tag.png" alt="" /><span>Exclusive announcement channel</span></li>
-          <li><img class="mc-ico" src="media/icons/star.png" alt="" /><span>Community showcase opportunities</span></li>
+          <li><img class="mc-ico" src="media/icons/glyph/friends.png" alt="" /><span>Meet other CrabSMP members</span></li>
+          <li><img class="mc-ico ico-px" src="media/icons/glyph/incoming.png" alt="" /><span>Real-time realm chat integration</span></li>
+          <li><img class="mc-ico" src="media/icons/glyph/billboard.png" alt="" /><span>Instant update notifications</span></li>
+          <li><img class="mc-ico" src="media/icons/glyph/bounty.png" alt="" /><span>Help shape our growing community</span></li>
+          <li><img class="mc-ico" src="media/icons/glyph/shield.png" alt="" /><span>Priority technical support</span></li>
+          <li><img class="mc-ico" src="media/icons/glyph/tag.png" alt="" /><span>Exclusive announcement channel</span></li>
+          <li><img class="mc-ico" src="media/icons/glyph/star.png" alt="" /><span>Community showcase opportunities</span></li>
         </ul>
         <p class="discord-more">&amp; many more benefits!</p>
         <a class="mc-btn mc-btn--blue mc-btn--block" href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener noreferrer">
-          <img class="btn-ico" src="media/icons/discord.png" alt="" /> Join Discord Now
+          <img class="btn-ico" src="media/icons/glyph/discord.png" alt="" /> Join Discord Now
         </a>
         <p class="already-member">
           Already a member? <a href="https://discord.gg/9xDjuh2WEy">Click to reconnect</a>
@@ -279,6 +338,8 @@
     </div>
   </div>
 </section>
+
+<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <section class="section" id="rules" aria-label="Rules and Terms of Service">
   <div class="shell">
@@ -289,8 +350,8 @@
 
     <div class="rules-container">
       <div class="rules-tabs" role="tablist" aria-label="Rules and Terms of Service">
-        <button class="rules-tab-btn active" role="tab" aria-selected="true" data-tab="rules"><img class="mc-ico" src="media/icons/sword.png" alt="" />Server Rules</button>
-        <button class="rules-tab-btn" role="tab" aria-selected="false" data-tab="tos"><img class="mc-ico" src="media/icons/logs.png" alt="" />Terms of Service</button>
+        <button class="rules-tab-btn active" role="tab" aria-selected="true" data-tab="rules"><img class="mc-ico" src="media/icons/glyph/sword.png" alt="" />Server Rules</button>
+        <button class="rules-tab-btn" role="tab" aria-selected="false" data-tab="tos"><img class="mc-ico" src="media/icons/glyph/logs.png" alt="" />Terms of Service</button>
       </div>
 
       <div class="rules-body active" id="tab-rules" role="tabpanel">
@@ -306,12 +367,12 @@
         <div class="rule-entry"><span class="rule-num">10</span><div><h3>No Real-World Trading</h3><p>Selling in-game items or currency for real money is prohibited: permanent ban.</p></div></div>
 
         <hr class="rules-hr" />
-        <h4 class="rules-special-title"><img class="mc-ico" src="media/icons/vault.png" alt="" /> Discord Vault Rules</h4>
+        <h4 class="rules-special-title"><img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /> Discord Vault Rules</h4>
         <div class="rules-special-item">Only one person can enter the vault at a time; otherwise, the kit will not work.</div>
         <div class="rules-special-item">Do not share the code outside this Discord. Violating this results in a permanent ban.</div>
 
         <hr class="rules-hr" />
-        <h4 class="rules-special-title"><img class="mc-ico" src="media/icons/clan.png" alt="" /> KOTH (King of the Hill) Rules</h4>
+        <h4 class="rules-special-title"><img class="mc-ico" src="media/icons/glyph/clan.png" alt="" /> KOTH (King of the Hill) Rules</h4>
         <div class="rules-special-item">No Teaming: KOTH is a solo event; teaming leads to immediate disqualification.</div>
         <div class="rules-special-item">No C-Logging: Combat logging in KOTH results in an immediate ban from the event.</div>
         <div class="rules-special-item">No Outside Interference: Spectators must not interfere with the ongoing battle.</div>
@@ -345,15 +406,15 @@
       <i class="fa-brands fa-youtube"></i> YouTube
     </a>
     <a href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener" class="footer-link">
-      <img class="mc-ico" src="media/icons/discord.png" alt="" /> Discord
+      <img class="mc-ico" src="media/icons/glyph/discord.png" alt="" /> Discord
     </a>
     <a href="verixen.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/shield.png" alt="" /> Verixen
+      <img class="mc-ico" src="media/icons/glyph/shield.png" alt="" /> Verixen
     </a>
     <a href="privacy.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/vault.png" alt="" /> Privacy
+      <img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /> Privacy
     </a>
-    <a href="index.html?intro=1" class="footer-link" data-replay-intro>
+    <a href="index.html" class="footer-link" data-replay-intro>
       <i class="fa-solid fa-rotate-right"></i> Replay Intro
     </a>
   </div>
@@ -365,17 +426,9 @@
     <i class="fa-solid fa-xmark"></i><span class="visually-hidden">Close</span>
   </button>
   <h1>Opening Minecraft Bedrock...</h1>
-  <p>If nothing happens, add the server manually with IP <strong>play.crabsmp.net</strong>. On console, join our Realm at <strong>realms.gg/vDruZhrrg9W64Zs</strong> and accept the game invite.</p>
+  <p>If nothing happens, add the server manually with IP <strong>play.crabsmp.net</strong> on port <strong>19132</strong>. On console, join our Realm at <strong>realms.gg/vDruZhrrg9W64Zs</strong> and accept the game invite, add <strong>JoinCrabMC</strong> as a friend and join their world after 30 seconds, or connect through <strong>BedrockTogether</strong>.</p>
 </dialog>
 
-<dialog id="store-dialog">
-  <h1 class="dialog-title"><img class="mc-ico" src="media/icons/shop.png" alt="" /> Opening the Store</h1>
-  <p>You are about to leave crabsmp.net. Our official store lives at <strong>store.crabsmp.net</strong>, where every purchase goes straight back into the server.</p>
-  <div class="dialog-actions">
-    <button class="mc-btn mc-btn--ghost" data-dialog-close>Stay Here</button>
-    <a class="mc-btn" id="store-dialog-go" href="https://store.crabsmp.net" target="_blank" rel="noopener">Continue</a>
-  </div>
-</dialog>
 
 <script src="javascript/crab.js" defer></script>
 </body>

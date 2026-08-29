@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CrabSMP | Vote</title>
-  <meta name="description" content="Vote for CrabSMP on Minecraft server lists and earn free crate keys, coins, and rewards in-game. Vote daily on Minecraft Buzz and Realm Explorer." />
+  <meta name="description" content="Vote for CrabSMP on Minecraft server lists and earn free crate keys, coins, and rewards in-game. Vote daily on Minecraft Buzz, Realm Explorer, LecternMC and more." />
   <meta name="keywords" content="crabsmp vote, minecraft bedrock server vote, vote crabsmp, minecraft server voting rewards, bedrock lifesteal vote" />
   <meta name="author" content="CrabSMP" />
   <meta name="robots" content="index, follow" />
@@ -26,7 +26,8 @@
   <meta name="twitter:description" content="Vote daily for CrabSMP and earn free crate keys, coins, and in-game rewards." />
   <meta name="twitter:image" content="https://crabsmp.net/media/assets/background.jpg" />
 
-  <link href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400|nunito:400,600,700,800" rel="stylesheet" />
+  <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/vote.css" />
@@ -66,13 +67,13 @@
       <li class="header-logo-outer">
         <a href="/"><img class="header-logo" src="media/logo.png" alt="CrabSMP" /></a>
       </li>
-      <li><a href="index.html"><img class="header-ico" src="media/icons/castle.png" alt="" />Home</a></li>
-      <li><a href="about.html"><img class="header-ico" src="media/icons/billboard.png" alt="" />About</a></li>
-      <li><a href="https://store.crabsmp.net" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/shop.png" alt="" />Store</a></li>
-      <li><a href="vote.html" class="active"><img class="header-ico" src="media/icons/star.png" alt="" />Vote</a></li>
-      <li><a href="status.html"><img class="header-ico" src="media/icons/mt.png" alt="" />Status</a></li>
-      <li><a href="verixen.html"><img class="header-ico" src="media/icons/shield.png" alt="" />Verixen</a></li>
-      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
+      <li><a href="index.html"><img class="header-ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
+      <li><a href="about.html"><img class="header-ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+      <li><a href="store.html"><img class="header-ico" src="media/icons/glyph/shop.png" alt="" />Store</a></li>
+      <li><a href="vote.html" class="active"><img class="header-ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
+      <li><a href="status.html"><img class="header-ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
+      <li><a href="verixen.html"><img class="header-ico" src="media/icons/glyph/shield.png" alt="" />Verixen</a></li>
+      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/glyph/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
       <li class="header-cta-outer"><a class="header-cta" href="index.html#join">▶ Join Server</a></li>
     </ul>
   </nav>
@@ -84,8 +85,8 @@
     <img class="hero-logo-img" src="media/logo.png" alt="CrabSMP logo" />
     <h1 class="hero-title">Vote for CrabSMP</h1>
     <p class="hero-desc">
-      Voting takes 30 seconds and helps CrabSMP grow.
-      Vote on all sites below to show your support!
+      Vote for CrabSMP on the websites listed below and earn rewards in-game, while boosting our public visibility!
+      To see exactly what you get, use the <strong style="color:#f3c74d;">/vote</strong> command in-game for a full breakdown.
     </p>
   </div>
 </section>
@@ -95,12 +96,31 @@
     <div class="section-head">
       <span class="eyebrow">Daily Votes</span>
       <h2 class="s-headline">Pick A Site & Vote</h2>
-      <p class="s-sub">Click a site below, enter your in-game username, and hit vote. Every vote helps the server climb the rankings.</p>
+      <p class="s-sub">
+        Click a site below, enter your in-game username, and hit vote. Every vote helps the server climb the rankings.
+        <br>
+        <span style="display:inline-block; margin-top:0.7rem; background:#2a2a2a; padding:0.4rem 1.2rem; border-radius:40px; font-size:0.95rem; box-shadow: 0 0 0 1px #3d3d3d;">
+          <i class="fa-regular fa-gem" style="color:#f3c74d; margin-right:6px;"></i> 
+          Rewards stack daily — check <code style="background:#1a1a1a; padding:0.1rem 0.7rem; border-radius:20px; font-weight:bold;">/vote</code> in-game for specifics!
+        </span>
+      </p>
+    </div>
+
+    <!-- Rewards info callout -->
+    <div style="background: #1e1e1e; border-left: 4px solid #f3c74d; border-radius: 12px; padding: 1rem 1.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; flex-wrap: wrap; gap: 0.8rem 1.5rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <i class="fa-solid fa-gift" style="color: #f3c74d; font-size: 1.4rem;"></i>
+        <span style="font-weight: 600;">How rewards work:</span>
+      </div>
+      <span style="color: #ccc;">Vote on any site → rewards are delivered automatically in-game. The more you vote (across all sites), the bigger your daily reward stack gets.</span>
+      <span style="background: #2d2d2d; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.9rem; margin-left: auto;">
+        <i class="fa-regular fa-clock"></i> 24h cooldown per site
+      </span>
     </div>
 
     <div class="vote-grid">
 
-      <article class="vote-card fade-up">
+      <article class="vote-card" data-reveal="drop">
         <div class="vote-card__badge">01</div>
         <div class="vote-card__body">
           <h2 class="vote-card__title">Minecraft Buzz</h2>
@@ -112,7 +132,7 @@
         </div>
       </article>
 
-      <article class="vote-card fade-up" style="transition-delay:0.1s">
+      <article class="vote-card" data-reveal="drop">
         <div class="vote-card__badge">02</div>
         <div class="vote-card__body">
           <h2 class="vote-card__title">Realm Explorer</h2>
@@ -124,10 +144,33 @@
         </div>
       </article>
 
+      <article class="vote-card" data-reveal="drop">
+        <div class="vote-card__badge">03</div>
+        <div class="vote-card__body">
+          <h2 class="vote-card__title">LecternMC</h2>
+          <p class="vote-card__desc">Modern server list with detailed stats. Vote daily to help CrabSMP rank higher.</p>
+          <div class="vote-card__url">lecternmc.com/servers/crabsmp</div>
+          <a class="mc-btn mc-btn--block vote-card__btn" href="https://lecternmc.com/servers/crabsmp?back=%2Fservers" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-check"></i> Vote Now
+          </a>
+        </div>
+      </article>
+
+      <article class="vote-card" data-reveal="drop">
+        <div class="vote-card__badge">04</div>
+        <div class="vote-card__body">
+          <h2 class="vote-card__title">Minecraft Pocket Servers</h2>
+          <p class="vote-card__desc">One of the oldest Bedrock server lists. Every vote counts — support CrabSMP!</p>
+          <div class="vote-card__url">minecraftpocket-servers.com/server/133960</div>
+          <a class="mc-btn mc-btn--block vote-card__btn" href="https://minecraftpocket-servers.com/server/133960/vote" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-check"></i> Vote Now
+          </a>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
-
 
 <footer>
   <div class="footer-links">
@@ -138,13 +181,13 @@
       <i class="fa-brands fa-youtube"></i> YouTube
     </a>
     <a href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener" class="footer-link">
-      <img class="mc-ico" src="media/icons/discord.png" alt="" /> Discord
+      <img class="mc-ico" src="media/icons/glyph/discord.png" alt="" /> Discord
     </a>
     <a href="verixen.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/shield.png" alt="" /> Verixen
+      <img class="mc-ico" src="media/icons/glyph/shield.png" alt="" /> Verixen
     </a>
     <a href="privacy.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/vault.png" alt="" /> Privacy
+      <img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /> Privacy
     </a>
     <a href="index.html?intro=1" class="footer-link" data-replay-intro>
       <i class="fa-solid fa-rotate-right"></i> Replay Intro
@@ -153,14 +196,6 @@
   <p class="footer-copy">© 2026 CrabSMP · All rights reserved · Not affiliated with Mojang or Microsoft.</p>
 </footer>
 
-<dialog id="store-dialog">
-  <h1 class="dialog-title"><img class="mc-ico" src="media/icons/shop.png" alt="" /> Opening the Store</h1>
-  <p>You are about to leave crabsmp.net. Our official store lives at <strong>store.crabsmp.net</strong>, where every purchase goes straight back into the server.</p>
-  <div class="dialog-actions">
-    <button class="mc-btn mc-btn--ghost" data-dialog-close>Stay Here</button>
-    <a class="mc-btn" id="store-dialog-go" href="https://store.crabsmp.net" target="_blank" rel="noopener">Continue</a>
-  </div>
-</dialog>
 
 <script src="javascript/crab.js" defer></script>
 </body>

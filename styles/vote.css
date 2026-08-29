@@ -10,12 +10,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   border-top: 4px solid var(--red);
   box-shadow: var(--shadow-card);
   overflow: hidden;
-  transition: transform 0.14s var(--ease), box-shadow 0.14s var(--ease);
+  transition: transform var(--dur-tap) var(--ease), box-shadow var(--dur-tap) var(--ease);
 }
 .vote-card:hover {
   transform: translateY(-4px);
@@ -26,8 +31,8 @@
   position: absolute;
   top: 14px;
   right: 16px;
-  font-family: var(--font-pixel);
-  font-size: 11px;
+  font-family: var(--font-ui);
+  font-size: 20px;
   color: var(--text-faint);
   text-shadow: 2px 2px 0 var(--black);
   pointer-events: none;
@@ -55,8 +60,8 @@
 
 .vote-card__title {
   font-family: var(--font-pixel);
-  font-size: 12px;
-  line-height: 1.7;
+  font-size: 22px;
+  line-height: 1.25;
   color: var(--white);
   text-shadow: 2px 2px 0 var(--black);
 }
@@ -70,7 +75,7 @@
 .vote-card__url {
   padding: 9px 12px;
   font-family: var(--font-mono);
-  font-size: 1.15rem;
+  font-size: 0.90rem;
   color: var(--text-dim);
   background: var(--bg);
   border: 2px solid var(--black);
@@ -96,16 +101,21 @@
   align-items: center;
   gap: 14px;
   padding: 30px 22px;
-  background: var(--panel);
+  background-color: var(--panel);
+  background-image:
+    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
+    var(--tex-stone);
+  background-size: auto, 32px 32px;
+  image-rendering: pixelated;
   border: var(--border);
   box-shadow: var(--shadow-card);
   text-align: center;
 }
 
 .vote-reward h3 {
-  font-family: var(--font-pixel);
-  font-size: 10px;
-  line-height: 1.8;
+  font-family: var(--font-ui);
+  font-size: 18px;
+  line-height: 1.25;
   color: var(--white);
   text-shadow: 2px 2px 0 var(--black);
 }

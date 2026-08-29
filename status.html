@@ -14,7 +14,8 @@
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/png" href="media/logo.png" />
   <link rel="canonical" href="https://crabsmp.net/status" />
-  <link href="https://fonts.bunny.net/css?family=press-start-2p:400|vt323:400|nunito:400,600,700,800" rel="stylesheet" />
+  <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
   <meta name="robots" content="index, follow" />
   <link rel="stylesheet" href="styles/main.css" />
@@ -44,13 +45,13 @@
       <li class="header-logo-outer">
         <a href="/"><img class="header-logo" src="media/logo.png" alt="CrabSMP" /></a>
       </li>
-      <li><a href="index.html"><img class="header-ico" src="media/icons/castle.png" alt="" />Home</a></li>
-      <li><a href="about.html"><img class="header-ico" src="media/icons/billboard.png" alt="" />About</a></li>
-      <li><a href="https://store.crabsmp.net" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/shop.png" alt="" />Store</a></li>
-      <li><a href="vote.html"><img class="header-ico" src="media/icons/star.png" alt="" />Vote</a></li>
-      <li><a href="status.html" class="active"><img class="header-ico" src="media/icons/mt.png" alt="" />Status</a></li>
-      <li><a href="verixen.html"><img class="header-ico" src="media/icons/shield.png" alt="" />Verixen</a></li>
-      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
+      <li><a href="index.html"><img class="header-ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
+      <li><a href="about.html"><img class="header-ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+      <li><a href="store.html"><img class="header-ico" src="media/icons/glyph/shop.png" alt="" />Store</a></li>
+      <li><a href="vote.html"><img class="header-ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
+      <li><a href="status.html" class="active"><img class="header-ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
+      <li><a href="verixen.html"><img class="header-ico" src="media/icons/glyph/shield.png" alt="" />Verixen</a></li>
+      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/glyph/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
       <li class="header-cta-outer"><a class="header-cta" href="about.html#how-to-join">▶ Join Server</a></li>
     </ul>
   </nav>
@@ -94,7 +95,7 @@
   <section class="section" aria-label="Live server status">
     <div class="shell">
 
-      <div class="status-panel fade-up" id="status-panel" role="status" aria-live="polite">
+      <div class="status-panel" data-reveal="zoom" id="status-panel" role="status" aria-live="polite">
         <div class="status-panel-indicator">
           <span class="status-panel-dot" id="panel-dot"></span>
           <span class="status-panel-text" id="panel-text">Checking server…</span>
@@ -115,7 +116,7 @@
         </div>
       </div>
 
-      <div class="status-detail-row fade-up" style="transition-delay:0.1s" aria-label="Connection details">
+      <div class="status-detail-row" data-reveal="wipe" aria-label="Connection details">
         <div class="status-detail-chip">
           <span class="sdc-label"><i class="fa-solid fa-network-wired"></i> IP Address</span>
           <span class="sdc-value">play.crabsmp.net</span>
@@ -137,6 +138,8 @@
     </div>
   </section>
 
+  <div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
+
   <section class="section section--alt" aria-label="Get help connecting">
     <div class="shell">
       <div class="section-head">
@@ -144,9 +147,9 @@
         <h2 class="s-headline">Having Trouble?</h2>
       </div>
       <div class="status-help-grid">
-        <div class="status-help-card fade-up">
+        <div class="status-help-card" data-reveal="drop">
           <span class="status-help-icon status-help-icon--blue">
-            <img src="media/icons/discord.png" alt="" />
+            <img src="media/icons/glyph/discord.png" alt="" />
           </span>
           <h3>Ask in Discord</h3>
           <p>Post in #support and the team will get you connected.</p>
@@ -154,15 +157,22 @@
             <i class="fa-brands fa-discord"></i> Open Discord
           </a>
         </div>
-        <div class="status-help-card fade-up" style="transition-delay:0.08s">
+        <div class="status-help-card" data-reveal="drop">
           <span class="status-help-icon">
-            <img src="media/icons/logs.png" alt="" />
+            <img src="media/icons/glyph/logs.png" alt="" />
           </span>
           <h3>Read the Join Guide</h3>
           <p>Step-by-step connection instructions for all Bedrock platforms.</p>
           <a class="mc-btn mc-btn--sm mc-btn--ghost" href="about.html#how-to-join">
             <i class="fa-solid fa-circle-info"></i> View Guide
           </a>
+        </div>
+        <div class="status-help-card" data-reveal="drop">
+          <span class="status-help-icon">
+            <img src="media/icons/glyph/tpa.png" alt="" />
+          </span>
+          <h3>Try a Restart First</h3>
+          <p>Server showing online but you still cannot get in? Fully restart Minecraft before asking staff. It clears most connection problems on its own.</p>
         </div>
       </div>
     </div>
@@ -179,13 +189,13 @@
       <i class="fa-brands fa-youtube"></i> YouTube
     </a>
     <a href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener" class="footer-link">
-      <img class="mc-ico" src="media/icons/discord.png" alt="" /> Discord
+      <img class="mc-ico" src="media/icons/glyph/discord.png" alt="" /> Discord
     </a>
     <a href="verixen.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/shield.png" alt="" /> Verixen
+      <img class="mc-ico" src="media/icons/glyph/shield.png" alt="" /> Verixen
     </a>
     <a href="privacy.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/vault.png" alt="" /> Privacy
+      <img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /> Privacy
     </a>
     <a href="index.html?intro=1" class="footer-link" data-replay-intro>
       <i class="fa-solid fa-rotate-right"></i> Replay Intro
@@ -194,14 +204,6 @@
   <p class="footer-copy">© 2026 CrabSMP · All rights reserved · Not affiliated with Mojang or Microsoft.</p>
 </footer>
 
-<dialog id="store-dialog">
-  <h1 class="dialog-title"><img class="mc-ico" src="media/icons/shop.png" alt="" /> Opening the Store</h1>
-  <p>You are about to leave crabsmp.net. Our official store lives at <strong>store.crabsmp.net</strong>, where every purchase goes straight back into the server.</p>
-  <div class="dialog-actions">
-    <button class="mc-btn mc-btn--ghost" data-dialog-close>Stay Here</button>
-    <a class="mc-btn" id="store-dialog-go" href="https://store.crabsmp.net" target="_blank" rel="noopener">Continue</a>
-  </div>
-</dialog>
 
 <script src="javascript/crab.js" defer></script>
 </body>
