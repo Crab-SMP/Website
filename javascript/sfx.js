@@ -730,9 +730,9 @@
     early = !inPress;
     live = build(c, true);
     c.onstatechange = function () {
-      if (c === ctx && c.state === 'running') { ran = true; write(session, WOKE, '1'); }
+      if (c === ctx && c.state === 'running') ran = true;
     };
-    if (c.state === 'running') { ran = true; write(session, WOKE, '1'); }
+    if (c.state === 'running') ran = true;
     /* Older iPhones only open the audio once something has been played
        inside the press itself: a single silent sample does it. */
     if (inPress) {
@@ -774,9 +774,15 @@
      press always starts — which is what a refresh ran into: the page
      rebuilt its sound on load, the browser held it, and presses never
      got it going. */
+  var remembered = false;
+
   function wake() {
     activated = true;
     if (!enabled) return;
+    if (!remembered) {
+      remembered = true;
+      write(session, WOKE, '1');
+    }
     if (ctx && early && ctx.state !== 'running') discard();
     if (!ctx) make(true);
     resume();
@@ -1024,11 +1030,15 @@
      press. Firefox says up front whether it would. Where the browser
      holds it instead (a refresh, usually), it is let go again rather than
      kept waiting, and the first press makes a fresh one (see wake). */
-  var policy = navigator.getAutoplayPolicy ? navigator.getAutoplayPolicy('audiocontext') : 'allowed';
-  if (enabled && read(session, WOKE) && policy === 'allowed') {
+  function startEarly() {
+    var policy = navigator.getAutoplayPolicy ? navigator.getAutoplayPolicy('audiocontext') : 'allowed';
+    if (!enabled || ctx || !read(session, WOKE) || policy !== 'allowed') return;
     make(false);
     setTimeout(function () {
       if (ctx && early && !activated && ctx.state !== 'running') discard();
     }, 800);
   }
+
+  if (document.prerendering) document.addEventListener('prerenderingchange', startEarly, { once: true });
+  else startEarly();
 })();
