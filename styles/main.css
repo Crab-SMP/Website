@@ -1,7 +1,32 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   CrabSMP — the design system.
+
+   Every page loads this first, then one stylesheet of its own. This file owns
+   everything that is shared: tokens, type, the pixel icon set, buttons, the
+   top bar, the hotbar HUD, toasts, the reveal system, page transitions and
+   the footer.
+
+   The idea in one line: cinematic restraint, pixel-native detail. Layout,
+   type scale and motion take their cues from the best product sites — few
+   words, big type, one idea per screen, nothing moving without a reason.
+   Every surface, icon and effect underneath is built from hard-edged pixels,
+   because that is the world the site is selling.
+   ══════════════════════════════════════════════════════════════════════════ */
+
 /* ── Fonts ──────────────────────────────────────────────────────────────
-   MinecraftTen is the chunky display face used for headings and UI labels;
-   Mojangles is the in-game text face used for body copy. Both are served
-   locally from media/fonts so the site has no webfont dependency.          */
+   Three faces, each with one job.
+
+   MinecraftTen is the display face: caps only, very heavy, glorious large
+   and mush small. It is for headlines at 24px and up and nothing else.
+
+   Mojangles is the game's own interface face. It sets anything that is
+   interface rather than prose — nav, buttons, labels, numbers, server
+   addresses — which is exactly the split the game itself makes.
+
+   Inter sets the reading. Paragraphs in a pixel face are tiring past a
+   sentence or two, and it is the pairing Mojang uses on Bedrock's own
+   interface: a pixel face for titles, a clean sans for everything you read.
+   All three are served from media/fonts, so there is no font CDN.          */
 @font-face {
   font-family: 'MinecraftTen';
   src: url('../media/fonts/MinecraftTen.ttf') format('truetype');
@@ -9,7 +34,6 @@
   font-style: normal;
   font-display: swap;
 }
-
 @font-face {
   font-family: 'Mojangles';
   src: url('../media/fonts/Mojangles.ttf') format('truetype');
@@ -17,8 +41,16 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Inter';
+  src: url('../media/fonts/Inter.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
+  /* ── Colour ─────────────────────────────────────────────────────────── */
   --red:          #e23b2c;
   --red-bright:   #f1543f;
   --red-dark:     #8e2118;
@@ -27,640 +59,825 @@
   --red-glow:     rgba(226, 59, 44, 0.30);
 
   --bg:           #100f12;
-  --surface:      #17171b;
-  --panel:        #222329;
-  --panel-hi:     #2c2d34;
-  --line:         #3a3b42;
+  --bg-deep:      #0b0a0d;
+  --surface:      #16161a;
+  --panel:        #1c1d22;
+  --panel-hi:     #25262c;
+  --line:         #2c2d34;
+  --line-hi:      #45464f;
   --black:        #000000;
-
-  --blue:         #34465f;
-  --blue-hi:      #415672;
-  --blue-text:    #8298b8;
-  --blue-deep:    #1a2330;
 
   --white:        #f5f5f6;
   --text:         #d6d7db;
-  --text-dim:     #94959c;
-  --text-faint:   #66676e;
+  --text-dim:     #9a9ba3;
+  --text-faint:   #8e8f97;  /* the dimmest text allowed: 4.5:1 on every surface */
 
-  /* ── Type ─────────────────────────────────────────────────────────────
-     Two faces, and the split between them is by size, not by importance.
+  --blue:         #34465f;
+  --blue-hi:      #415672;
+  --blue-text:    #8fa6c6;
+  --blue-deep:    #1a2330;
 
-     MinecraftTen is a caps-only display face with very heavy strokes. It
-     looks great large, and turns to mush small: by about 20px the counters
-     inside a, e, o and s have closed up and a heading reads as a dark bar.
-     So it is reserved for text at 22px and up — hero titles, section
-     headlines, the intro.
+  /* Minecraft's chat colours, named after their § codes. */
+  --mc-a:         #55ff55;
+  --mc-b:         #55ffff;
+  --mc-c:         #ff5555;
+  --mc-d:         #ff55ff;
+  --mc-e:         #ffff55;
+  --mc-6:         #ffaa00;
+  --mc-f:         #f5f5f6;
+  --mc-8:         #555562;
 
-     Everything below that — card headings, nav, buttons, labels, badges —
-     uses --font-ui, which is Mojangles, the actual in-game text face. It
-     stays legible down to 13px and is what Minecraft itself uses for buttons
-     and menus, so this is the more faithful choice as well as the readable
-     one. Reach for --font-pixel only when the text is genuinely large.     */
-  --font-pixel:   'MinecraftTen', 'Press Start 2P', 'Courier New', monospace;
+  --xp:           #7dea2a;
+  --xp-hi:        #b8ff6e;
+  --xp-dark:      #2e5c0c;
+  --gold:         #ffcf3a;
+
+  /* The item tooltip: near-black violet with a violet frame that darkens
+     towards the bottom. Every player has read a thousand of these. */
+  --tip-bg:       rgba(16, 0, 16, 0.94);
+  --tip-top:      #5000ff;
+  --tip-bottom:   #28007f;
+
+  /* ── Type ───────────────────────────────────────────────────────────── */
+  --font-display: 'MinecraftTen', 'Mojangles', ui-monospace, monospace;
   --font-ui:      'Mojangles', ui-monospace, 'Courier New', monospace;
-  --font-mono:    'Mojangles', ui-monospace, 'Courier New', monospace;
-  --font-body:    'Mojangles', ui-monospace, 'Courier New', monospace;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* Old names, kept so nothing that still says them breaks. */
+  --font-pixel:   var(--font-display);
+  --font-body:    var(--font-sans);
+  --font-mono:    var(--font-ui);
 
+  /* A fluid scale. The display sizes are large on purpose: a headline that
+     owns the screen needs fewer words next to it. */
+  --fs-hero:      clamp(42px, 7vw, 104px);
+  --fs-d1:        clamp(38px, 6.2vw, 92px);
+  --fs-d2:        clamp(32px, 4.6vw, 66px);
+  --fs-d3:        clamp(26px, 3vw, 40px);
+  --fs-d4:        clamp(22px, 2.1vw, 28px);
+  --fs-statement: clamp(25px, 3.3vw, 46px);
+  --fs-lead:      clamp(18px, 1.55vw, 21px);
+  --fs-body:      17px;
+  --fs-small:     15px;
+  --fs-label:     14px;
+
+  /* ── Space ──────────────────────────────────────────────────────────── */
   --shell:        1200px;
-  --border:       2px solid var(--black);
+  --shell-wide:   1320px;
+  --gutter:       clamp(20px, 5vw, 48px);
+  --section-y:    clamp(96px, 12vw, 176px);
+  --topbar-h:     74px;
+  --topbar-h-tight: 60px;
 
-  /* Minecraft GUI bevel: lit on the top-left, shaded on the bottom-right.
-     --bevel reads as a raised panel, --bevel-in as a sunken slot.          */
-  --bevel:        inset 2px 2px 0 rgba(255, 255, 255, 0.10), inset -2px -2px 0 rgba(0, 0, 0, 0.55);
-  --bevel-in:     inset 2px 2px 0 rgba(0, 0, 0, 0.70), inset -2px -2px 0 rgba(255, 255, 255, 0.07);
+  /* ── Pixel scale ────────────────────────────────────────────────────── */
+  /* How many CSS px one pixel of interface art covers. Borders, bevels and
+     outlines are all multiples of it, so the chrome shares one pixel size. */
+  --g:            2px;
+  --border:       var(--g) solid var(--black);
+  --bevel:        inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.07), inset calc(var(--g) * -1) calc(var(--g) * -1) 0 rgba(0, 0, 0, 0.45);
+  --bevel-in:     inset var(--g) var(--g) 0 rgba(0, 0, 0, 0.7), inset calc(var(--g) * -1) calc(var(--g) * -1) 0 rgba(255, 255, 255, 0.06);
 
-  /* The bevel is folded into the card shadows so every panel on every page
-     picks up the GUI edge without repeating itself. */
-  --shadow-card:  var(--bevel), 0 5px 0 rgba(0, 0, 0, 0.55), 0 12px 26px rgba(0, 0, 0, 0.45);
-  --shadow-pop:   var(--bevel), 0 9px 0 rgba(0, 0, 0, 0.6), 0 20px 40px rgba(0, 0, 0, 0.6);
-
-  /* Minecraft renders text with a hard diagonal drop shadow, never a blur.
-     The offset has to scale with the text: 2px under 15px type is nearly as
-     thick as the strokes themselves and closes up the letters, which is half
-     of why the small headings were unreadable. --txt-shadow-sm goes with
-     --font-ui, --txt-shadow and -lg with display type. */
   --txt-shadow-sm: 1px 1px 0 rgba(0, 0, 0, 0.75);
   --txt-shadow:    2px 2px 0 rgba(0, 0, 0, 0.75);
-  --txt-shadow-lg: 4px 4px 0 rgba(0, 0, 0, 0.85);
+  --txt-shadow-lg: 0.055em 0.055em 0 rgba(0, 0, 0, 0.7);
 
   --tex-stone:     url('../media/ui/textures/stone.png');
   --tex-deepslate: url('../media/ui/textures/deepslate.png');
   --tex-nether:    url('../media/ui/textures/nether.png');
   --tex-water:     url('../media/ui/textures/water.png');
   --tex-crab:      url('../media/ui/textures/crab.png');
+  --tex-bedrock:   url('../media/ui/textures/bedrock.png');
+  --tex-glint:     url('../media/ui/textures/glint.png');
 
+  /* ── Motion ─────────────────────────────────────────────────────────── */
+  /* One system for the whole site. --ease-out is the workhorse: fast off
+     the mark and a long settle, which is what makes an entrance feel
+     expensive rather than busy. The pop curves are kept for small things
+     answering a press, never for content arriving. */
   --ease:         cubic-bezier(.2, .7, .2, 1);
+  --ease-out:     cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out:  cubic-bezier(.65, 0, .35, 1);
   --ease-pop:     cubic-bezier(.34, 1.56, .64, 1);
-  --ease-pop-lg:  cubic-bezier(.28, 1.85, .5, 1);
 
-  /* ── Motion scale ─────────────────────────────────────────────────────
-     Five durations cover the whole site, and every transition picks one of
-     them. They scale with weight: the bigger the thing that moves, the
-     longer it is allowed to take.
-
-       --dur-tap     keeping up with the pointer: colour, opacity, a marker
-       --dur-move    a small shift: an icon, an underline, a nudge
-       --dur-lift    a whole panel rising off the page under the cursor
-       --dur-enter   something arriving on screen for the first time
-       --dur-stage   the set pieces: the intro, the hero dealing itself out
-
-     Reaching for a number outside this list is what makes a page read as a
-     pile of unrelated effects instead of one system.                       */
+  /* Five durations, scaled by weight: the bigger the thing that moves, the
+     longer it may take. A number outside this list is how a page ends up
+     reading as a pile of unrelated effects. */
   --dur-tap:      120ms;
-  --dur-move:     220ms;
-  --dur-lift:     340ms;
-  --dur-enter:    420ms;
-  --dur-stage:    620ms;
+  --dur-move:     240ms;
+  --dur-lift:     360ms;
+  --dur-enter:    900ms;
+  --dur-stage:    1200ms;
+  --stagger:      80ms;
+  --dur-idle:     4400ms;
 
-  /* Gap between one revealed element and the next in the same group. */
-  --stagger:      70ms;
+  /* Written by crab.js. */
+  --dpr: 1;
 
-  /* Scroll progress, 0–1, written by crab.js on :root each frame. */
-  --scroll-progress: 0;
+  --lift:         -3px;
+  --lift-sm:      -2px;
+
+  --z-topbar:     200;
+  --z-toast:      300;
+  --z-intro:      1000;
+  --z-skip:       1100;
 }
 
+/* A touch screen keeps :hover on whatever was tapped last, and a card left
+   floating off the page is what reads as a bug. */
+@media (hover: none) {
+  :root { --lift: 0px; --lift-sm: 0px; }
+}
+
+/* The page moving under a still pointer drags every card beneath it through
+   its hover state, and a hover that lifts its element slides it out from
+   under the cursor and back. crab.js marks the page as moving for as long as
+   it is, and every lift on the site goes through these two tokens. */
+html.is-scrolling { --lift: 0px; --lift-sm: 0px; }
+
+/* ── Reset & base ───────────────────────────────────────────────────────*/
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   font-size: 100%;
-  scroll-behavior: smooth;
   color-scheme: dark;
   -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--topbar-h) + 16px);
+  scroll-behavior: smooth;
 }
-
 html.has-smooth-scroll { scroll-behavior: auto; }
 
 body {
-  font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  letter-spacing: 0.3px;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.65;
   color: var(--text);
   background: var(--bg);
-  overflow-x: hidden;
+  /* clip, not hidden: hidden would make body a scroll container and break
+     every position: sticky on the site. */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv11', 'ss01';
 }
 
-#smooth-scroll-wrap {
-  will-change: transform;
-}
-
-img, svg, iframe { display: block; max-width: 100%; }
+img, svg, video, canvas, iframe { display: block; max-width: 100%; }
 img { height: auto; }
-/* Textured containers set image-rendering: pixelated; keep real artwork
-   smooth unless a rule opts it in explicitly. */
-img, iframe { image-rendering: auto; }
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; }
-button { font: inherit; color: inherit; letter-spacing: inherit; }
-strong { color: var(--white); }
+button { font: inherit; color: inherit; letter-spacing: inherit; background: none; border: 0; cursor: pointer; }
+strong { color: var(--white); font-weight: 600; }
+em { font-style: normal; }
+code, kbd { font-family: var(--font-ui); font-size: 0.95em; }
+[hidden] { display: none !important; }
 
 ::selection { background: var(--red); color: var(--white); }
 
 :focus-visible {
-  outline: 3px solid var(--white);
-  outline-offset: 2px;
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
 }
 
-::-webkit-scrollbar { width: 16px; }
-::-webkit-scrollbar-track {
-  background-color: var(--bg);
-  background-image: var(--tex-deepslate);
-  background-size: 16px 16px;
-  border-left: 2px solid var(--black);
-}
+a, button, summary, [role="button"], [role="tab"] { -webkit-tap-highlight-color: transparent; }
+
+/* A slim pixel scrollbar: dark track, a block of a thumb with a hard edge. */
+html { scrollbar-color: #3a3b42 var(--bg-deep); }
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--red-dark);
-  background-image: var(--tex-crab);
-  background-size: 16px 16px;
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel);
+  background: #34353c;
+  border: 2px solid var(--bg-deep);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.08);
 }
-::-webkit-scrollbar-thumb:hover { background-color: var(--red); }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
 
 .visually-hidden {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-#skip-navigation-link {
-  position: fixed; top: -120px; left: 12px;
-  z-index: 10000;
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: var(--z-skip);
   padding: 12px 18px;
-  background: var(--red);
-  color: var(--white);
   font-family: var(--font-ui);
   font-size: 15px;
+  color: var(--white);
+  background: var(--red);
   border: var(--border);
   box-shadow: var(--bevel);
   text-shadow: var(--txt-shadow-sm);
-  transition: top var(--dur-move) var(--ease);
+  transform: translateY(-160%);
+  transition: transform var(--dur-move) var(--ease-out);
 }
-#skip-navigation-link:focus { top: 12px; }
+.skip-link:focus { transform: none; }
 
+/* ── Layout ─────────────────────────────────────────────────────────────*/
 .shell {
   width: 100%;
-  max-width: var(--shell);
+  max-width: calc(var(--shell) + var(--gutter) * 2);
   margin-inline: auto;
-  padding-inline: clamp(20px, 5vw, 40px);
+  padding-inline: var(--gutter);
 }
+.shell--wide   { max-width: calc(var(--shell-wide) + var(--gutter) * 2); }
+.shell--narrow { max-width: calc(820px + var(--gutter) * 2); }
 
 .section {
-  padding-block: clamp(52px, 6.5vw, 92px);
-  background-color: var(--bg);
-  background-image: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 2px, transparent 2px 4px);
+  position: relative;
+  padding-block: var(--section-y);
 }
-.section--tight  { padding-block: clamp(40px, 5vw, 64px); }
+.section--deep { background: var(--bg-deep); }
+.section--tight { padding-block: calc(var(--section-y) * 0.62); }
 
-/* Alternate sections show the block texture through a heavy dark wash, so it
-   reads as stone without fighting the text on top of it. */
-.section--alt {
-  background-color: var(--surface);
-  background-image:
-    linear-gradient(rgba(23, 23, 27, 0.9), rgba(23, 23, 27, 0.9)),
-    var(--tex-deepslate);
-  background-size: auto, 48px 48px;
-  image-rendering: pixelated;
+/* ── Card rows ──────────────────────────────────────────────────────────
+   Every simple row of cards is one of these. It is a wrapping flex row
+   rather than a grid because of the last line: a grid packs a short final
+   row to the left, and this centres it while keeping every card the width
+   a full row would give it. Step --row-cols down at breakpoints.           */
+.mc-row {
+  --row-cols: 3;
+  --row-gap: 20px;
+  --row-track: calc((100% - (var(--row-cols) - 1) * var(--row-gap)) / var(--row-cols));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--row-gap);
+}
+.mc-row > * {
+  flex: 1 1 calc(var(--row-track) - 1px);
+  max-width: var(--row-track);
+  min-width: 0;
 }
 
-/* ── Block separator ────────────────────────────────────────────────────
-   A strip of world between two sections, the way the reference site breaks
-   its page up. Drop <div class="mc-sep"><span></span>x3</div> between
-   sections; it is purely decorative.                                      */
-.mc-sep {
-  height: 32px;
-  display: grid;
-  grid-template-columns: 1fr 1.3fr 1fr;
+/* ── Type ───────────────────────────────────────────────────────────────*/
+.display-hero,
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  text-wrap: balance;
+}
+.display-hero { font-size: var(--fs-hero); }
+.display-1    { font-size: var(--fs-d1); }
+.display-2    { font-size: var(--fs-d2); line-height: 1.06; }
+.display-3    { font-size: var(--fs-d3); line-height: 1.1; }
+.display-4    { font-size: var(--fs-d4); line-height: 1.15; }
+
+/* An accented word inside a headline. */
+.display-hero em, .display-1 em, .display-2 em, .display-3 em, .display-4 em { color: var(--red-bright); }
+
+/* Over a photograph the hard shadow earns its place again: it is what keeps
+   white type readable against a bright sky. */
+.on-image { text-shadow: var(--txt-shadow-lg); }
+
+/* The kicker above a headline. The block before it is a single pixel of
+   brand, scaled — the only ornament a heading gets. */
+.label {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding-inline: clamp(14px, 4vw, 30px);
-  background-color: #14151a;
-  background-image:
-    linear-gradient(rgba(16, 17, 21, 0.72), rgba(16, 17, 21, 0.72)),
-    var(--tex-deepslate);
-  background-size: auto, 32px 32px;
-  border-top: 2px solid rgba(255, 255, 255, 0.07);
-  border-bottom: 2px solid var(--black);
-  image-rendering: pixelated;
-  overflow: hidden;
+  gap: 12px;
+  font-family: var(--font-ui);
+  font-size: var(--fs-label);
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red-bright);
+  text-shadow: var(--txt-shadow-sm);
 }
-.mc-sep span {
-  height: 14px;
-  border: 2px solid var(--black);
-  background-repeat: repeat;
-  background-size: 14px 14px;
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.16), inset -1px -1px 0 rgba(0, 0, 0, 0.5);
+.label::before {
+  content: "";
+  width: calc(var(--g) * 4);
+  height: calc(var(--g) * 4);
+  background: currentColor;
+  box-shadow: 0 0 0 var(--g) var(--black), inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.35);
 }
-.mc-sep span:nth-child(1) { background-image: var(--tex-crab); }
-.mc-sep span:nth-child(2) { background-image: var(--tex-stone); }
-.mc-sep span:nth-child(3) { background-image: var(--tex-water); }
+.label--plain::before { display: none; }
 
-/* Each strip pans its own tiles as the separator crosses the viewport, with
-   the middle one running the other way, so the three read as layers of world
-   sliding past at different depths.
-
-   It pans the background rather than moving the element: the tiles repeat, so
-   shifting by a whole number of them (4 x 14px) is seamless and can never
-   open a gap or collide with a neighbour. Scroll-driven timelines are pure
-   decoration here, so browsers without them simply get static strips.      */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    /* The timeline has to be named on the separator and referenced from the
-       strips, rather than each strip just asking for view(). A bare view()
-       resolves against the nearest ancestor scroll container, and .mc-sep is
-       one of those: overflow: hidden makes an element a scroll container even
-       though it never scrolls, so every strip would sit frozen at the middle
-       of a timeline that can never advance. Naming it here anchors the
-       timeline to the separator's own trip through the viewport. */
-    .mc-sep { view-timeline-name: --mc-sep; }
-    .mc-sep span {
-      animation: sepPan linear both;
-      animation-timeline: --mc-sep;
-      animation-range: cover 0% cover 100%;
-    }
-    .mc-sep span:nth-child(2) { animation-name: sepPanReverse; }
-  }
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--text-dim);
+  max-width: 38em;
+  text-wrap: pretty;
 }
-@keyframes sepPan        { to { background-position-x: 56px; } }
-@keyframes sepPanReverse { to { background-position-x: -56px; } }
+.lead strong { color: var(--text); }
 
-/* The stone behind an alternate section drifts one tile over the whole trip
-   across the viewport. Same trick as the separator strips — the background
-   moves, not the box, so a repeating texture can never open a gap — and the
-   travel is exactly 48px, one tile, so the loop is seamless.
-
-   A bare view() is correct here, unlike on .mc-sep span: a section is not a
-   scroll container, so the timeline resolves against the page. */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .section--alt {
-      animation: sectionDrift linear both;
-      animation-timeline: view();
-      animation-range: cover 0% cover 100%;
-    }
-  }
+.prose p + p { margin-top: 1em; }
+.prose a,
+.link {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color var(--dur-tap) var(--ease), text-decoration-color var(--dur-tap) var(--ease);
 }
-@keyframes sectionDrift {
-  from { background-position: 0 0, 0 -24px; }
-  to   { background-position: 0 0, 0  24px; }
-}
+.prose a:hover,
+.link:hover { color: var(--red-bright); text-decoration-color: currentColor; }
 
-.mc-ico {
-  image-rendering: pixelated;
+/* A statement: one big paragraph set in the game's own face, which lights
+   up word by word as it scrolls through the screen. crab.js writes one
+   custom property, --lit (how many words are lit), and each word works out
+   its own brightness from its index — the loop never touches the words. */
+.statement {
+  max-width: 23em;
+  font-family: var(--font-ui);
+  font-size: var(--fs-statement);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  text-shadow: 0.06em 0.06em 0 rgba(0, 0, 0, 0.5);
+  text-wrap: pretty;
+}
+.statement--center { margin-inline: auto; text-align: center; }
+.statement .lw { opacity: clamp(0.13, calc(var(--lit, 99) - var(--i)), 1); }
+
+/* Headline blocks. The measure is set here so a section head never stretches
+   a headline across a wide screen. */
+.head { max-width: 920px; }
+.head--center { margin-inline: auto; text-align: center; }
+.head--center .lead { margin-inline: auto; }
+.head > * + * { margin-top: 22px; }
+.head > .label + * { margin-top: 20px; }
+.head + * { margin-top: clamp(44px, 6vw, 80px); }
+
+/* ── Icons ──────────────────────────────────────────────────────────────
+   Two families, both pixel art, both only ever at whole multiples of
+   their pixel grid. A 16px glyph shown at 22px drops and doubles pixels
+   unevenly, which is what made the old icons look smudged; shown at 16,
+   32 or 48 every pixel lands on the same number of screen pixels.
+
+   Where the device pixel ratio is fractional, round() snaps the size to
+   whole device pixels as well — a 1.25x laptop gets 25.6 CSS px, which is
+   exactly 32 device pixels. Browsers without round() use the plain size.
+
+   .i  is the single-colour UI set (media/icons/px, 8x8), drawn as a mask
+       so it takes the colour of the text around it.
+   .glyph is the full-colour item art from the resource pack (16x16).     */
+.i {
+  --s: 2;
   display: inline-block;
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
   flex-shrink: 0;
-  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.5));
+  width: calc(8px * var(--s));
+  height: calc(8px * var(--s));
+  width: calc(round(nearest, 8px * var(--s) * var(--dpr), 8px) / var(--dpr));
+  height: calc(round(nearest, 8px * var(--s) * var(--dpr), 8px) / var(--dpr));
+  background: currentColor;
+  -webkit-mask: var(--i) center / 100% 100% no-repeat;
+  mask: var(--i) center / 100% 100% no-repeat;
+  vertical-align: -0.18em;
 }
-.mc-ico--sm { width: 15px; height: 15px; }
-.mc-ico--lg { width: 38px; height: 38px; }
-.mc-ico--xl { width: 58px; height: 58px; }
+.i--3 { --s: 3; }
+/* px-icons:start — generated by tools/gen_pixels.py; do not edit by hand. */
+:root {
+  --px-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='6' height='1'/%3E%3Crect x='2' y='1' width='1' height='1'/%3E%3Crect x='7' y='1' width='1' height='1'/%3E%3Crect x='0' y='2' width='6' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='5' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='5' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='1' height='1'/%3E%3Crect x='5' y='6' width='1' height='1'/%3E%3Crect x='0' y='7' width='6' height='1'/%3E%3C/svg%3E");
+  --px-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='6' y='1' width='2' height='1'/%3E%3Crect x='5' y='2' width='2' height='1'/%3E%3Crect x='0' y='3' width='2' height='1'/%3E%3Crect x='4' y='3' width='2' height='1'/%3E%3Crect x='1' y='4' width='4' height='1'/%3E%3Crect x='2' y='5' width='2' height='1'/%3E%3C/svg%3E");
+  --px-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='3' y='3' width='2' height='1'/%3E%3Crect x='3' y='4' width='2' height='1'/%3E%3Crect x='2' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3C/svg%3E");
+  --px-arrow-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='4' y='1' width='2' height='1'/%3E%3Crect x='5' y='2' width='2' height='1'/%3E%3Crect x='0' y='3' width='8' height='1'/%3E%3Crect x='0' y='4' width='8' height='1'/%3E%3Crect x='5' y='5' width='2' height='1'/%3E%3Crect x='4' y='6' width='2' height='1'/%3E%3C/svg%3E");
+  --px-arrow-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='2' height='1'/%3E%3Crect x='3' y='1' width='2' height='1'/%3E%3Crect x='3' y='2' width='2' height='1'/%3E%3Crect x='3' y='3' width='2' height='1'/%3E%3Crect x='0' y='4' width='8' height='1'/%3E%3Crect x='1' y='5' width='6' height='1'/%3E%3Crect x='2' y='6' width='4' height='1'/%3E%3Crect x='3' y='7' width='2' height='1'/%3E%3C/svg%3E");
+  --px-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='5' height='1'/%3E%3Crect x='6' y='1' width='2' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='3' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='2' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='0' y='7' width='1' height='1'/%3E%3C/svg%3E");
+  --px-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='4' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='8' height='1'/%3E%3Crect x='0' y='4' width='3' height='1'/%3E%3Crect x='5' y='4' width='3' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='8' height='1'/%3E%3C/svg%3E");
+  --px-chevron-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='1' y='4' width='2' height='1'/%3E%3Crect x='5' y='4' width='2' height='1'/%3E%3Crect x='2' y='5' width='4' height='1'/%3E%3Crect x='3' y='6' width='2' height='1'/%3E%3C/svg%3E");
+  --px-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1'/%3E%3Crect x='2' y='1' width='2' height='1'/%3E%3Crect x='2' y='2' width='3' height='1'/%3E%3Crect x='2' y='3' width='4' height='1'/%3E%3Crect x='2' y='4' width='4' height='1'/%3E%3Crect x='2' y='5' width='3' height='1'/%3E%3Crect x='2' y='6' width='2' height='1'/%3E%3Crect x='2' y='7' width='1' height='1'/%3E%3C/svg%3E");
+  --px-refresh: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='4' height='1'/%3E%3Crect x='7' y='0' width='1' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='2' height='1'/%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='3' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='7' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3Crect x='2' y='7' width='4' height='1'/%3E%3C/svg%3E");
+  --px-clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='4' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='2' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='7' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3Crect x='2' y='7' width='4' height='1'/%3E%3C/svg%3E");
+  --px-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='0' width='6' height='1'/%3E%3Crect x='0' y='1' width='3' height='1'/%3E%3Crect x='5' y='1' width='3' height='1'/%3E%3Crect x='0' y='2' width='8' height='1'/%3E%3Crect x='0' y='3' width='3' height='1'/%3E%3Crect x='5' y='3' width='3' height='1'/%3E%3Crect x='0' y='4' width='3' height='1'/%3E%3Crect x='5' y='4' width='3' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='3' height='1'/%3E%3Crect x='5' y='6' width='3' height='1'/%3E%3Crect x='1' y='7' width='6' height='1'/%3E%3C/svg%3E");
+  --px-warning: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='2' height='1'/%3E%3Crect x='2' y='1' width='4' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='1' y='3' width='2' height='1'/%3E%3Crect x='5' y='3' width='2' height='1'/%3E%3Crect x='1' y='4' width='6' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='8' height='1'/%3E%3C/svg%3E");
+  --px-swipe: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='0' y='2' width='7' height='1'/%3E%3Crect x='1' y='3' width='1' height='1'/%3E%3Crect x='6' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='7' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3C/svg%3E");
+  --px-youtube: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='6' height='1'/%3E%3Crect x='0' y='2' width='3' height='1'/%3E%3Crect x='4' y='2' width='4' height='1'/%3E%3Crect x='0' y='3' width='3' height='1'/%3E%3Crect x='5' y='3' width='3' height='1'/%3E%3Crect x='0' y='4' width='3' height='1'/%3E%3Crect x='5' y='4' width='3' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='4' y='5' width='4' height='1'/%3E%3Crect x='1' y='6' width='6' height='1'/%3E%3C/svg%3E");
+  --px-tiktok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='4' y='0' width='1' height='1'/%3E%3Crect x='4' y='1' width='2' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='1' y='4' width='4' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='4' y='5' width='1' height='1'/%3E%3Crect x='0' y='6' width='1' height='1'/%3E%3Crect x='4' y='6' width='1' height='1'/%3E%3Crect x='1' y='7' width='3' height='1'/%3E%3C/svg%3E");
+  --px-discord: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='6' height='1'/%3E%3Crect x='0' y='2' width='8' height='1'/%3E%3Crect x='0' y='3' width='2' height='1'/%3E%3Crect x='3' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='0' y='4' width='2' height='1'/%3E%3Crect x='3' y='4' width='2' height='1'/%3E%3Crect x='6' y='4' width='2' height='1'/%3E%3Crect x='0' y='5' width='8' height='1'/%3E%3Crect x='1' y='6' width='2' height='1'/%3E%3Crect x='5' y='6' width='2' height='1'/%3E%3C/svg%3E");
+  --px-paypal: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='0' width='5' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='1' y='3' width='5' height='1'/%3E%3Crect x='1' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3C/svg%3E");
+  --px-users: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='2' height='1'/%3E%3Crect x='1' y='1' width='4' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='1' y='2' width='4' height='1'/%3E%3Crect x='6' y='2' width='2' height='1'/%3E%3Crect x='2' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='6' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='4' height='1'/%3E%3Crect x='6' y='5' width='2' height='1'/%3E%3Crect x='0' y='6' width='6' height='1'/%3E%3Crect x='7' y='6' width='1' height='1'/%3E%3Crect x='0' y='7' width='6' height='1'/%3E%3C/svg%3E");
+  --px-menu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='1' width='8' height='1'/%3E%3Crect x='0' y='3' width='8' height='1'/%3E%3Crect x='0' y='5' width='8' height='1'/%3E%3C/svg%3E");
+  --px-speaker: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 8' width='8' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='1' height='1'/%3E%3Crect x='2' y='1' width='2' height='1'/%3E%3Crect x='0' y='2' width='4' height='1'/%3E%3Crect x='0' y='3' width='4' height='1'/%3E%3Crect x='0' y='4' width='4' height='1'/%3E%3Crect x='0' y='5' width='4' height='1'/%3E%3Crect x='2' y='6' width='2' height='1'/%3E%3Crect x='3' y='7' width='1' height='1'/%3E%3C/svg%3E");
+  --px-mute: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' width='8' height='8' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1'/%3E%3Crect x='3' y='0' width='1' height='1'/%3E%3Crect x='1' y='1' width='2' height='1'/%3E%3Crect x='1' y='2' width='2' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='3' y='3' width='1' height='1'/%3E%3C/svg%3E");
+  --px-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' width='36' height='36' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='2' height='1' fill='%231a0707'/%3E%3Crect x='5' y='0' width='2' height='1' fill='%231a0707'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%231a0707'/%3E%3Crect x='2' y='1' width='2' height='1' fill='%23e8262a'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%231a0707'/%3E%3Crect x='5' y='1' width='2' height='1' fill='%23e8262a'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%231a0707'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23e8262a'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23ffc8c8'/%3E%3Crect x='3' y='2' width='5' height='1' fill='%23e8262a'/%3E%3Crect x='8' y='2' width='1' height='1' fill='%231a0707'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='3' width='7' height='1' fill='%23e8262a'/%3E%3Crect x='8' y='3' width='1' height='1' fill='%231a0707'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%239f1519'/%3E%3Crect x='2' y='4' width='5' height='1' fill='%23e8262a'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%239f1519'/%3E%3Crect x='8' y='4' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%231a0707'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%239f1519'/%3E%3Crect x='3' y='5' width='3' height='1' fill='%23e8262a'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%239f1519'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%231a0707'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%231a0707'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%239f1519'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%23e8262a'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%239f1519'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%231a0707'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%231a0707'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%239f1519'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%231a0707'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%231a0707'/%3E%3C/svg%3E");
+}
+.i-copy { --i: var(--px-copy); }
+.i-check { --i: var(--px-check); }
+.i-x { --i: var(--px-x); }
+.i-arrow-right { --i: var(--px-arrow-right); }
+.i-arrow-down { --i: var(--px-arrow-down); }
+.i-external { --i: var(--px-external); }
+.i-lock { --i: var(--px-lock); }
+.i-chevron-down { --i: var(--px-chevron-down); }
+.i-play { --i: var(--px-play); }
+.i-refresh { --i: var(--px-refresh); }
+.i-clock { --i: var(--px-clock); }
+.i-info { --i: var(--px-info); }
+.i-warning { --i: var(--px-warning); }
+.i-swipe { --i: var(--px-swipe); }
+.i-youtube { --i: var(--px-youtube); }
+.i-tiktok { --i: var(--px-tiktok); }
+.i-discord { --i: var(--px-discord); }
+.i-paypal { --i: var(--px-paypal); }
+.i-users { --i: var(--px-users); }
+.i-menu { --i: var(--px-menu); }
+.i-mute { --i: var(--px-mute); }
+.i-chevron { --i: var(--px-chevron-down); }
+/* px-icons:end */
 
+.glyph {
+  --s: 2;
+  flex-shrink: 0;
+  width: calc(16px * var(--s));
+  height: calc(16px * var(--s));
+  width: calc(round(nearest, 16px * var(--s) * var(--dpr), 16px) / var(--dpr));
+  height: calc(round(nearest, 16px * var(--s) * var(--dpr), 16px) / var(--dpr));
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter: drop-shadow(var(--g) var(--g) 0 rgba(0, 0, 0, 0.5));
+}
+/* At 16px the snap costs too much: on a 1.25x screen it would round a
+   small icon down to 12.8px. Small icons keep their size and accept a
+   slightly uneven pixel instead; everything larger stays snapped. */
+.glyph--1,
+.chip .glyph {
+  --s: 1;
+  width: 16px;
+  height: 16px;
+}
+.glyph--3 { --s: 3; }
+
+/* In a centred control — a button, a chip, a tab — an icon's layout box is
+   trimmed to its art. Most item art is narrower than its 16px cell, and
+   the empty strip on the icon's outer side is invisible: centre the box
+   and the label looks pushed over, as if a blank character sat beside it.
+   The per-icon amounts below are measured from the art by
+   tools/gen_icons.py; --s is how many screen pixels one art pixel covers. */
+:is(.mc-btn, .chip, .seg__tab, .tabs__tab) > .glyph {
+  margin-left: calc(var(--tl, 0) * var(--s, 2) * -1px);
+  margin-right: calc(var(--tr, 0) * var(--s, 2) * -1px);
+}
+/* glyph-trim:start — generated by tools/gen_icons.py from the art itself; do not edit by hand. */
+.glyph[src$="/arrow_up.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/ban.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/billboard.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/bounty.png"] { --tl: 1; --tr: 1; }
+.glyph[src$="/castle.png"] { --tl: 0; --tr: 0; }
+.glyph[src$="/chat.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/clan.png"] { --tl: 1; --tr: 1; }
+.glyph[src$="/closed_chest.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/coins_transfer.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/compass.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/crab_chestplate.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/crown_gold.png"] { --tl: 1; --tr: 1; }
+.glyph[src$="/daily_rewards.png"] { --tl: 1; --tr: 2; }
+.glyph[src$="/disc.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/discord.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/elytra.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/fire.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/freeplay.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/friends.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/incoming.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/key_common.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/lifesteal_heart.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/logs.png"] { --tl: 2; --tr: 2; }
+.glyph[src$="/money.png"] { --tl: 1; --tr: 1; }
+.glyph[src$="/moon.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/mt.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/open_chest.png"] { --tl: 2; --tr: 3; }
+.glyph[src$="/rank_crabdemon.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/rank_crabextra.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/rank_crabplus.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/revive_beacon.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/shield.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/shop.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/soul_bottle.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/sparkles.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/star.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/sword.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/tag.png"] { --tl: 3; --tr: 4; }
+.glyph[src$="/totem.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/tpa.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/vault.png"] { --tl: 3; --tr: 3; }
+.glyph[src$="/warps.png"] { --tl: 2; --tr: 3; }
+/* glyph-trim:end */
+.glyph--4 { --s: 4; }
+.glyph--6 { --s: 6; }
+
+/* Old icon classes, sized onto the same grid. */
+.mc-ico { width: 32px; height: 32px; image-rendering: pixelated; object-fit: contain; flex-shrink: 0; }
+.mc-ico--sm { width: 16px; height: 16px; }
+.mc-ico--lg { width: 48px; height: 48px; }
+.mc-ico--xl { width: 64px; height: 64px; }
 .ico-px { image-rendering: pixelated; }
 
-.btn-ico {
+/* ── Buttons ────────────────────────────────────────────────────────────
+   Real Minecraft buttons: a 5x7 sprite stretched as a nine-slice, so the
+   outline and the bottom lip stay pixel-crisp at any size. Pressing swaps
+   to the lip-less sprite and drops the label, exactly like the widget in
+   game. Re-skin by overriding the three --btn-* variables, never with a
+   background or a border.                                                 */
+.mc-btn {
+  --btn-face:       url('../media/ui/buttons/red/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/red/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/red/default.png');
+  --bw: 3px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 26px calc(15px + var(--bw) * 2);
+  font-family: var(--font-ui);
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--white);
+  text-shadow: var(--txt-shadow-sm);
+  background: none;
+  border: 0 solid transparent;
+  border-image-source: var(--btn-face);
+  border-image-slice: 2 2 4 2 fill;
+  border-image-width: calc(var(--bw) * 2) calc(var(--bw) * 2) calc(var(--bw) * 4) calc(var(--bw) * 2);
+  border-image-repeat: stretch;
   image-rendering: pixelated;
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.55));
+  cursor: pointer;
+  transition: transform var(--dur-move) var(--ease-out);
+}
+.mc-btn .i { transition: transform var(--dur-move) var(--ease-out); }
+.mc-btn:hover {
+  border-image-source: var(--btn-face-hover);
+  transform: translateY(var(--lift-sm));
+}
+.mc-btn:hover .i-arrow-right,
+.mc-btn:hover .i-external { transform: translateX(3px); }
+.mc-btn:hover .i-arrow-down { transform: translateY(2px); }
+
+/* An invisible skirt holding the hover area where the button sat before it
+   rose, so a pointer resting on its bottom edge does not chatter. */
+.mc-btn::after {
+  content: "";
+  position: absolute;
+  inset: -5px 0 -7px;
 }
 
-.section-head {
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto clamp(32px, 4.5vw, 48px);
+.mc-btn:active {
+  border-image-source: var(--btn-face-down);
+  border-image-slice: 2 2 2 2 fill;
+  border-image-width: calc(var(--bw) * 2);
+  padding-top: calc(15px + var(--bw) * 2);
+  padding-bottom: 15px;
+  transform: none;
+  transition: none;
 }
 
-/* The eyebrow is a kicker: it wants to read as a small caps label above the
-   headline. The old display face only had capitals, so it got that for free;
-   --font-ui has real lowercase, so the caps have to be asked for. */
-.eyebrow {
+.mc-btn--sm {
+  --bw: 2px;
+  gap: 9px;
+  padding: 11px 17px calc(11px + var(--bw) * 2);
+  font-size: 15px;
+}
+.mc-btn--sm:active { padding-top: calc(11px + var(--bw) * 2); padding-bottom: 11px; }
+
+.mc-btn--lg {
+  padding: 19px 32px calc(19px + var(--bw) * 2);
+  font-size: 19px;
+}
+.mc-btn--lg:active { padding-top: calc(19px + var(--bw) * 2); padding-bottom: 19px; }
+
+.mc-btn--block { display: flex; width: 100%; }
+
+.mc-btn--ghost {
+  --btn-face:       url('../media/ui/buttons/dark/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/dark/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/dark/default.png');
+  color: var(--text);
+}
+.mc-btn--ghost:hover { color: var(--white); }
+.mc-btn--blue {
+  --btn-face:       url('../media/ui/buttons/blue/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/blue/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/blue/default.png');
+}
+.mc-btn--green {
+  --btn-face:       url('../media/ui/buttons/green/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/green/default.png');
+}
+.mc-btn--gold {
+  --btn-face:       url('../media/ui/buttons/gold/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/gold/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/gold/default.png');
+  color: #23180a;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+.mc-btn--purple {
+  --btn-face:       url('../media/ui/buttons/purple/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/purple/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/purple/default.png');
+}
+
+/* A control with a success state ("Copy IP" / "Copied!") stacks both
+   states in one grid cell. It is always as wide as the wider of the two,
+   each state centres itself on its own, and changing state moves nothing
+   — so a row of centred buttons never slides sideways under a click.
+   Hidden states are visibility: hidden, which also keeps them out of the
+   accessible name. */
+.swap {
+  display: inline-grid;
+  gap: inherit;
+}
+.swap > * {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+}
+.swap__done { visibility: hidden; }
+.is-success .swap__idle { visibility: hidden; }
+.is-success .swap__done { visibility: visible; }
+
+/* A button that has just done its job turns green and nods once. */
+.mc-btn.is-success {
+  --btn-face:       url('../media/ui/buttons/green/unchecked.png');
+  --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
+  --btn-face-down:  url('../media/ui/buttons/green/default.png');
+  animation: nod var(--dur-lift) var(--ease-pop);
+}
+@keyframes nod {
+  35% { transform: scale(1.05); }
+}
+
+/* A quiet text action: label plus arrow, underline on hover. */
+.text-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-family: var(--font-ui);
   font-size: 16px;
-  line-height: 1;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--red);
-  text-shadow: var(--txt-shadow-sm);
-  margin-bottom: 16px;
-}
-.eyebrow::before {
-  content: "";
-  width: 12px; height: 12px;
-  background: var(--red);
-  border: 2px solid var(--black);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.35);
-}
-
-.s-headline {
-  font-family: var(--font-pixel);
-  font-size: clamp(26px, 3.4vw, 40px);
-  line-height: 1.18;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.02em;
   color: var(--white);
-  text-shadow: var(--txt-shadow-lg);
+  text-shadow: var(--txt-shadow-sm);
 }
-
-.s-sub {
-  margin: 18px auto 0;
-  max-width: 640px;
-  font-size: 1.05rem;
-  color: var(--text-dim);
-  line-height: 1.6;
+.text-link span {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  padding-bottom: 3px;
+  transition: background-size var(--dur-move) var(--ease-out);
 }
+.text-link:hover span { background-size: 100% 2px; }
+.text-link .i { color: var(--red-bright); transition: transform var(--dur-move) var(--ease-out); }
+.text-link:hover .i-arrow-right,
+.text-link:hover .i-external { transform: translateX(4px); }
 
+/* ── Enchanted ──────────────────────────────────────────────────────────
+   The item glint. Anything marked enchanted carries the game's shimmer: a
+   dithered band of violet light that crawls across it one texture pixel
+   at a time. steps() is what keeps it pixel art — a smooth scroll would
+   resample the texture every frame and blur it.                           */
+.enchanted { position: relative; isolation: isolate; }
+.enchanted::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: var(--tex-glint) 0 0 / 128px 128px;
+  image-rendering: pixelated;
+  mix-blend-mode: screen;
+  opacity: var(--glint-o, 0.32);
+  animation: glint 5.5s steps(64) infinite;
+}
+@keyframes glint { to { background-position: 128px 128px; } }
+
+/* On a sprite button the shimmer stays on the face: inside the outline and
+   clear of the lip, the way the glint sits on an item and not its border. */
+.mc-btn.enchanted::before {
+  inset: var(--bw) var(--bw) calc(var(--bw) * 3);
+  --glint-o: 0.42;
+}
+.mc-btn.enchanted:active::before { inset: calc(var(--bw) * 3) var(--bw) var(--bw); }
+
+/* ── Surfaces ───────────────────────────────────────────────────────────
+   Flat, hard-edged, lit from the top-left: the Bedrock interface rather
+   than a stone texture. Texture is saved for the places it means
+   something — a slot, a strip of bedrock, a block of nether.              */
 .panel {
-  background-color: var(--panel);
+  position: relative;
+  background: var(--surface);
   border: var(--border);
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--bevel);
+}
+.panel--raised {
+  box-shadow: var(--bevel), 0 18px 40px -18px rgba(0, 0, 0, 0.8);
 }
 
+/* A sunken slot: the text field, the inventory square. */
+.slot {
+  display: block;
+  padding: 12px 16px;
+  font-family: var(--font-ui);
+  color: var(--white);
+  text-shadow: var(--txt-shadow);
+  background: var(--bg-deep);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+
+/* A small pill of information: a chip. */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 9px 15px;
+  padding: 8px 13px;
   font-family: var(--font-ui);
   font-size: 14px;
   line-height: 1;
-  letter-spacing: 0.5px;
-  color: var(--text-dim);
-  background: var(--panel);
-  border: 2px solid var(--black);
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: rgba(16, 15, 18, 0.72);
+  border: var(--border);
   box-shadow: var(--bevel);
   text-shadow: var(--txt-shadow-sm);
 }
-.chip i { color: var(--red); }
-.chip--red {
-  color: #f1b9b1;
-  background: #3a1c18;
-  border-color: var(--black);
-}
-.chip--red i { color: var(--red-bright); }
+.chip--red { color: #f6c9c2; background: #3a1c18; }
 
-/* ── Reveal on scroll ───────────────────────────────────────────────────
-   Everything that arrives on scroll runs through one primitive. Mark the
-   element with [data-reveal] (or the older .fade-up, kept as an alias so
-   existing markup keeps working) and crab.js adds .is-revealed the first
-   time it crosses into view.
-
-   Siblings in the same container are handed a --step index by crab.js, so
-   a row of cards lands one after another. That index is why no page
-   hard-codes a transition-delay any more: retune --stagger once and every
-   grid on the site re-times with it.
-
-   The feel is deliberately blocky rather than floaty. A short drop, a
-   fraction of a scale, and a small overshoot as it lands. No blur, no long
-   slide, nothing still drifting after it has arrived.
-
-   Every rule that hides something is scoped to html.js, a class crab.js sets
-   on itself. With scripting off or broken the class never lands, nothing is
-   ever hidden, and the page reads as plain static content.                 */
-html.js [data-reveal],
-html.js .fade-up {
-  --step: 0;
-  opacity: 0;
-  transform: translate3d(0, 26px, 0) scale(0.97);
-  transition:
-    opacity var(--dur-enter) var(--ease),
-    transform var(--dur-stage) var(--ease-pop);
-  transition-delay: calc(var(--step) * var(--stagger));
-}
-
-/* Blocks fall into place from above, the way one lands when you place it. */
-html.js [data-reveal="drop"]  { transform: translate3d(0, -22px, 0) scale(0.97); }
-html.js [data-reveal="left"]  { transform: translate3d(-30px, 0, 0); }
-html.js [data-reveal="right"] { transform: translate3d(30px, 0, 0); }
-html.js [data-reveal="zoom"]  { transform: scale(0.9); }
-
-/* A wipe uncovers left to right with a hard edge and no movement at all,
-   which is what a screenshot or a wide slab wants: sliding a picture around
-   pulls the eye to the frame instead of to the picture. clip-path is not a
-   transform, so this variant carries its own transition, and it needs its
-   own line in the reduced-motion reset further down. */
-html.js [data-reveal="wipe"] {
-  transform: none;
-  clip-path: inset(0 100% 0 0);
-  transition:
-    opacity var(--dur-enter) var(--ease),
-    transform var(--dur-move) var(--ease),
-    clip-path var(--dur-stage) var(--ease);
-}
-html.js [data-reveal="wipe"].is-revealed { clip-path: inset(0 0 0 0); }
-
-/* A panel swinging down on its top edge, like a sign dropping into place.
-   The perspective is on the element rather than on a parent so the variant
-   works wherever it is dropped, without the parent having to know. */
-html.js [data-reveal="flip"] {
-  transform: perspective(700px) rotateX(-16deg) translate3d(0, 14px, 0);
-  transform-origin: 50% 0;
-}
-
-/* Section headings lead their own section, so they rise on their own and
-   without the scale: the eyebrow, headline and blurb move as one slab. */
-html.js .section-head {
-  opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  transition:
-    opacity var(--dur-enter) var(--ease),
-    transform var(--dur-stage) var(--ease-pop);
-}
-
-html.js [data-reveal].is-revealed,
-html.js .fade-up.is-revealed,
-html.js .section-head.is-revealed {
-  opacity: 1;
-  transform: none;
-}
-
-/* Two details that make a section arrive rather than simply appear, and both
-   ride the heading's own reveal rather than a second observer.
-
-   The headline draws its rule as it lands, growing from the centre, so the
-   eye is led along the title instead of finding a bar that was always there.
-   The eyebrow's block is placed at an angle and settles square, the way a
-   piece does when you put it down. The delays are picked from the motion
-   scale like everything else, so both stay in step if the scale is retuned. */
-/* Scoped to the section heading rather than to .s-headline itself: a couple
-   of pages use the class for a standalone call to action, and those are not
-   leading a section, so they get no rule to draw. */
-.section-head .s-headline::after {
-  content: "";
-  display: block;
-  width: 74px;
+/* A live status dot: one block of redstone lamp. */
+.dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 10px;
   height: 10px;
-  margin: 20px auto 0;
-  background: var(--red);
-  border: 2px solid var(--black);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.3);
+  background: var(--text-faint);
+  box-shadow: 0 0 0 2px var(--black), inset 2px 2px 0 rgba(255, 255, 255, 0.35);
 }
-html.js .section-head .s-headline::after {
-  transform: scaleX(0);
-  transition: transform var(--dur-stage) var(--ease-pop);
-  transition-delay: var(--dur-move);
+.dot--on  { background: var(--mc-a); animation: lamp 2.4s steps(2, jump-none) infinite; }
+.dot--off { background: var(--mc-c); }
+@keyframes lamp {
+  50% { background: #2bd12b; }
 }
-html.js .section-head.is-revealed .s-headline::after { transform: none; }
 
-html.js .section-head .eyebrow::before {
-  transform: rotate(45deg) scale(0.72);
-  transition: transform var(--dur-lift) var(--ease-pop);
-}
-html.js .section-head.is-revealed .eyebrow::before { transform: none; }
-
-/* ── Loading screen ─────────────────────────────────────────────────────
-   Modelled on Minecraft's "Building terrain" bar: a sunken black slot with
-   a textured bar filling it.                                              */
-#loading {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(rgba(16, 15, 18, 0.93), rgba(16, 15, 18, 0.93)),
-    var(--tex-deepslate);
-  background-size: auto, 48px 48px;
-  image-rendering: pixelated;
-}
-.loading-logo {
-  width: clamp(120px, 22vw, 168px);
-  image-rendering: auto;
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.7));
-  animation: loadBob 1.1s ease-in-out infinite alternate;
-}
-@keyframes loadBob {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-14px); }
-}
-.loading-bar {
-  position: relative;
-  width: min(340px, 74vw);
-  height: 24px;
-  padding: 4px;
-  background: var(--black);
-  border: var(--border);
-  box-shadow: var(--bevel-in);
-}
-.loading-bar__fill {
-  display: block;
-  height: 100%;
-  width: 0;
-  background-color: var(--red);
-  background-image: var(--tex-crab);
-  background-size: 16px 16px;
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.25), inset 0 -3px 0 rgba(0, 0, 0, 0.4);
-  animation: loadFill 1.7s var(--ease) forwards;
-}
-.loading-bar::after {
-  content: "";
+/* The item tooltip, for anything with data-tip. */
+[data-tip] { position: relative; }
+[data-tip]::after {
+  content: attr(data-tip);
   position: absolute;
-  inset: 4px;
-  background: repeating-linear-gradient(90deg, transparent 0 22px, rgba(0, 0, 0, 0.5) 22px 24px);
-  pointer-events: none;
-}
-@keyframes loadFill { to { width: 100%; } }
-.loading-text {
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 20;
+  padding: 7px 10px 8px;
   font-family: var(--font-ui);
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: var(--text-dim);
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--white);
   text-shadow: var(--txt-shadow-sm);
+  background: var(--tip-bg);
+  border: 2px solid;
+  border-image: linear-gradient(var(--tip-top), var(--tip-bottom)) 1;
+  box-shadow: 0 0 0 2px var(--tip-bg);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 4px);
+  transition: opacity var(--dur-tap) var(--ease), transform var(--dur-move) var(--ease-out);
+}
+[data-tip]:hover::after,
+[data-tip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
-/* ── Header ─────────────────────────────────────────────────────────────
-   A carved stone bar: textured, hard black edge, and a shadow lip hanging
-   underneath so the page below reads as sitting further back.             */
-#site-header {
-  position: sticky;
-  top: 0;
-  z-index: 200;
+.topbar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-topbar);
+  height: var(--topbar-h);
   background-color: #191a1f;
   background-image:
     linear-gradient(rgba(20, 21, 26, 0.9), rgba(14, 15, 19, 0.94)),
     var(--tex-deepslate);
   background-size: auto, 32px 32px;
   image-rendering: pixelated;
-  border-bottom: 2px solid var(--black);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.07), 0 10px 26px rgba(0, 0, 0, 0.55);
-  transition: box-shadow var(--dur-move) var(--ease);
+  border-bottom: var(--g) solid var(--black);
+  box-shadow: inset 0 var(--g) 0 rgba(255, 255, 255, 0.07), 0 10px 26px rgba(0, 0, 0, 0.55);
+  transition: height var(--dur-move) var(--ease), box-shadow var(--dur-move) var(--ease);
+  view-transition-name: topbar;
+}
+.topbar.is-scrolled {
+  height: var(--topbar-h-tight);
+  box-shadow: inset 0 var(--g) 0 rgba(255, 255, 255, 0.07), 0 14px 34px rgba(0, 0, 0, 0.75);
 }
 
-/* ── Header entrance ────────────────────────────────────────────────────
-   The bar drops in from above the top of the screen, then deals its items
-   out left to right, so the page assembles itself instead of appearing
-   whole. It runs off the same html.is-ready signal and the same --step index
-   as the hero, which is what keeps the two reading as one sequence rather
-   than two things that happened to animate at once.
-
-   Only the hiding half is scoped to html.js, so a failed script leaves the
-   nav sitting there normally. The bar itself is deliberately quicker than
-   its contents — it has to arrive before anything can land on it.        */
-/* No overshoot on the bar itself. It sits flush against the top of the
-   viewport, so an --ease-pop bounce would carry it a few pixels past its
-   resting place and flash a sliver of the page above it. The items inside
-   can bounce freely; the bar cannot. */
-html.js #site-header {
-  transform: translate3d(0, -100%, 0);
-  transition: transform var(--dur-enter) var(--ease),
-              box-shadow var(--dur-move) var(--ease);
-}
-html.is-ready #site-header { transform: none; }
-
-html.js #site-header nav ul > li,
-html.js .mobile-bar > * {
-  opacity: 0;
-  transform: translate3d(0, -8px, 0);
-  transition: opacity var(--dur-move) var(--ease),
-              transform var(--dur-enter) var(--ease-pop);
-  /* Wait for the bar to land, then follow it across. */
-  transition-delay: calc(220ms + var(--step, 0) * 45ms);
-}
-html.is-ready #site-header nav ul > li,
-html.is-ready .mobile-bar > * {
-  opacity: 1;
-  transform: none;
-}
-
-/* Scroll progress: a red seam that runs across the bottom edge of the bar as
-   the page scrolls. crab.js writes --scroll-progress (0–1) onto :root, so
-   this costs one custom property write per frame and no layout. */
-#site-header::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--red-bright);
-  transform: scaleX(var(--scroll-progress));
-  transform-origin: 0 50%;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Once the hero is behind you the bar tightens and its shadow deepens, so it
-   reads as pinned over the page rather than as part of the hero. */
-#site-header.is-scrolled {
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.07), 0 14px 34px rgba(0, 0, 0, 0.75);
-}
-@media (min-width: 1001px) {
-  #site-header.is-scrolled nav ul { height: 60px; }
-  #site-header.is-scrolled .header-logo { height: 34px; }
-}
-
-#site-header::after {
+.topbar::after {
   content: "";
   position: absolute;
   left: 0;
@@ -669,43 +886,50 @@ html.is-ready .mobile-bar > * {
   height: 10px;
   background-color: #0c0c0f;
   background-image: linear-gradient(180deg, rgba(226, 59, 44, 0.5), rgba(0, 0, 0, 0.65));
-  border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+  border-bottom: var(--g) solid rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
 
-#site-header nav ul {
+.topbar__inner {
   display: flex;
   align-items: center;
-  gap: 0;
-  height: 74px;
-  max-width: var(--shell);
+  gap: 12px;
+  height: 100%;
+  max-width: var(--shell-wide);
   margin-inline: auto;
   padding-inline: clamp(16px, 4vw, 34px);
   image-rendering: auto;
-  transition: height var(--dur-move) var(--ease);
 }
 
-/* Nav items keep their intrinsic width; without this the flex row squeezes the
-   wordmark down to a sliver once the bar gets crowded. */
-#site-header nav ul > li { flex: 0 0 auto; }
-
-.header-logo-outer { margin-right: 16px; }
-.header-logo-outer a { display: flex; align-items: center; }
-.header-logo {
-  height: 44px;
+.topbar__brand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+.topbar__brand img {
   width: auto;
+  height: 44px;
   max-width: none;
   transition: transform var(--dur-enter) var(--ease-pop), height var(--dur-move) var(--ease);
 }
-.header-logo-outer a:hover .header-logo { transform: scale(1.1) rotate(-4deg); }
+.topbar__brand:hover img { transform: scale(1.1) rotate(-4deg); }
+.topbar.is-scrolled .topbar__brand img { height: 34px; }
 
-#site-header nav ul li > a:not(.header-cta) {
+.topbar__nav,
+.topbar__links {
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+}
+.topbar__links > li { flex: 0 0 auto; display: flex; }
+
+.topbar__link {
   position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 100%;
-  padding: 0 16px;
+  padding: 0 15px;
   font-family: var(--font-ui);
   font-size: 17px;
   letter-spacing: 0.4px;
@@ -716,10 +940,8 @@ html.is-ready .mobile-bar > * {
   border-right: 1px solid rgba(0, 0, 0, 0.55);
   transition: color var(--dur-tap) var(--ease), background var(--dur-tap) var(--ease);
 }
-
-/* The marker under the current page wipes out from the middle instead of
-   snapping on, which is the one place a slower move reads better than a cut. */
-#site-header nav ul li > a:not(.header-cta)::after {
+.topbar__link::after,
+.topbar__mark {
   content: "";
   position: absolute;
   left: 0;
@@ -727,742 +949,767 @@ html.is-ready .mobile-bar > * {
   bottom: 0;
   height: 3px;
   background: var(--red);
+}
+.topbar__link::after {
   transform: scaleX(0);
   transition: transform var(--dur-move) var(--ease);
 }
-#site-header nav ul li > a:not(.header-cta):hover {
+.topbar__mark { view-transition-name: topbar-mark; }
+.topbar__link:hover {
   color: var(--white);
   background: rgba(255, 255, 255, 0.05);
 }
-#site-header nav ul li > a:not(.header-cta).active {
+.topbar__link:hover::after { transform: scaleX(1); }
+.topbar__link[aria-current="page"] {
   color: var(--white);
   background: rgba(226, 59, 44, 0.1);
 }
-#site-header nav ul li > a:not(.header-cta):hover::after,
-#site-header nav ul li > a:not(.header-cta).active::after {
-  transform: scaleX(1);
-}
-.header-icon { font-size: 13px; color: var(--red); }
-.header-small-icon { font-size: 10px; opacity: 0.5; margin-left: 2px; }
+.topbar__link[aria-current="page"]::after { display: none; }
 
-/* The glyph icons carry their own strong colour, so idle nav items only need a
-   light knock-back rather than the heavy desaturation the old art wanted. */
-.header-ico {
-  image-rendering: pixelated;
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
+.topbar__ico {
+  --icon: 24px;
   flex-shrink: 0;
-  filter: grayscale(0.3) drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.6));
+  width: var(--icon);
+  height: var(--icon);
+  width: calc(round(nearest, var(--icon) * var(--dpr), 16px) / var(--dpr));
+  height: calc(round(nearest, var(--icon) * var(--dpr), 16px) / var(--dpr));
+  image-rendering: pixelated;
+  filter: grayscale(0.3) drop-shadow(var(--g) var(--g) 0 rgba(0, 0, 0, 0.6));
   opacity: 0.85;
-  transition: filter var(--dur-tap) var(--ease), opacity var(--dur-tap) var(--ease), transform var(--dur-tap) var(--ease);
+  transition: filter var(--dur-tap) var(--ease), opacity var(--dur-tap) var(--ease), transform var(--dur-move) var(--ease-pop);
 }
-#site-header nav ul li > a:not(.header-cta):hover .header-ico,
-#site-header nav ul li > a:not(.header-cta).active .header-ico {
-  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.6));
+.topbar__link:hover .topbar__ico,
+.topbar__link[aria-current="page"] .topbar__ico {
+  filter: drop-shadow(var(--g) var(--g) 0 rgba(0, 0, 0, 0.6));
   opacity: 1;
-  transform: scale(1.12) rotate(-5deg);
 }
+.topbar__link:hover .topbar__ico { transform: scale(1.12) rotate(-5deg); }
+.topbar__out { margin-left: -4px; color: var(--text-faint); }
 
-.header-cta-outer { margin-left: auto; padding-left: 24px; }
+.topbar__links > .topbar__panel-cta { display: none; }
 
-.mobile-bar {
+.topbar .sound { margin-left: auto; }
+
+.topbar__menu {
   display: none;
-  align-items: center;
-  justify-content: space-between;
-  height: 66px;
-  padding-inline: 18px;
-}
-.header-mobile-logo { height: 40px; width: auto; }
-.header-mobile-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px; height: 48px;
-  background: var(--panel);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel);
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
   color: var(--white);
-  font-size: 20px;
-  cursor: pointer;
+  background: var(--panel);
+  border: var(--border);
+  box-shadow: var(--bevel);
   transition: background var(--dur-tap) var(--ease);
 }
-.header-mobile-toggle:hover { background: var(--panel-hi); }
-.header-mobile-toggle:active { box-shadow: var(--bevel-in); }
+.topbar__menu:hover { background: var(--panel-hi); }
+.topbar__menu:active { box-shadow: var(--bevel-in); }
+.topbar__menu .i { --s: 3; }
+.topbar.is-open .topbar__menu .i { --i: var(--px-x); }
 
-/* Between the mobile breakpoint and full width the nav is tight, so the labels
-   and icons step down rather than pushing the CTA off the bar. */
-@media (min-width: 1001px) and (max-width: 1230px) {
-  #site-header nav ul li > a:not(.header-cta) {
-    padding: 0 11px;
-    font-size: 15px;
-    gap: 7px;
+/* The links sit in the middle of the bar, not beside the logo: the logo is
+   one width and the sound and join buttons another, so the space left after
+   the logo is not the middle of the page. Below 1100px the bar is too tight
+   to spare it, so there the links follow the logo. */
+@media (min-width: 1101px) {
+  .topbar__nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .header-ico { width: 19px; height: 19px; }
-  .header-logo { height: 38px; }
-  .header-logo-outer { margin-right: 8px; }
-  .header-cta-outer { padding-left: 12px; }
-  .header-cta { padding: 10px 14px 15px; font-size: 14px; }
+}
+
+@media (max-width: 1300px) {
+  .topbar__inner { gap: 10px; }
+  .topbar__link {
+    gap: 7px;
+    padding: 0 10px;
+    font-size: 15px;
+  }
+  .topbar__ico { --icon: 16px; width: 16px; height: 16px; }
+  .topbar__brand img { height: 38px; }
+  .topbar__cta { padding-inline: 13px; font-size: 14px; }
 }
 
 @media (max-width: 1000px) {
-  .mobile-bar { display: flex; }
-  #site-header nav {
-    display: none;
+  .topbar__menu { display: grid; }
+  .topbar__cta { display: none; }
+  .topbar__brand img { height: 40px; }
+  .topbar.is-scrolled .topbar__brand img { height: 32px; }
+
+  .topbar__nav {
     position: absolute;
-    top: 100%; left: 0; right: 0;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    max-height: calc(100dvh - var(--topbar-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
     background-color: #16171c;
     background-image:
       linear-gradient(rgba(18, 19, 23, 0.96), rgba(12, 13, 16, 0.98)),
       var(--tex-deepslate);
     background-size: auto, 32px 32px;
-    border-bottom: 2px solid var(--black);
+    image-rendering: pixelated;
+    border-bottom: var(--g) solid var(--black);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
   }
-  #site-header.navigation-open nav { display: block; }
-  #site-header nav ul {
+  .topbar.is-open .topbar__nav {
+    display: block;
+    animation: menu-in var(--dur-move) var(--ease);
+  }
+  .topbar__links {
     flex-direction: column;
-    align-items: stretch;
-    height: auto;
     gap: 4px;
     padding: 16px;
+    image-rendering: auto;
   }
-  .header-logo-outer { display: none; }
-  #site-header nav ul li > a:not(.header-cta) {
-    height: auto;
-    padding: 15px 16px;
+  .topbar__link {
+    flex: 1;
+    padding: 14px 16px;
     font-size: 18px;
-    border: 2px solid transparent;
+    border: var(--g) solid transparent;
   }
-  /* Stacked items are full-width slabs, so the underline marker has nothing
-     left to mark; the panel background carries the active state instead. */
-  #site-header nav ul li > a:not(.header-cta)::after { display: none; }
-  #site-header nav ul li > a:not(.header-cta):hover,
-  #site-header nav ul li > a:not(.header-cta).active {
+  .topbar__ico { --icon: 24px; width: calc(round(nearest, var(--icon) * var(--dpr), 16px) / var(--dpr)); height: calc(round(nearest, var(--icon) * var(--dpr), 16px) / var(--dpr)); }
+  .topbar__link::after,
+  .topbar__mark { display: none; }
+  .topbar__link:hover,
+  .topbar__link[aria-current="page"] {
     border-color: var(--black);
     background: var(--panel);
     box-shadow: var(--bevel);
   }
-
-  /* Opening the menu deals the items out one at a time rather than dumping
-     the whole stack in at once, reusing the --step index crab.js stamps on
-     grouped children for the scroll reveals. */
-  #site-header.navigation-open nav ul > li {
-    animation: navItemIn var(--dur-enter) var(--ease-pop) backwards;
-    animation-delay: calc(var(--step, 0) * 40ms);
-  }
-  @keyframes navItemIn {
-    from { opacity: 0; transform: translate3d(0, -10px, 0); }
-    to   { opacity: 1; transform: none; }
-  }
-  .header-cta-outer { margin: 6px 0 0; padding-left: 0; }
-  .header-cta { width: 100%; }
+  .topbar__link:hover .topbar__ico { transform: none; }
+  .topbar__link:active { box-shadow: var(--bevel-in); }
+  .topbar__links > .topbar__panel-cta { display: block; margin-top: 6px; }
+  .topbar__panel-cta .mc-btn { width: 100%; }
+}
+@keyframes menu-in {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0 0); }
 }
 
-/* ── Buttons ────────────────────────────────────────────────────────────
-   Real Minecraft buttons: a 5x7 pixel sprite stretched as a nine-slice, so
-   the 1px outline and the 2px bottom lip stay pixel-crisp at any size.
-   Pressing swaps to the lip-less sprite and drops the label, exactly like
-   the in-game widget. Re-skin by overriding the three --btn-* variables.  */
-.mc-btn,
-.header-cta {
-  --btn-face:       url('../media/ui/buttons/red/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/red/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/red/default.png');
-
+/* The address, as a copy button that looks like the text field it came
+   from. */
+.ip-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 11px;
-  padding: 16px 26px 22px;
+  gap: 10px;
+  height: 40px;
+  padding: 0 13px;
   font-family: var(--font-ui);
-  font-size: 18px;
-  line-height: 1;
-  letter-spacing: 0.5px;
+  font-size: 15px;
+  letter-spacing: 0.02em;
   color: var(--white);
   text-shadow: var(--txt-shadow-sm);
-  background: none;
-  border: 0 solid transparent;
-  border-image-source: var(--btn-face);
-  border-image-slice: 2 2 4 2 fill;
-  border-image-width: 6px 6px 12px 6px;
-  border-image-repeat: stretch;
-  image-rendering: pixelated;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform var(--dur-move) var(--ease-pop);
+  background: rgba(0, 0, 0, 0.45);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+  transition: background var(--dur-tap) var(--ease);
 }
-.mc-btn > *,
-.mc-btn i { font-size: 0.85em; }
+.ip-chip:hover { background: rgba(0, 0, 0, 0.7); }
+.ip-chip .i { color: var(--text-dim); transition: color var(--dur-tap) var(--ease); }
+.ip-chip:hover .i { color: var(--white); }
+.ip-chip.is-success .i { color: var(--mc-a); }
 
-/* The icon leans towards wherever the button is about to take you. Small
-   enough to read as the button being alive rather than as an effect. */
-.mc-btn .btn-ico,
-.mc-btn i { transition: transform var(--dur-move) var(--ease-pop); }
-.mc-btn:hover .btn-ico,
-.mc-btn:hover i { transform: translateX(3px); }
-
-.mc-btn:hover,
-.header-cta:hover {
-  border-image-source: var(--btn-face-hover);
-  transform: translateY(-2px);
+/* The sound switch, in the same field as the address. A speaker, and
+   beside it three bars that sfx.js moves with whatever is playing — low,
+   middle, high — or, muted, a cross. Drawn on a 10 x 8 grid of art
+   pixels, two screen pixels each, like every other icon: the speaker is
+   columns 0-3, the bars columns 5, 7 and 9, the cross columns 6-9. */
+.sound {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  color: var(--text-dim);
+  background: rgba(0, 0, 0, 0.45);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+  transition: background var(--dur-tap) var(--ease), color var(--dur-tap) var(--ease);
 }
-
-.mc-btn:active,
-.header-cta:active {
-  border-image-source: var(--btn-face-down);
-  border-image-slice: 2 2 2 2 fill;
-  border-image-width: 6px;
-  padding: 22px 26px 16px;
-  transform: none;
-  transition: none;
+.sound:hover { background: rgba(0, 0, 0, 0.7); color: var(--white); }
+.sound__icon {
+  position: relative;
+  width: 20px;
+  height: 16px;
 }
+.sound__icon::before,
+.sound__icon::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.sound__icon::before {
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 16px;
+  -webkit-mask: var(--px-speaker) center / 100% 100% no-repeat;
+  mask: var(--px-speaker) center / 100% 100% no-repeat;
+}
+.sound__icon::after {
+  top: 4px;
+  left: 12px;
+  width: 8px;
+  height: 8px;
+  -webkit-mask: var(--px-mute) center / 100% 100% no-repeat;
+  mask: var(--px-mute) center / 100% 100% no-repeat;
+  visibility: hidden;
+}
+.sound__bars i {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 16px;
+  background: currentColor;
+}
+/* At rest the bars step up like a speaker's waves: 2, 4 and 6 pixels. */
+.sound__bars i:nth-child(1) { left: 10px; transform: scaleY(0.25); }
+.sound__bars i:nth-child(2) { left: 14px; transform: scaleY(0.5); }
+.sound__bars i:nth-child(3) { left: 18px; transform: scaleY(0.75); }
+html.sound-off .sound { color: var(--text-faint); }
+html.sound-off .sound:hover { color: var(--text-dim); }
+html.sound-off .sound__bars { visibility: hidden; }
+html.sound-off .sound__icon::after { visibility: visible; }
 
-.mc-btn--ghost {
-  --btn-face:       url('../media/ui/buttons/dark/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/dark/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/dark/default.png');
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  letter-spacing: 0.02em;
   color: var(--text);
-}
-.mc-btn--ghost:hover { color: var(--white); }
-
-.mc-btn--blue {
-  --btn-face:       url('../media/ui/buttons/blue/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/blue/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/blue/default.png');
-}
-
-.mc-btn--green {
-  --btn-face:       url('../media/ui/buttons/green/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/green/default.png');
-}
-
-.mc-btn--gold {
-  --btn-face:       url('../media/ui/buttons/gold/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/gold/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/gold/default.png');
-  color: #23180a;
-  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.25);
-}
-
-.mc-btn--sm {
-  padding: 12px 18px 17px;
-  font-size: 15px;
-  gap: 9px;
-  border-image-width: 5px 5px 10px 5px;
-}
-.mc-btn--sm:active {
-  padding: 17px 18px 12px;
-  border-image-width: 5px;
-}
-
-.mc-btn--lg {
-  padding: 20px 34px 27px;
-  font-size: 21px;
-  border-image-width: 7px 7px 14px 7px;
-}
-.mc-btn--lg:active {
-  padding: 27px 34px 20px;
-  border-image-width: 7px;
-}
-
-.mc-btn--block { display: flex; width: 100%; }
-
-/* Copy confirmed: the button turns green and gives one short nod, so the
-   result registers even if you were looking at the field you copied. */
-.mc-btn.is-success {
-  --btn-face:       url('../media/ui/buttons/green/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/green/default.png');
-  pointer-events: none;
-  animation: btnConfirm var(--dur-enter) var(--ease-pop);
-}
-@keyframes btnConfirm {
-  0%   { transform: scale(1); }
-  35%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-.header-cta {
-  padding: 12px 20px 17px;
-  font-size: 16px;
+  text-shadow: var(--txt-shadow-sm);
   white-space: nowrap;
-  border-image-width: 5px 5px 10px 5px;
-  color: var(--white) !important;
 }
-.header-cta:active {
-  padding: 17px 20px 12px;
-  border-image-width: 5px;
+.live-pill b { font-weight: 400; color: var(--white); }
+
+/* ── Toasts ─────────────────────────────────────────────────────────────
+   Feedback arrives the way an advancement does: a dark card slides in at
+   the top right with a yellow title and an item beside it, then leaves.   */
+.toasts {
+  position: fixed;
+  top: calc(var(--topbar-h) + 14px);
+  right: max(14px, env(safe-area-inset-right));
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+.toast {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 4px 14px;
+  width: min(340px, calc(100vw - 28px));
+  padding: 12px 18px 12px 12px;
+  background: #212126;
+  border: var(--border);
+  box-shadow: inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.1), inset calc(var(--g) * -1) calc(var(--g) * -1) 0 rgba(0, 0, 0, 0.5), 0 16px 34px -12px rgba(0, 0, 0, 0.8);
+  transform: translateX(calc(100% + 24px));
+  transition: transform 520ms var(--ease-out);
+}
+.toast.is-in { transform: none; }
+.toast.is-out { transform: translateX(calc(100% + 24px)); transition-duration: 380ms; transition-timing-function: var(--ease-in-out); }
+.toast__icon {
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-deep);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+.toast__icon img { width: 32px; height: 32px; image-rendering: pixelated; }
+.toast__title {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--mc-e);
+  text-shadow: var(--txt-shadow-sm);
+}
+.toast__text {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--white);
+  text-shadow: var(--txt-shadow-sm);
+  overflow-wrap: anywhere;
 }
 
-/* ── Hero ───────────────────────────────────────────────────────────────*/
-.hero-section {
+/* ── Join box ───────────────────────────────────────────────────────────
+   The three ways in, behind one segmented switch: used on the home page's
+   finale and the about page. The switch's red block slides between
+   options, driven by --seg-i from the tabs script.                        */
+.join__box {
+  max-width: 780px;
+  margin: clamp(44px, 5vw, 64px) auto 0;
+  padding: 12px;
+  background: rgba(14, 13, 17, 0.84);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(16px) saturate(1.2);
+  border: var(--border);
+  box-shadow: var(--bevel), 0 50px 100px -40px rgba(0, 0, 0, 0.95);
+}
+
+/* The segmented switch. Its red block slides between options, driven by
+   --seg-i from the tabs script. */
+.seg {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 4px;
+  background: var(--bg-deep);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+.seg::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc((100% - 8px) / var(--seg-n, 3));
+  background: var(--red);
+  box-shadow: inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.28), inset calc(var(--g) * -1) calc(var(--g) * -1) 0 rgba(0, 0, 0, 0.3);
+  transform: translateX(calc(var(--seg-i, 0) * 100%));
+  transition: transform var(--dur-lift) var(--ease-out);
+}
+.seg__tab {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
-  padding: clamp(128px, 17vh, 196px) clamp(20px, 5vw, 40px) clamp(80px, 12vh, 132px);
-  overflow: hidden;
-  background: var(--bg);
+  gap: 10px;
+  padding: 15px 10px;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--text-dim);
+  text-shadow: var(--txt-shadow-sm);
+  transition: color var(--dur-tap) var(--ease);
 }
-/* A seam of bedrock closing off the hero. */
-.hero-section::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 16px;
-  background-color: var(--red-deep);
-  background-image: var(--tex-nether);
-  background-size: 16px 16px;
-  image-rendering: pixelated;
-  border-top: 2px solid var(--black);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.08);
-  z-index: 2;
-}
+.seg__tab:hover { color: var(--white); }
+.seg__tab[aria-selected="true"] { color: var(--white); }
 
-/* Two independent inputs move the hero backdrop, and both are composed into a
-   single transform here so neither can clobber the other:
+.join__panel { padding: 30px 22px 14px; }
+.join__panel:not([hidden]) { animation: panelIn var(--dur-enter) var(--ease-out); }
 
-     --par-x / --par-y   cursor drift, eased toward the pointer
-     --scroll-y          parallax, the layer lagging the page as it scrolls
-
-   crab.js only ever writes those three custom properties, on the wrapper;
-   they inherit down to whichever layer actually holds the image. All three
-   default to 0, so with no script the backdrop is simply a static,
-   slightly over-scaled photo.
-
-   Only the photo layer moves. The wrapper stays put because it carries the
-   gradient that fades the hero into the page, and scaling that would push
-   its bottom edge below the fold of the section. The over-scale on the photo
-   is the budget the drift moves inside: at 1.18 there is 9% of the hero
-   hidden past each edge, and crab.js clamps its output to stay well within
-   that, so an edge is never exposed.                                       */
-.hero-bg-img,
-.vx-hero-bg {
-  --par-x: 0px;
-  --par-y: 0px;
-  --scroll-y: 0px;
+.join__steps {
+  display: grid;
+  gap: 14px;
+  counter-reset: step;
 }
-.hero-bg-slide,
-.vx-hero-bg::before {
-  transform: scale(1.18) translate3d(var(--par-x), calc(var(--par-y) + var(--scroll-y)), 0);
-  will-change: transform;
-}
-
-.hero-bg-img {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  filter: saturate(0.65) brightness(0.7) contrast(1.05);
-}
-/* Crossfading slideshow layers, injected by crab.js from media/slideshow/. */
-.hero-bg-slide {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1.4s ease;
-}
-.hero-bg-slide.is-active { opacity: 1; }
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg-slide { transition: none; }
-}
-/* Darkens the photo so the hero copy stays readable, and fades the bottom
-   edge into the page.
-
-   There used to be a red radial wash over the top of this. It was meant to
-   read as a glow, but an ellipse sized 70% from the top centre stops well
-   short of the left and right edges, so its soft boundary showed up against
-   the dark photo as a big translucent red rectangle floating over the scene.
-   The linear fade below does the actual work; the tint only added the
-   artefact. */
-.hero-bg-img::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(16, 15, 18, 0.42) 0%, rgba(16, 15, 18, 0.6) 60%, var(--bg) 100%);
-}
-
-.hero-content {
+.join__steps li {
   position: relative;
-  z-index: 2;
+  min-height: 28px;
+  padding: 1px 0 0 46px;
+  counter-increment: step;
+  color: var(--text);
+}
+.join__steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0;
+  left: 2px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--white);
+  background: var(--red-dark);
+  box-shadow: 0 0 0 var(--g) var(--black), inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.2);
+}
+
+.copyrow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 16px;
+  margin-top: 26px;
+  padding: 14px 14px 14px 20px;
+  background: var(--bg-deep);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+.copyrow__label {
+  grid-column: 1;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.copyrow__value {
+  grid-column: 1;
+  font-family: var(--font-ui);
+  font-size: clamp(19px, 2.3vw, 26px);
+  line-height: 1.2;
+  color: var(--white);
+  text-shadow: var(--txt-shadow);
+  overflow-wrap: anywhere;
+}
+.copyrow .mc-btn { grid-column: 2; grid-row: 1 / span 2; }
+
+.join__alt { margin-top: 16px; font-size: var(--fs-small); color: var(--text-dim); }
+
+/* A panel swapped in by a tab or switch arrives rather than blinking in. */
+@keyframes panelIn { from { opacity: 0; transform: translate3d(0, 14px, 0); } }
+
+/* ── Stats ──────────────────────────────────────────────────────────────
+   A row of big figures with small labels, for a page hero. */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.stats li {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  max-width: 900px;
-  text-align: center;
+  gap: 6px;
+  min-width: 132px;
+  padding: 16px 20px 14px;
+  background: rgba(10, 9, 12, 0.66);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: var(--border);
+  box-shadow: var(--bevel), inset 0 calc(var(--g) * 2) 0 var(--stat-accent, var(--red));
 }
-.hero-logo-img {
-  width: auto;
-  height: clamp(94px, 13vw, 146px);
-  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.75));
+.stats b {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--white);
+  text-shadow: var(--txt-shadow);
+}
+.stats li > span {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
 
-/* ── Hero entrance ──────────────────────────────────────────────────────
-   The hero deals itself out once the curtain is gone: the logo pops in, then
-   the headline, blurb and join panels rise under it. crab.js sets
-   html.is-ready at that moment — after the loader fades, or after the intro
-   finishes on a first visit — and stamps --step on each child, so the order
-   follows the DOM and nothing carries a hard-coded delay.
+/* ── Page hero (inner pages) ────────────────────────────────────────────
+   Shorter than the home page's, and each page brings its own backdrop. */
+.page-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(78vh, 760px);
+  /* The bottom padding never drops below the HUD, so nothing in a hero
+     can come to rest behind the hotbar. */
+  padding: calc(var(--topbar-h) + 72px) 0 clamp(56px, 8vw, 104px);
+  overflow: clip;
+  isolation: isolate;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.page-hero__bg img,
+.page-hero__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(0, calc(var(--hero-p, 0) * 12vh), 0) scale(calc(1.06 + var(--hero-p, 0) * 0.08));
+}
+.page-hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 15, 18, 0.55) 0%, rgba(16, 15, 18, 0.35) 38%, rgba(16, 15, 18, 0.8) 78%, var(--bg) 100%),
+    radial-gradient(120% 90% at 50% 40%, transparent 40%, rgba(8, 7, 10, 0.7) 100%);
+}
+/* Particles ride above the shade, so they read as air in front of the
+   scene rather than specks under a tint. */
+.page-hero__bg canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.page-hero__content {
+  position: relative;
+  transform: translate3d(0, calc(var(--hero-p, 0) * -8vh), 0);
+  opacity: calc(1 - var(--hero-p, 0) * 1.4);
+}
+.page-hero__content > * + * { margin-top: 22px; }
+.page-hero__content .lead { color: var(--text); }
 
-   As with the scroll reveals, only the hidden half is scoped to html.js, so
-   a broken script leaves a fully visible hero rather than an empty one.   */
-html.js .hero-content > *:not(.hero-splash) {
+/* ── Entrance ───────────────────────────────────────────────────────────
+   html.is-ready is the page's starting gun: crab.js fires it once the
+   page is ready to be seen, or once the intro lifts on the home page. The
+   top bar and the HUD arrive first, then the hero deals out its own items
+   on the same --step index. Everything that hides content on its way in
+   is scoped to html.js, set by a one-line script in each page's head, and
+   the failsafe below undoes it if crab.js never arrives.                  */
+html.js:not(.warm):not(.is-ready) .topbar { transform: translate3d(0, -100%, 0); }
+html.js:not(.warm):not(.is-ready) :is(.topbar__brand, .topbar__links > li, .topbar .sound, .topbar__cta, .topbar__menu) { opacity: 0; }
+html.js:not(.warm).is-ready .topbar { animation: topbar-in var(--dur-enter) var(--ease-out) backwards; }
+html.js:not(.warm).is-ready :is(.topbar__brand, .topbar__links > li, .topbar .sound, .topbar__cta, .topbar__menu) {
+  animation: topbar-item-in var(--dur-enter) var(--ease-pop) backwards;
+  animation-delay: calc(var(--dur-move) + var(--step, 0) * var(--stagger));
+}
+.topbar__menu,
+.topbar__links > li:nth-child(1) { --step: 1; }
+.topbar__links > li:nth-child(2) { --step: 2; }
+.topbar__links > li:nth-child(3) { --step: 3; }
+.topbar__links > li:nth-child(4) { --step: 4; }
+.topbar__links > li:nth-child(5) { --step: 5; }
+.topbar__links > li:nth-child(6) { --step: 6; }
+.topbar__links > li:nth-child(7) { --step: 7; }
+.topbar .sound { --step: 8; }
+.topbar__cta { --step: 9; }
+@keyframes topbar-in { from { transform: translate3d(0, -100%, 0); } }
+@keyframes topbar-item-in { from { opacity: 0; transform: translate3d(0, -8px, 0); } }
+
+html.js [data-enter] {
   opacity: 0;
-  transform: translate3d(0, 24px, 0);
+  transform: translate3d(0, 28px, 0);
+  transition: opacity var(--dur-enter) var(--ease-out), transform var(--dur-stage) var(--ease-out);
+  transition-delay: calc(var(--enter-delay, 0ms) + var(--step, 0) * var(--stagger));
+}
+html.is-ready [data-enter] { opacity: 1; transform: none; }
+html.warm { --enter-delay: 0ms; }
+
+/* ── Scroll reveals ─────────────────────────────────────────────────────
+   Add data-reveal to anything that should arrive as it scrolls into view
+   (variants: fade, zoom, left, right). crab.js stamps a --step index,
+   counted within each parent, so every row restarts its own short stagger.
+   Entrances are smooth and settle long — no overshoot. Playfulness is kept
+   for things that answer a press.                                         */
+html.js [data-reveal] {
+  --step: 0;
+  opacity: 0;
+  transform: translate3d(0, 40px, 0);
   transition:
-    opacity var(--dur-enter) var(--ease),
-    transform var(--dur-stage) var(--ease-pop);
-  transition-delay: calc(var(--step, 0) * 90ms);
+    opacity var(--dur-enter) var(--ease-out),
+    transform var(--dur-stage) var(--ease-out);
+  transition-delay: calc(var(--step) * var(--stagger));
 }
-/* The logo lands rather than rises, so it arrives ahead of the copy. */
-html.js .hero-content > .hero-logo-img,
-html.js .hero-content > .vx-hero-logo {
-  transform: translate3d(0, 8px, 0) scale(0.88);
-}
-/* The splash tag is the punchline, so it waits for everything else. */
-html.js .hero-splash {
-  opacity: 0;
-  transition: opacity var(--dur-enter) var(--ease) 780ms;
-}
-html.is-ready .hero-content > *:not(.hero-splash) {
+html.js [data-reveal="fade"]  { transform: none; }
+html.js [data-reveal="zoom"]  { transform: scale(0.94); }
+html.js [data-reveal="left"]  { transform: translate3d(-48px, 0, 0); }
+html.js [data-reveal="right"] { transform: translate3d(48px, 0, 0); }
+html.js [data-reveal].is-revealed {
   opacity: 1;
   transform: none;
 }
-html.is-ready .hero-splash { opacity: 1; }
 
-.hero-splash {
-  position: absolute;
-  top: clamp(58px, 9vw, 104px);
-  left: 58%;
-  font-family: var(--font-ui);
-  font-size: clamp(15px, 1.7vw, 21px);
-  line-height: 1;
-  color: #ffd94d;
-  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.8);
-  white-space: nowrap;
-  pointer-events: none;
-  z-index: 3;
-  transform: rotate(-14deg);
-  animation: splashPulse 0.6s ease-in-out infinite alternate;
+/* Headlines split into words rise out of their own line, each word from
+   behind an invisible mask. The padding makes room for the hard shadow,
+   which the mask would otherwise cut off. */
+.split-w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.1em 0.12em 0;
+  margin: 0 -0.1em -0.12em 0;
 }
-@keyframes splashPulse {
-  from { transform: rotate(-14deg) scale(1); }
-  to   { transform: rotate(-14deg) scale(1.05); }
+.split-w > span { display: inline-block; }
+html.js [data-split] .split-w > span {
+  transform: translate3d(0, 105%, 0);
+  transition: transform var(--dur-stage) var(--ease-out);
+  transition-delay: calc(var(--split-delay, 0ms) + var(--w, 0) * 45ms);
 }
-.hero-title {
-  font-family: var(--font-pixel);
-  font-size: clamp(30px, 4.6vw, 54px);
-  line-height: 1.14;
-  letter-spacing: 0.5px;
-  color: var(--white);
-  text-shadow: var(--txt-shadow-lg);
-}
-.hero-desc {
-  max-width: 640px;
-  font-size: 1.12rem;
-  line-height: 1.6;
-  color: var(--text);
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55);
-}
+html.js [data-split].is-revealed .split-w > span,
+html.is-ready [data-split][data-enter] .split-w > span { transform: none; }
+/* A split headline is revealed by its words, not by fading as a block. */
+html.js [data-split][data-reveal],
+html.js [data-split][data-enter] { opacity: 1; transform: none; }
 
-.hero-hearts {
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  margin-top: -8px;
+/* If crab.js never runs, nothing may stay hidden. */
+html.js:not(.crab) [data-reveal],
+html.js:not(.crab) [data-enter],
+html.js:not(.crab) .topbar,
+html.js:not(.crab) :is(.topbar__brand, .topbar__links > li, .topbar .sound, .topbar__cta, .topbar__menu),
+html.js:not(.crab) [data-split] .split-w > span {
+  animation: failsafe 0.01s 2.5s forwards;
 }
-.hero-hearts img {
-  width: 22px;
-  height: 22px;
-  image-rendering: pixelated;
-  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.6));
-  animation: heartPulse 2.4s ease-in-out infinite;
-}
-.hero-hearts img:nth-child(even) { animation-delay: 1.2s; }
-@keyframes heartPulse {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.09); }
-}
+@keyframes failsafe { to { opacity: 1; transform: none; } }
 
-/* The two join panels read as in-game GUI windows. */
-.hero-join-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 6px;
-}
-.hero-join-panel {
-  flex: 1 1 280px;
-  max-width: 370px;
-  padding: 26px 28px 28px;
-  text-align: center;
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 35, 41, 0.9), rgba(26, 27, 32, 0.94)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border: var(--border);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--dur-lift) var(--ease-pop), box-shadow var(--dur-lift) var(--ease);
-}
-.hero-join-panel:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-pop);
-}
-.hero-join-panel h3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 11px;
-  font-family: var(--font-ui);
-  font-size: 21px;
-  line-height: 1.2;
-  color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
-  margin-bottom: 12px;
-}
-.hero-join-panel h3 .mc-ico { width: 28px; height: 28px; }
-.hero-join-panel p {
-  font-size: 1rem;
-  color: var(--text-dim);
-  min-height: 3em;
-}
-/* The two extra console join methods, listed under the panels. */
-.hero-join-alts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
-  max-width: 780px;
-}
-.hero-join-alts li {
-  flex: 1 1 320px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 16px;
-  text-align: left;
-  font-size: 0.98rem;
-  color: var(--text-dim);
-  background: rgba(16, 15, 18, 0.72);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel);
-}
-.hero-join-alt-num {
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  font-family: var(--font-ui);
-  font-size: 16px;
-  line-height: 1;
-  color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
-  background: var(--red-dark);
-  border: 2px solid var(--black);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Sunken slot, like a Minecraft text field. */
-.join-value {
-  display: block;
-  margin: 14px 0 18px;
-  padding: 11px 14px;
-  font-family: var(--font-mono);
-  font-size: 1.4rem;
-  letter-spacing: 1px;
-  color: var(--white);
-  text-shadow: var(--txt-shadow);
-  background: var(--bg);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel-in);
-  word-break: break-all;
-}
-
-/* ── Footer ─────────────────────────────────────────────────────────────*/
-footer {
+/* ── Footer ─────────────────────────────────────────────────────────────
+   The bottom of the page is the bottom of the world: a band of bedrock,
+   then the map of the site on the dark beneath it.                        */
+.footer {
   position: relative;
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(rgba(16, 15, 18, 0.93), rgba(16, 15, 18, 0.97)),
-    var(--tex-deepslate);
-  background-size: auto, 48px 48px;
+  padding: 0 0 calc(32px + env(safe-area-inset-bottom));
+  background: var(--bg-deep);
+  font-size: var(--fs-small);
+}
+.footer__bedrock {
+  height: 24px;
+  background:
+    linear-gradient(rgba(11, 10, 13, 0.3), rgba(11, 10, 13, 0.3)),
+    var(--tex-bedrock) 0 0 / 24px 24px;
   image-rendering: pixelated;
-  border-top: 2px solid var(--black);
-  padding: clamp(58px, 7vw, 78px) clamp(20px, 5vw, 40px) 40px;
-  text-align: center;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  box-shadow: inset 0 var(--g) 0 rgba(255, 255, 255, 0.08);
 }
-footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 14px;
-  background-color: var(--panel-hi);
-  background-image: var(--tex-stone);
-  background-size: 14px 14px;
-  image-rendering: pixelated;
-  border-bottom: 2px solid var(--black);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1);
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 40px;
+  padding-top: clamp(56px, 7vw, 88px);
+  padding-bottom: 48px;
 }
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 28px;
+.footer__brand img { width: 88px; height: 88px; margin-bottom: 18px; }
+.footer__brand p {
+  max-width: 28ch;
+  margin-bottom: 20px;
+  color: var(--text-dim);
 }
-.footer-link {
+.footer__col h2 {
+  margin-bottom: 16px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.footer__col li + li { margin-top: 10px; }
+.footer__col a {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 18px;
-  font-family: var(--font-ui);
-  font-size: 16px;
-  line-height: 1;
   color: var(--text-dim);
-  text-shadow: var(--txt-shadow-sm);
-  background: var(--panel);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel);
-  transition: color var(--dur-tap) var(--ease), background var(--dur-tap) var(--ease), transform var(--dur-move) var(--ease-pop);
+  transition: color var(--dur-tap) var(--ease);
 }
-.footer-link i { color: var(--red); }
-.footer-link .mc-ico { width: 18px; height: 18px; }
-.footer-link:hover {
-  color: var(--white);
-  background: var(--panel-hi);
-  transform: translateY(-3px);
-}
-.footer-link:active { box-shadow: var(--bevel-in); transform: none; }
-.footer-copy {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  letter-spacing: 0.5px;
+.footer__col a:hover { color: var(--white); }
+.footer__col a .i { color: var(--text-faint); transition: color var(--dur-tap) var(--ease); }
+.footer__col a:hover .i { color: var(--red-bright); }
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
   color: var(--text-faint);
-  line-height: 1.6;
 }
 
 /* ── Dialogs ────────────────────────────────────────────────────────────*/
 dialog {
   margin: auto;
-  max-width: 540px;
-  width: 90%;
-  padding: 34px;
+  max-width: 520px;
+  width: calc(100% - 32px);
+  padding: 32px;
   color: var(--text);
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 35, 41, 0.92), rgba(26, 27, 32, 0.95)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border: 3px solid var(--black);
-  box-shadow: var(--shadow-pop);
+  background: var(--panel);
+  border: var(--border);
+  box-shadow: var(--bevel), 0 30px 80px rgba(0, 0, 0, 0.7);
 }
-dialog::backdrop { background: rgba(0, 0, 0, 0.82); }
-dialog h1 {
-  font-family: var(--font-pixel);
-  font-size: 24px;
-  line-height: 1.3;
-  color: var(--white);
-  text-shadow: var(--txt-shadow);
-  margin-bottom: 18px;
-}
-dialog p { font-size: 1.02rem; color: var(--text-dim); line-height: 1.6; }
+dialog::backdrop { background: rgba(0, 0, 0, 0.8); }
 
-.dialog-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.dialog-title .mc-ico { width: 26px; height: 26px; }
+/* ── Page transitions ───────────────────────────────────────────────────
+   Moving between pages is a cross-document view transition, and it is a
+   dither rather than a fade: the new page resolves in over the old one
+   through an 8x8 ordered-dither mask, a few pixels at a time, the way old
+   games faded between screens. The masks are crisp SVG (media/ui/dither,
+   from tools/gen_pixels.py), stepped with steps(1, end) so every frame is
+   one clean level of the pattern and never a blend of two.
 
-.dialog-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 26px;
+   The top bar and the hotbar have names of their own, so they stay put
+   while the selection frame slides to its new slot. Browsers without
+   cross-document transitions simply navigate.                            */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) { animation: vt-out 180ms var(--ease-in-out) both; }
+::view-transition-new(root) { animation: vt-in 380ms var(--ease-out) 90ms both; }
+::view-transition-group(topbar),
+::view-transition-group(topbar-mark) {
+  animation-duration: 420ms;
+  animation-timing-function: var(--ease-out);
 }
-.dialog-actions .mc-btn { flex: 1; }
-.dialog-close {
-  float: right;
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 12px 14px;
-  padding: 10px 14px 15px;
-  color: var(--white);
-  background: none;
-  border: 0 solid transparent;
-  border-image-source: url('../media/ui/buttons/red/unchecked.png');
-  border-image-slice: 2 2 4 2 fill;
-  border-image-width: 5px 5px 10px 5px;
-  image-rendering: pixelated;
-  text-shadow: var(--txt-shadow);
-  cursor: pointer;
-}
-.dialog-close:hover { border-image-source: url('../media/ui/buttons/red/unchecked_hover.png'); }
-.dialog-close:active {
-  border-image-source: url('../media/ui/buttons/red/default.png');
-  border-image-slice: 2 2 2 2 fill;
-  border-image-width: 5px;
-  padding: 15px 14px 10px;
-}
+@keyframes vt-out { to { opacity: 0; } }
+@keyframes vt-in { from { opacity: 0; transform: translate3d(0, 14px, 0); } }
 
 /* ── Reduced motion ─────────────────────────────────────────────────────
-   Kill the movement, keep the content. Everything the motion system hides on
-   its way in is forced visible here, because with transitions flattened to
-   nothing an element that starts at opacity 0 would otherwise depend on a
-   class arriving to ever be seen. crab.js checks the same query and skips
-   the parallax and wheel easing entirely.                                  */
+   Kill the movement, keep the content. Everything the motion system hides
+   on its way in is forced visible here, and crab.js checks the same query
+   before starting any loop, parallax or smooth scrolling.                 */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
   }
   html.js [data-reveal],
-  html.js .fade-up,
-  html.js .section-head,
-  html.js .hero-content > *:not(.hero-splash),
-  html.js #site-header,
-  html.js #site-header nav ul > li,
-  html.js .mobile-bar > * {
+  html.js [data-enter],
+  html.js .topbar,
+  html.js :is(.topbar__brand, .topbar__links > li, .topbar .sound, .topbar__cta, .topbar__menu),
+  html.js [data-split] .split-w > span {
     opacity: 1 !important;
     transform: none !important;
   }
-  html.js .hero-splash { opacity: 1 !important; }
-  /* transform: none cannot reach either of these: one is a clip and the
-     other is the headline's own rule, drawn in a pseudo-element. */
-  html.js [data-reveal="wipe"] { clip-path: none !important; }
-  html.js .section-head .s-headline::after,
-  html.js .eyebrow::before { transform: none !important; }
-  .loading-bar__fill { width: 100%; }
+  .enchanted::before { animation: none; }
+  .page-hero__bg img, .page-hero__photo, .page-hero__content { transform: none !important; opacity: 1 !important; }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────*/
+/* Short screens — a 13-inch laptop, a browser with its toolbars open — set
+   the display type by height as well as width, so a hero's call to action
+   still lands above the fold and clear of the hotbar. */
+@media (max-height: 820px) and (min-width: 700px) {
+  .display-1 { font-size: clamp(38px, min(6.2vw, 10.4vh), 92px); }
+  .page-hero { padding-top: calc(var(--topbar-h) + 44px); }
+  .page-hero__content > * + * { margin-top: 18px; }
+}
+
+@media (max-width: 1100px) {
+  .footer__grid { grid-template-columns: 1fr 1fr 1fr; }
+  .footer__brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 1000px) {
+  :root { --topbar-h: 66px; --topbar-h-tight: 56px; }
+}
+
+@media (max-width: 900px) {
+  .live-pill { display: none; }
 }
 
 @media (max-width: 680px) {
-  .hero-splash { display: none; }
-  .mc-sep { height: 24px; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .mc-sep span:nth-child(3) { display: none; }
+  :root { --stagger: 55ms; }
+  .seg__tab { flex-direction: column; gap: 6px; padding: 12px 6px; font-size: 14px; }
+  .join__panel { padding: 26px 12px 10px; }
+  .copyrow { grid-template-columns: 1fr; padding: 16px; }
+  .copyrow .mc-btn { grid-column: 1; grid-row: auto; margin-top: 12px; justify-content: center; }
+  .stats li { min-width: calc(50% - 6px); flex: 1 1 calc(50% - 6px); }
+  .ip-chip { display: none; }
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  html.js [data-reveal="left"],
+  html.js [data-reveal="right"] { transform: translate3d(0, 32px, 0); }
 }
 
-@media (max-width: 600px) {
-  body { font-size: 1rem; }
-  .hero-section { min-height: 82vh; }
-  .hero-join-container { flex-direction: column; align-items: center; }
-  .hero-join-panel { max-width: 100%; width: 100%; }
-  .hero-desc { font-size: 1.02rem; }
-  .mc-btn { font-size: 17px; }
-}
+/* A section that took focus only so the reading position could follow an
+   anchor link is not a control; it needs no ring. */
+[tabindex="-1"]:focus { outline: none; }

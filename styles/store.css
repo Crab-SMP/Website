@@ -1,31 +1,19 @@
-/* ── Store ──────────────────────────────────────────────────────────────
-   Page-only styles for store.html. Loaded after main.css, which owns the
-   sections, buttons, separators and the reveal timing this page rides on.
+/* ══════════════════════════════════════════════════════════════════════════
+   Store. Loaded after main.css.
 
-   Two things here are worth knowing before editing.
+   Two ideas hold the page together.
 
-   First, the tier accent. Every rank card, table column and cosmetic tile
-   picks its colour from a single --tier custom property set by the card's
-   modifier class, so a tier is re-skinned in one place rather than in a
-   dozen selectors. The three values are Minecraft's own §a, §b and §c, the
-   same codes the ranks are written with in scripts/player/ranks.ts, which
-   is why the names on this page read exactly as they do in chat.
+   The tier colour. Every rank card, table column and cosmetic takes its
+   accent from one --tier property set by its modifier, so a tier is
+   re-skinned in one place. The three values are Minecraft's own §a, §b and
+   §c, the codes the ranks are written with in game, which is why the names
+   read here exactly as they do in chat.
 
-   Second, the slot. A crest, a cosmetic and a price all sit in the same
-   sunken square — --bevel-in over the stone texture — because that is the
-   inventory slot the game draws, and repeating it is what stops the page
-   reading as a generic pricing table with a Minecraft font on top.        */
-
-:root {
-  /* Minecraft chat colours. Named after the codes so the mapping is
-     obvious: §a green, §b aqua, §c red, §e yellow, §f white, §8 dark grey. */
-  --mc-a: #55ff55;
-  --mc-b: #55ffff;
-  --mc-c: #ff5555;
-  --mc-e: #ffff55;
-  --mc-f: #f5f5f6;
-  --mc-8: #555562;
-}
+   The slot. A crest, a cosmetic and a totem all sit in the same sunken
+   square — the inventory slot the game draws — and the best of them carry
+   the enchantment glint. It is what stops a pricing page reading as a
+   generic pricing table with a Minecraft font on top.
+   ══════════════════════════════════════════════════════════════════════════ */
 
 .mc-a { color: var(--mc-a); }
 .mc-b { color: var(--mc-b); }
@@ -34,389 +22,401 @@
 .mc-f { color: var(--mc-f); }
 .mc-8 { color: var(--mc-8); }
 
-/* ── Payment banner ─────────────────────────────────────────────────────
-   Sits between the header and the hero, so it is read before any price is.
-   It scrolls away with the page rather than sticking: it is a disclosure,
-   not a toolbar.                                                          */
-.secure-banner {
-  display: flex;
+/* ── Hero ───────────────────────────────────────────────────────────────
+   No photograph here: the three crests are the product, lit from below by
+   the nether and floating over drifting ash.                            */
+.store-hero { min-height: min(92vh, 860px); align-items: center; }
+.store-hero__nether {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 72% 58%, rgba(226, 59, 44, 0.24), transparent 70%),
+    radial-gradient(90% 70% at 70% 100%, rgba(142, 33, 24, 0.45), transparent 70%),
+    linear-gradient(180deg, #0d0c0f 0%, #140d0e 55%, var(--bg) 100%);
+}
+.store-hero__nether::after {
+  /* A floor of netherrack fading up into the dark. */
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: var(--tex-nether) 0 0 / 48px 48px;
+  image-rendering: pixelated;
+  opacity: 0.22;
+  -webkit-mask-image: linear-gradient(to top, #000, transparent);
+  mask-image: linear-gradient(to top, #000, transparent);
+}
+
+.store-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   align-items: center;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 14px clamp(18px, 4vw, 40px);
-  background-color: var(--red-deep);
-  background-image:
-    linear-gradient(rgba(76, 19, 13, 0.86), rgba(45, 11, 8, 0.92)),
-    var(--tex-nether);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border-bottom: 2px solid var(--black);
-  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+  gap: clamp(32px, 5vw, 80px);
 }
+.store-hero__copy > * + * { margin-top: 24px; }
+.store-hero__copy .lead { color: var(--text); }
 
-.secure-banner__ico {
-  image-rendering: pixelated;
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
-  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.55));
-}
-
-.secure-banner__text {
-  max-width: 780px;
-  font-size: 0.95rem;
-  line-height: 1.55;
-  color: #f0d9d5;
-}
-.secure-banner__text strong {
-  font-family: var(--font-ui);
-  font-size: 15px;
-  letter-spacing: 0.4px;
-  color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
-}
-
-.secure-banner__link {
-  flex-shrink: 0;
-  padding: 7px 13px;
-  font-family: var(--font-ui);
-  font-size: 13px;
-  letter-spacing: 0.4px;
-  color: var(--white);
-  text-decoration: none;
-  background: rgba(0, 0, 0, 0.32);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel);
-  transition: background var(--dur-tap) var(--ease);
-}
-.secure-banner__link:hover { background: rgba(0, 0, 0, 0.55); }
-.secure-banner__link i { font-size: 0.8em; margin-left: 4px; }
-
-/* ── Hero extras ────────────────────────────────────────────────────────*/
-.store-chips {
+.store-hero__actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  align-items: stretch;
+  gap: 14px;
 }
 
-.store-chip {
-  display: inline-flex;
+/* The discount code, as a slot holding an item. */
+.promo {
+  display: grid;
+  grid-template-columns: auto auto;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  font-family: var(--font-ui);
-  font-size: 14px;
-  letter-spacing: 0.4px;
-  color: var(--text);
-  background: rgba(16, 15, 18, 0.72);
+  column-gap: 16px;
+  min-height: 64px;
+  padding: 8px 8px 8px 18px;
+  text-align: left;
+  background: rgba(8, 8, 10, 0.7);
   border: var(--border);
-  box-shadow: var(--bevel);
-}
-
-/* The discount code is presented as an inventory slot holding an item: the
-   sunken square is the slot, the code is what is sitting in it. */
-.promo-slot {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 16px 22px 14px;
-  background-color: rgba(16, 15, 18, 0.8);
-  background-image:
-    linear-gradient(rgba(16, 15, 18, 0.78), rgba(16, 15, 18, 0.88)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border: var(--border);
-  box-shadow: var(--shadow-card);
-}
-
-.promo-slot__label {
-  font-family: var(--font-ui);
-  font-size: 13px;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: var(--red-bright);
-  text-shadow: var(--txt-shadow-sm);
-}
-
-.promo-slot__row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.promo-slot__code {
-  padding: 8px 16px;
-  font-family: var(--font-mono);
-  font-size: 1.3rem;
-  letter-spacing: 3px;
-  color: var(--mc-e);
-  background: var(--bg);
-  border: 2px solid var(--black);
   box-shadow: var(--bevel-in);
-  text-shadow: var(--txt-shadow);
+  transition: background var(--dur-tap) var(--ease), transform var(--dur-move) var(--ease-out);
 }
-
-.promo-slot__note {
-  font-size: 0.85rem;
+.promo:hover { background: rgba(8, 8, 10, 0.92); transform: translateY(var(--lift-sm)); }
+.promo__label {
+  grid-column: 1;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--text-faint);
 }
+.promo__code {
+  grid-column: 1;
+  font-family: var(--font-ui);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--mc-e);
+  text-shadow: 2px 2px 0 #3f3f15;
+}
+.promo__copy {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  padding: 0 14px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-dim);
+  border-left: var(--g) solid rgba(0, 0, 0, 0.9);
+  transition: color var(--dur-tap) var(--ease);
+}
+.promo:hover .promo__copy { color: var(--white); }
+.promo.is-success .promo__copy { color: var(--mc-a); }
 
-/* ── Rank cards ─────────────────────────────────────────────────────────*/
-.rank-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 26px;
+.store-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.rank-card {
-  --tier: var(--red);
+/* The crests: three items floating out of their slots, each bobbing on
+   its own beat, lit from beneath in its tier's colour. */
+.crests {
+  position: relative;
+  height: clamp(300px, 34vw, 440px);
+}
+.crest {
+  --tier: var(--mc-a);
+  position: absolute;
+  display: grid;
+  place-items: center;
+  animation: float 5.2s ease-in-out infinite;
+}
+.crest::after {
+  /* The light it casts on the floor. */
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -38px;
+  width: 120%;
+  height: 26px;
+  margin-left: -60%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--tier) 45%, transparent), transparent);
+  opacity: 0.55;
+  animation: floatShadow 5.2s ease-in-out infinite;
+}
+.crest img,
+.crest__slot {
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  padding: 16px;
+  background: rgba(10, 9, 12, 0.85);
+  border: var(--border);
+  box-shadow: var(--bevel-in), 0 0 0 var(--g) rgba(255, 255, 255, 0.04), 0 30px 50px -20px rgba(0, 0, 0, 0.9);
+  image-rendering: pixelated;
+}
+.crest__slot img {
+  width: 96px;
+  height: 96px;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+.crest--plus  { --tier: var(--mc-a); left: 2%;  top: 34%; animation-delay: -1.4s; }
+.crest--extra { --tier: var(--mc-b); left: 34%; top: 4%;  animation-delay: -3.1s; }
+.crest--demon { --tier: var(--mc-c); left: 58%; top: 46%; animation-delay: 0s; }
+.crest--demon .crest__slot { width: 160px; height: 160px; }
+.crest--demon .crest__slot img { width: 128px; height: 128px; }
+.crest--plus::after, .crest--extra::after { animation-delay: inherit; }
+@keyframes float {
+  50% { transform: translate3d(0, -14px, 0); }
+}
+@keyframes floatShadow {
+  50% { transform: scaleX(0.8); opacity: 0.35; }
+}
+
+/* ── Ranks ──────────────────────────────────────────────────────────────*/
+.tebex {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  max-width: 980px;
+  margin: 0 auto 40px;
+  padding: 16px 20px;
+  font-size: var(--fs-small);
+  color: var(--text-dim);
+  background: rgba(76, 19, 13, 0.35);
+  border: var(--border);
+  box-shadow: var(--bevel);
+}
+.tebex > .i { color: var(--red-bright); }
+.tebex p { flex: 1 1 420px; }
+.tebex strong { font-weight: 600; }
+
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+.rank {
+  --tier: var(--mc-a);
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 30px 26px 26px;
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 35, 41, 0.93), rgba(24, 25, 30, 0.96)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
+  padding: 30px 26px 24px;
+  background: var(--surface);
   border: var(--border);
-  border-top: 4px solid var(--tier);
-  box-shadow: var(--shadow-card);
-  transition:
-    transform var(--dur-lift) var(--ease),
-    box-shadow var(--dur-lift) var(--ease);
+  box-shadow: var(--bevel), inset 0 calc(var(--g) * 2) 0 var(--tier);
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 600ms var(--ease-out), box-shadow var(--dur-lift) var(--ease);
 }
-
-.rank-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-pop);
+.rank.is-tilting { transition: transform 120ms linear, box-shadow var(--dur-lift) var(--ease); }
+.rank:hover {
+  box-shadow: var(--bevel), inset 0 calc(var(--g) * 2) 0 var(--tier), 0 34px 60px -30px rgba(0, 0, 0, 0.95);
 }
-
-.rank-card--plus  { --tier: var(--mc-a); }
-.rank-card--extra { --tier: var(--mc-b); }
-.rank-card--demon { --tier: var(--mc-c); }
-
-/* The middle card is the recommendation, so it gets the heavier frame and a
-   little more room rather than a different colour, which would fight the
-   tier accents the other two are already carrying. */
-.rank-card--featured {
-  padding-top: 38px;
-  border-top-width: 6px;
-  box-shadow: var(--bevel), 0 7px 0 rgba(0, 0, 0, 0.6), 0 16px 34px rgba(0, 0, 0, 0.55);
-}
-
-.rank-card__ribbon {
+/* A sheen that follows the pointer across the card, like light on a
+   laminated item card turned in the hand. */
+.rank::after {
+  content: "";
   position: absolute;
-  top: -14px;
+  inset: 0;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.07), transparent 60%);
+  opacity: 0;
+  transition: opacity var(--dur-lift) var(--ease);
+  pointer-events: none;
+}
+.rank.is-tilting::after { opacity: 1; }
+
+.rank--plus  { --tier: var(--mc-a); }
+.rank--extra { --tier: var(--mc-b); }
+.rank--demon { --tier: var(--mc-c); }
+
+.rank--featured {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--tier) 7%, var(--surface)), var(--surface) 38%);
+}
+
+.rank__tag {
+  position: absolute;
+  top: -15px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 5px 15px;
-  white-space: nowrap;
+  padding: 6px 12px 7px;
   font-family: var(--font-ui);
   font-size: 13px;
-  letter-spacing: 0.8px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
   color: var(--black);
   background: var(--tier);
-  border: 2px solid var(--black);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.4), inset -1px -1px 0 rgba(0, 0, 0, 0.3);
+  border: var(--border);
+  box-shadow: inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.4), inset calc(var(--g) * -1) calc(var(--g) * -1) 0 rgba(0, 0, 0, 0.25);
 }
-.rank-card__ribbon--value { color: var(--white); text-shadow: var(--txt-shadow-sm); }
+.rank--demon .rank__tag { color: var(--white); text-shadow: var(--txt-shadow-sm); }
 
-.rank-card__head {
+.rank__head {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 18px;
-}
-
-/* The crest sits in an inventory slot, the way the rank item does in game. */
-.rank-card__crest {
-  image-rendering: pixelated;
-  width: 60px;
-  height: 60px;
-  padding: 7px;
-  flex-shrink: 0;
-  object-fit: contain;
-  background-color: var(--bg);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel-in);
-  animation: crestBob 2.6s ease-in-out infinite alternate;
-}
-@keyframes crestBob {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-4px); }
-}
-
-.rank-card__id { min-width: 0; }
-
-.rank-card__name {
-  font-family: var(--font-pixel);
-  font-size: 26px;
-  line-height: 1.15;
-  letter-spacing: 0.5px;
-  text-shadow: var(--txt-shadow);
-}
-
-.rank-card__blurb {
-  margin-top: 6px;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  color: var(--text-dim);
-}
-
-/* A preview of the tag as it renders above your head in game. */
-.nameplate {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding: 9px 12px;
+  gap: 16px;
   margin-bottom: 20px;
-  background: rgba(0, 0, 0, 0.55);
-  border: 2px solid var(--black);
+}
+.rank__slot {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 68px;
+  height: 68px;
+  background: var(--bg-deep);
+  border: var(--border);
   box-shadow: var(--bevel-in);
 }
-.nameplate__tag,
-.nameplate__player {
-  font-family: var(--font-ui);
-  font-size: 15px;
-  letter-spacing: 0.6px;
-  text-shadow: var(--txt-shadow-sm);
-}
-.nameplate__player { color: var(--white); }
-
-.rank-card__price {
-  display: flex;
-  align-items: baseline;
-  gap: 9px;
-  padding-bottom: 18px;
-  margin-bottom: 18px;
-  border-bottom: 2px solid var(--line);
-}
-
-.price-amount {
-  font-family: var(--font-pixel);
-  font-size: 34px;
-  line-height: 1;
-  color: var(--white);
+.rank__slot .glyph { --s: 3; filter: none; }
+.rank__slot .glyph { width: 48px; height: 48px; }
+.rank__name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.02em;
   text-shadow: var(--txt-shadow);
 }
-
-.price-unit {
-  font-family: var(--font-ui);
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  color: var(--text-faint);
-}
-
-.perk-list {
-  flex: 1;
-  list-style: none;
-  margin-bottom: 22px;
-}
-
-.perk-list li {
-  display: grid;
-  grid-template-columns: 22px 1fr;
-  gap: 3px 11px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line);
-}
-.perk-list li:last-child { border-bottom: none; }
-
-.perk-list li img {
-  grid-row: span 2;
-  margin-top: 2px;
-}
-
-.perk-list strong {
-  font-family: var(--font-ui);
+.rank__blurb {
+  margin-top: 6px;
   font-size: 14px;
-  font-weight: 400;
-  letter-spacing: 0.4px;
-  color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
-}
-
-.perk-list span {
-  font-size: 0.86rem;
   line-height: 1.45;
   color: var(--text-dim);
 }
 
-.rank-card__cta { margin-top: auto; }
+/* The tag as it renders above your head in game. */
+.nameplate {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+  padding: 10px 12px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-shadow: var(--txt-shadow-sm);
+  background: rgba(0, 0, 0, 0.55);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+.nameplate__player { color: var(--white); }
 
-.rank-card__secure {
-  margin-top: 11px;
-  text-align: center;
-  font-size: 0.8rem;
+.rank__price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding-bottom: 20px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.rank__price b {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--white);
+  text-shadow: var(--txt-shadow);
+}
+.rank__price span {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  letter-spacing: 0.06em;
   color: var(--text-faint);
 }
-.rank-card__secure i { margin-right: 5px; color: var(--red); }
 
-.price-footnote {
+.perks-list { flex: 1; margin-bottom: 22px; }
+.perks-list li {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 2px 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+.perks-list li:last-child { border-bottom: 0; }
+.perks-list .glyph { grid-row: span 2; margin-top: 2px; }
+.perks-list strong {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  text-shadow: var(--txt-shadow-sm);
+}
+.perks-list span {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.rank__cta { margin-top: auto; }
+.rank__secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-faint);
+}
+.rank__secure .i { color: var(--red); }
+
+.footnote {
   max-width: 620px;
-  margin: 30px auto 0;
+  margin: 34px auto 0;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 13px;
   line-height: 1.6;
   color: var(--text-faint);
 }
 
-/* ── Comparison table ───────────────────────────────────────────────────
-   Five columns will not fit a phone, so the table keeps its width and the
-   wrapper scrolls sideways instead of the whole page doing it. The perk
-   column is sticky so the row you are reading stays labelled while the
-   tiers slide past it, which means it needs an opaque background of its
-   own — the table's is behind it, not under it.                           */
+/* ── Compare ────────────────────────────────────────────────────────────
+   Five columns will not fit a phone, so down to tablet width the table keeps
+   its width and its own box scrolls sideways, the perk column pinned so the
+   row you are reading keeps its label. Below that it is rebuilt as stacked
+   rows (see the 760px query).                                           */
+.compare-wrap { position: relative; }
+
 .compare-scroll {
   overflow-x: auto;
+  background: var(--surface);
   border: var(--border);
-  box-shadow: var(--shadow-card);
-  background: var(--panel);
+  box-shadow: var(--bevel);
 }
-.compare-scroll:focus-visible { outline: 3px solid var(--red-bright); outline-offset: 3px; }
+.compare-scroll:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
 
 .compare {
   width: 100%;
   min-width: 720px;
   border-collapse: collapse;
-  font-size: 0.9rem;
+  font-size: var(--fs-small);
 }
-
 .compare thead th {
   position: sticky;
   top: 0;
   z-index: 2;
-  padding: 15px 14px;
-  text-align: center;
+  padding: 18px 14px 16px;
   font-family: var(--font-ui);
   font-size: 15px;
   font-weight: 400;
-  letter-spacing: 0.6px;
+  letter-spacing: 0.04em;
+  text-align: center;
   color: var(--white);
-  background-color: #1c1d23;
-  background-image: linear-gradient(rgba(28, 29, 35, 0.94), rgba(20, 21, 26, 0.97)), var(--tex-deepslate);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border-bottom: 2px solid var(--black);
   text-shadow: var(--txt-shadow-sm);
+  background: #1a1b20;
+  border-bottom: var(--border);
 }
-
-.compare thead th.compare__perk {
-  left: 0;
-  z-index: 3;
-  text-align: left;
-}
-
-.compare__col { border-bottom: 4px solid var(--tier, var(--line)); }
-.compare__col--free  { --tier: var(--line); color: var(--text-dim); }
+.compare thead th.compare__perk { left: 0; z-index: 3; text-align: left; color: var(--text-dim); }
+.compare__col { box-shadow: inset 0 calc(var(--g) * -2) 0 var(--tier, var(--line)); }
+.compare__col--free  { --tier: var(--line-hi); color: var(--text-dim) !important; }
 .compare__col--plus  { --tier: var(--mc-a); }
 .compare__col--extra { --tier: var(--mc-b); }
 .compare__col--demon { --tier: var(--mc-c); }
@@ -425,477 +425,468 @@
   position: sticky;
   left: 0;
   z-index: 1;
-  padding: 11px 14px;
+  padding: 12px 16px;
   text-align: left;
   font-weight: 400;
   color: var(--text);
-  background: var(--panel);
-  border-right: 2px solid var(--black);
+  background: var(--surface);
+  border-right: var(--border);
 }
-
 .compare tbody td {
-  padding: 11px 14px;
+  padding: 12px 14px;
   text-align: center;
   font-family: var(--font-ui);
   font-size: 14px;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.02em;
   color: var(--text-dim);
 }
-
 .compare tbody tr { border-bottom: 1px solid var(--line); }
-
-/* The row under the cursor lights up across every column, which is the only
-   way to read a wide row without losing your place in it. */
 .compare tbody tr:not(.compare__group):hover td { background: rgba(226, 59, 44, 0.07); }
-.compare tbody tr:not(.compare__group):hover th[scope="row"] {
-  background: var(--panel-hi);
-  color: var(--white);
-}
-
+.compare tbody tr:not(.compare__group):hover th[scope="row"] { background: var(--panel-hi); color: var(--white); }
 .compare tbody th code {
-  font-family: var(--font-mono);
-  font-size: 0.9em;
   padding: 1px 6px;
+  font-size: 0.9em;
   color: var(--mc-e);
-  background: var(--bg);
+  background: var(--bg-deep);
   border: 1px solid var(--black);
 }
-
 .compare__group th {
-  padding: 16px 14px 10px;
+  padding: 18px 16px 10px;
   text-align: left;
   font-family: var(--font-ui);
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--red-bright);
-  background: var(--surface);
-  border-top: 2px solid var(--black);
-  border-bottom: 2px solid var(--black);
-  text-shadow: var(--txt-shadow-sm);
+  background: var(--bg-deep);
+  border-top: var(--border);
+  border-bottom: var(--border);
 }
-.compare__group th img { vertical-align: -3px; margin-right: 8px; }
-
+.compare__group th .glyph { display: inline-block; vertical-align: -3px; margin-right: 8px; }
 .compare .is-yes  { color: var(--mc-a); }
 .compare .is-no   { color: var(--text-faint); }
 .compare .is-best { color: var(--white); text-shadow: var(--txt-shadow-sm); }
 
-/* ── Revive token ───────────────────────────────────────────────────────*/
-.revive-card {
+/* ── Revive ─────────────────────────────────────────────────────────────*/
+.revive {
   display: grid;
-  grid-template-columns: 190px 1fr 250px;
-  gap: 30px;
+  grid-template-columns: minmax(220px, 360px) minmax(0, 1fr);
+  gap: clamp(36px, 6vw, 90px);
   align-items: center;
-  padding: 32px;
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 24, 26, 0.9), rgba(22, 16, 18, 0.95)),
-    var(--tex-nether);
-  background-size: auto, 40px 40px;
-  image-rendering: pixelated;
-  border: var(--border);
-  border-left: 5px solid var(--mc-c);
-  box-shadow: var(--shadow-card);
 }
-
-.revive-card__art {
+.revive__art {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1;
-  background: rgba(0, 0, 0, 0.45);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel-in);
-}
-
-.revive-card__ico {
-  image-rendering: pixelated;
-  width: 110px;
-  height: 110px;
-  filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.6));
-}
-
-/* The heart orbits the slot the way the revive beacon pulses in game. */
-.revive-card__heart {
-  image-rendering: pixelated;
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  width: 30px;
-  height: 34px;
-  animation: heartPulse 1.5s ease-in-out infinite alternate;
-}
-@keyframes heartPulse {
-  from { transform: scale(1); }
-  to   { transform: scale(1.18); }
-}
-
-/* Long prose in a grid track will happily push the track wider than its
-   share unless the track is told it may shrink below its content. */
-.revive-card__body { min-width: 0; }
-
-.revive-card__title {
-  font-family: var(--font-pixel);
-  font-size: 28px;
-  line-height: 1.2;
-  color: var(--white);
-  text-shadow: var(--txt-shadow);
-}
-
-.revive-card__lead {
-  margin: 12px 0 20px;
-  font-size: 1rem;
-  line-height: 1.65;
-  color: var(--text-dim);
-}
-
-.revive-cols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px 30px;
+  place-items: center;
+  aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(255, 207, 58, 0.14), transparent);
 }
-
-.revive-col__head {
-  margin-bottom: 9px;
+/* A beacon beam standing behind the totem, the way a revive beacon
+   lights up in game. */
+.revive__beam {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 32px;
+  height: 200%;
+  margin-left: -16px;
+  background: linear-gradient(90deg,
+    transparent 0 10%,
+    rgba(255, 220, 120, 0.2) 10% 26%,
+    rgba(255, 240, 190, 0.55) 26% 40%,
+    #fff8e1 40% 60%,
+    rgba(255, 240, 190, 0.55) 60% 74%,
+    rgba(255, 220, 120, 0.2) 74% 90%,
+    transparent 90%);
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(to top, #000 40%, transparent 95%);
+  mask-image: linear-gradient(to top, #000 40%, transparent 95%);
+  opacity: 0.7;
+  animation: beam 3.2s ease-in-out infinite;
+}
+@keyframes beam { 50% { opacity: 0.45; transform: scaleX(0.85); } }
+.revive__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 144px;
+  height: 144px;
+  background: rgba(10, 9, 12, 0.9);
+  border: var(--border);
+  box-shadow: var(--bevel-in), 0 30px 60px -24px rgba(0, 0, 0, 0.95);
+  animation: float 5.2s ease-in-out infinite;
+}
+.revive__slot .glyph { width: 96px; height: 96px; filter: none; }
+.revive__body > * + * { margin-top: 22px; }
+.revive__body .label + * { margin-top: 18px; }
+.revive__cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 32px;
+}
+.revive__cols h3 {
+  margin-bottom: 10px;
   font-family: var(--font-ui);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--red-bright);
-  text-shadow: var(--txt-shadow-sm);
 }
-
-.revive-list { list-style: none; }
-.revive-list li {
+.ticks li {
   position: relative;
   padding-left: 20px;
-  margin-bottom: 7px;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: var(--fs-small);
   color: var(--text-dim);
 }
-.revive-list li::before {
+.ticks li + li { margin-top: 8px; }
+.ticks li::before {
   content: "";
   position: absolute;
   left: 0;
-  top: 0.5em;
-  width: 8px;
-  height: 8px;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
   background: var(--mc-c);
-  border: 2px solid var(--black);
+  box-shadow: 0 0 0 2px var(--black);
 }
-
-.revive-card__buy {
+.revive__buy {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
-  padding: 22px 20px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid var(--black);
-  box-shadow: var(--bevel-in);
+  gap: 16px 22px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
 }
-.revive-card__buy .mc-btn { margin-top: 14px; white-space: nowrap; }
+.revive__buy .rank__price { padding: 0; margin: 0; border: 0; }
+.revive__buy .rank__secure { margin: 0; flex-basis: 100%; justify-content: flex-start; }
 
 /* ── Cosmetics ──────────────────────────────────────────────────────────*/
-.cosmetic-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
-  gap: 14px;
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto 28px;
+  padding: 4px;
+  background: var(--bg-deep);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+.filter__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--text-dim);
+  text-shadow: var(--txt-shadow-sm);
+  transition: color var(--dur-tap) var(--ease), background var(--dur-tap) var(--ease);
+}
+.filter__btn:hover { color: var(--white); }
+.filter__btn[aria-pressed="true"] {
+  color: var(--white);
+  background: var(--panel-hi);
+  box-shadow: inset 0 0 0 var(--g) #e8e8ea, inset 0 0 0 calc(var(--g) * 2) rgba(0, 0, 0, 0.85);
 }
 
+.cosmetic-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
 .cosmetic {
   --tier: var(--line);
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 16px 10px 12px;
+  gap: 12px;
+  padding: 20px 10px 14px;
   text-align: center;
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 35, 41, 0.9), rgba(24, 25, 30, 0.95)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border: 2px solid var(--black);
-  border-bottom: 4px solid var(--tier);
-  box-shadow: var(--bevel);
-  transition:
-    transform var(--dur-move) var(--ease-pop),
-    box-shadow var(--dur-move) var(--ease);
+  background: var(--surface);
+  border: var(--border);
+  box-shadow: var(--bevel), inset 0 calc(var(--g) * -2) 0 var(--tier);
+  transition: transform var(--dur-move) var(--ease-out), opacity var(--dur-lift) var(--ease), filter var(--dur-lift) var(--ease);
 }
-
 .cosmetic[data-tier="plus"]  { --tier: var(--mc-a); }
 .cosmetic[data-tier="extra"] { --tier: var(--mc-b); }
 .cosmetic[data-tier="demon"] { --tier: var(--mc-c); }
-
-.cosmetic:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--bevel), 0 7px 0 rgba(0, 0, 0, 0.55);
-}
-
+.cosmetic:hover { transform: translateY(var(--lift)); }
 .cosmetic img {
-  image-rendering: pixelated;
   width: 64px;
   height: 64px;
   object-fit: contain;
-  filter: drop-shadow(3px 3px 0 rgba(0, 0, 0, 0.5));
-  transition: transform var(--dur-move) var(--ease-pop);
+  image-rendering: pixelated;
+  filter: drop-shadow(var(--g) var(--g) 0 rgba(0, 0, 0, 0.5));
+  transition: transform var(--dur-lift) var(--ease-pop);
 }
-.cosmetic:hover img { transform: scale(1.14); }
-
+.cosmetic:hover img { transform: translateY(-4px) scale(1.12); }
 .cosmetic figcaption {
   font-family: var(--font-ui);
   font-size: 13px;
-  letter-spacing: 0.3px;
-  line-height: 1.35;
-  min-height: 2.7em;
+  line-height: 1.3;
   color: var(--text-dim);
+}
+.cosmetic.is-dim {
+  opacity: 0.18;
+  filter: grayscale(1);
 }
 
 .cosmetic-key {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px 26px;
+  gap: 12px 28px;
   margin-top: 28px;
-}
-
-.cosmetic-key__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
   font-family: var(--font-ui);
   font-size: 13px;
-  letter-spacing: 0.4px;
   color: var(--text-dim);
 }
-
+.cosmetic-key > span { display: inline-flex; align-items: center; gap: 9px; }
 .swatch {
-  width: 13px;
-  height: 13px;
-  border: 2px solid var(--black);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.35);
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 0 2px var(--black), inset 1px 1px 0 rgba(255, 255, 255, 0.35);
 }
 .swatch--plus  { background: var(--mc-a); }
 .swatch--extra { background: var(--mc-b); }
 .swatch--demon { background: var(--mc-c); }
 
-/* ── Delivery steps ─────────────────────────────────────────────────────*/
-.step-grid {
+/* ── Delivery ───────────────────────────────────────────────────────────*/
+.timeline {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  list-style: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
   counter-reset: step;
 }
-
-.step {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  padding: 34px 26px 28px;
-  text-align: center;
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 35, 41, 0.92), rgba(24, 25, 30, 0.96)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border: var(--border);
-  border-top: 4px solid var(--red);
-  box-shadow: var(--shadow-card);
-}
-
-.step__num {
+/* A dotted rail running between the three slots. */
+.timeline::before {
+  content: "";
   position: absolute;
-  top: 12px;
-  right: 16px;
-  font-family: var(--font-ui);
-  font-size: 22px;
-  color: var(--text-faint);
-  text-shadow: var(--txt-shadow-sm);
+  top: 34px;
+  left: 60px;
+  right: calc(33.3% - 60px);
+  height: var(--g);
+  background: repeating-linear-gradient(90deg, var(--line-hi) 0 8px, transparent 8px 16px);
 }
-
-.step h3 {
+.timeline__step { position: relative; counter-increment: step; }
+.timeline__slot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin-bottom: 22px;
+  background: var(--bg-deep);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
+}
+.timeline__slot::after {
+  content: counter(step);
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--white);
+  background: var(--red);
+  box-shadow: 0 0 0 var(--g) var(--black), inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.25);
+}
+.timeline h3 {
+  margin-bottom: 10px;
   font-family: var(--font-ui);
   font-size: 18px;
   font-weight: 400;
-  letter-spacing: 0.6px;
   color: var(--white);
   text-shadow: var(--txt-shadow-sm);
 }
-
-.step p {
-  font-size: 0.94rem;
-  line-height: 1.6;
-  color: var(--text-dim);
-}
-.step p strong { color: var(--mc-e); font-family: var(--font-ui); font-size: 14px; font-weight: 400; }
+.timeline p { font-size: var(--fs-small); color: var(--text-dim); }
+.timeline p strong { font-family: var(--font-ui); font-weight: 400; color: var(--mc-e); }
 
 /* ── Promise ────────────────────────────────────────────────────────────*/
-.promise-panel {
-  max-width: 900px;
-  margin-inline: auto;
-  padding: clamp(26px, 4vw, 40px);
-  background-color: var(--panel);
-  background-image:
-    linear-gradient(rgba(34, 35, 41, 0.93), rgba(24, 25, 30, 0.96)),
-    var(--tex-stone);
-  background-size: auto, 32px 32px;
-  image-rendering: pixelated;
-  border: var(--border);
-  box-shadow: var(--shadow-card);
-}
+.statement--center { margin-top: clamp(36px, 5vw, 60px); }
 
-.promise-lead {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: var(--text);
-  text-align: center;
-}
-
-.promise-cols {
+.promise {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px 34px;
-  margin: 28px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: clamp(40px, 6vw, 72px);
 }
-
-.promise-list { list-style: none; }
-.promise-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  padding: 10px 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--text-dim);
-  border-bottom: 1px solid var(--line);
-}
-.promise-list li:last-child { border-bottom: none; }
-.promise-list i { margin-top: 3px; flex-shrink: 0; }
-.promise-list--yes i { color: var(--mc-a); }
-.promise-list--no  i { color: var(--mc-c); }
-
-.promise-foot {
-  padding-top: 22px;
-  border-top: 2px solid var(--line);
-  text-align: center;
-  font-size: 0.92rem;
-  line-height: 1.7;
-  color: var(--text-faint);
-}
-
-/* ── FAQ ────────────────────────────────────────────────────────────────*/
-.faq {
-  max-width: 820px;
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.faq__item {
-  background: var(--panel);
+.promise__list {
+  padding: 22px 24px;
+  background: var(--surface);
   border: var(--border);
   box-shadow: var(--bevel);
 }
-
-.faq__item summary {
+.promise__list li {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 20px;
-  cursor: pointer;
-  list-style: none;
+  padding: 10px 0;
+  font-size: var(--fs-small);
+  color: var(--text);
+  border-bottom: 1px solid var(--line);
+}
+.promise__list li:last-child { border-bottom: 0; }
+.promise__list--yes .i { color: var(--mc-a); }
+.promise__list--no .i  { color: var(--mc-c); }
+.promise ~ .footnote { margin-top: 30px; }
+
+/* ── FAQ ────────────────────────────────────────────────────────────────*/
+.faq { display: grid; gap: 10px; margin-top: clamp(36px, 5vw, 56px); }
+.faq__item {
+  background: var(--surface);
+  border: var(--border);
+  box-shadow: var(--bevel);
+}
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
   font-family: var(--font-ui);
   font-size: 16px;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.01em;
   color: var(--white);
   text-shadow: var(--txt-shadow-sm);
+  list-style: none;
+  cursor: pointer;
   transition: background var(--dur-tap) var(--ease);
 }
 .faq__item summary::-webkit-details-marker { display: none; }
 .faq__item summary:hover { background: var(--panel-hi); }
-
-/* A block that turns, rather than a chevron: the marker is drawn here so it
-   matches the square vocabulary the rest of the page is built from. */
 .faq__item summary::before {
   content: "";
   flex-shrink: 0;
-  width: 11px;
-  height: 11px;
+  width: 10px;
+  height: 10px;
   background: var(--red);
-  border: 2px solid var(--black);
-  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 0 var(--g) var(--black), inset 1px 1px 0 rgba(255, 255, 255, 0.35);
   transition: transform var(--dur-move) var(--ease-pop);
 }
 .faq__item[open] summary::before { transform: rotate(45deg); }
-
 .faq__item p {
-  padding: 0 20px 18px 43px;
-  font-size: 0.95rem;
-  line-height: 1.7;
+  padding: 0 22px 20px 46px;
+  font-size: var(--fs-small);
   color: var(--text-dim);
+}
+/* The answer unrolls rather than snapping open, where the browser can
+   animate to auto height; elsewhere it opens the way details always has. */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    .faq__item { interpolate-size: allow-keywords; }
+    .faq__item::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition: block-size var(--dur-lift) var(--ease-out), content-visibility var(--dur-lift) allow-discrete;
+    }
+    .faq__item[open]::details-content { block-size: auto; }
+  }
 }
 
 .faq-help {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 34px;
+  margin-top: 36px;
 }
 .faq-help p { color: var(--text-dim); }
 
-/* ── Idle motion is decoration ──────────────────────────────────────────
-   main.css flattens transitions under reduced motion, but a looping
-   keyframe animation is not a transition and keeps running, so the loops
-   this page adds have to be switched off here as well.                    */
-@media (prefers-reduced-motion: reduce) {
-  .rank-card__crest,
-  .revive-card__heart { animation: none; }
+/* ── Responsive ─────────────────────────────────────────────────────────*/
+@media (max-width: 1100px) {
+  .rank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rank--demon { grid-column: 1 / -1; max-width: 560px; justify-self: center; width: 100%; }
+  .cosmetic-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
-@media (max-width: 1000px) {
-  .revive-card {
-    grid-template-columns: 110px 1fr;
-  }
-  .revive-card__buy {
-    grid-column: 1 / -1;
-  }
+@media (max-width: 900px) {
+  .store-hero__grid { grid-template-columns: 1fr; }
+  .crests { height: 240px; max-width: 480px; }
+  .crest img, .crest__slot { width: 96px; height: 96px; padding: 12px; }
+  .crest__slot img { width: 64px; height: 64px; }
+  .crest--demon .crest__slot { width: 128px; height: 128px; }
+  .crest--demon .crest__slot img { width: 96px; height: 96px; }
+  .revive { grid-template-columns: 1fr; }
+  .revive__art { max-width: 280px; margin-inline: auto; }
+  .timeline { grid-template-columns: 1fr; }
+  .timeline::before { display: none; }
 }
 
 @media (max-width: 760px) {
-  .secure-banner { text-align: center; }
-  .secure-banner__text { font-size: 0.9rem; }
-
-  .rank-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
-  .rank-card--featured { padding-top: 34px; }
-
-  .revive-card {
-    grid-template-columns: 1fr;
-    padding: 26px 22px;
-    text-align: center;
+  /* The table gives up scrolling: each perk is a label across the top with
+     the four tiers side by side underneath, named by the cell itself. */
+  .compare-scroll { overflow: visible; }
+  .compare { min-width: 0; }
+  .compare thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
   }
-  .revive-card__art { max-width: 150px; margin-inline: auto; }
-  .revive-list li { text-align: left; }
-
-  .cosmetic-grid { grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); }
-  .cosmetic img { width: 52px; height: 52px; }
+  .compare tbody tr:not(.compare__group) {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .compare tbody tr:not(.compare__group):hover td { background: none; }
+  .compare tbody th[scope="row"] {
+    position: static;
+    grid-column: 1 / -1;
+    padding: 12px 14px 6px;
+    border-right: 0;
+  }
+  .compare tbody td {
+    padding: 2px 4px 12px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .compare tbody td::before {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tier, var(--text-faint));
+  }
+  .compare tbody td:nth-of-type(1)::before { content: "Free"; --tier: var(--text-faint); }
+  .compare tbody td:nth-of-type(2)::before { content: "Plus"; --tier: var(--mc-a); }
+  .compare tbody td:nth-of-type(3)::before { content: "Extra"; --tier: var(--mc-b); }
+  .compare tbody td:nth-of-type(4)::before { content: "Demon"; --tier: var(--mc-c); }
+  .rank-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+  .rank--demon { grid-column: auto; }
+  .promise { grid-template-columns: 1fr; }
+  .revive__cols { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 520px) {
-  .rank-card__head { flex-direction: column; text-align: center; }
-  .rank-card__crest { width: 66px; height: 66px; }
-  .promo-slot__row { flex-direction: column; }
-  .faq__item p { padding-left: 20px; }
+@media (max-width: 560px) {
+  .cosmetic-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cosmetic img { width: 64px; height: 64px; }
+  .store-hero__actions { flex-direction: column; align-items: stretch; }
+  .store-hero__actions .mc-btn { justify-content: center; }
+  .faq__item p { padding-left: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crest, .crest::after, .revive__slot, .revive__beam { animation: none; }
+  .rank { transform: none; }
+}
+
+/* Short screens: the hero sheds its chips so the call to action and the
+   code sit above the fold, clear of the hotbar. */
+@media (max-height: 820px) and (min-width: 700px) {
+  .store-hero__copy > * + * { margin-top: 16px; }
+  .store-hero__chips { display: none; }
 }

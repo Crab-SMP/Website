@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CrabSMP | Store</title>
   <meta name="description" content="The CrabSMP store. Three permanent donator ranks — CRABPLUS+, CRABEXTRA+ and CRABDEMON+ — plus Lifesteal Revive tokens. Quality of life and cosmetics only, never pay to win. Secure checkout handled by Tebex." />
   <meta name="keywords" content="crabsmp store, crabsmp ranks, crabplus, crabextra, crabdemon, minecraft bedrock lifesteal ranks, crabsmp revive token, bedrock server donator rank" />
   <meta name="author" content="CrabSMP" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#e23b2c" />
+  <meta name="theme-color" content="#100f12" />
   <link rel="canonical" href="https://crabsmp.net/store" />
   <link rel="icon" type="image/png" href="media/logo.png" />
   <link rel="apple-touch-icon" href="media/logo.png" />
@@ -19,16 +18,34 @@
   <meta property="og:title" content="CrabSMP Store | Ranks &amp; Lifesteal Revives" />
   <meta property="og:description" content="Three permanent ranks and Lifesteal Revive tokens. Quality of life and cosmetics only — never pay to win. Checkout handled by Tebex." />
   <meta property="og:url" content="https://crabsmp.net/store" />
-  <meta property="og:image" content="https://crabsmp.net/media/assets/background.jpg" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CrabSMP Store | Ranks &amp; Lifesteal Revives" />
   <meta name="twitter:description" content="Three permanent ranks and Lifesteal Revive tokens. Quality of life and cosmetics only — never pay to win." />
-  <meta name="twitter:image" content="https://crabsmp.net/media/assets/background.jpg" />
+  <meta name="twitter:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <!-- chrome:boot -->
+  <script>
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+      try { if (localStorage.getItem('crab-sound') === 'off') c.add('sound-off'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
 
   <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="preload" href="media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+  <!-- /chrome:boot -->
   <link rel="stylesheet" href="styles/main.css" />
   <link rel="stylesheet" href="styles/store.css" />
 
@@ -45,636 +62,537 @@
 </head>
 <body>
 
-<a id="skip-navigation-link" href="#main-content">Skip navigation</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<div id="loading" aria-label="Loading CrabSMP">
-  <img class="loading-logo" src="media/logo.png" alt="" />
-  <div class="loading-bar" role="progressbar" aria-label="Loading progress">
-    <span class="loading-bar__fill"></span>
-  </div>
-  <p class="loading-text">Generating world…</p>
-</div>
-
-<header id="site-header">
-  <div class="mobile-bar">
-    <img class="header-mobile-logo" src="media/logo.png" alt="CrabSMP" />
-    <button class="header-mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <i class="fa-solid fa-bars"></i>
+<!-- chrome:topbar -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
+      <img src="media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="index.html"><img class="topbar__ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="about.html"><img class="topbar__ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="store.html" aria-current="page"><img class="topbar__ico" src="media/icons/glyph/shop.png" alt="" />Store<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="vote.html"><img class="topbar__ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="status.html"><img class="topbar__ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="media/icons/glyph/discord.png" alt="" />Discord<i class="i i-external topbar__out" aria-hidden="true"></i><span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <button class="sound" type="button" data-sound-toggle aria-pressed="true" aria-label="Sound">
+      <span class="sound__icon" aria-hidden="true"><span class="sound__bars"><i></i><i></i><i></i></span></span>
+    </button>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
     </button>
   </div>
-  <nav aria-label="Main navigation">
-    <ul>
-      <li class="header-logo-outer">
-        <a href="/"><img class="header-logo" src="media/logo.png" alt="CrabSMP" /></a>
-      </li>
-      <li><a href="index.html"><img class="header-ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
-      <li><a href="about.html"><img class="header-ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
-      <li><a href="store.html" class="active"><img class="header-ico" src="media/icons/glyph/shop.png" alt="" />Store</a></li>
-      <li><a href="vote.html"><img class="header-ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
-      <li><a href="status.html"><img class="header-ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
-      <li><a href="verixen.html"><img class="header-ico" src="media/icons/glyph/shield.png" alt="" />Verixen</a></li>
-      <li><a href="/discord" target="_blank" rel="noopener"><img class="header-ico" src="media/icons/glyph/discord.png" alt="" />Discord<i class="fa-solid fa-up-right-from-square header-small-icon"></i></a></li>
-      <li class="header-cta-outer"><a class="header-cta" href="#ranks">▶ Browse Ranks</a></li>
-    </ul>
-  </nav>
 </header>
+<!-- /chrome:topbar -->
 
-<!-- Sits above the fold on purpose: nobody should reach a price without
-     knowing who takes the money. -->
-<aside class="secure-banner" aria-label="Payment security">
-  <img class="secure-banner__ico" src="media/icons/glyph/shield.png" alt="" />
-  <p class="secure-banner__text">
-    <strong>Every payment is processed by Tebex.</strong>
-    We never see or store your card details — checkout, billing and refunds are
-    handled end to end by Tebex Limited, the payment provider trusted by most of
-    the Minecraft server network.
-  </p>
-  <a class="secure-banner__link" href="https://www.tebex.io" target="_blank" rel="noopener">
-    What is Tebex? <i class="fa-solid fa-up-right-from-square"></i>
-  </a>
-</aside>
+<main id="main">
 
-<section class="hero-section" id="main-content" aria-label="The CrabSMP store">
-  <div class="hero-bg-img" aria-hidden="true"></div>
-  <div class="hero-content">
-    <img class="hero-logo-img" src="media/logo.png" alt="CrabSMP logo" />
-    <span class="hero-splash" aria-hidden="true"
-          data-splashes="10% off with CRAB10!|Never pay to win!|Permanent, never expires!|Delivered in minutes!|65 cosmetics!|Wear the crown!">10% off with CRAB10!</span>
-    <h1 class="hero-title">The CrabSMP Store</h1>
-    <p class="hero-desc">
-      Three permanent ranks and a way back from elimination. Everything here is
-      quality of life and cosmetics — it never touches damage, hearts or PvP.
-      Buy it, log in, and it is on your account within minutes.
-    </p>
-
-    <div class="store-chips">
-      <span class="store-chip"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/revive_beacon.png" alt="" /> Permanent, never expires</span>
-      <span class="store-chip"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/tpa.png" alt="" /> Delivered automatically</span>
-      <span class="store-chip"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/sword.png" alt="" /> Never pay to win</span>
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="page-hero store-hero" aria-labelledby="store-title">
+    <div class="page-hero__bg" aria-hidden="true">
+      <div class="store-hero__nether"></div>
+      <canvas class="store-hero__ash" data-motes="ash"></canvas>
     </div>
 
-    <div class="promo-slot">
-      <div class="promo-slot__label">Discount code</div>
-      <div class="promo-slot__row">
-        <code class="promo-slot__code">CRAB10</code>
-        <button class="mc-btn mc-btn--sm" data-copy="CRAB10">
-          <i class="fa-solid fa-copy"></i> Copy
-        </button>
-      </div>
-      <p class="promo-slot__note">10% off at checkout.</p>
-    </div>
-  </div>
-</section>
-
-<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
-
-<section class="section" id="ranks" aria-labelledby="ranks-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Donator Ranks</span>
-      <h2 class="s-headline" id="ranks-heading">Pick Your Tier</h2>
-      <p class="s-sub">
-        Each tier is a one-off payment that never expires and never renews.
-        The perks below are read straight off the live server config, so what
-        you see is what lands on your account.
-      </p>
-    </div>
-
-    <div class="rank-grid">
-
-      <article class="rank-card rank-card--plus" data-reveal>
-        <header class="rank-card__head">
-          <img class="rank-card__crest" src="media/icons/glyph/rank_crabplus.png" alt="" />
-          <div class="rank-card__id">
-            <h3 class="rank-card__name"><span class="mc-a">CRAB</span><span class="mc-f">PLUS</span><span class="mc-e">+</span></h3>
-            <p class="rank-card__blurb">The entry tier. The essentials, no filler.</p>
-          </div>
-        </header>
-
-        <div class="nameplate" aria-label="How your tag looks in game">
-          <span class="nameplate__tag"><span class="mc-8">[</span><span class="mc-a">CRAB</span><span class="mc-f">PLUS</span><span class="mc-8">]</span></span>
-          <span class="nameplate__player">YourName</span>
-        </div>
-
-        <div class="rank-card__price">
-          <span class="price-amount">$2.99</span>
-          <span class="price-unit">one-off</span>
-        </div>
-
-        <ul class="perk-list">
-          <li><img class="mc-ico" src="media/icons/glyph/tag.png" alt="" /><strong>[CRABPLUS] tag</strong><span>In chat and above your head</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/warps.png" alt="" /><strong>+10 sethomes</strong><span>11 saved locations in total</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/arrow_up.png" alt="" /><strong>/fly in spawn</strong><span>Plus /back and /echest</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /><strong>2 personal vaults</strong><span>Private /vault storage</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/crown_gold.png" alt="" /><strong>Premium Battlepass</strong><span>The improved seasonal track</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/chat.png" alt="" /><strong>Chat colours</strong><span>Custom join, leave &amp; kill messages</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/sparkles.png" alt="" /><strong>11 gear cosmetics</strong><span>Crab Crown, shells, orbits, pets, capes</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/ban.png" alt="" /><strong>No ads, no RTP cooldown</strong><span>And the MENU item in slot 8</span></li>
-        </ul>
-
-        <a class="mc-btn mc-btn--green mc-btn--block rank-card__cta" href="https://store.crabsmp.net/package/7388591" target="_blank" rel="noopener">
-          <img class="btn-ico" src="media/icons/glyph/shop.png" alt="" /> Get CRABPLUS+
-        </a>
-        <p class="rank-card__secure"><i class="fa-solid fa-lock"></i> Secure checkout via Tebex</p>
-      </article>
-
-      <article class="rank-card rank-card--extra rank-card--featured" data-reveal>
-        <div class="rank-card__ribbon">★ Most Popular ★</div>
-        <header class="rank-card__head">
-          <img class="rank-card__crest" src="media/icons/glyph/rank_crabextra.png" alt="" />
-          <div class="rank-card__id">
-            <h3 class="rank-card__name"><span class="mc-b">CRAB</span><span class="mc-f">EXTRA</span><span class="mc-e">+</span></h3>
-            <p class="rank-card__blurb">Everything in CRABPLUS, limits pushed much further.</p>
-          </div>
-        </header>
-
-        <div class="nameplate" aria-label="How your tag looks in game">
-          <span class="nameplate__tag"><span class="mc-8">[</span><span class="mc-b">CRAB</span><span class="mc-f">EXTRA</span><span class="mc-8">]</span></span>
-          <span class="nameplate__player">YourName</span>
-        </div>
-
-        <div class="rank-card__price">
-          <span class="price-amount">$5.99</span>
-          <span class="price-unit">one-off</span>
-        </div>
-
-        <ul class="perk-list">
-          <li><img class="mc-ico" src="media/icons/glyph/arrow_up.png" alt="" /><strong>Everything in CRABPLUS+</strong><span>Plus the eight below</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/open_chest.png" alt="" /><strong>/echest anywhere</strong><span>Not just at spawn</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /><strong>5 personal vaults</strong><span>More than double CRABPLUS</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/money.png" alt="" /><strong>+10 auction slots</strong><span>7-day listings, 13 slots in total</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/moon.png" alt="" /><strong>1 hour of night vision</strong><span>Per 2 hour cooldown</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/key_common.png" alt="" /><strong>Crate perks</strong><span>No cooldown, open alongside others</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/disc.png" alt="" /><strong>Join, leave &amp; kill sounds</strong><span>Your own cues, played to the server</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/elytra.png" alt="" /><strong>37 gear cosmetics</strong><span>Ice &amp; Dragon Wings, halos, shard auras</span></li>
-        </ul>
-
-        <a class="mc-btn mc-btn--blue mc-btn--block rank-card__cta" href="https://store.crabsmp.net/package/7388594" target="_blank" rel="noopener">
-          <img class="btn-ico" src="media/icons/glyph/shop.png" alt="" /> Get CRABEXTRA+
-        </a>
-        <p class="rank-card__secure"><i class="fa-solid fa-lock"></i> Secure checkout via Tebex</p>
-      </article>
-
-      <article class="rank-card rank-card--demon" data-reveal>
-        <div class="rank-card__ribbon rank-card__ribbon--value">★ Best Value ★</div>
-        <header class="rank-card__head">
-          <img class="rank-card__crest" src="media/icons/glyph/rank_crabdemon.png" alt="" />
-          <div class="rank-card__id">
-            <h3 class="rank-card__name"><span class="mc-c">CRAB</span><span class="mc-f">DEMON</span><span class="mc-e">+</span></h3>
-            <p class="rank-card__blurb">Every limit removed, and the perks nobody else gets.</p>
-          </div>
-        </header>
-
-        <div class="nameplate" aria-label="How your tag looks in game">
-          <span class="nameplate__tag"><span class="mc-8">[</span><span class="mc-c">CRAB</span><span class="mc-f">DEMON</span><span class="mc-8">]</span></span>
-          <span class="nameplate__player">YourName</span>
-        </div>
-
-        <div class="rank-card__price">
-          <span class="price-amount">$8.99</span>
-          <span class="price-unit">one-off</span>
-        </div>
-
-        <ul class="perk-list">
-          <li><img class="mc-ico" src="media/icons/glyph/arrow_up.png" alt="" /><strong>Everything in CRABEXTRA+</strong><span>Plus the eight below</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/tag.png" alt="" /><strong>Custom nickname</strong><span>/nick renames you in chat and overhead</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /><strong>10 personal vaults</strong><span>+25 sethomes, 14-day auction listings</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/moon.png" alt="" /><strong>Unlimited night vision</strong><span>No duration, no cooldown</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/fire.png" alt="" /><strong>Kill effects</strong><span>Particles burst where your victim falls</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/sparkles.png" alt="" /><strong>All 65 gear cosmetics</strong><span>Including 16 animated gradients</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/crab_chestplate.png" alt="" /><strong>Keep item on death</strong><span>One hotbar slot survives</span></li>
-          <li><img class="mc-ico" src="media/icons/glyph/totem.png" alt="" /><strong>2 auto-revives</strong><span>Come back twice without losing a life</span></li>
-        </ul>
-
-        <a class="mc-btn mc-btn--block rank-card__cta" href="https://store.crabsmp.net/package/7388598" target="_blank" rel="noopener">
-          <img class="btn-ico" src="media/icons/glyph/shop.png" alt="" /> Get CRABDEMON+
-        </a>
-        <p class="rank-card__secure"><i class="fa-solid fa-lock"></i> Secure checkout via Tebex</p>
-      </article>
-
-    </div>
-
-    <p class="price-footnote">
-      Prices are in USD and shown before tax. Tebex adds any local sales tax or
-      VAT at checkout, so the total you pay may be higher than the figure above.
-    </p>
-  </div>
-</section>
-
-<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
-
-<section class="section section--alt" id="compare" aria-labelledby="compare-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Line by line</span>
-      <h2 class="s-headline" id="compare-heading">Every Perk, Compared</h2>
-      <p class="s-sub">
-        The full table, including what you already get for free. Every number
-        here is the one the server actually enforces.
-      </p>
-    </div>
-
-    <div class="compare-scroll" data-reveal="wipe" tabindex="0" role="region" aria-label="Rank comparison table, scrolls sideways">
-      <table class="compare">
-        <thead>
-          <tr>
-            <th scope="col" class="compare__perk">Perk</th>
-            <th scope="col" class="compare__col compare__col--free">Free</th>
-            <th scope="col" class="compare__col compare__col--plus"><span class="mc-a">CRAB</span><span class="mc-f">PLUS</span></th>
-            <th scope="col" class="compare__col compare__col--extra"><span class="mc-b">CRAB</span><span class="mc-f">EXTRA</span></th>
-            <th scope="col" class="compare__col compare__col--demon"><span class="mc-c">CRAB</span><span class="mc-f">DEMON</span></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr class="compare__group">
-            <th colspan="5" scope="colgroup"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/tag.png" alt="" /> Identity &amp; Progression</th>
-          </tr>
-          <tr>
-            <th scope="row">Rank tag in chat &amp; overhead</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Premium Battlepass</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Custom nickname <code>/nick</code></th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Rainbow nametag</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td>
-          </tr>
-
-          <tr class="compare__group">
-            <th colspan="5" scope="colgroup"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/money.png" alt="" /> Economy</th>
-          </tr>
-          <tr>
-            <th scope="row">Sethomes</th>
-            <td>1</td><td>11</td><td>11</td><td class="is-best">26</td>
-          </tr>
-          <tr>
-            <th scope="row">Auction house slots</th>
-            <td>3</td><td>8</td><td>13</td><td class="is-best">23</td>
-          </tr>
-          <tr>
-            <th scope="row">Auction listing length</th>
-            <td>2 days</td><td>4 days</td><td>7 days</td><td class="is-best">14 days</td>
-          </tr>
-          <tr>
-            <th scope="row">AFK Zone coin rate</th>
-            <td>1&times;</td><td>1.1&times;</td><td>1.2&times;</td><td class="is-best">1.35&times;</td>
-          </tr>
-          <tr>
-            <th scope="row">Duel bets per day</th>
-            <td>5</td><td>8</td><td>12</td><td class="is-best">20</td>
-          </tr>
-          <tr>
-            <th scope="row">Duel bets per fighter</th>
-            <td>2</td><td>3</td><td>4</td><td class="is-best">5</td>
-          </tr>
-
-          <tr class="compare__group">
-            <th colspan="5" scope="colgroup"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/compass.png" alt="" /> Convenience</th>
-          </tr>
-          <tr>
-            <th scope="row">MENU item in hotbar slot 8</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row"><code>/fly</code> in spawn</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row"><code>/back</code> to your last location</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row"><code>/echest</code></th>
-            <td class="is-no">—</td><td>In spawn</td><td class="is-best">Anywhere</td><td class="is-best">Anywhere</td>
-          </tr>
-          <tr>
-            <th scope="row">Personal vaults</th>
-            <td>1</td><td>2</td><td>5</td><td class="is-best">10</td>
-          </tr>
-          <tr>
-            <th scope="row">Night vision <code>/crab:nv</code></th>
-            <td class="is-no">—</td><td>15 min / 2h</td><td>1 hour / 2h</td><td class="is-best">Unlimited</td>
-          </tr>
-          <tr>
-            <th scope="row">Random teleport cooldown</th>
-            <td>Standard</td><td class="is-best">None</td><td class="is-best">None</td><td class="is-best">None</td>
-          </tr>
-          <tr>
-            <th scope="row">Spawn &amp; join-screen adverts</th>
-            <td>Shown</td><td class="is-best">Hidden</td><td class="is-best">Hidden</td><td class="is-best">Hidden</td>
-          </tr>
-          <tr>
-            <th scope="row">Crate perks — no cooldown</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Improved crate key luck</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td>
-          </tr>
-
-          <tr class="compare__group">
-            <th colspan="5" scope="colgroup"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/sparkles.png" alt="" /> Cosmetics &amp; Social</th>
-          </tr>
-          <tr>
-            <th scope="row">Colour codes in chat</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Custom join, leave &amp; kill messages</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Custom join, leave &amp; kill sounds</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Kill effect particles</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Gear cosmetics unlocked</th>
-            <td class="is-no">—</td><td>11</td><td>37</td><td class="is-best">All 65</td>
-          </tr>
-          <tr>
-            <th scope="row">Animated gradient cosmetics</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-best">16</td>
-          </tr>
-          <tr>
-            <th scope="row">Custom death tagline</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Discord <code>@Supporter</code> role</th>
-            <td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td>
-          </tr>
-
-          <tr class="compare__group">
-            <th colspan="5" scope="colgroup"><img class="mc-ico mc-ico--sm" src="media/icons/glyph/lifesteal_heart.png" alt="" /> Survival</th>
-          </tr>
-          <tr>
-            <th scope="row">Keep one hotbar slot on death</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Auto-revives before a life is lost</th>
-            <td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-best">2</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
-
-<section class="section" id="revive" aria-labelledby="revive-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Lifesteal</span>
-      <h2 class="s-headline" id="revive-heading">Back From The Dead</h2>
-      <p class="s-sub">
-        Lose all your hearts and you are eliminated — locked out until somebody
-        brings you back. This is that somebody.
-      </p>
-    </div>
-
-    <article class="revive-card" data-reveal="zoom">
-      <div class="revive-card__art" aria-hidden="true">
-        <img class="revive-card__ico" src="media/icons/glyph/totem.png" alt="" />
-        <img class="revive-card__heart" src="media/icons/glyph/lifesteal_heart.png" alt="" />
-      </div>
-
-      <div class="revive-card__body">
-        <h3 class="revive-card__title">Revive Token</h3>
-        <p class="revive-card__lead">
-          A single-use token that resurrects an eliminated player with a fresh
-          set of hearts. Use it on yourself, or spend it on somebody else.
+    <div class="shell page-hero__content store-hero__grid">
+      <div class="store-hero__copy">
+        <p class="label" data-enter>The store</p>
+        <h1 class="display-1" id="store-title" data-enter data-split>Look the part. <em>Never pay to win.</em></h1>
+        <p class="lead" data-enter>
+          Three permanent ranks and a way back from elimination. Everything here
+          is quality of life and cosmetics; it never touches damage, hearts or PvP.
+          Buy it, log in, and it is on your account within minutes.
         </p>
+        <div class="store-hero__actions" data-enter>
+          <a class="mc-btn mc-btn--lg enchanted" href="#ranks">Browse ranks <i class="i i-arrow-down" aria-hidden="true"></i></a>
+          <button class="promo" type="button" data-copy="CRAB10" data-toast-title="Discount code copied" data-toast="CRAB10 · 10% off at checkout" data-toast-icon="media/icons/glyph/tag.png" aria-label="Copy discount code CRAB10, 10% off at checkout">
+            <span class="promo__label">10% off with</span>
+            <span class="promo__code">CRAB10</span>
+            <span class="promo__copy"><span class="swap"><span class="swap__idle"><i class="i i-copy" aria-hidden="true"></i> Copy</span><span class="swap__done"><i class="i i-check" aria-hidden="true"></i> Copied</span></span></span>
+          </button>
+        </div>
+        <ul class="store-hero__chips" data-enter>
+          <li class="chip"><img class="glyph glyph--1" src="media/icons/glyph/revive_beacon.png" alt="" /> Permanent, never expires</li>
+          <li class="chip"><img class="glyph glyph--1" src="media/icons/glyph/tpa.png" alt="" /> Delivered automatically</li>
+          <li class="chip"><img class="glyph glyph--1" src="media/icons/glyph/sword.png" alt="" /> Never pay to win</li>
+        </ul>
+      </div>
 
-        <div class="revive-cols">
-          <div>
-            <h4 class="revive-col__head">What it does</h4>
-            <ul class="revive-list">
-              <li>Instantly revives an eliminated player</li>
-              <li>They return with a fresh set of hearts</li>
-              <li>Works on you or on anyone else</li>
-              <li>No waiting on staff, no unban queue</li>
-            </ul>
+      <div class="crests" data-enter aria-hidden="true">
+        <span class="crest crest--plus"><img src="media/icons/glyph/rank_crabplus.png" alt="" /></span>
+        <span class="crest crest--extra"><img src="media/icons/glyph/rank_crabextra.png" alt="" /></span>
+        <span class="crest crest--demon"><span class="crest__slot enchanted"><img src="media/icons/glyph/rank_crabdemon.png" alt="" /></span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ranks ────────────────────────────────────────────────────────── -->
+  <section class="section" id="ranks" aria-labelledby="ranks-heading">
+    <div class="shell">
+      <header class="head head--center">
+        <p class="label">Donator ranks</p>
+        <h2 class="display-2" id="ranks-heading" data-reveal data-split>Pick your <em>tier.</em></h2>
+        <p class="lead" data-reveal>
+          Each tier is a one-off payment that never expires and never renews.
+          The perks below are read straight off the live server config, so what
+          you see is what lands on your account.
+        </p>
+      </header>
+
+      <!-- Sits before the first price on purpose: nobody should reach a price
+           without knowing who takes the money. -->
+      <aside class="tebex" data-reveal aria-label="Payment security">
+        <i class="i i-lock" aria-hidden="true"></i>
+        <p><strong>Every payment is processed by Tebex.</strong> We never see or store your card details. Checkout, billing and refunds are handled end to end by Tebex Limited, the payment provider trusted by most of the Minecraft server network.</p>
+        <a class="text-link" href="https://www.tebex.io" target="_blank" rel="noopener"><span>What is Tebex?</span> <i class="i i-external" aria-hidden="true"></i></a>
+      </aside>
+
+      <div class="rank-grid">
+
+        <article class="rank rank--plus" data-reveal data-tilt="4">
+          <header class="rank__head">
+            <span class="rank__slot"><img class="glyph glyph--3" src="media/icons/glyph/rank_crabplus.png" alt="" /></span>
+            <div>
+              <h3 class="rank__name"><span class="mc-a">CRAB</span><span class="mc-f">PLUS</span><span class="mc-e">+</span></h3>
+              <p class="rank__blurb">The entry tier. The essentials, no filler.</p>
+            </div>
+          </header>
+
+          <div class="nameplate" aria-label="How your tag looks in game">
+            <span><span class="mc-8">[</span><span class="mc-a">CRAB</span><span class="mc-f">PLUS</span><span class="mc-8">]</span></span>
+            <span class="nameplate__player">YourName</span>
           </div>
-          <div>
-            <h4 class="revive-col__head">Good to know</h4>
-            <ul class="revive-list">
-              <li>Single use — consumed on revive</li>
-              <li>Tradeable, so it holds value unused</li>
-              <li>Delivered on your next join if offline</li>
-              <li>Grants no combat advantage of any kind</li>
-            </ul>
+
+          <p class="rank__price"><b>$2.99</b><span>one-off</span></p>
+
+          <ul class="perks-list">
+            <li><img class="glyph glyph--1" src="media/icons/glyph/tag.png" alt="" /><strong>[CRABPLUS] tag</strong><span>In chat and above your head</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/warps.png" alt="" /><strong>+10 sethomes</strong><span>11 saved locations in total</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/arrow_up.png" alt="" /><strong>/fly in spawn</strong><span>Plus /back and /echest</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/vault.png" alt="" /><strong>2 personal vaults</strong><span>Private /vault storage</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/friends.png" alt="" /><strong>38 emotes</strong><span>/emote dances, poses and reactions</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/chat.png" alt="" /><strong>Chat colours</strong><span>Custom join, leave &amp; kill messages</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/sparkles.png" alt="" /><strong>18 cosmetics</strong><span>Crab Crown, halos, voids, capes, wings, pets</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/ban.png" alt="" /><strong>No ads, no RTP cooldown</strong><span>And the MENU item in slot 8</span></li>
+          </ul>
+
+          <a class="mc-btn mc-btn--green mc-btn--block rank__cta" href="https://store.crabsmp.net/package/7388591" target="_blank" rel="noopener">
+            Get CRABPLUS+ <i class="i i-external" aria-hidden="true"></i>
+          </a>
+          <p class="rank__secure"><i class="i i-lock" aria-hidden="true"></i> Secure checkout via Tebex</p>
+        </article>
+
+        <article class="rank rank--extra rank--featured" data-reveal data-tilt="4">
+          <p class="rank__tag">Most popular</p>
+          <header class="rank__head">
+            <span class="rank__slot"><img class="glyph glyph--3" src="media/icons/glyph/rank_crabextra.png" alt="" /></span>
+            <div>
+              <h3 class="rank__name"><span class="mc-b">CRAB</span><span class="mc-f">EXTRA</span><span class="mc-e">+</span></h3>
+              <p class="rank__blurb">Everything in CRABPLUS, limits pushed much further.</p>
+            </div>
+          </header>
+
+          <div class="nameplate" aria-label="How your tag looks in game">
+            <span><span class="mc-8">[</span><span class="mc-b">CRAB</span><span class="mc-f">EXTRA</span><span class="mc-8">]</span></span>
+            <span class="nameplate__player">YourName</span>
           </div>
+
+          <p class="rank__price"><b>$5.99</b><span>one-off</span></p>
+
+          <ul class="perks-list">
+            <li><img class="glyph glyph--1" src="media/icons/glyph/arrow_up.png" alt="" /><strong>Everything in CRABPLUS+</strong><span>Plus the six below</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/open_chest.png" alt="" /><strong>/echest anywhere</strong><span>Not just at spawn</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/vault.png" alt="" /><strong>5 personal vaults</strong><span>More than double CRABPLUS</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/money.png" alt="" /><strong>+10 auction slots</strong><span>7-day listings, 13 slots in total</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/moon.png" alt="" /><strong>1 hour of night vision</strong><span>Per 2 hour cooldown</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/disc.png" alt="" /><strong>Join, leave &amp; kill sounds</strong><span>Your own cues, played to the server</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/elytra.png" alt="" /><strong>60 cosmetics</strong><span>The full dragon wing set, halos, voids</span></li>
+          </ul>
+
+          <a class="mc-btn mc-btn--blue mc-btn--block rank__cta" href="https://store.crabsmp.net/package/7388594" target="_blank" rel="noopener">
+            Get CRABEXTRA+ <i class="i i-external" aria-hidden="true"></i>
+          </a>
+          <p class="rank__secure"><i class="i i-lock" aria-hidden="true"></i> Secure checkout via Tebex</p>
+        </article>
+
+        <article class="rank rank--demon" data-reveal data-tilt="4">
+          <p class="rank__tag">Best value</p>
+          <header class="rank__head">
+            <span class="rank__slot enchanted"><img class="glyph glyph--3" src="media/icons/glyph/rank_crabdemon.png" alt="" /></span>
+            <div>
+              <h3 class="rank__name"><span class="mc-c">CRAB</span><span class="mc-f">DEMON</span><span class="mc-e">+</span></h3>
+              <p class="rank__blurb">Every limit removed, and the perks nobody else gets.</p>
+            </div>
+          </header>
+
+          <div class="nameplate" aria-label="How your tag looks in game">
+            <span><span class="mc-8">[</span><span class="mc-c">CRAB</span><span class="mc-f">DEMON</span><span class="mc-8">]</span></span>
+            <span class="nameplate__player">YourName</span>
+          </div>
+
+          <p class="rank__price"><b>$8.99</b><span>one-off</span></p>
+
+          <ul class="perks-list">
+            <li><img class="glyph glyph--1" src="media/icons/glyph/arrow_up.png" alt="" /><strong>Everything in CRABEXTRA+</strong><span>Plus the eight below</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/tag.png" alt="" /><strong>Custom nickname</strong><span>/nick renames you in chat and overhead</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/crown_gold.png" alt="" /><strong>Premium Battlepass</strong><span>The upgraded track, every season</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/vault.png" alt="" /><strong>10 personal vaults</strong><span>+25 sethomes, 14-day auction listings</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/moon.png" alt="" /><strong>Unlimited night vision</strong><span>No duration, no cooldown</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/fire.png" alt="" /><strong>Kill effects</strong><span>Particles burst where your victim falls</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/sparkles.png" alt="" /><strong>All 109 cosmetics</strong><span>Including 24 animated gradients</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/crab_chestplate.png" alt="" /><strong>Keep item on death</strong><span>One hotbar slot survives</span></li>
+            <li><img class="glyph glyph--1" src="media/icons/glyph/totem.png" alt="" /><strong>2 auto-revives</strong><span>Come back twice without losing a life</span></li>
+          </ul>
+
+          <a class="mc-btn mc-btn--block rank__cta enchanted" href="https://store.crabsmp.net/package/7388598" target="_blank" rel="noopener">
+            Get CRABDEMON+ <i class="i i-external" aria-hidden="true"></i>
+          </a>
+          <p class="rank__secure"><i class="i i-lock" aria-hidden="true"></i> Secure checkout via Tebex</p>
+        </article>
+
+      </div>
+
+      <p class="footnote">
+        Prices are in USD and shown before tax. Tebex adds any local sales tax or
+        VAT at checkout, so the total you pay may be higher than the figure above.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Compare ──────────────────────────────────────────────────────── -->
+  <section class="section section--deep" id="compare" aria-labelledby="compare-heading">
+    <div class="shell">
+      <header class="head">
+        <p class="label">Line by line</p>
+        <h2 class="display-2" id="compare-heading" data-reveal data-split>Every perk, <em>compared.</em></h2>
+        <p class="lead" data-reveal>
+          The full table, including what you already get for free. Every number
+          here is the one the server actually enforces.
+        </p>
+      </header>
+
+      <div class="compare-wrap" data-reveal>
+        <div class="compare-scroll" tabindex="0" role="region" aria-label="Rank comparison table">
+          <table class="compare">
+            <thead>
+              <tr>
+                <th scope="col" class="compare__perk">Perk</th>
+                <th scope="col" class="compare__col compare__col--free">Free</th>
+                <th scope="col" class="compare__col compare__col--plus"><span class="mc-a">CRAB</span><span class="mc-f">PLUS</span></th>
+                <th scope="col" class="compare__col compare__col--extra"><span class="mc-b">CRAB</span><span class="mc-f">EXTRA</span></th>
+                <th scope="col" class="compare__col compare__col--demon"><span class="mc-c">CRAB</span><span class="mc-f">DEMON</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="compare__group"><th colspan="5" scope="colgroup"><img class="glyph glyph--1" src="media/icons/glyph/tag.png" alt="" /> Identity &amp; Progression</th></tr>
+              <tr><th scope="row">Rank tag in chat &amp; overhead</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Premium Battlepass</th><td>3 days played</td><td>3 days played</td><td>3 days played</td><td class="is-best">Included</td></tr>
+              <tr><th scope="row">Custom nickname <code>/nick</code></th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Rainbow nametag</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td></tr>
+
+              <tr class="compare__group"><th colspan="5" scope="colgroup"><img class="glyph glyph--1" src="media/icons/glyph/money.png" alt="" /> Economy</th></tr>
+              <tr><th scope="row">Sethomes</th><td>1</td><td>11</td><td>11</td><td class="is-best">26</td></tr>
+              <tr><th scope="row">Auction house slots</th><td>3</td><td>8</td><td>13</td><td class="is-best">23</td></tr>
+              <tr><th scope="row">Auction listing length</th><td>2 days</td><td>4 days</td><td>7 days</td><td class="is-best">14 days</td></tr>
+              <tr><th scope="row">Duel bets per day</th><td>5</td><td>8</td><td>12</td><td class="is-best">20</td></tr>
+              <tr><th scope="row">Duel bets per fighter</th><td>2</td><td>3</td><td>4</td><td class="is-best">5</td></tr>
+
+              <tr class="compare__group"><th colspan="5" scope="colgroup"><img class="glyph glyph--1" src="media/icons/glyph/compass.png" alt="" /> Convenience</th></tr>
+              <tr><th scope="row">MENU item in hotbar slot 8</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row"><code>/fly</code> in spawn</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row"><code>/back</code> to your last location</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row"><code>/echest</code></th><td class="is-no">—</td><td>In spawn</td><td class="is-best">Anywhere</td><td class="is-best">Anywhere</td></tr>
+              <tr><th scope="row">Personal vaults</th><td>1</td><td>2</td><td>5</td><td class="is-best">10</td></tr>
+              <tr><th scope="row">Night vision <code>/crab:nv</code></th><td class="is-no">—</td><td>15 min / 2h</td><td>1 hour / 2h</td><td class="is-best">Unlimited</td></tr>
+              <tr><th scope="row">Random teleport cooldown</th><td>Standard</td><td class="is-best">None</td><td class="is-best">None</td><td class="is-best">None</td></tr>
+              <tr><th scope="row">Spawn &amp; join-screen adverts</th><td>Shown</td><td class="is-best">Hidden</td><td class="is-best">Hidden</td><td class="is-best">Hidden</td></tr>
+
+              <tr class="compare__group"><th colspan="5" scope="colgroup"><img class="glyph glyph--1" src="media/icons/glyph/sparkles.png" alt="" /> Cosmetics &amp; Social</th></tr>
+              <tr><th scope="row">Colour codes in chat</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Custom join, leave &amp; kill messages</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Custom join, leave &amp; kill sounds</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Kill effect particles</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Cosmetics unlocked</th><td class="is-no">—</td><td>18</td><td>60</td><td class="is-best">All 109</td></tr>
+              <tr><th scope="row">Animated gradient cosmetics</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-best">24</td></tr>
+              <tr><th scope="row">Emotes (/emote, 38 of them)</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Custom death tagline</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Discord <code>@Supporter</code> role</th><td class="is-no">—</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td><td class="is-yes">Yes</td></tr>
+
+              <tr class="compare__group"><th colspan="5" scope="colgroup"><img class="glyph glyph--1" src="media/icons/glyph/lifesteal_heart.png" alt="" /> Survival</th></tr>
+              <tr><th scope="row">Keep one hotbar slot on death</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-yes">Yes</td></tr>
+              <tr><th scope="row">Auto-revives before a life is lost</th><td class="is-no">—</td><td class="is-no">—</td><td class="is-no">—</td><td class="is-best">2</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="revive-card__buy">
-        <span class="price-amount">$3.99</span>
-        <span class="price-unit">per token</span>
-        <a class="mc-btn mc-btn--gold mc-btn--block" href="https://store.crabsmp.net/package/7399167" target="_blank" rel="noopener">
-          <img class="btn-ico" src="media/icons/glyph/revive_beacon.png" alt="" /> Buy a Revive
-        </a>
-        <p class="rank-card__secure"><i class="fa-solid fa-lock"></i> Secure checkout via Tebex</p>
+  <!-- ── Revive ───────────────────────────────────────────────────────── -->
+  <section class="section" id="revive" aria-labelledby="revive-heading">
+    <div class="shell">
+      <article class="revive" data-reveal>
+        <div class="revive__art" aria-hidden="true">
+          <span class="revive__beam"></span>
+          <span class="revive__slot enchanted"><img class="glyph glyph--6" src="media/icons/glyph/totem.png" alt="" /></span>
+        </div>
+
+        <div class="revive__body">
+          <p class="label">Lifesteal</p>
+          <h2 class="display-2" id="revive-heading" data-reveal data-split>Back from <em>the dead.</em></h2>
+          <p class="lead">
+            Lose all your hearts and you are eliminated, locked out until somebody
+            brings you back. This is that somebody: a single-use token that
+            resurrects an eliminated player with a fresh set of hearts. Use it on
+            yourself, or spend it on somebody else.
+          </p>
+
+          <div class="revive__cols">
+            <div>
+              <h3>What it does</h3>
+              <ul class="ticks">
+                <li>Instantly revives an eliminated player</li>
+                <li>They return with a fresh set of hearts</li>
+                <li>Works on you or on anyone else</li>
+                <li>No waiting on staff, no unban queue</li>
+              </ul>
+            </div>
+            <div>
+              <h3>Good to know</h3>
+              <ul class="ticks">
+                <li>Single use — consumed on revive</li>
+                <li>Tradeable, so it holds value unused</li>
+                <li>Delivered on your next join if offline</li>
+                <li>Grants no combat advantage of any kind</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="revive__buy">
+            <p class="rank__price"><b>$3.99</b><span>per token</span></p>
+            <a class="mc-btn mc-btn--gold mc-btn--lg enchanted" href="https://store.crabsmp.net/package/7399167" target="_blank" rel="noopener">
+              <img class="glyph glyph--1" src="media/icons/glyph/revive_beacon.png" alt="" /> Buy a Revive
+            </a>
+            <p class="rank__secure"><i class="i i-lock" aria-hidden="true"></i> Secure checkout via Tebex</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Cosmetics ────────────────────────────────────────────────────── -->
+  <section class="section section--deep" id="cosmetics" aria-labelledby="cosmetics-heading">
+    <div class="shell">
+      <header class="head head--center">
+        <p class="label">Cosmetics</p>
+        <h2 class="display-2" id="cosmetics-heading" data-reveal data-split>Wear it. <em>Don&rsquo;t win with it.</em></h2>
+        <p class="lead" data-reveal>
+          A hundred and nine wings, capes, halos, voids and pets, worn over your
+          skin and visible to everybody. These are the real icons, straight out
+          of the server&rsquo;s wardrobe.
+        </p>
+      </header>
+
+      <div class="filter" data-filter-bar data-reveal role="group" aria-label="Show cosmetics unlocked by">
+        <button class="filter__btn" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter__btn" type="button" data-filter="plus" aria-pressed="false"><span class="swatch swatch--plus"></span> CRABPLUS</button>
+        <button class="filter__btn" type="button" data-filter="extra" aria-pressed="false"><span class="swatch swatch--extra"></span> CRABEXTRA</button>
+        <button class="filter__btn" type="button" data-filter="demon" aria-pressed="false"><span class="swatch swatch--demon"></span> CRABDEMON</button>
       </div>
-    </article>
-  </div>
-</section>
 
-<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="cosmetic-grid" data-filter-grid>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/crown.png" alt="Crab Crown cosmetic" loading="lazy" /><figcaption>Crab Crown</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/halo_storm.png" alt="Storm Halo cosmetic" loading="lazy" /><figcaption>Storm Halo</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/void_tide.png" alt="Tide Void cosmetic" loading="lazy" /><figcaption>Tide Void</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/wyrm_tide.png" alt="Tide Wyrm pet" loading="lazy" /><figcaption>Tide Wyrm</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/cape_crabsmp.png" alt="CrabSMP Cape cosmetic" loading="lazy" /><figcaption>CrabSMP Cape</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/wings_ice.png" alt="Ice Wings cosmetic" loading="lazy" /><figcaption>Ice Wings</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/wings_dragon.png" alt="Red Dragon Wings cosmetic" loading="lazy" /><figcaption>Red Dragon Wings</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/halo_royal.png" alt="Royal Halo cosmetic" loading="lazy" /><figcaption>Royal Halo</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/void_frost.png" alt="Frost Void cosmetic" loading="lazy" /><figcaption>Frost Void</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/cape_molten.png" alt="Molten Cape cosmetic" loading="lazy" /><figcaption>Molten Cape</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_demon.png" alt="Demon Wings cosmetic" loading="lazy" /><figcaption>Demon Wings</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_void.png" alt="Void Wings cosmetic" loading="lazy" /><figcaption>Void Wings</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_rainbow.png" alt="Rainbow Wings cosmetic" loading="lazy" /><figcaption>Rainbow Wings</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_aurora.png" alt="Aurora Wings cosmetic" loading="lazy" /><figcaption>Aurora Wings</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/halo_rainbow.png" alt="Rainbow Halo cosmetic" loading="lazy" /><figcaption>Rainbow Halo</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/cape_nebula.png" alt="Nebula Cape cosmetic" loading="lazy" /><figcaption>Nebula Cape</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/cape_royalty.png" alt="Royalty Cape cosmetic" loading="lazy" /><figcaption>Royalty Cape</figcaption></figure>
+        <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/guardian_reef.png" alt="Reef Guardians pet" loading="lazy" /><figcaption>Reef Guardians</figcaption></figure>
+      </div>
 
-<section class="section section--alt" id="cosmetics" aria-labelledby="cosmetics-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Gear Cosmetics</span>
-      <h2 class="s-headline" id="cosmetics-heading">Wear It, Don't Win With It</h2>
-      <p class="s-sub">
-        Sixty-five wings, capes, halos, shells, auras and pets, worn over your
-        skin and visible to everybody. These are the real sprites, straight out
-        of the server's resource pack.
+      <p class="cosmetic-key">
+        <span><span class="swatch swatch--plus"></span> CRABPLUS — 18 unlocked</span>
+        <span><span class="swatch swatch--extra"></span> CRABEXTRA — 60 unlocked</span>
+        <span><span class="swatch swatch--demon"></span> CRABDEMON — all 109, 24 of them animated</span>
       </p>
     </div>
+  </section>
 
-    <div class="cosmetic-grid">
-      <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/crown.png" alt="Crab Crown cosmetic" /><figcaption>Crab Crown</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/shell_scarlet.png" alt="Scarlet Shell cosmetic" /><figcaption>Scarlet Shell</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/orbit_tide.png" alt="Tide Orbit cosmetic" /><figcaption>Tide Orbit</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/wyrm_tide.png" alt="Tide Wyrm pet" /><figcaption>Tide Wyrm</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="plus"><img src="media/cosmetics/cape_crabsmp.png" alt="CrabSMP Cape cosmetic" /><figcaption>CrabSMP Cape</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/wings_ice.png" alt="Ice Wings cosmetic" /><figcaption>Ice Wings</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/wings_dragon.png" alt="Red Dragon Wings cosmetic" /><figcaption>Dragon Wings</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/halo_royal.png" alt="Royal Halo cosmetic" /><figcaption>Royal Halo</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/shards_frost.png" alt="Frost Shards aura" /><figcaption>Frost Shards</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="extra"><img src="media/cosmetics/cape_molten.png" alt="Molten Cape cosmetic" /><figcaption>Molten Cape</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_demon.png" alt="Demon Wings cosmetic" /><figcaption>Demon Wings</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_void.png" alt="Void Wings cosmetic" /><figcaption>Void Wings</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_rainbow.png" alt="Rainbow Wings cosmetic" /><figcaption>Rainbow Wings</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/wings_aurora.png" alt="Aurora Wings cosmetic" /><figcaption>Aurora Wings</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/halo_rainbow.png" alt="Rainbow Halo cosmetic" /><figcaption>Rainbow Halo</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/cape_nebula.png" alt="Nebula Cape cosmetic" /><figcaption>Nebula Cape</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/cape_royalty.png" alt="Royalty Cape cosmetic" /><figcaption>Royalty Cape</figcaption></figure>
-      <figure class="cosmetic" data-reveal="zoom" data-tier="demon"><img src="media/cosmetics/guardian_reef.png" alt="Reef Guardians pet" /><figcaption>Reef Guardians</figcaption></figure>
+  <!-- ── Delivery ─────────────────────────────────────────────────────── -->
+  <section class="section" id="delivery" aria-labelledby="delivery-heading">
+    <div class="shell">
+      <header class="head">
+        <p class="label">After you buy</p>
+        <h2 class="display-2" id="delivery-heading" data-reveal data-split>How delivery <em>works.</em></h2>
+        <p class="lead" data-reveal>Nothing to claim and nobody to message. Buy it and go play.</p>
+      </header>
+
+      <ol class="timeline">
+        <li class="timeline__step" data-reveal>
+          <span class="timeline__slot"><img class="glyph" src="media/icons/glyph/shop.png" alt="" /></span>
+          <h3>Pick your package</h3>
+          <p>Choose a rank or a Revive token. You are handed off to Tebex, our payment provider, to check out.</p>
+        </li>
+        <li class="timeline__step" data-reveal>
+          <span class="timeline__slot"><img class="glyph" src="media/icons/glyph/tag.png" alt="" /></span>
+          <h3>Enter your username</h3>
+          <p>Use your exact in-game Bedrock gamertag. That name is the only thing we get back from Tebex, and it is what the rank attaches to.</p>
+        </li>
+        <li class="timeline__step" data-reveal>
+          <span class="timeline__slot"><img class="glyph" src="media/icons/glyph/tpa.png" alt="" /></span>
+          <h3>Log in and play</h3>
+          <p>Your rank, perks and cosmetics apply automatically, usually within a few minutes. A <strong>PERKS</strong> item lands in your inventory to manage them.</p>
+        </li>
+      </ol>
     </div>
+  </section>
 
-    <div class="cosmetic-key">
-      <span class="cosmetic-key__item"><i class="swatch swatch--plus"></i> CRABPLUS — 11 unlocked</span>
-      <span class="cosmetic-key__item"><i class="swatch swatch--extra"></i> CRABEXTRA — 37 unlocked</span>
-      <span class="cosmetic-key__item"><i class="swatch swatch--demon"></i> CRABDEMON — all 65, 16 of them animated</span>
-    </div>
-  </div>
-</section>
+  <!-- ── Promise ──────────────────────────────────────────────────────── -->
+  <section class="section section--deep" id="promise" aria-labelledby="promise-heading">
+    <div class="shell shell--narrow">
+      <header class="head head--center">
+        <p class="label">Our promise</p>
+        <h2 class="display-2" id="promise-heading" data-reveal data-split>Never pay <em>to win.</em></h2>
+      </header>
 
-<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
-
-<section class="section" id="delivery" aria-labelledby="delivery-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">After you buy</span>
-      <h2 class="s-headline" id="delivery-heading">How Delivery Works</h2>
-      <p class="s-sub">
-        Nothing to claim and nobody to message. Buy it and go play.
-      </p>
-    </div>
-
-    <ol class="step-grid">
-      <li class="step" data-reveal="drop">
-        <span class="step__num">01</span>
-        <img class="mc-ico mc-ico--xl" src="media/icons/glyph/shop.png" alt="" />
-        <h3>Pick your package</h3>
-        <p>Choose a rank or a Revive token. You are handed off to Tebex, our payment provider, to check out.</p>
-      </li>
-      <li class="step" data-reveal="drop">
-        <span class="step__num">02</span>
-        <img class="mc-ico mc-ico--xl" src="media/icons/glyph/tag.png" alt="" />
-        <h3>Enter your username</h3>
-        <p>Use your exact in-game Bedrock gamertag. That name is the only thing we get back from Tebex, and it is what the rank attaches to.</p>
-      </li>
-      <li class="step" data-reveal="drop">
-        <span class="step__num">03</span>
-        <img class="mc-ico mc-ico--xl" src="media/icons/glyph/tpa.png" alt="" />
-        <h3>Log in and play</h3>
-        <p>Your rank, perks and cosmetics apply automatically, usually within a few minutes. A <strong>PERKS</strong> item lands in your inventory to manage them.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="section section--alt" id="promise" aria-labelledby="promise-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Our Promise</span>
-      <h2 class="s-headline" id="promise-heading">Never Pay To Win</h2>
-    </div>
-
-    <div class="promise-panel" data-reveal>
-      <p class="promise-lead">
+      <p class="statement statement--center" data-words>
         CrabSMP will never sell an advantage. Ranks are quality of life and
-        cosmetics, and that is where they stop — the strongest players on the
+        cosmetics, and that is where they stop. The strongest players on the
         server are the ones who put the hours in.
       </p>
 
-      <div class="promise-cols">
-        <ul class="promise-list promise-list--yes">
-          <li><i class="fa-solid fa-check"></i> Extra homes, vaults and auction slots</li>
-          <li><i class="fa-solid fa-check"></i> Cosmetics nobody can be hit by</li>
-          <li><i class="fa-solid fa-check"></i> Convenience commands and shortcuts</li>
+      <div class="promise" data-reveal>
+        <ul class="promise__list promise__list--yes">
+          <li><i class="i i-check" aria-hidden="true"></i> Extra homes, vaults and auction slots</li>
+          <li><i class="i i-check" aria-hidden="true"></i> Cosmetics nobody can be hit by</li>
+          <li><i class="i i-check" aria-hidden="true"></i> Convenience commands and shortcuts</li>
         </ul>
-        <ul class="promise-list promise-list--no">
-          <li><i class="fa-solid fa-xmark"></i> No bought weapons or armour</li>
-          <li><i class="fa-solid fa-xmark"></i> No bought hearts or damage</li>
-          <li><i class="fa-solid fa-xmark"></i> Nothing that shifts PvP balance</li>
+        <ul class="promise__list promise__list--no">
+          <li><i class="i i-x" aria-hidden="true"></i> No bought weapons or armour</li>
+          <li><i class="i i-x" aria-hidden="true"></i> No bought hearts or damage</li>
+          <li><i class="i i-x" aria-hidden="true"></i> Nothing that shifts PvP balance</li>
         </ul>
       </div>
 
-      <p class="promise-foot">
+      <p class="footnote" data-reveal>
         Every purchase goes straight into server costs and development. Crate
         keys, coins and progression are all earnable for free by voting,
         playing and completing quests.
       </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="mc-sep" aria-hidden="true"><span></span><span></span><span></span></div>
+  <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
+  <section class="section" id="faq" aria-labelledby="faq-heading">
+    <div class="shell shell--narrow">
+      <header class="head">
+        <p class="label">Questions</p>
+        <h2 class="display-2" id="faq-heading" data-reveal data-split>Before <em>you buy.</em></h2>
+      </header>
 
-<section class="section" id="faq" aria-labelledby="faq-heading">
-  <div class="shell">
-    <div class="section-head">
-      <span class="eyebrow">Questions</span>
-      <h2 class="s-headline" id="faq-heading">Before You Buy</h2>
+      <div class="faq">
+        <details class="faq__item" data-reveal>
+          <summary>Which username do I enter at checkout?</summary>
+          <p>Your exact Minecraft Bedrock gamertag, spelled and spaced the way it appears in game. It is the only detail the rank is matched against, so a typo means the perks land on nobody.</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Do ranks expire or auto-renew?</summary>
+          <p>Neither. Every rank is a one-off payment and permanent. There is no subscription and nothing to cancel.</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Can I upgrade to a higher tier later?</summary>
+          <p>Yes. Buying a higher tier replaces the one you have rather than stacking with it, so you always hold exactly one rank and it is the newest one you bought.</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>How long does delivery take?</summary>
+          <p>Usually a few minutes. If it has been longer than that, join our Discord and open a ticket with your transaction ID and we will sort it.</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>Who handles payments and refunds?</summary>
+          <p>Tebex Limited. They own and operate the checkout, take the payment, and handle billing support and refunds. Card details never reach CrabSMP — all we receive is a transaction reference and the item you bought.</p>
+        </details>
+        <details class="faq__item" data-reveal>
+          <summary>What happens if I remove my own rank in game?</summary>
+          <p>Removing a plan from the in-game PERKS menu strips everything it gave you — the tag, chat colours, Premium Battlepass, every cosmetic, your nickname, flight, extra homes and vaults. As our terms say, doing it to yourself is not something we can undo.</p>
+        </details>
+      </div>
+
+      <div class="faq-help" data-reveal>
+        <p>Still stuck? We answer fastest on Discord.</p>
+        <a class="mc-btn mc-btn--ghost" href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener">
+          <i class="i i-discord" aria-hidden="true"></i> Open a ticket
+        </a>
+      </div>
     </div>
+  </section>
 
-    <div class="faq">
-      <details class="faq__item" data-reveal="left">
-        <summary>Which username do I enter at checkout?</summary>
-        <p>Your exact Minecraft Bedrock gamertag, spelled and spaced the way it appears in game. It is the only detail the rank is matched against, so a typo means the perks land on nobody.</p>
-      </details>
-      <details class="faq__item" data-reveal="left">
-        <summary>Do ranks expire or auto-renew?</summary>
-        <p>Neither. Every rank is a one-off payment and permanent. There is no subscription and nothing to cancel.</p>
-      </details>
-      <details class="faq__item" data-reveal="left">
-        <summary>Can I upgrade to a higher tier later?</summary>
-        <p>Yes. Buying a higher tier replaces the one you have rather than stacking with it, so you always hold exactly one rank and it is the newest one you bought.</p>
-      </details>
-      <details class="faq__item" data-reveal="left">
-        <summary>How long does delivery take?</summary>
-        <p>Usually a few minutes. If it has been longer than that, join our Discord and open a ticket with your transaction ID and we will sort it.</p>
-      </details>
-      <details class="faq__item" data-reveal="left">
-        <summary>Who handles payments and refunds?</summary>
-        <p>Tebex Limited. They own and operate the checkout, take the payment, and handle billing support and refunds. Card details never reach CrabSMP — all we receive is a transaction reference and the item you bought.</p>
-      </details>
-      <details class="faq__item" data-reveal="left">
-        <summary>What happens if I remove my own rank in game?</summary>
-        <p>Removing a plan from the in-game PERKS menu strips everything it gave you — the tag, chat colours, Premium Battlepass, every cosmetic, your nickname, flight, extra homes and vaults. As our terms say, doing it to yourself is not something we can undo.</p>
-      </details>
+</main>
+
+<!-- chrome:footer -->
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="store.html">Store</a></li>
+          <li><a href="vote.html">Vote</a></li>
+          <li><a href="status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="index.html#rules">Rules &amp; terms</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
     </div>
-
-    <div class="faq-help">
-      <p>Still stuck? We answer fastest on Discord.</p>
-      <a class="mc-btn mc-btn--ghost" href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener">
-        <img class="btn-ico" src="media/icons/glyph/discord.png" alt="" /> Open a ticket
-      </a>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>Not affiliated with Mojang or Microsoft.</p>
     </div>
   </div>
-</section>
-
-<footer>
-  <div class="footer-links">
-    <a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener" class="footer-link">
-      <i class="fa-brands fa-tiktok"></i> TikTok
-    </a>
-    <a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener" class="footer-link">
-      <i class="fa-brands fa-youtube"></i> YouTube
-    </a>
-    <a href="https://discord.gg/9xDjuh2WEy" target="_blank" rel="noopener" class="footer-link">
-      <img class="mc-ico" src="media/icons/glyph/discord.png" alt="" /> Discord
-    </a>
-    <a href="verixen.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/glyph/shield.png" alt="" /> Verixen
-    </a>
-    <a href="privacy.html" class="footer-link">
-      <img class="mc-ico" src="media/icons/glyph/vault.png" alt="" /> Privacy
-    </a>
-    <a href="index.html?intro=1" class="footer-link" data-replay-intro>
-      <i class="fa-solid fa-rotate-right"></i> Replay Intro
-    </a>
-  </div>
-  <p class="footer-copy">© 2026 CrabSMP · All rights reserved · Not affiliated with Mojang or Microsoft. Payments processed by Tebex Limited.</p>
 </footer>
+<!-- /chrome:footer -->
 
+<script src="javascript/sfx.js" defer></script>
+<script src="javascript/vfx.js" defer></script>
 <script src="javascript/crab.js" defer></script>
 </body>
 </html>
