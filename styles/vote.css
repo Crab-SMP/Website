@@ -91,13 +91,6 @@
   border: var(--border);
   box-shadow: var(--bevel-in);
 }
-.vote-row__n {
-  font-family: var(--font-display);
-  font-size: 26px;
-  line-height: 1;
-  color: var(--text-dim);
-  transition: opacity var(--dur-move) var(--ease), transform var(--dur-move) var(--ease-out);
-}
 .vote-row__tick {
   position: absolute;
   color: var(--mc-a);
@@ -138,7 +131,6 @@
 }
 
 .vote-row.is-voted { box-shadow: var(--bevel), inset calc(var(--g) * 2) 0 0 var(--mc-a); }
-.vote-row.is-voted .vote-row__n { opacity: 0; transform: scale(0.6); }
 .vote-row.is-voted .vote-row__tick { opacity: 1; transform: scale(1); }
 .vote-row.is-voted .vote-row__status { color: var(--mc-a); }
 .vote-row.is-voted .vote-row__btn {
