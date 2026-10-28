@@ -799,33 +799,52 @@ html.js.is-ready .hero__world { transform: none; }
 .rulebook__panel:not([hidden]) { animation: panelIn var(--dur-enter) var(--ease-out); }
 
 .rule-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 56px;
+  --page: #e9dcc0;
+  --page-edge: #c9b48c;
+  --ink: #1a120a;
+  position: relative;
+  columns: 2;
+  column-gap: 96px;
+  column-rule: calc(var(--g) * 2) solid var(--page-edge);
+  padding: 64px 56px 44px;
+  background: var(--page);
+  border: var(--g) solid #3b2a16;
+  box-shadow: inset 0 0 0 var(--g) var(--page-edge), calc(var(--g) * 3) calc(var(--g) * 3) 0 rgba(0, 0, 0, 0.45);
 }
+.rule-list::before,
+.rule-list::after {
+  position: absolute;
+  top: 26px;
+  font-family: var(--font-ui);
+  font-size: 15px;
+  color: #6b5639;
+}
+.rule-list::before { content: "Page 1 of 2"; right: calc(50% + 48px); }
+.rule-list::after  { content: "Page 2 of 2"; right: 56px; }
 .rule-list li {
   display: flex;
-  gap: 22px;
-  padding: 24px 0;
-  border-top: 1px solid var(--line);
+  gap: 16px;
+  padding: 0 0 22px;
+  break-inside: avoid;
 }
 .rule-list__n {
   flex-shrink: 0;
-  min-width: 36px;
+  min-width: 24px;
   font-family: var(--font-ui);
   font-size: 16px;
-  line-height: 1.5;
-  color: var(--text-faint);
+  line-height: 1.4;
+  color: #6b5639;
 }
 .rule-list h3 {
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-family: var(--font-ui);
   font-size: 17px;
   font-weight: 400;
-  color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
+  line-height: 1.4;
+  color: var(--ink);
 }
-.rule-list p { font-size: var(--fs-small); color: var(--text-dim); }
+.rule-list p { font-size: var(--fs-small); color: #4a3a28; }
+.rule-list .link { color: var(--ink); }
 
 .rule-extra {
   display: grid;
@@ -847,7 +866,7 @@ html.js.is-ready .hero__world { transform: none; }
   font-family: var(--font-ui);
   font-size: 16px;
   font-weight: 400;
-  color: var(--red-bright);
+  color: var(--white);
   text-shadow: var(--txt-shadow-sm);
 }
 .rule-extra li {
@@ -930,7 +949,9 @@ html.js.is-ready .hero__world { transform: none; }
 @media (max-width: 860px) {
   .founder__grid { grid-template-columns: 1fr; }
   .founder__portrait { max-width: 340px; }
-  .rule-list { grid-template-columns: 1fr; }
+  .rule-list { columns: 1; padding: 56px 24px 26px; }
+  .rule-list::before { content: "Page 1 of 1"; right: 24px; }
+  .rule-list::after { content: none; }
   .review-grid { grid-template-columns: 1fr; }
   .tile--spawn,
   .tile--devices,
