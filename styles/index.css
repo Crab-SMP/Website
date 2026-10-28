@@ -1,17 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   Home page. Loaded after main.css.
-
-   The page is one sequence: arrive (intro), see the world (hero), learn the
-   game (the lifesteal story), trust it (fair play), want it (features and
-   reviews), meet the people (team and community), and join. Each section
-   has one job and is designed around it.
-   ══════════════════════════════════════════════════════════════════════════ */
-
-/* ── Intro ──────────────────────────────────────────────────────────────
-   The curtain exists from the first paint — the head script sets
-   html.has-intro before anything renders — and vfx.js draws the sequence on
-   its canvas. Once the screen shatters, the curtain goes transparent and
-   the falling tiles are all that is left of it.                          */
 .intro {
   display: none;
   position: fixed;
@@ -19,9 +5,6 @@
   z-index: var(--z-intro);
   background: var(--bg);
 }
-/* html.has-intro shows it from the first paint; once the script has it,
-   the curtain's own is-playing class keeps it up until the last tile has
-   fallen — the page flag is cleared the moment the screen breaks. */
 html.has-intro .intro,
 .intro.is-playing { display: block; }
 html.has-intro.crab,
@@ -39,8 +22,6 @@ html.has-intro.crab body { overflow: hidden; }
   height: 100%;
 }
 
-/* Without the particle engine, or with reduced motion, the mark simply
-   stands there a moment. */
 .intro__still { display: none; }
 .intro.is-still .intro__still {
   position: absolute;
@@ -83,15 +64,9 @@ html.has-intro.crab body { overflow: hidden; }
 .intro__skip:hover { color: var(--white); }
 .intro.is-shattering .intro__skip { opacity: 0; pointer-events: none; }
 
-/* The script never ran: take the curtain down anyway. */
 html.has-intro:not(.crab) .intro { animation: introFailsafe 0.4s 3s forwards; }
 @keyframes introFailsafe { to { opacity: 0; visibility: hidden; } }
 
-/* ── Hero ───────────────────────────────────────────────────────────────
-   The world first, bright enough to want to be in. Three layers over the
-   photograph: shafts of light from the sun in its top corner, dust
-   hanging in them, and a shade that keeps the type readable and melts
-   the bottom edge into the page.                                         */
 .hero {
   position: relative;
   display: grid;
@@ -115,9 +90,6 @@ html.js .hero__world {
 }
 html.js.is-ready .hero__world { transform: none; }
 
-/* The photograph drifts down and closes in as the hero scrolls away, and
-   leans a few pixels against the pointer. Both arrive as custom
-   properties so they compose into one transform. */
 .hero__photo {
   position: absolute;
   inset: 0;
@@ -131,9 +103,6 @@ html.js.is-ready .hero__world { transform: none; }
   filter: saturate(1.08) contrast(1.05);
 }
 
-/* Soft-edged shafts fanning out of the sun at the top right. They sway a
-   couple of degrees and breathe; screen blending means they only ever
-   add light. */
 .hero__rays {
   position: absolute;
   inset: -10% -6% 0;
@@ -188,8 +157,6 @@ html.js.is-ready .hero__world { transform: none; }
 }
 @keyframes bob { 50% { transform: translate3d(0, -8px, 0); } }
 
-/* The splash: the yellow line that bounces beside the title screen's
-   logo, with the game's own dark-yellow shadow. */
 .splash {
   position: absolute;
   left: 78%;
@@ -227,8 +194,6 @@ html.js.is-ready .hero__world { transform: none; }
   margin-top: 6px;
 }
 
-/* The server address, as the game's text field with a copy key bolted
-   on. The whole thing is one button. */
 .ip-field {
   display: grid;
   grid-template-columns: auto auto;
@@ -285,8 +250,6 @@ html.js.is-ready .hero__world { transform: none; }
 .ip-field:hover .ip-field__action { color: var(--white); }
 .ip-field.is-success .ip-field__action { color: var(--mc-a); }
 
-/* The live line sits above the headline as its kicker: the first thing
-   the page tells you is that people are here right now. */
 .hero__live {
   margin-bottom: -8px;
   padding: 7px 12px;
@@ -321,10 +284,6 @@ html.js.is-ready .hero__world { transform: none; }
 html.js .hero__cue { opacity: 0; transition: opacity var(--dur-enter) var(--ease) 1.2s; }
 html.js.is-ready .hero__cue { opacity: 1; }
 
-/* ── The lifesteal story ────────────────────────────────────────────────
-   One screen that plays by itself once it is in view; crab.js runs the
-   clock. Without script, or with reduced motion, it is simply the six
-   steps in order.                                                        */
 .story {
   --h: 45px;
   --bottle: 64px;
@@ -360,9 +319,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 .story__hud .story__hearts { position: relative; z-index: 1; }
 .story .label { position: relative; z-index: 1; }
 
-/* Hearts sit eight art pixels apart and are nine wide, so each overlaps
-   the next by one pixel, exactly as the game lays out its health bar.
-   Rows past the first stack upwards. */
 .story__hearts {
   display: grid;
   grid-template-columns: repeat(10, calc(var(--h) * 8 / 9));
@@ -396,8 +352,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 .story__fly.is-on { opacity: 1; }
 
-/* The Soul Bottle hangs over the bar while a teammate uses it, bobbing a
-   pixel at a time like a dropped item. */
 .story__bottle {
   position: absolute;
   bottom: calc(var(--h) * 10 / 9 + 14px);
@@ -428,7 +382,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 
 .story__pips { display: none; }
 
-/* One step on screen at a time, each replacing the last in the same spot. */
 @media (prefers-reduced-motion: no-preference) {
   html.js .story:not(.is-static) .story__stage {
     min-height: min(100vh, 820px);
@@ -470,7 +423,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 .story__pip.is-on { background: var(--red-bright); }
 
-/* Eliminated: the stage takes the flat red tint of the death screen. */
 .story__stage::after {
   content: "";
   position: absolute;
@@ -483,9 +435,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 .story.is-dead .story__stage::after { opacity: 1; }
 
-/* Thirty hearts: the bar is enchanted. Each heart carries the shimmer,
-   masked to its own shape, and the texture is fixed to the viewport so
-   the band sweeps across the whole bar as one. */
 .heart { position: relative; }
 .story.is-full .heart[data-state="full"]::after {
   content: "";
@@ -500,9 +449,7 @@ html.js.is-ready .hero__cue { opacity: 1; }
   animation: glint 5.5s steps(64) infinite;
 }
 
-/* ── Fair play ──────────────────────────────────────────────────────────*/
 .manifesto .head + .statement { margin-top: clamp(40px, 5.5vw, 72px); }
-
 
 .facts {
   display: grid;
@@ -523,9 +470,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 .fact p { font-size: var(--fs-small); color: var(--text-dim); }
 
-/* ── Features: the bento ────────────────────────────────────────────────
-   Tiles of different sizes, each one idea, several with a small live
-   scene inside that plays when it scrolls into view.                     */
 .bento {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -606,12 +550,7 @@ html.js.is-ready .hero__cue { opacity: 1; }
 .tile--world .tile__body { padding: 36px 38px 40px; }
 .tile--border .tile__img { opacity: 0.55; }
 
-/* The starter kit is a screenshot of a menu, so it reads as one: shown
-   whole at the top of the tile with the words beneath it, not under a
-   gradient over it. */
 .tile--kit { justify-content: flex-start; }
-/* A fixed box: the screenshot is lazy, and a box that only learns its
-   height when the image arrives would move everything below it. */
 .tile--kit .tile__img {
   position: relative;
   z-index: 0;
@@ -623,7 +562,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 .tile--kit::after { content: none; }
 .tile--kit .tile__body p { color: var(--text-dim); }
 
-/* Items in a [data-sequence] list wait, then arrive one at a time. */
 .is-waiting > * {
   opacity: 0;
   transform: translate3d(-8px, 0, 0);
@@ -653,8 +591,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 @keyframes blink { 50% { opacity: 0; } }
 
-/* Chat as the game draws it: each line on its own translucent strip,
-   newest at the bottom, over a dimmed view of the world. */
 .chat {
   display: flex;
   flex-direction: column;
@@ -725,7 +661,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
   background: repeating-linear-gradient(90deg, transparent 0 calc(10% - 2px), rgba(0, 0, 0, 0.6) calc(10% - 2px) 10%);
 }
 
-/* ── Reviews ────────────────────────────────────────────────────────────*/
 .review-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -805,7 +740,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 .tag--admin  { color: #ffd4cf; background: var(--red-dark); }
 .tag--helper { color: var(--mc-b); background: #16414c; }
 
-/* ── The team ───────────────────────────────────────────────────────────*/
 .founder__grid {
   display: grid;
   grid-template-columns: minmax(240px, 400px) minmax(0, 1fr);
@@ -839,7 +773,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
   color: var(--text-dim);
 }
 
-/* ── Community ──────────────────────────────────────────────────────────*/
 .community__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
@@ -962,7 +895,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 .discord-card__join:hover { color: var(--white); }
 
-/* ── Rules ──────────────────────────────────────────────────────────────*/
 .rulebook { margin-top: clamp(40px, 5vw, 64px); }
 
 .tabs {
@@ -1063,9 +995,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
   box-shadow: 0 0 0 2px var(--black);
 }
 
-/* ── Join ───────────────────────────────────────────────────────────────
-   The finale: dusk over the spawn, embers rising, and the three ways in
-   behind one switch.                                                     */
 .join {
   position: relative;
   padding: clamp(130px, 16vw, 230px) 0 clamp(110px, 12vw, 170px);
@@ -1101,9 +1030,6 @@ html.js.is-ready .hero__cue { opacity: 1; }
 }
 .join__inner { position: relative; z-index: 2; }
 
-/* The join box, switch and copy rows are shared: see main.css. */
-
-/* ── Responsive ─────────────────────────────────────────────────────────*/
 @media (max-height: 820px) and (min-width: 700px) {
   .hero { padding-bottom: 72px; }
   .hero__content { gap: 18px; }

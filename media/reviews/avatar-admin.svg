@@ -15,10 +15,7 @@
   <circle cx="168" cy="62" r="1" fill="#f1b9b1" opacity="0.5"/>
   <circle cx="30" cy="50" r="1.2" fill="#f1b9b1" opacity="0.45"/>
   <circle cx="46" cy="120" r="1" fill="#f1b9b1" opacity="0.4"/>
-  <!-- shoulders / hood -->
   <path d="M40 200 C40 150 60 118 100 118 C140 118 160 150 160 200 Z" fill="url(#hoodA)"/>
-  <!-- head silhouette -->
   <path d="M100 40 C122 40 138 58 138 82 C138 108 121 128 100 128 C79 128 62 108 62 82 C62 58 78 40 100 40 Z" fill="#160605"/>
-  <!-- hood peak highlight -->
   <path d="M100 118 C124 118 140 128 148 146 L52 146 C60 128 76 118 100 118 Z" fill="#e23b2c" opacity="0.18"/>
 </svg>

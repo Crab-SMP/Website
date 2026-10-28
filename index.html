@@ -23,7 +23,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://crabsmp.net/media/og.jpg" />
 
-  <!-- chrome:boot -->
   <script>
     (function (d) {
       var c = d.documentElement.classList;
@@ -44,9 +43,10 @@
   <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
-  <!-- /chrome:boot -->
-  <link rel="preload" href="media/logo.png" as="image" />
+
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/icons.css" />
+  <link rel="stylesheet" href="styles/glyphs.css" />
   <link rel="stylesheet" href="styles/index.css" />
 
   <script type="application/ld+json">
@@ -67,8 +67,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- The welcome. crab.js and vfx.js draw it on the canvas; the head script
-     above decides whether it plays at all. -->
 <div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Welcome to CrabSMP" data-logo="media/logo.png">
   <canvas class="intro__canvas" aria-hidden="true"></canvas>
   <div class="intro__still" aria-hidden="true">
@@ -79,7 +77,6 @@
   <button class="intro__skip" type="button">Skip intro <i class="i i-arrow-right" aria-hidden="true"></i></button>
 </div>
 
-<!-- chrome:topbar -->
 <header class="topbar">
   <div class="topbar__inner">
     <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
@@ -105,11 +102,9 @@
     </button>
   </div>
 </header>
-<!-- /chrome:topbar -->
 
 <main id="main">
 
-  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero__world" aria-hidden="true">
       <img class="hero__photo"
@@ -148,7 +143,6 @@
     </a>
   </section>
 
-  <!-- ── Lifesteal, told on a heart bar ─────────────────────────────────── -->
   <section class="story" id="lifesteal" data-story aria-labelledby="story-title">
     <div class="story__stage">
       <canvas class="story__fx" aria-hidden="true"></canvas>
@@ -197,7 +191,6 @@
     </div>
   </section>
 
-  <!-- ── Fair play ───────────────────────────────────────────────────── -->
   <section class="section manifesto" id="fair-play" aria-labelledby="fair-title">
     <div class="shell">
       <header class="head">
@@ -236,7 +229,6 @@
     </div>
   </section>
 
-  <!-- ── Features ────────────────────────────────────────────────────── -->
   <section class="section features" id="features" aria-labelledby="features-title">
     <div class="shell shell--wide">
       <header class="head">
@@ -334,7 +326,6 @@
     </div>
   </section>
 
-  <!-- ── Reviews ─────────────────────────────────────────────────────── -->
   <section class="section section--deep reviews" aria-labelledby="reviews-title">
     <div class="shell">
       <header class="head head--center">
@@ -379,7 +370,6 @@
     </div>
   </section>
 
-  <!-- ── The team ────────────────────────────────────────────────────── -->
   <section class="section founder" id="about" aria-labelledby="founder-title">
     <div class="shell">
       <div class="founder__grid">
@@ -402,7 +392,6 @@
     </div>
   </section>
 
-  <!-- ── Community ───────────────────────────────────────────────────── -->
   <section class="section section--deep community" id="discord" data-discord aria-labelledby="discord-title">
     <div class="shell">
       <div class="community__grid">
@@ -443,7 +432,6 @@
     </div>
   </section>
 
-  <!-- ── Rules ───────────────────────────────────────────────────────── -->
   <section class="section rules" id="rules" aria-labelledby="rules-title">
     <div class="shell">
       <header class="head">
@@ -512,7 +500,6 @@
     </div>
   </section>
 
-  <!-- ── Join ────────────────────────────────────────────────────────── -->
   <section class="join" id="join" aria-labelledby="join-title">
     <div class="join__world" aria-hidden="true">
       <img class="join__photo" src="media/slideshow/slide1.webp"
@@ -580,7 +567,6 @@
 
 </main>
 
-<!-- chrome:footer -->
 <footer class="footer">
   <div class="footer__bedrock" aria-hidden="true"></div>
   <div class="shell shell--wide">
@@ -623,7 +609,6 @@
     </div>
   </div>
 </footer>
-<!-- /chrome:footer -->
 
 <script src="javascript/sfx.js" defer></script>
 <script src="javascript/vfx.js" defer></script>

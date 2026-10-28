@@ -25,7 +25,6 @@
   <meta name="twitter:description" content="Three permanent ranks and Lifesteal Revive tokens. Quality of life and cosmetics only — never pay to win." />
   <meta name="twitter:image" content="https://crabsmp.net/media/og.jpg" />
 
-  <!-- chrome:boot -->
   <script>
     (function (d) {
       var c = d.documentElement.classList;
@@ -45,8 +44,10 @@
   <link rel="preload" href="media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="preload" href="media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
-  <!-- /chrome:boot -->
+
   <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/icons.css" />
+  <link rel="stylesheet" href="styles/glyphs.css" />
   <link rel="stylesheet" href="styles/store.css" />
 
   <script type="application/ld+json">
@@ -64,7 +65,6 @@
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- chrome:topbar -->
 <header class="topbar">
   <div class="topbar__inner">
     <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
@@ -90,11 +90,9 @@
     </button>
   </div>
 </header>
-<!-- /chrome:topbar -->
 
 <main id="main">
 
-  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
   <section class="page-hero store-hero" aria-labelledby="store-title">
     <div class="page-hero__bg" aria-hidden="true">
       <div class="store-hero__nether"></div>
@@ -133,7 +131,6 @@
     </div>
   </section>
 
-  <!-- ── Ranks ────────────────────────────────────────────────────────── -->
   <section class="section" id="ranks" aria-labelledby="ranks-heading">
     <div class="shell">
       <header class="head head--center">
@@ -146,8 +143,6 @@
         </p>
       </header>
 
-      <!-- Sits before the first price on purpose: nobody should reach a price
-           without knowing who takes the money. -->
       <aside class="tebex" data-reveal aria-label="Payment security">
         <i class="i i-lock" aria-hidden="true"></i>
         <p><strong>Every payment is processed by Tebex.</strong> We never see or store your card details. Checkout, billing and refunds are handled end to end by Tebex Limited, the payment provider trusted by most of the Minecraft server network.</p>
@@ -266,7 +261,6 @@
     </div>
   </section>
 
-  <!-- ── Compare ──────────────────────────────────────────────────────── -->
   <section class="section section--deep" id="compare" aria-labelledby="compare-heading">
     <div class="shell">
       <header class="head">
@@ -335,7 +329,6 @@
     </div>
   </section>
 
-  <!-- ── Revive ───────────────────────────────────────────────────────── -->
   <section class="section" id="revive" aria-labelledby="revive-heading">
     <div class="shell">
       <article class="revive" data-reveal>
@@ -387,7 +380,6 @@
     </div>
   </section>
 
-  <!-- ── Cosmetics ────────────────────────────────────────────────────── -->
   <section class="section section--deep" id="cosmetics" aria-labelledby="cosmetics-heading">
     <div class="shell">
       <header class="head head--center">
@@ -436,7 +428,6 @@
     </div>
   </section>
 
-  <!-- ── Delivery ─────────────────────────────────────────────────────── -->
   <section class="section" id="delivery" aria-labelledby="delivery-heading">
     <div class="shell">
       <header class="head">
@@ -465,7 +456,6 @@
     </div>
   </section>
 
-  <!-- ── Promise ──────────────────────────────────────────────────────── -->
   <section class="section section--deep" id="promise" aria-labelledby="promise-heading">
     <div class="shell shell--narrow">
       <header class="head head--center">
@@ -500,7 +490,6 @@
     </div>
   </section>
 
-  <!-- ── FAQ ──────────────────────────────────────────────────────────── -->
   <section class="section" id="faq" aria-labelledby="faq-heading">
     <div class="shell shell--narrow">
       <header class="head">
@@ -546,7 +535,6 @@
 
 </main>
 
-<!-- chrome:footer -->
 <footer class="footer">
   <div class="footer__bedrock" aria-hidden="true"></div>
   <div class="shell shell--wide">
@@ -589,7 +577,6 @@
     </div>
   </div>
 </footer>
-<!-- /chrome:footer -->
 
 <script src="javascript/sfx.js" defer></script>
 <script src="javascript/vfx.js" defer></script>

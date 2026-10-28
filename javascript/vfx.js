@@ -1,25 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   CrabSMP — pixel VFX.
-
-   A small particle engine with one rule: it only ever draws hard-edged
-   squares, and every square lands on a whole device pixel. Positions move
-   smoothly as floats; they are snapped only when drawn. That is the whole
-   look — motion as smooth as anything on the web, pixels as crisp as the
-   game's — and it is why nothing here uses arcs, blurs or shadows.
-
-   Everything is exposed on window.CrabVFX for crab.js to drive:
-
-     motes(canvas, preset)   ambient drifting particles (dust, embers)
-     fx(canvas)              a burst layer: fx.burst(x, y, preset)
-     pop(clientX, clientY)   a one-off burst anywhere on screen
-     intro(root, hooks)      the home page's welcome sequence
-
-   Every loop runs only while its canvas is on screen and the tab is
-   visible, and none of them start under prefers-reduced-motion.
-
-   The intro is scored: sfx.js (loaded first) plays each of its beats as it
-   happens on screen, placed in stereo where it happens.
-   ══════════════════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
@@ -28,8 +6,6 @@
 
   function sfx(name, opts) { return window.CrabSFX ? window.CrabSFX.play(name, opts) : null; }
 
-  /* Past 2x the extra canvas resolution costs fill rate and buys nothing a
-     2px square can show. */
   var DPR_CAP = 2;
 
   function rand(a, b) { return a + Math.random() * (b - a); }
@@ -45,11 +21,6 @@
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   }
 
-  /* ── Layer ────────────────────────────────────────────────────────────
-     A canvas that keeps itself sized to its box at the device pixel ratio
-     and runs a frame loop only while it is on screen and the tab is
-     showing. `draw(dt, now)` returns false when it has nothing left to do,
-     which parks the loop until something wakes it.                       */
   function Layer(canvas, draw, onResize) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
@@ -109,8 +80,6 @@
 
   Layer.prototype.step = function (now) {
     this.raf = 0;
-    /* Integrate over real frame time, clamped so a tab coming back from
-       the background does not resume with one enormous step. */
     var dt = this.last ? Math.min((now - this.last) / 1000, 0.05) : 1 / 60;
     this.last = now;
     var more = this.draw(dt, now);
@@ -118,15 +87,9 @@
     this.kick();
   };
 
-  /* Snap a CSS-pixel coordinate to the nearest device pixel. */
   Layer.prototype.snap = function (v) { return Math.round(v * this.dpr) / this.dpr; };
 
-  /* ── Presets ──────────────────────────────────────────────────────────
-     A preset is a palette and a temperament. Sizes are in CSS px and are
-     always whole numbers, so a square is 2, 3 or 4 screen pixels on a 1x
-     display and exactly double that on a 2x one.                        */
   var PRESETS = {
-    /* Dust hanging in the sunlight over the spawn. */
     dust: {
       density: 1 / 9500,
       colours: ['#fff4d6', '#fff4d6', '#fff4d6', '#ffe7a8', '#ffd98a'],
@@ -137,7 +100,6 @@
       sparkle: 0.06,
       repel: 110
     },
-    /* Sparks off a fire, for the join section. */
     embers: {
       density: 1 / 7000,
       colours: ['#f1543f', '#e23b2c', '#ff7d68', '#ffaa00', '#ffcf3a'],
@@ -149,7 +111,6 @@
       repel: 90,
       fadeTop: true
     },
-    /* The nether: slower, redder, fewer. */
     ash: {
       density: 1 / 12000,
       colours: ['#8e2118', '#c0301f', '#6b1a12', '#f1543f'],
@@ -160,8 +121,6 @@
       sparkle: 0,
       repel: 80
     },
-    /* A night sky: stars that hardly move and twinkle, a few of them
-       glinting as pixel stars. */
     stars: {
       density: 1 / 5200,
       colours: ['#f5f5f6', '#f5f5f6', '#dfe6ff', '#fff4c2', '#ffcf3a'],
@@ -174,12 +133,6 @@
     }
   };
 
-  /* ── Motes ────────────────────────────────────────────────────────────
-     Ambient particles drifting up through a canvas. Each has a depth that
-     sets its size, brightness, speed and how far it follows the pointer, so
-     the field reads as a volume of air rather than a flat sheet. A few are
-     sparkles: a four-pointed pixel star that swells and fades, the way the
-     game draws a glint. The pointer pushes nearby motes gently aside.    */
   function motes(canvas, presetName, options) {
     if (!canvas || reduceMotion) return null;
     var cfg = PRESETS[presetName] || PRESETS.dust;
@@ -226,8 +179,6 @@
       t += dt;
       ctx.clearRect(0, 0, w, h);
 
-      /* The whole field leans a little towards the pointer; near motes lean
-         further than far ones, which is where the depth comes from. */
       tilt.x += (tilt.tx - tilt.x) * (1 - Math.exp(-dt * 3));
       tilt.y += (tilt.ty - tilt.y) * (1 - Math.exp(-dt * 3));
 
@@ -270,7 +221,6 @@
         var sy = layer.snap(y);
         var c = p.rgb;
         if (p.sparkle) {
-          /* A pixel star: a centre and four arms that grow and shrink. */
           var pulse = 0.5 + 0.5 * Math.sin(t * p.tw * 1.3 + p.phase);
           ctx.fillStyle = 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + Math.min(1, a * 1.3).toFixed(3) + ')';
           ctx.fillRect(sx, sy, s, s);
@@ -310,10 +260,6 @@
     return layer;
   }
 
-  /* ── Bursts ───────────────────────────────────────────────────────────
-     One-shot squares thrown from a point under gravity: a heart breaking,
-     a revive, a copy confirmed. A burst layer sleeps while it is empty and
-     wakes when something is thrown into it.                              */
   var BURSTS = {
     heart:  { colours: ['#e8262a', '#ff5555', '#9f1519', '#ffc8c8'], count: 26, speed: [90, 300], up: 160, gravity: 900, life: [0.5, 1.0], sizes: [3, 4, 5] },
     gold:   { colours: ['#ffcf3a', '#fff4c2', '#ffaa00', '#ffffff'], count: 22, speed: [40, 190], up: 220, gravity: -40, life: [0.6, 1.2], sizes: [2, 3, 3, 4] },
@@ -353,8 +299,6 @@
       p.x += p.vx * dt;
       p.y += p.vy * dt;
       var k = p.age / p.life;
-      /* Squares shrink a pixel at a time as they die rather than fading to
-         a smear, the way the game's own particles do. */
       var s = Math.max(1, Math.round(p.size * (1 - k * 0.7)));
       var a = k < 0.7 ? 1 : 1 - (k - 0.7) / 0.3;
       ctx.fillStyle = 'rgba(' + p.rgb[0] + ',' + p.rgb[1] + ',' + p.rgb[2] + ',' + a.toFixed(3) + ')';
@@ -381,9 +325,6 @@
     };
   }
 
-  /* A burst at a point on screen, for feedback that is not tied to any
-     section: a copied address, a vote. One fixed canvas is made the first
-     time it is needed and reused after. */
   var popLayer = null;
   var popList = [];
   function pop(clientX, clientY, name, extra) {
@@ -402,31 +343,12 @@
     popLayer.wake();
   }
 
-  /* ── Intro ────────────────────────────────────────────────────────────
-     The welcome, on a first visit to the home page. It is three beats:
-
-       Resolve   the logo assembles out of pixels flying in from the dark,
-                 as a mosaic, then sharpens into the real artwork and
-                 catches the enchantment glint.
-       Break     cracks run out across the screen from the logo, the way a
-                 block cracks as you mine it.
-       Shatter   the screen falls away in square tiles under gravity, and
-                 the site is underneath.
-
-     The whole thing is drawn on one canvas, so the shatter can cut up
-     exactly what was on screen. Skipping — the button, a click, Escape,
-     Enter or Space — jumps straight to the break, and a click breaks the
-     screen from wherever it landed.
-
-     hooks.onShatter fires as the tiles start to fall, which is when the
-     page underneath should start assembling; hooks.onDone once the last
-     tile has gone.                                                      */
   var T = {
-    resolveFrom: 1380,   // mosaic starts handing over to the artwork
+    resolveFrom: 1380,
     resolveTo:   1850,
     glintFrom:   1700,
     glintTo:     2450,
-    tagFrom:     1880,   // the three words, one after another
+    tagFrom:     1880,
     tagGap:      170,
     crack:       2800,
     crackDur:    300,
@@ -464,8 +386,6 @@
     var finished = false;
     var raf = 0;
 
-    /* The score. Each beat sounds once, as its moment comes; a skip that
-       jumps past a beat passes it by silently rather than playing it late. */
     var heard = {};
     var swell = null;
     function beat(name, at, t) {
@@ -504,8 +424,6 @@
       for (var i = 0; i < words.length; i++) { wordX.push(x); x += wordW[i] + gap; }
     }
 
-    /* Sample the logo into a grid of cells; every cell that is mostly
-       opaque becomes one particle, coloured like the pixel at its centre. */
     function sample() {
       var grid = W < 700 ? 38 : 46;
       cell = Math.max(3, Math.floor(L / grid));
@@ -581,8 +499,6 @@
       ctx.globalAlpha = 1;
     }
 
-    /* A band of light sweeps across the artwork, masked to its pixels, the
-       way an enchanted item catches the light. */
     function drawGlint(k) {
       var g = glintBuf.getContext('2d');
       var s = glintBuf.width;
@@ -628,9 +544,6 @@
       ctx.globalAlpha = 1;
     }
 
-    /* Cracks: a handful of branches walking outward from the origin in
-       short jittered steps, with twigs off them. Drawn as runs of square
-       pixels rather than lines, so they are as crisp as the rest. */
     function makeCracks(o) {
       var reach = Math.hypot(Math.max(o.x, W - o.x), Math.max(o.y, H - o.y));
       var segs = [];
@@ -638,8 +551,6 @@
       function walk(x, y, ang, length, depth, startLen) {
         var travelled = 0;
         while (travelled < length) {
-          /* Long, nearly straight runs with the odd hard turn: a fracture,
-             not a root. */
           var step = rand(22, 46);
           ang += Math.random() < 0.18 ? rand(-0.6, 0.6) : rand(-0.14, 0.14);
           var nx = x + Math.cos(ang) * step;
@@ -675,16 +586,12 @@
       var shown = easeOutCubic(k) * cracks.reach;
       var base = W < 700 ? 4 : 5;
       for (var pass = 0; pass < 2; pass++) {
-        /* A lit edge a pixel below the dark core gives the crack depth,
-           the way a crack in stone catches the light on its lip. */
         ctx.fillStyle = pass === 0 ? 'rgba(255, 236, 230, 0.13)' : 'rgba(0, 0, 0, 0.94)';
         for (var i = 0; i < cracks.segs.length; i++) {
           var s = cracks.segs[i];
           if (s.at > shown) continue;
           var segLen = Math.hypot(s.x1 - s.x0, s.y1 - s.y0);
           var part = clamp((shown - s.at) / segLen, 0, 1);
-          /* Thick at the point of impact, a pixel thinner every third of
-             the way out, thinnest on the twigs. */
           var sz = Math.max(2, base - Math.floor((s.at / cracks.reach) * 3) - (s.depth ? 1 : 0));
           var off = pass === 0 ? Math.max(1, sz - 2) : 0;
           pixelLine(s.x0 + off, s.y0 + off, s.x0 + (s.x1 - s.x0) * part + off, s.y0 + (s.y1 - s.y0) * part + off, sz);
@@ -725,7 +632,6 @@
           });
         }
       }
-      /* Loose chips thrown off the cracks. */
       for (var i = 0; i < cracks.segs.length; i += 3) {
         var s = cracks.segs[i];
         if (Math.random() < 0.5) continue;
@@ -766,9 +672,6 @@
           x = p.x + p.vx * local;
           y = p.y + p.vy * local + 0.5 * G * local * local;
           rot = p.vr * local;
-          /* Blocks fall away from you as well as down: they shrink into
-             the depth and thin out, so the page comes through clean
-             rather than through a swarm. */
           scale = Math.max(0.25, 1 - local * 1.15);
           alpha = Math.max(0, 1 - local * 1.35);
           if (alpha <= 0 || y - p.size > H + 20) { p.gone = true; continue; }
@@ -779,8 +682,6 @@
         if (rot) ctx.rotate(rot);
         if (scale !== 1) ctx.scale(scale, scale);
         ctx.drawImage(snap, p.sx * dpr, p.sy * dpr, p.size * dpr, p.size * dpr, -p.size / 2, -p.size / 2, p.size, p.size);
-        /* Each tile shades a little as it tips and keeps a hard edge, so
-           the fall reads as blocks with thickness rather than as paper. */
         if (local > 0) {
           ctx.fillStyle = 'rgba(0,0,0,' + Math.min(0.22, local * 0.6).toFixed(3) + ')';
           ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
@@ -803,7 +704,6 @@
         ctx.fillRect(sn(d.x), sn(d.y), d.size, d.size);
       }
       ctx.globalAlpha = 1;
-      /* The instant of impact: a breath of light, gone in a few frames. */
       if (t < 90) {
         ctx.fillStyle = 'rgba(255,255,255,' + (0.06 * (1 - t / 90)).toFixed(3) + ')';
         ctx.fillRect(0, 0, W, H);
@@ -875,17 +775,12 @@
     }
 
     function onResize() {
-      /* A rotation mid-intro would leave every particle aimed at the wrong
-         place. Go straight to the page instead. */
       if (hooks.onShatter && !shattered) hooks.onShatter();
       finish();
     }
 
-    /* Jump to the break. A click breaks the screen from where it landed. */
     function skip(x, y) {
       if (finished || shattered) return;
-      /* Still waiting on the artwork: there is nothing to break yet, so go
-         straight to the page. */
       if (!start) {
         ready = true;
         clearTimeout(giveUp);
@@ -897,8 +792,6 @@
       var t = now - start;
       if (t >= crackAt) return;
       if (typeof x === 'number') origin = { x: x, y: y };
-      /* Make sure the artwork is fully in and the words are up, so the
-         screen that breaks is the finished one. */
       start = now - Math.max(t, T.tagFrom + T.tagGap * 3 + 420);
       crackAt = now - start;
       crackDur = 170;
@@ -916,8 +809,6 @@
       swell = sfx('assemble');
     }
 
-    /* Wait for the artwork and the display face, but never for long: a slow
-       connection gets the page, not a blank curtain. */
     var ready = false;
     var giveUp = setTimeout(function () {
       if (ready) return;

@@ -1,32 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   CrabSMP — the design system.
-
-   Every page loads this first, then one stylesheet of its own. This file owns
-   everything that is shared: tokens, type, the pixel icon set, buttons, the
-   top bar, the hotbar HUD, toasts, the reveal system, page transitions and
-   the footer.
-
-   The idea in one line: cinematic restraint, pixel-native detail. Layout,
-   type scale and motion take their cues from the best product sites — few
-   words, big type, one idea per screen, nothing moving without a reason.
-   Every surface, icon and effect underneath is built from hard-edged pixels,
-   because that is the world the site is selling.
-   ══════════════════════════════════════════════════════════════════════════ */
-
-/* ── Fonts ──────────────────────────────────────────────────────────────
-   Three faces, each with one job.
-
-   MinecraftTen is the display face: caps only, very heavy, glorious large
-   and mush small. It is for headlines at 24px and up and nothing else.
-
-   Mojangles is the game's own interface face. It sets anything that is
-   interface rather than prose — nav, buttons, labels, numbers, server
-   addresses — which is exactly the split the game itself makes.
-
-   Inter sets the reading. Paragraphs in a pixel face are tiring past a
-   sentence or two, and it is the pairing Mojang uses on Bedrock's own
-   interface: a pixel face for titles, a clean sans for everything you read.
-   All three are served from media/fonts, so there is no font CDN.          */
 @font-face {
   font-family: 'MinecraftTen';
   src: url('../media/fonts/MinecraftTen.ttf') format('truetype');
@@ -50,7 +21,6 @@
 }
 
 :root {
-  /* ── Colour ─────────────────────────────────────────────────────────── */
   --red:          #e23b2c;
   --red-bright:   #f1543f;
   --red-dark:     #8e2118;
@@ -70,14 +40,13 @@
   --white:        #f5f5f6;
   --text:         #d6d7db;
   --text-dim:     #9a9ba3;
-  --text-faint:   #8e8f97;  /* the dimmest text allowed: 4.5:1 on every surface */
+  --text-faint:   #8e8f97;
 
   --blue:         #34465f;
   --blue-hi:      #415672;
   --blue-text:    #8fa6c6;
   --blue-deep:    #1a2330;
 
-  /* Minecraft's chat colours, named after their § codes. */
   --mc-a:         #55ff55;
   --mc-b:         #55ffff;
   --mc-c:         #ff5555;
@@ -92,23 +61,17 @@
   --xp-dark:      #2e5c0c;
   --gold:         #ffcf3a;
 
-  /* The item tooltip: near-black violet with a violet frame that darkens
-     towards the bottom. Every player has read a thousand of these. */
   --tip-bg:       rgba(16, 0, 16, 0.94);
   --tip-top:      #5000ff;
   --tip-bottom:   #28007f;
 
-  /* ── Type ───────────────────────────────────────────────────────────── */
   --font-display: 'MinecraftTen', 'Mojangles', ui-monospace, monospace;
   --font-ui:      'Mojangles', ui-monospace, 'Courier New', monospace;
   --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  /* Old names, kept so nothing that still says them breaks. */
   --font-pixel:   var(--font-display);
   --font-body:    var(--font-sans);
   --font-mono:    var(--font-ui);
 
-  /* A fluid scale. The display sizes are large on purpose: a headline that
-     owns the screen needs fewer words next to it. */
   --fs-hero:      clamp(42px, 7vw, 104px);
   --fs-d1:        clamp(38px, 6.2vw, 92px);
   --fs-d2:        clamp(32px, 4.6vw, 66px);
@@ -120,7 +83,6 @@
   --fs-small:     15px;
   --fs-label:     14px;
 
-  /* ── Space ──────────────────────────────────────────────────────────── */
   --shell:        1200px;
   --shell-wide:   1320px;
   --gutter:       clamp(20px, 5vw, 48px);
@@ -128,9 +90,6 @@
   --topbar-h:     74px;
   --topbar-h-tight: 60px;
 
-  /* ── Pixel scale ────────────────────────────────────────────────────── */
-  /* How many CSS px one pixel of interface art covers. Borders, bevels and
-     outlines are all multiples of it, so the chrome shares one pixel size. */
   --g:            2px;
   --border:       var(--g) solid var(--black);
   --bevel:        inset var(--g) var(--g) 0 rgba(255, 255, 255, 0.07), inset calc(var(--g) * -1) calc(var(--g) * -1) 0 rgba(0, 0, 0, 0.45);
@@ -148,19 +107,11 @@
   --tex-bedrock:   url('../media/ui/textures/bedrock.png');
   --tex-glint:     url('../media/ui/textures/glint.png');
 
-  /* ── Motion ─────────────────────────────────────────────────────────── */
-  /* One system for the whole site. --ease-out is the workhorse: fast off
-     the mark and a long settle, which is what makes an entrance feel
-     expensive rather than busy. The pop curves are kept for small things
-     answering a press, never for content arriving. */
   --ease:         cubic-bezier(.2, .7, .2, 1);
   --ease-out:     cubic-bezier(.16, 1, .3, 1);
   --ease-in-out:  cubic-bezier(.65, 0, .35, 1);
   --ease-pop:     cubic-bezier(.34, 1.56, .64, 1);
 
-  /* Five durations, scaled by weight: the bigger the thing that moves, the
-     longer it may take. A number outside this list is how a page ends up
-     reading as a pile of unrelated effects. */
   --dur-tap:      120ms;
   --dur-move:     240ms;
   --dur-lift:     360ms;
@@ -169,7 +120,6 @@
   --stagger:      80ms;
   --dur-idle:     4400ms;
 
-  /* Written by crab.js. */
   --dpr: 1;
 
   --lift:         -3px;
@@ -181,19 +131,12 @@
   --z-skip:       1100;
 }
 
-/* A touch screen keeps :hover on whatever was tapped last, and a card left
-   floating off the page is what reads as a bug. */
 @media (hover: none) {
   :root { --lift: 0px; --lift-sm: 0px; }
 }
 
-/* The page moving under a still pointer drags every card beneath it through
-   its hover state, and a hover that lifts its element slides it out from
-   under the cursor and back. crab.js marks the page as moving for as long as
-   it is, and every lift on the site goes through these two tokens. */
 html.is-scrolling { --lift: 0px; --lift-sm: 0px; }
 
-/* ── Reset & base ───────────────────────────────────────────────────────*/
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -213,8 +156,6 @@ body {
   line-height: 1.65;
   color: var(--text);
   background: var(--bg);
-  /* clip, not hidden: hidden would make body a scroll container and break
-     every position: sticky on the site. */
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -241,7 +182,6 @@ code, kbd { font-family: var(--font-ui); font-size: 0.95em; }
 
 a, button, summary, [role="button"], [role="tab"] { -webkit-tap-highlight-color: transparent; }
 
-/* A slim pixel scrollbar: dark track, a block of a thumb with a hard edge. */
 html { scrollbar-color: #3a3b42 var(--bg-deep); }
 ::-webkit-scrollbar { width: 12px; height: 12px; }
 ::-webkit-scrollbar-track { background: var(--bg-deep); }
@@ -280,7 +220,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 }
 .skip-link:focus { transform: none; }
 
-/* ── Layout ─────────────────────────────────────────────────────────────*/
 .shell {
   width: 100%;
   max-width: calc(var(--shell) + var(--gutter) * 2);
@@ -297,11 +236,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .section--deep { background: var(--bg-deep); }
 .section--tight { padding-block: calc(var(--section-y) * 0.62); }
 
-/* ── Card rows ──────────────────────────────────────────────────────────
-   Every simple row of cards is one of these. It is a wrapping flex row
-   rather than a grid because of the last line: a grid packs a short final
-   row to the left, and this centres it while keeping every card the width
-   a full row would give it. Step --row-cols down at breakpoints.           */
 .mc-row {
   --row-cols: 3;
   --row-gap: 20px;
@@ -317,7 +251,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   min-width: 0;
 }
 
-/* ── Type ───────────────────────────────────────────────────────────────*/
 .display-hero,
 .display-1,
 .display-2,
@@ -336,15 +269,10 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .display-3    { font-size: var(--fs-d3); line-height: 1.1; }
 .display-4    { font-size: var(--fs-d4); line-height: 1.15; }
 
-/* An accented word inside a headline. */
 .display-hero em, .display-1 em, .display-2 em, .display-3 em, .display-4 em { color: var(--red-bright); }
 
-/* Over a photograph the hard shadow earns its place again: it is what keeps
-   white type readable against a bright sky. */
 .on-image { text-shadow: var(--txt-shadow-lg); }
 
-/* The kicker above a headline. The block before it is a single pixel of
-   brand, scaled — the only ornament a heading gets. */
 .label {
   display: inline-flex;
   align-items: center;
@@ -388,10 +316,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .prose a:hover,
 .link:hover { color: var(--red-bright); text-decoration-color: currentColor; }
 
-/* A statement: one big paragraph set in the game's own face, which lights
-   up word by word as it scrolls through the screen. crab.js writes one
-   custom property, --lit (how many words are lit), and each word works out
-   its own brightness from its index — the loop never touches the words. */
 .statement {
   max-width: 23em;
   font-family: var(--font-ui);
@@ -405,8 +329,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .statement--center { margin-inline: auto; text-align: center; }
 .statement .lw { opacity: clamp(0.13, calc(var(--lit, 99) - var(--i)), 1); }
 
-/* Headline blocks. The measure is set here so a section head never stretches
-   a headline across a wide screen. */
 .head { max-width: 920px; }
 .head--center { margin-inline: auto; text-align: center; }
 .head--center .lead { margin-inline: auto; }
@@ -414,19 +336,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .head > .label + * { margin-top: 20px; }
 .head + * { margin-top: clamp(44px, 6vw, 80px); }
 
-/* ── Icons ──────────────────────────────────────────────────────────────
-   Two families, both pixel art, both only ever at whole multiples of
-   their pixel grid. A 16px glyph shown at 22px drops and doubles pixels
-   unevenly, which is what made the old icons look smudged; shown at 16,
-   32 or 48 every pixel lands on the same number of screen pixels.
-
-   Where the device pixel ratio is fractional, round() snaps the size to
-   whole device pixels as well — a 1.25x laptop gets 25.6 CSS px, which is
-   exactly 32 device pixels. Browsers without round() use the plain size.
-
-   .i  is the single-colour UI set (media/icons/px, 8x8), drawn as a mask
-       so it takes the colour of the text around it.
-   .glyph is the full-colour item art from the resource pack (16x16).     */
 .i {
   --s: 2;
   display: inline-block;
@@ -441,55 +350,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   vertical-align: -0.18em;
 }
 .i--3 { --s: 3; }
-/* px-icons:start — generated by tools/gen_pixels.py; do not edit by hand. */
-:root {
-  --px-copy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='6' height='1'/%3E%3Crect x='2' y='1' width='1' height='1'/%3E%3Crect x='7' y='1' width='1' height='1'/%3E%3Crect x='0' y='2' width='6' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='5' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='5' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='1' height='1'/%3E%3Crect x='5' y='6' width='1' height='1'/%3E%3Crect x='0' y='7' width='6' height='1'/%3E%3C/svg%3E");
-  --px-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='6' y='1' width='2' height='1'/%3E%3Crect x='5' y='2' width='2' height='1'/%3E%3Crect x='0' y='3' width='2' height='1'/%3E%3Crect x='4' y='3' width='2' height='1'/%3E%3Crect x='1' y='4' width='4' height='1'/%3E%3Crect x='2' y='5' width='2' height='1'/%3E%3C/svg%3E");
-  --px-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='3' y='3' width='2' height='1'/%3E%3Crect x='3' y='4' width='2' height='1'/%3E%3Crect x='2' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3C/svg%3E");
-  --px-arrow-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='4' y='1' width='2' height='1'/%3E%3Crect x='5' y='2' width='2' height='1'/%3E%3Crect x='0' y='3' width='8' height='1'/%3E%3Crect x='0' y='4' width='8' height='1'/%3E%3Crect x='5' y='5' width='2' height='1'/%3E%3Crect x='4' y='6' width='2' height='1'/%3E%3C/svg%3E");
-  --px-arrow-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='2' height='1'/%3E%3Crect x='3' y='1' width='2' height='1'/%3E%3Crect x='3' y='2' width='2' height='1'/%3E%3Crect x='3' y='3' width='2' height='1'/%3E%3Crect x='0' y='4' width='8' height='1'/%3E%3Crect x='1' y='5' width='6' height='1'/%3E%3Crect x='2' y='6' width='4' height='1'/%3E%3Crect x='3' y='7' width='2' height='1'/%3E%3C/svg%3E");
-  --px-external: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='5' height='1'/%3E%3Crect x='6' y='1' width='2' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='3' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='2' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='0' y='7' width='1' height='1'/%3E%3C/svg%3E");
-  --px-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='4' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='8' height='1'/%3E%3Crect x='0' y='4' width='3' height='1'/%3E%3Crect x='5' y='4' width='3' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='8' height='1'/%3E%3C/svg%3E");
-  --px-chevron-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='1' y='4' width='2' height='1'/%3E%3Crect x='5' y='4' width='2' height='1'/%3E%3Crect x='2' y='5' width='4' height='1'/%3E%3Crect x='3' y='6' width='2' height='1'/%3E%3C/svg%3E");
-  --px-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='1' height='1'/%3E%3Crect x='2' y='1' width='2' height='1'/%3E%3Crect x='2' y='2' width='3' height='1'/%3E%3Crect x='2' y='3' width='4' height='1'/%3E%3Crect x='2' y='4' width='4' height='1'/%3E%3Crect x='2' y='5' width='3' height='1'/%3E%3Crect x='2' y='6' width='2' height='1'/%3E%3Crect x='2' y='7' width='1' height='1'/%3E%3C/svg%3E");
-  --px-refresh: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='4' height='1'/%3E%3Crect x='7' y='0' width='1' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='2' height='1'/%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='3' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='7' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3Crect x='2' y='7' width='4' height='1'/%3E%3C/svg%3E");
-  --px-clock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='4' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='0' y='2' width='1' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='2' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='7' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3Crect x='2' y='7' width='4' height='1'/%3E%3C/svg%3E");
-  --px-info: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='0' width='6' height='1'/%3E%3Crect x='0' y='1' width='3' height='1'/%3E%3Crect x='5' y='1' width='3' height='1'/%3E%3Crect x='0' y='2' width='8' height='1'/%3E%3Crect x='0' y='3' width='3' height='1'/%3E%3Crect x='5' y='3' width='3' height='1'/%3E%3Crect x='0' y='4' width='3' height='1'/%3E%3Crect x='5' y='4' width='3' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='3' height='1'/%3E%3Crect x='5' y='6' width='3' height='1'/%3E%3Crect x='1' y='7' width='6' height='1'/%3E%3C/svg%3E");
-  --px-warning: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='2' height='1'/%3E%3Crect x='2' y='1' width='4' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='1' y='3' width='2' height='1'/%3E%3Crect x='5' y='3' width='2' height='1'/%3E%3Crect x='1' y='4' width='6' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='5' y='5' width='3' height='1'/%3E%3Crect x='0' y='6' width='8' height='1'/%3E%3C/svg%3E");
-  --px-swipe: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='0' y='2' width='7' height='1'/%3E%3Crect x='1' y='3' width='1' height='1'/%3E%3Crect x='6' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='7' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3C/svg%3E");
-  --px-youtube: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='6' height='1'/%3E%3Crect x='0' y='2' width='3' height='1'/%3E%3Crect x='4' y='2' width='4' height='1'/%3E%3Crect x='0' y='3' width='3' height='1'/%3E%3Crect x='5' y='3' width='3' height='1'/%3E%3Crect x='0' y='4' width='3' height='1'/%3E%3Crect x='5' y='4' width='3' height='1'/%3E%3Crect x='0' y='5' width='3' height='1'/%3E%3Crect x='4' y='5' width='4' height='1'/%3E%3Crect x='1' y='6' width='6' height='1'/%3E%3C/svg%3E");
-  --px-tiktok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='4' y='0' width='1' height='1'/%3E%3Crect x='4' y='1' width='2' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='1' y='4' width='4' height='1'/%3E%3Crect x='0' y='5' width='1' height='1'/%3E%3Crect x='4' y='5' width='1' height='1'/%3E%3Crect x='0' y='6' width='1' height='1'/%3E%3Crect x='4' y='6' width='1' height='1'/%3E%3Crect x='1' y='7' width='3' height='1'/%3E%3C/svg%3E");
-  --px-discord: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='6' height='1'/%3E%3Crect x='0' y='2' width='8' height='1'/%3E%3Crect x='0' y='3' width='2' height='1'/%3E%3Crect x='3' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='0' y='4' width='2' height='1'/%3E%3Crect x='3' y='4' width='2' height='1'/%3E%3Crect x='6' y='4' width='2' height='1'/%3E%3Crect x='0' y='5' width='8' height='1'/%3E%3Crect x='1' y='6' width='2' height='1'/%3E%3Crect x='5' y='6' width='2' height='1'/%3E%3C/svg%3E");
-  --px-paypal: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='1' y='0' width='5' height='1'/%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='1' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='1' y='3' width='5' height='1'/%3E%3Crect x='1' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='1' height='1'/%3E%3Crect x='1' y='6' width='1' height='1'/%3E%3C/svg%3E");
-  --px-users: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='2' height='1'/%3E%3Crect x='1' y='1' width='4' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='1' y='2' width='4' height='1'/%3E%3Crect x='6' y='2' width='2' height='1'/%3E%3Crect x='2' y='3' width='2' height='1'/%3E%3Crect x='6' y='3' width='2' height='1'/%3E%3Crect x='6' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='4' height='1'/%3E%3Crect x='6' y='5' width='2' height='1'/%3E%3Crect x='0' y='6' width='6' height='1'/%3E%3Crect x='7' y='6' width='1' height='1'/%3E%3Crect x='0' y='7' width='6' height='1'/%3E%3C/svg%3E");
-  --px-menu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect x='0' y='1' width='8' height='1'/%3E%3Crect x='0' y='3' width='8' height='1'/%3E%3Crect x='0' y='5' width='8' height='1'/%3E%3C/svg%3E");
-  --px-speaker: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 8' width='8' height='16' shape-rendering='crispEdges'%3E%3Crect x='3' y='0' width='1' height='1'/%3E%3Crect x='2' y='1' width='2' height='1'/%3E%3Crect x='0' y='2' width='4' height='1'/%3E%3Crect x='0' y='3' width='4' height='1'/%3E%3Crect x='0' y='4' width='4' height='1'/%3E%3Crect x='0' y='5' width='4' height='1'/%3E%3Crect x='2' y='6' width='2' height='1'/%3E%3Crect x='3' y='7' width='1' height='1'/%3E%3C/svg%3E");
-  --px-mute: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4' width='8' height='8' shape-rendering='crispEdges'%3E%3Crect x='0' y='0' width='1' height='1'/%3E%3Crect x='3' y='0' width='1' height='1'/%3E%3Crect x='1' y='1' width='2' height='1'/%3E%3Crect x='1' y='2' width='2' height='1'/%3E%3Crect x='0' y='3' width='1' height='1'/%3E%3Crect x='3' y='3' width='1' height='1'/%3E%3C/svg%3E");
-  --px-heart: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' width='36' height='36' shape-rendering='crispEdges'%3E%3Crect x='2' y='0' width='2' height='1' fill='%231a0707'/%3E%3Crect x='5' y='0' width='2' height='1' fill='%231a0707'/%3E%3Crect x='1' y='1' width='1' height='1' fill='%231a0707'/%3E%3Crect x='2' y='1' width='2' height='1' fill='%23e8262a'/%3E%3Crect x='4' y='1' width='1' height='1' fill='%231a0707'/%3E%3Crect x='5' y='1' width='2' height='1' fill='%23e8262a'/%3E%3Crect x='7' y='1' width='1' height='1' fill='%231a0707'/%3E%3Crect x='0' y='2' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='2' width='1' height='1' fill='%23e8262a'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23ffc8c8'/%3E%3Crect x='3' y='2' width='5' height='1' fill='%23e8262a'/%3E%3Crect x='8' y='2' width='1' height='1' fill='%231a0707'/%3E%3Crect x='0' y='3' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='3' width='7' height='1' fill='%23e8262a'/%3E%3Crect x='8' y='3' width='1' height='1' fill='%231a0707'/%3E%3Crect x='0' y='4' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='4' width='1' height='1' fill='%239f1519'/%3E%3Crect x='2' y='4' width='5' height='1' fill='%23e8262a'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%239f1519'/%3E%3Crect x='8' y='4' width='1' height='1' fill='%231a0707'/%3E%3Crect x='1' y='5' width='1' height='1' fill='%231a0707'/%3E%3Crect x='2' y='5' width='1' height='1' fill='%239f1519'/%3E%3Crect x='3' y='5' width='3' height='1' fill='%23e8262a'/%3E%3Crect x='6' y='5' width='1' height='1' fill='%239f1519'/%3E%3Crect x='7' y='5' width='1' height='1' fill='%231a0707'/%3E%3Crect x='2' y='6' width='1' height='1' fill='%231a0707'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%239f1519'/%3E%3Crect x='4' y='6' width='1' height='1' fill='%23e8262a'/%3E%3Crect x='5' y='6' width='1' height='1' fill='%239f1519'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%231a0707'/%3E%3Crect x='3' y='7' width='1' height='1' fill='%231a0707'/%3E%3Crect x='4' y='7' width='1' height='1' fill='%239f1519'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%231a0707'/%3E%3Crect x='4' y='8' width='1' height='1' fill='%231a0707'/%3E%3C/svg%3E");
-}
-.i-copy { --i: var(--px-copy); }
-.i-check { --i: var(--px-check); }
-.i-x { --i: var(--px-x); }
-.i-arrow-right { --i: var(--px-arrow-right); }
-.i-arrow-down { --i: var(--px-arrow-down); }
-.i-external { --i: var(--px-external); }
-.i-lock { --i: var(--px-lock); }
-.i-chevron-down { --i: var(--px-chevron-down); }
-.i-play { --i: var(--px-play); }
-.i-refresh { --i: var(--px-refresh); }
-.i-clock { --i: var(--px-clock); }
-.i-info { --i: var(--px-info); }
-.i-warning { --i: var(--px-warning); }
-.i-swipe { --i: var(--px-swipe); }
-.i-youtube { --i: var(--px-youtube); }
-.i-tiktok { --i: var(--px-tiktok); }
-.i-discord { --i: var(--px-discord); }
-.i-paypal { --i: var(--px-paypal); }
-.i-users { --i: var(--px-users); }
-.i-menu { --i: var(--px-menu); }
-.i-mute { --i: var(--px-mute); }
-.i-chevron { --i: var(--px-chevron-down); }
-/* px-icons:end */
 
 .glyph {
   --s: 2;
@@ -502,9 +362,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   image-rendering: pixelated;
   filter: drop-shadow(var(--g) var(--g) 0 rgba(0, 0, 0, 0.5));
 }
-/* At 16px the snap costs too much: on a 1.25x screen it would round a
-   small icon down to 12.8px. Small icons keep their size and accept a
-   slightly uneven pixel instead; everything larger stays snapped. */
 .glyph--1,
 .chip .glyph {
   --s: 1;
@@ -513,76 +370,19 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 }
 .glyph--3 { --s: 3; }
 
-/* In a centred control — a button, a chip, a tab — an icon's layout box is
-   trimmed to its art. Most item art is narrower than its 16px cell, and
-   the empty strip on the icon's outer side is invisible: centre the box
-   and the label looks pushed over, as if a blank character sat beside it.
-   The per-icon amounts below are measured from the art by
-   tools/gen_icons.py; --s is how many screen pixels one art pixel covers. */
 :is(.mc-btn, .chip, .seg__tab, .tabs__tab) > .glyph {
   margin-left: calc(var(--tl, 0) * var(--s, 2) * -1px);
   margin-right: calc(var(--tr, 0) * var(--s, 2) * -1px);
 }
-/* glyph-trim:start — generated by tools/gen_icons.py from the art itself; do not edit by hand. */
-.glyph[src$="/arrow_up.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/ban.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/billboard.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/bounty.png"] { --tl: 1; --tr: 1; }
-.glyph[src$="/castle.png"] { --tl: 0; --tr: 0; }
-.glyph[src$="/chat.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/clan.png"] { --tl: 1; --tr: 1; }
-.glyph[src$="/closed_chest.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/coins_transfer.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/compass.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/crab_chestplate.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/crown_gold.png"] { --tl: 1; --tr: 1; }
-.glyph[src$="/daily_rewards.png"] { --tl: 1; --tr: 2; }
-.glyph[src$="/disc.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/discord.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/elytra.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/fire.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/freeplay.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/friends.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/incoming.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/key_common.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/lifesteal_heart.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/logs.png"] { --tl: 2; --tr: 2; }
-.glyph[src$="/money.png"] { --tl: 1; --tr: 1; }
-.glyph[src$="/moon.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/mt.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/open_chest.png"] { --tl: 2; --tr: 3; }
-.glyph[src$="/rank_crabdemon.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/rank_crabextra.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/rank_crabplus.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/revive_beacon.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/shield.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/shop.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/soul_bottle.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/sparkles.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/star.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/sword.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/tag.png"] { --tl: 3; --tr: 4; }
-.glyph[src$="/totem.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/tpa.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/vault.png"] { --tl: 3; --tr: 3; }
-.glyph[src$="/warps.png"] { --tl: 2; --tr: 3; }
-/* glyph-trim:end */
 .glyph--4 { --s: 4; }
 .glyph--6 { --s: 6; }
 
-/* Old icon classes, sized onto the same grid. */
 .mc-ico { width: 32px; height: 32px; image-rendering: pixelated; object-fit: contain; flex-shrink: 0; }
 .mc-ico--sm { width: 16px; height: 16px; }
 .mc-ico--lg { width: 48px; height: 48px; }
 .mc-ico--xl { width: 64px; height: 64px; }
 .ico-px { image-rendering: pixelated; }
 
-/* ── Buttons ────────────────────────────────────────────────────────────
-   Real Minecraft buttons: a 5x7 sprite stretched as a nine-slice, so the
-   outline and the bottom lip stay pixel-crisp at any size. Pressing swaps
-   to the lip-less sprite and drops the label, exactly like the widget in
-   game. Re-skin by overriding the three --btn-* variables, never with a
-   background or a border.                                                 */
 .mc-btn {
   --btn-face:       url('../media/ui/buttons/red/unchecked.png');
   --btn-face-hover: url('../media/ui/buttons/red/unchecked_hover.png');
@@ -621,8 +421,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .mc-btn:hover .i-external { transform: translateX(3px); }
 .mc-btn:hover .i-arrow-down { transform: translateY(2px); }
 
-/* An invisible skirt holding the hover area where the button sat before it
-   rose, so a pointer resting on its bottom edge does not chatter. */
 .mc-btn::after {
   content: "";
   position: absolute;
@@ -685,12 +483,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   --btn-face-down:  url('../media/ui/buttons/purple/default.png');
 }
 
-/* A control with a success state ("Copy IP" / "Copied!") stacks both
-   states in one grid cell. It is always as wide as the wider of the two,
-   each state centres itself on its own, and changing state moves nothing
-   — so a row of centred buttons never slides sideways under a click.
-   Hidden states are visibility: hidden, which also keeps them out of the
-   accessible name. */
 .swap {
   display: inline-grid;
   gap: inherit;
@@ -706,7 +498,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .is-success .swap__idle { visibility: hidden; }
 .is-success .swap__done { visibility: visible; }
 
-/* A button that has just done its job turns green and nods once. */
 .mc-btn.is-success {
   --btn-face:       url('../media/ui/buttons/green/unchecked.png');
   --btn-face-hover: url('../media/ui/buttons/green/unchecked_hover.png');
@@ -717,7 +508,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   35% { transform: scale(1.05); }
 }
 
-/* A quiet text action: label plus arrow, underline on hover. */
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -738,11 +528,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .text-link:hover .i-arrow-right,
 .text-link:hover .i-external { transform: translateX(4px); }
 
-/* ── Enchanted ──────────────────────────────────────────────────────────
-   The item glint. Anything marked enchanted carries the game's shimmer: a
-   dithered band of violet light that crawls across it one texture pixel
-   at a time. steps() is what keeps it pixel art — a smooth scroll would
-   resample the texture every frame and blur it.                           */
 .enchanted { position: relative; isolation: isolate; }
 .enchanted::before {
   content: "";
@@ -758,18 +543,12 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 }
 @keyframes glint { to { background-position: 128px 128px; } }
 
-/* On a sprite button the shimmer stays on the face: inside the outline and
-   clear of the lip, the way the glint sits on an item and not its border. */
 .mc-btn.enchanted::before {
   inset: var(--bw) var(--bw) calc(var(--bw) * 3);
   --glint-o: 0.42;
 }
 .mc-btn.enchanted:active::before { inset: calc(var(--bw) * 3) var(--bw) var(--bw); }
 
-/* ── Surfaces ───────────────────────────────────────────────────────────
-   Flat, hard-edged, lit from the top-left: the Bedrock interface rather
-   than a stone texture. Texture is saved for the places it means
-   something — a slot, a strip of bedrock, a block of nether.              */
 .panel {
   position: relative;
   background: var(--surface);
@@ -780,7 +559,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   box-shadow: var(--bevel), 0 18px 40px -18px rgba(0, 0, 0, 0.8);
 }
 
-/* A sunken slot: the text field, the inventory square. */
 .slot {
   display: block;
   padding: 12px 16px;
@@ -792,7 +570,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   box-shadow: var(--bevel-in);
 }
 
-/* A small pill of information: a chip. */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -810,7 +587,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 }
 .chip--red { color: #f6c9c2; background: #3a1c18; }
 
-/* A live status dot: one block of redstone lamp. */
 .dot {
   display: inline-block;
   flex-shrink: 0;
@@ -825,7 +601,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   50% { background: #2bd12b; }
 }
 
-/* The item tooltip, for anything with data-tip. */
 [data-tip] { position: relative; }
 [data-tip]::after {
   content: attr(data-tip);
@@ -1078,8 +853,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   to   { clip-path: inset(0 0 0 0); }
 }
 
-/* The address, as a copy button that looks like the text field it came
-   from. */
 .ip-chip {
   display: inline-flex;
   align-items: center;
@@ -1101,11 +874,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .ip-chip:hover .i { color: var(--white); }
 .ip-chip.is-success .i { color: var(--mc-a); }
 
-/* The sound switch, in the same field as the address. A speaker, and
-   beside it three bars that sfx.js moves with whatever is playing — low,
-   middle, high — or, muted, a cross. Drawn on a 10 x 8 grid of art
-   pixels, two screen pixels each, like every other icon: the speaker is
-   columns 0-3, the bars columns 5, 7 and 9, the cross columns 6-9. */
 .sound {
   display: inline-grid;
   place-items: center;
@@ -1154,7 +922,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   height: 16px;
   background: currentColor;
 }
-/* At rest the bars step up like a speaker's waves: 2, 4 and 6 pixels. */
 .sound__bars i:nth-child(1) { left: 10px; transform: scaleY(0.25); }
 .sound__bars i:nth-child(2) { left: 14px; transform: scaleY(0.5); }
 .sound__bars i:nth-child(3) { left: 18px; transform: scaleY(0.75); }
@@ -1176,9 +943,6 @@ html.sound-off .sound__icon::after { visibility: visible; }
 }
 .live-pill b { font-weight: 400; color: var(--white); }
 
-/* ── Toasts ─────────────────────────────────────────────────────────────
-   Feedback arrives the way an advancement does: a dark card slides in at
-   the top right with a yellow title and an item beside it, then leaves.   */
 .toasts {
   position: fixed;
   top: calc(var(--topbar-h) + 14px);
@@ -1232,10 +996,6 @@ html.sound-off .sound__icon::after { visibility: visible; }
   overflow-wrap: anywhere;
 }
 
-/* ── Join box ───────────────────────────────────────────────────────────
-   The three ways in, behind one segmented switch: used on the home page's
-   finale and the about page. The switch's red block slides between
-   options, driven by --seg-i from the tabs script.                        */
 .join__box {
   max-width: 780px;
   margin: clamp(44px, 5vw, 64px) auto 0;
@@ -1247,8 +1007,6 @@ html.sound-off .sound__icon::after { visibility: visible; }
   box-shadow: var(--bevel), 0 50px 100px -40px rgba(0, 0, 0, 0.95);
 }
 
-/* The segmented switch. Its red block slides between options, driven by
-   --seg-i from the tabs script. */
 .seg {
   position: relative;
   display: grid;
@@ -1351,11 +1109,8 @@ html.sound-off .sound__icon::after { visibility: visible; }
 
 .join__alt { margin-top: 16px; font-size: var(--fs-small); color: var(--text-dim); }
 
-/* A panel swapped in by a tab or switch arrives rather than blinking in. */
 @keyframes panelIn { from { opacity: 0; transform: translate3d(0, 14px, 0); } }
 
-/* ── Stats ──────────────────────────────────────────────────────────────
-   A row of big figures with small labels, for a page hero. */
 .stats {
   display: flex;
   flex-wrap: wrap;
@@ -1389,15 +1144,11 @@ html.sound-off .sound__icon::after { visibility: visible; }
   color: var(--text-dim);
 }
 
-/* ── Page hero (inner pages) ────────────────────────────────────────────
-   Shorter than the home page's, and each page brings its own backdrop. */
 .page-hero {
   position: relative;
   display: flex;
   align-items: flex-end;
   min-height: min(78vh, 760px);
-  /* The bottom padding never drops below the HUD, so nothing in a hero
-     can come to rest behind the hotbar. */
   padding: calc(var(--topbar-h) + 72px) 0 clamp(56px, 8vw, 104px);
   overflow: clip;
   isolation: isolate;
@@ -1424,8 +1175,6 @@ html.sound-off .sound__icon::after { visibility: visible; }
     linear-gradient(180deg, rgba(16, 15, 18, 0.55) 0%, rgba(16, 15, 18, 0.35) 38%, rgba(16, 15, 18, 0.8) 78%, var(--bg) 100%),
     radial-gradient(120% 90% at 50% 40%, transparent 40%, rgba(8, 7, 10, 0.7) 100%);
 }
-/* Particles ride above the shade, so they read as air in front of the
-   scene rather than specks under a tint. */
 .page-hero__bg canvas {
   position: absolute;
   inset: 0;
@@ -1442,13 +1191,6 @@ html.sound-off .sound__icon::after { visibility: visible; }
 .page-hero__content > * + * { margin-top: 22px; }
 .page-hero__content .lead { color: var(--text); }
 
-/* ── Entrance ───────────────────────────────────────────────────────────
-   html.is-ready is the page's starting gun: crab.js fires it once the
-   page is ready to be seen, or once the intro lifts on the home page. The
-   top bar and the HUD arrive first, then the hero deals out its own items
-   on the same --step index. Everything that hides content on its way in
-   is scoped to html.js, set by a one-line script in each page's head, and
-   the failsafe below undoes it if crab.js never arrives.                  */
 html.js:not(.warm):not(.is-ready) .topbar { transform: translate3d(0, -100%, 0); }
 html.js:not(.warm):not(.is-ready) :is(.topbar__brand, .topbar__links > li, .topbar .sound, .topbar__cta, .topbar__menu) { opacity: 0; }
 html.js:not(.warm).is-ready .topbar { animation: topbar-in var(--dur-enter) var(--ease-out) backwards; }
@@ -1478,12 +1220,6 @@ html.js [data-enter] {
 html.is-ready [data-enter] { opacity: 1; transform: none; }
 html.warm { --enter-delay: 0ms; }
 
-/* ── Scroll reveals ─────────────────────────────────────────────────────
-   Add data-reveal to anything that should arrive as it scrolls into view
-   (variants: fade, zoom, left, right). crab.js stamps a --step index,
-   counted within each parent, so every row restarts its own short stagger.
-   Entrances are smooth and settle long — no overshoot. Playfulness is kept
-   for things that answer a press.                                         */
 html.js [data-reveal] {
   --step: 0;
   opacity: 0;
@@ -1502,9 +1238,6 @@ html.js [data-reveal].is-revealed {
   transform: none;
 }
 
-/* Headlines split into words rise out of their own line, each word from
-   behind an invisible mask. The padding makes room for the hard shadow,
-   which the mask would otherwise cut off. */
 .split-w {
   display: inline-block;
   overflow: hidden;
@@ -1520,11 +1253,9 @@ html.js [data-split] .split-w > span {
 }
 html.js [data-split].is-revealed .split-w > span,
 html.is-ready [data-split][data-enter] .split-w > span { transform: none; }
-/* A split headline is revealed by its words, not by fading as a block. */
 html.js [data-split][data-reveal],
 html.js [data-split][data-enter] { opacity: 1; transform: none; }
 
-/* If crab.js never runs, nothing may stay hidden. */
 html.js:not(.crab) [data-reveal],
 html.js:not(.crab) [data-enter],
 html.js:not(.crab) .topbar,
@@ -1534,9 +1265,6 @@ html.js:not(.crab) [data-split] .split-w > span {
 }
 @keyframes failsafe { to { opacity: 1; transform: none; } }
 
-/* ── Footer ─────────────────────────────────────────────────────────────
-   The bottom of the page is the bottom of the world: a band of bedrock,
-   then the map of the site on the dark beneath it.                        */
 .footer {
   position: relative;
   padding: 0 0 calc(32px + env(safe-area-inset-bottom));
@@ -1597,7 +1325,6 @@ html.js:not(.crab) [data-split] .split-w > span {
   color: var(--text-faint);
 }
 
-/* ── Dialogs ────────────────────────────────────────────────────────────*/
 dialog {
   margin: auto;
   max-width: 520px;
@@ -1610,17 +1337,6 @@ dialog {
 }
 dialog::backdrop { background: rgba(0, 0, 0, 0.8); }
 
-/* ── Page transitions ───────────────────────────────────────────────────
-   Moving between pages is a cross-document view transition, and it is a
-   dither rather than a fade: the new page resolves in over the old one
-   through an 8x8 ordered-dither mask, a few pixels at a time, the way old
-   games faded between screens. The masks are crisp SVG (media/ui/dither,
-   from tools/gen_pixels.py), stepped with steps(1, end) so every frame is
-   one clean level of the pattern and never a blend of two.
-
-   The top bar and the hotbar have names of their own, so they stay put
-   while the selection frame slides to its new slot. Browsers without
-   cross-document transitions simply navigate.                            */
 @view-transition { navigation: auto; }
 
 ::view-transition-old(root) { animation: vt-out 180ms var(--ease-in-out) both; }
@@ -1633,10 +1349,6 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.8); }
 @keyframes vt-out { to { opacity: 0; } }
 @keyframes vt-in { from { opacity: 0; transform: translate3d(0, 14px, 0); } }
 
-/* ── Reduced motion ─────────────────────────────────────────────────────
-   Kill the movement, keep the content. Everything the motion system hides
-   on its way in is forced visible here, and crab.js checks the same query
-   before starting any loop, parallax or smooth scrolling.                 */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {
@@ -1660,10 +1372,6 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.8); }
   ::view-transition-new(*) { animation: none !important; }
 }
 
-/* ── Responsive ─────────────────────────────────────────────────────────*/
-/* Short screens — a 13-inch laptop, a browser with its toolbars open — set
-   the display type by height as well as width, so a hero's call to action
-   still lands above the fold and clear of the hotbar. */
 @media (max-height: 820px) and (min-width: 700px) {
   .display-1 { font-size: clamp(38px, min(6.2vw, 10.4vh), 92px); }
   .page-hero { padding-top: calc(var(--topbar-h) + 44px); }
@@ -1696,6 +1404,4 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.8); }
   html.js [data-reveal="right"] { transform: translate3d(0, 32px, 0); }
 }
 
-/* A section that took focus only so the reading position could follow an
-   anchor link is not a control; it needs no ring. */
 [tabindex="-1"]:focus { outline: none; }

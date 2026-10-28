@@ -1,22 +1,7 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   CrabSMP — behaviour.
-
-   One deferred script shared by every page. Each feature looks for the
-   elements it needs and returns early when they are absent, so the status
-   page's code costs nothing on the home page. Keep that shape: never assume
-   an element exists.
-
-   sfx.js and vfx.js load first and put the sound engine on window.CrabSFX
-   and the particle engine on window.CrabVFX; this file uses them where
-   they are present and does without where they are not.
-   ══════════════════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
   var docEl = document.documentElement;
-  /* html.js is set by a one-line script in each page's head so nothing
-     flashes before this file runs; html.crab says this file did run, and
-     switches off the CSS failsafe that would otherwise reveal everything. */
   docEl.classList.add('js', 'crab');
 
   var reduceMotion = window.matchMedia &&
@@ -26,11 +11,8 @@
   var VFX = window.CrabVFX || null;
   var SFX = window.CrabSFX || null;
 
-  /* A sound, if there is a sound engine; nothing otherwise. */
   function sound(name, opts) { return SFX ? SFX.play(name, opts) : null; }
   function note(step, opts) { return SFX ? SFX.note(step, opts) : null; }
-  /* Run fn now, or when the visitor comes back to this tab: a link that
-     opened in a new one has taken them away before a sound could land. */
   function whenSeen(fn) {
     if (!document.hidden) { fn(); return; }
     document.addEventListener('visibilitychange', function back() {
@@ -44,8 +26,6 @@
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
 
-  /* The device pixel ratio, for the CSS that snaps pixel art to whole
-     device pixels. It changes when a window moves between screens. */
   function writeDpr() { docEl.style.setProperty('--dpr', String(window.devicePixelRatio || 1)); }
   writeDpr();
 
@@ -68,14 +48,6 @@
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  /* ── The frame loop for scroll ────────────────────────────────────────
-     Everything that reads the scroll position registers here and runs at
-     most once per frame, however many scroll events fired. Handlers are
-     handed the offset and must not measure: page geometry is read in
-     measure(), on resize and whenever the body changes size, and cached.
-     Measuring in the loop would force a layout every frame, right after
-     the scroll animator has written a new position — the read-after-write
-     pattern that causes the stutter this is all here to avoid.          */
   var scrollTasks = [];
   var scrollQueued = false;
   var viewH = window.innerHeight;
@@ -100,7 +72,6 @@
   var measureTasks = [];
   function onMeasure(fn) { measureTasks.push(fn); }
 
-  /* Where an element sits in the document, read once per measure. */
   function docTop(el) {
     var r = el.getBoundingClientRect();
     return r.top + (window.scrollY || window.pageYOffset);
@@ -125,9 +96,6 @@
     ready(function () { new ResizeObserver(requestMeasure).observe(document.body); });
   }
 
-  /* ── Moving or still ──────────────────────────────────────────────────
-     While the page is moving, html.is-scrolling zeroes every hover lift
-     (see --lift in main.css). Written twice per gesture, not per frame. */
   var stillTimer = null;
   window.addEventListener('scroll', function () {
     if (!docEl.classList.contains('is-scrolling')) docEl.classList.add('is-scrolling');
@@ -135,11 +103,6 @@
     stillTimer = setTimeout(function () { docEl.classList.remove('is-scrolling'); }, 140);
   }, { passive: true });
 
-  /* ── Starting gun ─────────────────────────────────────────────────────
-     html.is-ready sets the page's entrance going. It waits while the intro
-     is up, so the hero is not spent behind the curtain; the intro fires it
-     itself as the screen shatters. The timeout is a backstop against a
-     stalled image or an error leaving the page blank.                  */
   var readyMarked = false;
   var readyHooks = [];
   function whenReady(fn) { if (readyMarked) fn(); else readyHooks.push(fn); }
@@ -158,11 +121,6 @@
   }
   setTimeout(function () { markReady(true); }, 7000);
 
-  /* ── Words ────────────────────────────────────────────────────────────
-     Split a heading or statement into words so they can move one at a
-     time. The heading keeps its full text as its accessible name, and the
-     pieces are hidden from assistive tech, so a screen reader hears one
-     sentence rather than a word at a time.                             */
   function splitWords(el, className) {
     if (el.getAttribute('data-split-done')) return [];
     el.setAttribute('data-split-done', '1');
@@ -199,8 +157,6 @@
     walk(el, frag);
     el.textContent = '';
     el.appendChild(frag);
-    /* A heading can take its name from aria-label; a paragraph cannot, so
-       it carries a hidden copy of its sentence for assistive tech instead. */
     if (/^H[1-6]$/.test(el.tagName)) {
       el.setAttribute('aria-label', label);
     } else {
@@ -212,10 +168,6 @@
     return out;
   }
 
-  /* ── Toasts ───────────────────────────────────────────────────────────
-     Feedback in the shape of an advancement: slides in top right, holds,
-     slides away. The region is a polite live region so the text is read
-     out without stealing focus.                                        */
   var toastBox = null;
   function toast(title, text, icon) {
     if (!toastBox) {
@@ -245,21 +197,6 @@
   }
   window.CrabToast = toast;
 
-
-  /* ── Smooth scrolling ─────────────────────────────────────────────────
-     Every way of moving the page — wheel, trackpad, keyboard, anchor —
-     feeds one animator that chases a target position instead of jumping
-     to it. Nothing else may call window.scrollTo; use glideTo / glideBy or
-     the two will fight over the scroll position.
-
-     The animator eases exponentially over real frame time. RESPONSE is
-     that easing as a time constant: roughly how long it takes to cover 63%
-     of the gap left. Input devices do not all want the same number. A
-     notched wheel delivers a few big jumps and wants a long glide; a
-     trackpad has already been smoothed by the OS and needs only enough to
-     sand off residual steps — pile a long glide on top of that and you get
-     the swimming lag people mean by scroll-jacked. Test any change with a
-     real wheel and a real trackpad.                                     */
   var glideTo = function (v) { window.scrollTo(0, v); };
 
   function initSmoothScroll() {
@@ -275,11 +212,6 @@
     var lastWritten = current;
     var raf         = null;
 
-    /* A glide to an element, rather than to a number. If the page changes
-       height while it is in flight — an image arriving below the fold, the
-       Discord card filling in — the destination moves with the element. The
-       re-aim happens in the measure pass, which only runs when something
-       actually changed size, so the frame loop still never reads layout. */
     var aimAt       = null;
     var aimOffset   = 0;
     onMeasure(function () {
@@ -289,10 +221,6 @@
 
     function clampY(v) { return Math.max(0, Math.min(metrics.travel, v)); }
 
-    /* The glide carries a fractional position but only asks for whole
-       device pixels. Most of the site is pixel art at a fixed scale, and
-       landing it on a half pixel makes the renderer resample it differently
-       every frame — the button outlines crawl and everything shimmers. */
     function writeScroll(v) {
       var dpr = window.devicePixelRatio || 1;
       window.scrollTo(0, Math.round(v * dpr) / dpr);
@@ -314,11 +242,6 @@
       lastWritten = window.scrollY || window.pageYOffset;
     }
 
-    /* Starting from rest, take the page's position from the page itself.
-       A scroll the browser made — a scrollbar flick, find in page — only
-       reports its event on the next frame, so a glide that starts in the
-       same frame would otherwise begin from a stale position, and then
-       mistake the browser's own move for an outside jump and chase it. */
     function syncIfIdle() {
       if (raf) return;
       current = target = lastWritten = window.scrollY || window.pageYOffset;
@@ -344,21 +267,14 @@
 
     window.addEventListener('scroll', function () {
       var y = window.scrollY || window.pageYOffset;
-      /* Idle: the browser moved the page (scrollbar, find in page, back).
-         Adopt its position so the next glide starts from where it is. */
       if (!raf) {
         current = target = y;
         lastWritten = y;
         return;
       }
-      /* Mid-glide and the page jumped somewhere we did not put it: absorb
-         the difference into both ends rather than dragging it back. Only
-         real jumps count — sub-pixel nudges are left to be overwritten. */
       if (Math.abs(y - lastWritten) > 1) {
         var shift = y - lastWritten;
         current += shift;
-        /* Clamped, so an absorbed jump can never leave the glide chasing a
-           point past the end of the page. */
         target = clampY(target + shift);
         lastWritten = y;
       }
@@ -366,8 +282,6 @@
 
     docEl.classList.add('has-smooth-scroll');
 
-    /* "/", "/index.html" and "/about" versus "/about.html" are the same
-       page: the live host serves clean URLs, the files are .html. */
     function samePath(a, b) {
       function norm(p) { return p.replace(/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, ''); }
       return norm(a) === norm(b);
@@ -392,7 +306,6 @@
       aimOffset = offset;
       to(dest.getBoundingClientRect().top + current - offset, RESPONSE_ANCHOR);
       if (window.history && history.pushState) history.pushState(null, '', url.hash);
-      /* Move focus with the view, for keyboard and screen reader users. */
       if (!dest.hasAttribute('tabindex')) dest.setAttribute('tabindex', '-1');
       dest.focus({ preventScroll: true });
     });
@@ -470,10 +383,6 @@
     });
   }
 
-  /* ── The sound of scrolling ───────────────────────────────────────────
-     Moving the page moves air: every frame the page moves, its speed goes
-     to the sound engine, which turns it into a rush that follows the
-     scroll (sfx.js).                                                    */
   function initScrollSound() {
     if (!SFX) return;
     var lastY = window.scrollY || window.pageYOffset;
@@ -521,11 +430,6 @@
     window.addEventListener('pageshow', function () { setMenu(false); });
   }
 
-  /* ── Copy ─────────────────────────────────────────────────────────────
-     [data-copy] copies its value. The control flips to its success state
-     for a moment (the .swap markup holds both states, so nothing resizes),
-     a toast confirms it, and a little burst of experience orbs goes up
-     where it was pressed, with the sound of picking them up.           */
   function copyText(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       return navigator.clipboard.writeText(text).catch(function () { legacyCopy(text); });
@@ -568,14 +472,6 @@
     });
   }
 
-  /* ── Reveals ──────────────────────────────────────────────────────────
-     [data-reveal] arrives as it scrolls into view. Counting within each
-     parent restarts the stagger for every row instead of one delay that
-     grows down the page. [data-split] headings also rise word by word,
-     each with a plucked note a step higher than the heading before, so
-     reading down a page climbs a scale. Entrances play once; a moment
-     later the element gives its transform back so hover motion is not
-     fighting a held entrance.                                         */
   function initReveals() {
     $$('[data-split]').forEach(function (el) { splitWords(el, 'split-w'); });
 
@@ -606,9 +502,6 @@
         }
         return;
       }
-      /* Once the entrance has fully landed — its own stagger plus the
-         longest transition — drop the hook, so the element's own, quicker
-         hover transitions apply again. */
       var step = parseInt(el.style.getPropertyValue('--step'), 10) || 0;
       setTimeout(function () {
         el.removeAttribute('data-reveal');
@@ -631,7 +524,6 @@
     items.forEach(function (el) { io.observe(el); });
   }
 
-  /* Run fn once el is revealed (or straight away if it has no reveal). */
   function onReveal(el, fn) {
     if (!el.hasAttribute('data-reveal') || el.classList.contains('is-revealed') || reduceMotion) {
       if (!('IntersectionObserver' in window) || reduceMotion) { fn(); return; }
@@ -649,10 +541,6 @@
     });
   }
 
-  /* ── Splash ───────────────────────────────────────────────────────────
-     The yellow line beside the logo, picked fresh on every load the way
-     the title screen's is. A page can bring its own list in
-     data-splashes, pipe separated.                                    */
   function initSplash() {
     var splash = $('.splash');
     if (!splash) return;
@@ -674,10 +562,6 @@
     splash.textContent = list[Math.floor(Math.random() * list.length)];
   }
 
-  /* ── Tabs ─────────────────────────────────────────────────────────────
-     Any [role="tablist"] with [role="tab"] buttons pointing at panels by
-     aria-controls. Arrow keys move between tabs. A segmented control
-     (.seg) also slides its highlight to the chosen option.            */
   function initTabs() {
     $$('[role="tablist"]').forEach(function (list) {
       var tabs = $$('[role="tab"]', list);
@@ -712,8 +596,6 @@
         });
       });
 
-      /* The join picker guesses your device. Consoles announce themselves
-         in their browsers' user agents; everything else is PC or mobile. */
       var start = tabs.filter(function (t) { return t.getAttribute('aria-selected') === 'true'; })[0] || tabs[0];
       if (list.hasAttribute('data-detect')) {
         var ua = navigator.userAgent || '';
@@ -724,13 +606,6 @@
     });
   }
 
-  /* ── Hero ─────────────────────────────────────────────────────────────
-     The hero's progress off the top of the screen, 0 to 1, drives the
-     photo drifting down and closing in while the copy lifts away. The
-     pointer tilts the world a few pixels. All of it is custom properties
-     the stylesheet composes into a single transform per layer — never
-     write style.transform on these from here, or one effect will quietly
-     delete the other.                                                 */
   function initHero() {
     var heroes = $$('.hero, .page-hero');
     if (!heroes.length) return;
@@ -769,7 +644,6 @@
       else { raf = null; lastT = 0; }
     }
     window.addEventListener('pointermove', function (e) {
-      /* Past the hero there is nothing to lean: skip the style writes. */
       if ((window.scrollY || window.pageYOffset) > heroBottom) return;
       tx = clamp(e.clientX / window.innerWidth * 2 - 1, -1, 1);
       ty = clamp(e.clientY / window.innerHeight * 2 - 1, -1, 1);
@@ -777,11 +651,6 @@
     }, { passive: true });
   }
 
-  /* ── Statement ────────────────────────────────────────────────────────
-     A paragraph that lights up word by word as it scrolls through the
-     screen. One custom property per frame — --lit, how many words are
-     lit — and the stylesheet works out each word's brightness from its
-     own index, so the loop never touches the words themselves.        */
   function initStatement() {
     $$('[data-words]').forEach(function (el) {
       var words = splitWords(el, 'lw');
@@ -796,8 +665,6 @@
         height = el.offsetHeight || 1;
       });
       onScroll(function (y) {
-        /* Starts lighting as the paragraph enters the lower part of the
-           screen and finishes once it has climbed into the upper third. */
         var start = top - viewH * 0.82;
         var end = top + height - viewH * 0.38;
         var p = clamp((y - start) / Math.max(1, end - start), 0, 1);
@@ -809,18 +676,6 @@
     });
   }
 
-  /* ── The lifesteal story ──────────────────────────────────────────────
-     A stage that plays the game's whole loop on a heart bar by itself, as
-     soon as it is on screen: you start with ten, a kill steals one, a death
-     gives one away, lose them all and you are out, a teammate spends a Soul
-     Bottle, and you climb to thirty.
-
-     Everything on the stage is a pure function of how far through the
-     story the clock is, and render() draws it. The clock runs while the
-     stage is in view, waits when it is not, and starts over the next time
-     it comes in after finishing. The particle bursts fire only when a
-     threshold is crossed going forwards, because a heart shattering in
-     reverse is not a thing.                                           */
   function initStory() {
     var section = $('[data-story]');
     if (!section) return;
@@ -865,8 +720,6 @@
     var lastP = -1;
     var fired = {};
 
-    /* Where each heart drains in step three — the same numbers statesFor
-       uses — and each one's burst, made once rather than every frame. */
     var DRAIN_AT = [];
     var drainBurst = [];
     for (var d = 0; d < 10; d++) {
@@ -874,10 +727,6 @@
       drainBurst.push((function (k) { return function () { burstAt(k, 'heart', 0.55); }; })(d));
     }
 
-    /* A phone on its side has no room for the stage — the hearts, the
-       caption and the HUD cannot share 390 pixels — so short screens get
-       the steps in order, the way reduced motion does. Turning the phone
-       back upright brings the stage back. */
     var shortScreen = window.matchMedia ? window.matchMedia('(max-height: 520px)') : null;
     var staticMode = false;
     function applyMode() {
@@ -902,8 +751,6 @@
       requestMeasure();
     }
 
-    /* Every write is skipped when nothing changed: a style write is a
-       style recalculation, and this runs every frame of the section. */
     var vars = {};
     var classes = {};
     applyMode();
@@ -927,10 +774,6 @@
       section.classList.toggle(name, on);
     }
 
-    /* A burst belongs to one point in the story. It re-arms only once the
-       story is back before that point, and it plays only when the point is
-       crossed going forwards at the clock's pace, so a restart marks every
-       point as not yet reached without a sound. */
     function fire(key, reached, play, fn) {
       if (!reached) { fired[key] = false; return; }
       if (fired[key]) return;
@@ -941,7 +784,6 @@
       if (!burst || !geo.pos[i]) return;
       burst.burst(geo.pos[i].x, geo.pos[i].y, preset, { scale: scale || 1 });
     }
-    /* Where a heart is across the screen, for placing its sound. */
     function heartX(i) {
       return geo.pos[i] ? geo.stageL + geo.pos[i].x : window.innerWidth / 2;
     }
@@ -953,11 +795,6 @@
     function bottleSound() { sound('beacon'); }
     function enchantSound() { sound('enchant'); }
 
-    /* The story is heard as well as seen, by the same rule as the bursts.
-       Hearts filling climb the scale from left to right, hearts draining
-       step down it, gold hearts come back as bells; the turns of the story
-       (a kill, a death, elimination, the bottle, the revive, thirty) each
-       have their own sound above. */
     function heartSound(i, from, to) {
       if (to === 'full' && from === 'empty') {
         note(i < 10 ? i : 5 + Math.round((i - 10) * 0.55), { inst: 'pling', x: heartX(i), gain: 0.8 });
@@ -968,7 +805,6 @@
       }
     }
 
-    /* Which state each heart is in, for step s at local progress t. */
     function statesFor(s, t) {
       var out = [];
       for (var i = 0; i < N; i++) out.push('hidden');
@@ -1015,7 +851,6 @@
         cur = s;
       }
 
-      /* Bursts and sounds: forwards, once per crossing. */
       var play = forward && lastP >= 0 && p - lastP < 0.04;
 
       var want = statesFor(s, t);
@@ -1027,8 +862,6 @@
         }
       }
 
-      /* The heart in flight: in from the right on a kill, off to the left
-         on a death. */
       var flyOn = false;
       var fx = 0, fy = 0, target = geo.pos[10] || { x: 0, y: 0 };
       if (s === 1 && t > 0.14 && t < 0.68) {
@@ -1066,16 +899,14 @@
       lastP = p;
     }
 
-    /* The clock. Each step runs as long as it takes to read its line and
-       watch what happens to the bar. */
     var LENGTHS = [2200, 2400, 2300, 3000, 2800, 2600];
     var TOTAL = LENGTHS.reduce(function (a, b) { return a + b; }, 0);
     var clock = 0;
     var raf = null;
     var lastNow = 0;
     var seen = 0;
-    var SHOW_AT = 0.55;   // how much of the stage must be on screen to start
-    var HIDE_AT = 0.2;    // and how little before it waits
+    var SHOW_AT = 0.55;
+    var HIDE_AT = 0.2;
 
     function progressAt(ms) {
       var s = 0;
@@ -1113,17 +944,11 @@
       if (seen >= SHOW_AT) run();
       else if (seen < HIDE_AT) {
         pause();
-        /* Finished and out of sight: ready to play again on the way back. */
         if (clock >= TOTAL && seen === 0) rewind();
       }
     }, { threshold: [0, HIDE_AT, SHOW_AT] }).observe(stage);
   }
 
-  /* ── Counters ─────────────────────────────────────────────────────────
-     [data-count] numbers run up from zero when they come into view, fast
-     then settling, and land exactly on the figure in the markup. Each
-     change of figure ticks, a little higher as it goes, so the run is
-     heard slowing to its stop. */
   function countUp(el, to, dur) {
     var from = 0;
     var fmt = el.getAttribute('data-format');
@@ -1161,12 +986,6 @@
     });
   }
 
-  /* ── Bento tiles ──────────────────────────────────────────────────────
-     Small scenes inside the feature tiles that play when their tile comes
-     into view: a chat log filling in, the engine booting, an experience
-     bar filling, the platforms taking turns. The engine's checks come up
-     as eight-bit notes climbing to ready, chat lines arrive with a blip
-     (a join with a chime), and the bar fills with orbs to a level.      */
   function initBento() {
     $$('[data-sequence]').forEach(function (list) {
       var items = $$(':scope > *', list);
@@ -1179,8 +998,6 @@
         items.forEach(function (item, i) {
           setTimeout(function () {
             item.classList.add('is-in');
-            /* Heard only when it is seen happening: with reduced motion
-               the lines are all simply there. */
             if (reduceMotion) return;
             var r = item.getBoundingClientRect();
             var x = r.left + r.width / 2;
@@ -1197,8 +1014,6 @@
       onReveal(host, function () {
         el.classList.add('is-full');
         if (reduceMotion) return;
-        /* The fill takes 1.7s after a 0.2s wait (index.css); orbs land
-           along it, left to right, and the last one levels up. */
         var r = el.getBoundingClientRect();
         for (var i = 0; i < 7; i++) {
           (function (k) {
@@ -1229,25 +1044,9 @@
     });
   }
 
-  /* ── Live data ────────────────────────────────────────────────────────
-     Two sources: the game server itself and the Discord widget. Answers
-     are kept for two minutes in session storage so moving between pages
-     does not ask again; the status page always asks afresh. The live line
-     in the top bar and the hero shows the best thing available — players
-     in game if the server answers, members online in Discord if not — and
-     nothing at all rather than a number that is wrong.                 */
   var LIVE_TTL = 120000;
   var DISCORD_API = 'https://discord.com/api/guilds/1440040951547691109/widget.json';
 
-  /* The server runs on NetherNet, which is WebRTC, not the RakNet UDP ping
-     the public status services (mcstatus.io, mcsrvstat.us) send, so they
-     call it offline whatever it is doing. NetherNet servers also answer a
-     plain HTTP GET at /v1/join, on the game's own port, with their name,
-     version and player count, no session needed (Mojang's NetherNet
-     onboarding guide). Any answer proves the server is up. No answer is
-     reported as unknown, never as offline: a missing answer can be the
-     server, the network, or the host's CORS header, and the page cannot
-     tell which.                                                       */
   var SERVER = 'play.crabsmp.net:19132';
   var STATUS_URL = 'https://' + SERVER + '/v1/join';
 
@@ -1275,8 +1074,6 @@
     return getJSON(STATUS_URL).then(serverState);
   }
 
-  /* A cached answer, or a new one. Callers that ask while a request is
-     already out share it: it is as fresh as anything they could start. */
   var pending = {};
   function cached(key, load, fresh) {
     var hit = readJSON(session, 'crab-live-' + key);
@@ -1326,8 +1123,6 @@
         el.classList.add('is-live');
       });
     }
-    // Only the newest answer may paint: a Discord fallback still on its
-    // way must not land on top of a fresher "playing now".
     var turn = 0;
     function fromDiscord() {
       var mine = ++turn;
@@ -1344,16 +1139,11 @@
       }
     }
     getServer().then(fromServer, fromDiscord).catch(function () {});
-    // The status page pings every minute; keep the line in step with it.
     document.addEventListener('crab:server', function (e) {
       Promise.resolve(fromServer(e.detail)).catch(function () {});
     });
   }
 
-  /* ── Discord ──────────────────────────────────────────────────────────
-     The community section draws its own widget from Discord's public
-     JSON rather than embedding Discord's iframe: the live count, and the
-     faces of people online right now.                                 */
   function initDiscord() {
     var box = $('[data-discord]');
     if (!box) return;
@@ -1387,15 +1177,6 @@
     }).catch(function () { box.classList.add('is-offline'); });
   }
 
-  /* ── Status page ──────────────────────────────────────────────────────
-     Draws the server the way the game's server list does: icon, name,
-     message of the day, player count and signal bars. Every check pings
-     play.crabsmp.net:19132 afresh — on arrival, every minute while the
-     page is in view, on coming back to the tab, and on demand.
-
-     The first check and every Refresh are heard: a ping going out, then
-     a chime for online, a low fall for offline. The checks the page makes
-     by itself stay quiet unless the answer changed.                   */
   var STATUS_EVERY = 60000;
 
   function initStatus() {
@@ -1477,10 +1258,6 @@
     if (refresh) refresh.addEventListener('click', function () { check(true); });
   }
 
-  /* ── Votes ────────────────────────────────────────────────────────────
-     Each site takes one vote a day. The page remembers when you last
-     opened each one, ticks it off, and counts down to when it is open
-     again. It lives in this browser only; the real record is the site's. */
   var VOTE_KEY = 'crab-votes';
   var DAY = 24 * 60 * 60 * 1000;
 
@@ -1527,9 +1304,6 @@
         var r = link.getBoundingClientRect();
         var x = e.clientX || r.left + r.width / 2;
         if (VFX) VFX.pop(x, e.clientY || r.top, 'xp');
-        /* Orbs for a vote; the last site of the day is a level. The vote
-           opens in a new tab, so the level waits for the visitor to come
-           back to this one. */
         sound('xp', { x: x });
         var after = rows.filter(function (r2) { return r2.classList.contains('is-voted'); }).length;
         if (after === rows.length && before < rows.length) {
@@ -1542,10 +1316,6 @@
     setInterval(paint, 30000);
   }
 
-  /* ── Cosmetics ────────────────────────────────────────────────────────
-     The store's cosmetic grid filters by tier. Filtering is a state the
-     grid is in rather than items being removed, so a hidden tile keeps its
-     place and they fade instead of jumping.                           */
   function initCosmetics() {
     var bar = $('[data-filter-bar]');
     var grid = $('[data-filter-grid]');
@@ -1560,7 +1330,6 @@
         var order = ['plus', 'extra', 'demon'];
         tiles.forEach(function (tile) {
           var t = tile.getAttribute('data-tier');
-          /* Each tier includes the ones below it, the way the ranks do. */
           var show = f === 'all' || order.indexOf(t) <= order.indexOf(f);
           tile.classList.toggle('is-dim', !show);
         });
@@ -1569,10 +1338,6 @@
     bar.style.setProperty('--seg-n', String(buttons.length));
   }
 
-  /* ── Tilt ─────────────────────────────────────────────────────────────
-     [data-tilt] cards lean a few degrees towards the pointer and a sheen
-     follows it, like turning an item card in your hand. Pointer devices
-     only, and only while the pointer is over the card.                */
   function initTilt() {
     if (reduceMotion || !finePointer) return;
     $$('[data-tilt]').forEach(function (card) {
@@ -1590,8 +1355,6 @@
         else raf = null;
       }
       card.addEventListener('pointerenter', function () { rect = card.getBoundingClientRect(); card.classList.add('is-tilting'); });
-      /* The page scrolling under a still pointer moves the card; measure
-         it again at the next move rather than tilt against where it was. */
       window.addEventListener('scroll', function () { rect = null; }, { passive: true });
       card.addEventListener('pointermove', function (e) {
         if (!rect) rect = card.getBoundingClientRect();
@@ -1612,8 +1375,6 @@
     });
   }
 
-  /* ── Contents ─────────────────────────────────────────────────────────
-     A long document's table of contents marks the section being read. */
   function initToc() {
     var toc = $('[data-toc]');
     if (!toc) return;
@@ -1625,8 +1386,6 @@
     onMeasure(function () {
       items.forEach(function (it) { it.top = docTop(it.el); });
     });
-    /* The section being read is the last one whose top has passed a reading
-       line a third of the way down the screen. */
     var current = null;
     onScroll(function (y) {
       var line = y + viewH * 0.32;
@@ -1641,8 +1400,6 @@
     });
   }
 
-  /* ── Ambient particles ────────────────────────────────────────────────
-     Any canvas marked data-motes gets a drifting particle field. */
   function initAmbient() {
     if (!VFX) return;
     $$('canvas[data-motes]').forEach(function (c) {
@@ -1651,15 +1408,6 @@
     });
   }
 
-  /* ── Intro ────────────────────────────────────────────────────────────
-     The welcome plays on the first visit to the home page; the head of the
-     page decided that before first paint by setting html.has-intro, reading
-     the same key this writes. ?intro=1 plays it regardless, which is what
-     Replay intro points at from other pages. Skip, a click, Escape, Enter
-     or Space all cut it short.
-
-     While it is up the rest of the page is inert, so Tab cannot wander
-     into links hidden behind it.                                      */
   var INTRO_KEY = 'crab-intro-v2';
 
   function initIntro() {
@@ -1692,8 +1440,6 @@
       return el !== root && el.tagName !== 'SCRIPT' && !el.inert;
     });
     shelved.forEach(function (el) { el.inert = true; });
-    /* Everything else is inert, so Tab lands on Skip by itself; Escape,
-       Enter and Space skip from anywhere. */
     var skipBtn = $('.intro__skip', root);
 
     var done = false;
@@ -1738,8 +1484,6 @@
     if (skipBtn) skipBtn.onclick = function () { skip(); };
 
     if (!VFX || reduceMotion) {
-      /* No particles and no breaking glass: the mark, held for a moment,
-         then the page. */
       root.classList.add('is-still');
       setTimeout(end, reduceMotion ? 1400 : 600);
       return;
@@ -1747,16 +1491,9 @@
     control = VFX.intro(root, { onShatter: reveal, onDone: end });
   }
 
-  /* ── Boot ─────────────────────────────────────────────────────────────
-     Last in the file on purpose: a deferred script runs once the document
-     is already interactive, so ready() calls straight through, and every
-     variable the features rely on has to be initialised before it does. */
   ready(function () {
     measure();
 
-    /* Warm the pressed and hovered button faces. A border-image swapped in
-       on :hover that has never been fetched paints one frame of bare
-       button before it lands. */
     ['red', 'blue', 'green', 'gold', 'dark', 'purple'].forEach(function (skin) {
       ['unchecked_hover', 'default'].forEach(function (face) {
         new Image().src = 'media/ui/buttons/' + skin + '/' + face + '.png';

@@ -1,11 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   Vote. Loaded after main.css.
-
-   A page with one job, so it is built around it: three sites, a daily
-   tally, and nothing else. The tally and each site's cooldown live in
-   this browser only (crab.js, initVotes) — the sites keep the real record.
-   ══════════════════════════════════════════════════════════════════════════ */
-
 .mc-cmd {
   font-family: var(--font-ui);
   font-weight: 400;
@@ -13,7 +5,6 @@
   text-shadow: 1px 1px 0 #3f3f15;
 }
 
-/* ── Hero: a night sky, stars twinkling ─────────────────────────────────*/
 .vote-hero { min-height: min(70vh, 640px); align-items: center; }
 .vote-hero__sky {
   position: absolute;
@@ -31,7 +22,6 @@
 }
 .vote-hero__grid > div > * + * { margin-top: 22px; }
 
-/* The day's tally: a big fraction and three pips. */
 .vote-meter {
   justify-self: end;
   width: 100%;
@@ -80,7 +70,6 @@
   color: var(--text-faint);
 }
 
-/* ── The list ───────────────────────────────────────────────────────────*/
 .vote-list {
   display: grid;
   gap: 12px;
@@ -154,8 +143,6 @@
   color: var(--text-faint);
 }
 
-/* Voted: the number gives way to a tick, the row takes a green edge and
-   the button quietens — the link still works if you need it again. */
 .vote-row.is-voted { box-shadow: var(--bevel), inset calc(var(--g) * 2) 0 0 var(--mc-a); }
 .vote-row.is-voted .vote-row__n { opacity: 0; transform: scale(0.6); }
 .vote-row.is-voted .vote-row__tick { opacity: 1; transform: scale(1); }
@@ -167,7 +154,6 @@
   color: var(--text-dim);
 }
 
-/* ── How rewards work ───────────────────────────────────────────────────*/
 .rewards {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);

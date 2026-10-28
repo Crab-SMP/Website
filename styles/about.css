@@ -1,18 +1,7 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   About. Loaded after main.css.
-
-   The page explains the server in the order a new player asks about it:
-   what it is, how it plays, what it believes, what is running underneath,
-   how to get in, and where the money goes.
-   ══════════════════════════════════════════════════════════════════════════ */
-
 .about-hero .page-hero__photo { object-position: 50% 40%; }
 .about-hero .page-hero__content { max-width: calc(980px + var(--gutter) * 2); }
 .about-hero .stats { margin-top: 34px; }
 
-/* ── Pillars ────────────────────────────────────────────────────────────
-   Four ideas, each in a column with its item in a slot above it. No
-   boxes: the slots and the rule above the row are structure enough.     */
 .pillars {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -42,7 +31,6 @@
 }
 .pillar p { font-size: var(--fs-small); color: var(--text-dim); }
 
-/* ── Philosophy ─────────────────────────────────────────────────────────*/
 .philosophy__text { margin-top: clamp(40px, 5vw, 64px); max-width: 26em; }
 .philosophy__chips {
   display: flex;
@@ -51,7 +39,6 @@
   margin-top: clamp(36px, 5vw, 56px);
 }
 
-/* ── Systems ────────────────────────────────────────────────────────────*/
 .systems {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -80,7 +67,6 @@
 }
 .system p { font-size: var(--fs-small); color: var(--text-dim); }
 
-/* ── Joining ────────────────────────────────────────────────────────────*/
 #how-to-join .join__box { margin-top: clamp(40px, 5vw, 60px); }
 
 .tips {
@@ -114,7 +100,6 @@
   border: 1px solid var(--black);
 }
 
-/* ── Support ────────────────────────────────────────────────────────────*/
 .support {
   display: flex;
   flex-direction: column;
@@ -142,7 +127,6 @@
   margin-top: 6px;
 }
 
-/* ── Responsive ─────────────────────────────────────────────────────────*/
 @media (max-width: 1100px) {
   .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
