@@ -753,7 +753,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .crest, .crest::after, .revive__slot, .revive__beam { animation: none; }
   .rank { transform: none; }
 }
 
