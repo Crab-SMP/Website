@@ -905,7 +905,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin-right: 4px;
 }
 .topbar__brand img {
   width: auto;
@@ -988,7 +987,7 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 
 .topbar__links > .topbar__panel-cta { display: none; }
 
-.topbar .sound { margin-left: auto; }
+.topbar__nav { margin-inline: auto; }
 
 .topbar__menu {
   display: none;
@@ -1007,20 +1006,6 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 .topbar__menu .i { --s: 3; }
 .topbar.is-open .topbar__menu .i { --i: var(--px-x); }
 
-/* The links sit in the middle of the bar, not beside the logo: the logo is
-   one width and the sound and join buttons another, so the space left after
-   the logo is not the middle of the page. Below 1100px the bar is too tight
-   to spare it, so there the links follow the logo. */
-@media (min-width: 1101px) {
-  .topbar__nav {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
 @media (max-width: 1300px) {
   .topbar__inner { gap: 10px; }
   .topbar__link {
@@ -1034,6 +1019,7 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 }
 
 @media (max-width: 1000px) {
+  .topbar .sound { margin-left: auto; }
   .topbar__menu { display: grid; }
   .topbar__cta { display: none; }
   .topbar__brand img { height: 40px; }
