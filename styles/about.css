@@ -1,6 +1,11 @@
 .about-hero .page-hero__photo { object-position: 50% 40%; }
 .about-hero .page-hero__content { max-width: calc(980px + var(--gutter) * 2); }
-.about-hero .stats { margin-top: 34px; }
+.about-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 34px;
+}
 
 .pillars {
   display: grid;
@@ -18,9 +23,7 @@
   background: var(--bg-deep);
   border: var(--border);
   box-shadow: var(--bevel-in);
-  transition: transform var(--dur-lift) var(--ease-pop);
 }
-.pillar:hover .pillar__slot { transform: translateY(-4px) rotate(-3deg); }
 .pillar h3 {
   margin-bottom: 10px;
   font-family: var(--font-ui);
