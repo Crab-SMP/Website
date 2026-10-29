@@ -651,6 +651,31 @@
     }, { passive: true });
   }
 
+  function initStatement() {
+    $$('[data-words]').forEach(function (el) {
+      var words = splitWords(el, 'lw');
+      if (!words.length) return;
+      el.style.setProperty('--n', String(words.length));
+      if (reduceMotion) { el.style.setProperty('--lit', String(words.length + 2)); return; }
+      var top = 0;
+      var height = 1;
+      var last = -1;
+      onMeasure(function () {
+        top = docTop(el);
+        height = el.offsetHeight || 1;
+      });
+      onScroll(function (y) {
+        var start = top - viewH * 0.82;
+        var end = top + height - viewH * 0.38;
+        var p = clamp((y - start) / Math.max(1, end - start), 0, 1);
+        var lit = p * (words.length + 1.5);
+        if (Math.abs(lit - last) < 0.02) return;
+        last = lit;
+        el.style.setProperty('--lit', lit.toFixed(3));
+      });
+    });
+  }
+
   function initStory() {
     var section = $('[data-story]');
     if (!section) return;
@@ -1313,6 +1338,43 @@
     bar.style.setProperty('--seg-n', String(buttons.length));
   }
 
+  function initTilt() {
+    if (reduceMotion || !finePointer) return;
+    $$('[data-tilt]').forEach(function (card) {
+      var raf = null;
+      var tx = 0, ty = 0, cx = 0, cy = 0, mx = 50, my = 50;
+      var rect = null;
+      function tick() {
+        cx += (tx - cx) * 0.18;
+        cy += (ty - cy) * 0.18;
+        card.style.setProperty('--rx', cx.toFixed(3) + 'deg');
+        card.style.setProperty('--ry', cy.toFixed(3) + 'deg');
+        card.style.setProperty('--mx', mx.toFixed(1) + '%');
+        card.style.setProperty('--my', my.toFixed(1) + '%');
+        if (Math.abs(tx - cx) > 0.01 || Math.abs(ty - cy) > 0.01) raf = requestAnimationFrame(tick);
+        else raf = null;
+      }
+      card.addEventListener('pointerenter', function () { rect = card.getBoundingClientRect(); card.classList.add('is-tilting'); });
+      window.addEventListener('scroll', function () { rect = null; }, { passive: true });
+      card.addEventListener('pointermove', function (e) {
+        if (!rect) rect = card.getBoundingClientRect();
+        var x = clamp((e.clientX - rect.left) / rect.width, 0, 1);
+        var y = clamp((e.clientY - rect.top) / rect.height, 0, 1);
+        var max = parseFloat(card.getAttribute('data-tilt')) || 5;
+        ty = (x - 0.5) * 2 * max;
+        tx = (0.5 - y) * 2 * max;
+        mx = x * 100;
+        my = y * 100;
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+      card.addEventListener('pointerleave', function () {
+        tx = 0; ty = 0; rect = null;
+        card.classList.remove('is-tilting');
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+    });
+  }
+
   function initToc() {
     var toc = $('[data-toc]');
     if (!toc) return;
@@ -1447,6 +1509,7 @@
     initSplash();
     initTabs();
     initHero();
+    initStatement();
     initStory();
     initCounters();
     initBento();
@@ -1455,6 +1518,7 @@
     initStatus();
     initVotes();
     initCosmetics();
+    initTilt();
     initToc();
     initAmbient();
     initIntro();

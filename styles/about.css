@@ -99,7 +99,7 @@
   height: 104px;
   background: var(--bg-deep);
   border: var(--border);
-  box-shadow: var(--bevel-in);
+  box-shadow: var(--bevel-in), 0 30px 60px -20px rgba(226, 59, 44, 0.35);
 }
 .support__slot .glyph { filter: none; }
 .support__actions {

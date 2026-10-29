@@ -82,7 +82,8 @@
     </div>
 
     <div class="shell page-hero__content status-hero__content">
-      <h1 class="display-1 on-image" id="status-title" data-enter data-split>Server status.</h1>
+      <p class="label" data-enter>Status</p>
+      <h1 class="display-1 on-image" id="status-title" data-enter data-split>Server <em>status.</em></h1>
       <p class="lead" data-enter data-status-sub>Live status for CrabSMP. Check before you join.</p>
 
       <div class="server is-checking" data-status data-enter role="status" aria-live="polite">
@@ -114,7 +115,7 @@
   <section class="section section--tight" aria-labelledby="details-title">
     <div class="shell">
       <h2 class="visually-hidden" id="details-title">Connection details</h2>
-      <dl class="details">
+      <dl class="details" data-reveal>
         <div><dt>Server address</dt><dd>play.crabsmp.net</dd></div>
         <div><dt>Port</dt><dd>19132</dd></div>
         <div><dt>Edition</dt><dd>Bedrock</dd></div>
@@ -127,23 +128,24 @@
   <section class="section section--deep" aria-labelledby="help-title">
     <div class="shell">
       <header class="head">
-        <h2 class="display-2" id="help-title" data-reveal data-split>Having trouble?</h2>
+        <p class="label">Support</p>
+        <h2 class="display-2" id="help-title" data-reveal data-split>Having <em>trouble?</em></h2>
       </header>
 
       <div class="help">
-        <article class="help__item">
+        <article class="help__item" data-reveal>
           <span class="help__slot help__slot--blue"><img class="glyph" src="media/icons/glyph/discord.png" alt="" /></span>
           <h3>Ask in Discord</h3>
           <p>Post in #support and the team will get you connected.</p>
           <a class="mc-btn mc-btn--sm mc-btn--blue" href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Open Discord</a>
         </article>
-        <article class="help__item">
+        <article class="help__item" data-reveal>
           <span class="help__slot"><img class="glyph" src="media/icons/glyph/logs.png" alt="" /></span>
           <h3>Read the Join Guide</h3>
           <p>Step-by-step connection instructions for all Bedrock platforms.</p>
           <a class="mc-btn mc-btn--sm mc-btn--ghost" href="about.html#how-to-join"><i class="i i-info" aria-hidden="true"></i> View guide</a>
         </article>
-        <article class="help__item">
+        <article class="help__item" data-reveal>
           <span class="help__slot"><img class="glyph" src="media/icons/glyph/tpa.png" alt="" /></span>
           <h3>Try a Restart First</h3>
           <p>Server showing online but you still cannot get in? Fully restart Minecraft before asking staff. It clears most connection problems on its own.</p>

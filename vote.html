@@ -100,7 +100,8 @@
     </div>
     <div class="shell page-hero__content vote-hero__grid">
       <div>
-        <h1 class="display-1" id="vote-title" data-enter data-split>Vote daily. Get rewarded.</h1>
+        <p class="label" data-enter>Vote</p>
+        <h1 class="display-1" id="vote-title" data-enter data-split>Vote daily. <em>Get rewarded.</em></h1>
         <p class="lead" data-enter>
           Vote for CrabSMP on the sites below and earn rewards in game, while
           boosting our public visibility. Use <strong class="mc-cmd">/vote</strong>
@@ -124,7 +125,7 @@
       <h2 class="visually-hidden" id="sites-title">Voting sites</h2>
 
       <ol class="vote-list">
-        <li class="vote-row" data-vote="buzz" data-name="Minecraft Buzz">
+        <li class="vote-row" data-vote="buzz" data-name="Minecraft Buzz" data-reveal>
           <span class="vote-row__slot" aria-hidden="true"><i class="i i-check vote-row__tick"></i></span>
           <div class="vote-row__body">
             <h3 class="vote-row__title">Minecraft Buzz</h3>
@@ -134,7 +135,7 @@
           <a class="mc-btn vote-row__btn" href="https://minecraft.buzz/vote/17517" target="_blank" rel="noopener noreferrer">Vote<span class="visually-hidden"> on Minecraft Buzz</span></a>
         </li>
 
-        <li class="vote-row" data-vote="realmexplorer" data-name="Realm Explorer">
+        <li class="vote-row" data-vote="realmexplorer" data-name="Realm Explorer" data-reveal>
           <span class="vote-row__slot" aria-hidden="true"><i class="i i-check vote-row__tick"></i></span>
           <div class="vote-row__body">
             <h3 class="vote-row__title">Realm Explorer</h3>
@@ -144,7 +145,7 @@
           <a class="mc-btn vote-row__btn" href="https://realmexplorer.xyz/server/crabsmp-mcbe" target="_blank" rel="noopener noreferrer">Vote<span class="visually-hidden"> on Realm Explorer</span></a>
         </li>
 
-        <li class="vote-row" data-vote="mcpocket" data-name="Minecraft Pocket Servers">
+        <li class="vote-row" data-vote="mcpocket" data-name="Minecraft Pocket Servers" data-reveal>
           <span class="vote-row__slot" aria-hidden="true"><i class="i i-check vote-row__tick"></i></span>
           <div class="vote-row__body">
             <h3 class="vote-row__title">Minecraft Pocket Servers</h3>
@@ -155,7 +156,7 @@
         </li>
       </ol>
 
-      <aside class="rewards" aria-labelledby="rewards-title">
+      <aside class="rewards" data-reveal aria-labelledby="rewards-title">
         <span class="rewards__slot"><img class="glyph" src="media/icons/glyph/daily_rewards.png" alt="" /></span>
         <div>
           <h3 id="rewards-title">How rewards work</h3>

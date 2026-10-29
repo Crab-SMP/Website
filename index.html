@@ -111,6 +111,7 @@
            src="media/assets/background.webp"
            srcset="media/assets/background-960.webp 960w, media/assets/background.webp 1920w"
            sizes="100vw" alt="" fetchpriority="high" decoding="async" />
+      <div class="hero__rays"></div>
       <canvas class="hero__motes" data-motes="dust"></canvas>
       <div class="hero__shade"></div>
     </div>
@@ -136,6 +137,10 @@
       </div>
     </div>
 
+    <a class="hero__cue" href="#lifesteal">
+      <span>Scroll</span>
+      <i class="i i-arrow-down" aria-hidden="true"></i>
+    </a>
   </section>
 
   <section class="story" id="lifesteal" data-story aria-labelledby="story-title">
@@ -144,6 +149,7 @@
       <span class="story__fly heart" data-state="full" aria-hidden="true"></span>
 
       <div class="story__inner shell">
+        <p class="label">Lifesteal</p>
         <h2 class="visually-hidden" id="story-title">How lifesteal works on CrabSMP</h2>
 
         <div class="story__hud" aria-hidden="true">
@@ -153,27 +159,27 @@
 
         <ol class="story__steps">
           <li class="story__step is-active">
-            <h3 class="display-2">You start with ten hearts.</h3>
+            <h3 class="display-2">You start with <em>ten hearts.</em></h3>
             <p class="lead">Everyone spawns on the same ten. What happens to them next is up to you.</p>
           </li>
           <li class="story__step">
-            <h3 class="display-2">Win a fight. Take one.</h3>
+            <h3 class="display-2">Win a fight. <em>Take one.</em></h3>
             <p class="lead">Every kill steals a heart from the player you beat and adds it to your bar.</p>
           </li>
           <li class="story__step">
-            <h3 class="display-2">Lose one, and it&rsquo;s theirs.</h3>
+            <h3 class="display-2">Lose one, and it&rsquo;s <em>theirs.</em></h3>
             <p class="lead">Every death costs you a heart, and if a player took you down, it goes straight to them.</p>
           </li>
           <li class="story__step">
-            <h3 class="display-2">Lose them all. You&rsquo;re out.</h3>
+            <h3 class="display-2">Lose them all. <em>You&rsquo;re out.</em></h3>
             <p class="lead">Run out of hearts and you are eliminated, locked out of the world.</p>
           </li>
           <li class="story__step">
-            <h3 class="display-2">Unless your team brings you back.</h3>
+            <h3 class="display-2">Unless your team <em>brings you back.</em></h3>
             <p class="lead">A teammate spends a Soul Bottle to put you back in the fight, hearts and all.</p>
           </li>
           <li class="story__step">
-            <h3 class="display-2">Climb to thirty.</h3>
+            <h3 class="display-2">Climb to <em>thirty.</em></h3>
             <p class="lead">Hearts stack to a cap of thirty. Earn them. Then keep them.</p>
           </li>
         </ol>
@@ -188,32 +194,33 @@
   <section class="section manifesto" id="fair-play" aria-labelledby="fair-title">
     <div class="shell">
       <header class="head">
-        <h2 class="display-2" id="fair-title" data-reveal data-split>Not pay to win. Not even close.</h2>
+        <p class="label">Fair play</p>
+        <h2 class="display-2" id="fair-title" data-reveal data-split>Not pay to win. <em>Not even close.</em></h2>
       </header>
 
-      <p class="statement">
+      <p class="statement" data-words>
         Nobody buys their way past you on CrabSMP. Ranks are convenience and
         cosmetics, and they never touch combat. The strongest players on the
         server are the ones who put the hours in.
       </p>
 
       <ul class="facts">
-        <li class="advancement">
+        <li class="advancement" data-reveal>
           <span class="advancement__icon"><img class="glyph" src="media/icons/glyph/sword.png" alt="" /></span>
           <h3>No bought power</h3>
           <p>No bought damage, no bought hearts, no stat multipliers. A rank stops at convenience and cosmetics.</p>
         </li>
-        <li class="advancement">
+        <li class="advancement" data-reveal>
           <span class="advancement__icon"><img class="glyph" src="media/icons/glyph/key_common.png" alt="" /></span>
           <h3>Everything is earnable</h3>
           <p>Crate keys come from voting, playtime milestones and daily rewards. You never have to spend a penny.</p>
         </li>
-        <li class="advancement">
+        <li class="advancement" data-reveal>
           <span class="advancement__icon"><img class="glyph" src="media/icons/glyph/closed_chest.png" alt="" /></span>
           <h3>Free from the first second</h3>
           <p>No whitelist, no paywall, no trial. Join, take your free starter kit and go build something.</p>
         </li>
-        <li class="advancement">
+        <li class="advancement" data-reveal>
           <span class="advancement__icon"><img class="glyph" src="media/icons/glyph/vault.png" alt="" /></span>
           <h3>Your money runs the server</h3>
           <p>Every penny goes into hosting, upkeep and development. It buys uptime for everyone, not an edge for one.</p>
@@ -225,12 +232,13 @@
   <section class="section features" id="features" aria-labelledby="features-title">
     <div class="shell shell--wide">
       <header class="head">
-        <h2 class="display-2" id="features-title" data-reveal data-split>Built from the ground up.</h2>
-        <p class="lead">CrabSMP runs its own engine, on its own world, by its own rules. Here is what that gets you.</p>
+        <p class="label">Features</p>
+        <h2 class="display-2" id="features-title" data-reveal data-split>Built from <em>the ground up.</em></h2>
+        <p class="lead" data-reveal>CrabSMP runs its own engine, on its own world, by its own rules. Here is what that gets you.</p>
       </header>
 
       <div class="bento">
-        <article class="tile tile--world">
+        <article class="tile tile--world" data-reveal>
           <img class="tile__img" src="media/features/feature6.webp" alt="Cherry blossom hills and hot air balloons over CrabSMP" loading="lazy" />
           <div class="tile__body">
             <h3 class="tile__title">A world worth fighting over.</h3>
@@ -238,7 +246,7 @@
           </div>
         </article>
 
-        <article class="tile tile--border">
+        <article class="tile tile--border" data-reveal>
           <img class="tile__img" src="media/features/feature2.webp" alt="" loading="lazy" />
           <div class="tile__body">
             <p class="tile__stat"><span data-count="15000">15,000</span></p>
@@ -247,7 +255,7 @@
           </div>
         </article>
 
-        <article class="tile tile--engine">
+        <article class="tile tile--engine" data-reveal>
           <div class="tile__body">
             <h3 class="tile__title"><img class="glyph" src="media/icons/glyph/crab_chestplate.png" alt="" /> The Crab Engine</h3>
             <p>CrabSMP runs on our own TypeScript engine, built in house and updated constantly.</p>
@@ -262,7 +270,7 @@
           </ol>
         </article>
 
-        <article class="tile tile--chat">
+        <article class="tile tile--chat" data-reveal>
           <div class="tile__body">
             <h3 class="tile__title"><img class="glyph" src="media/icons/glyph/discord.png" alt="" /> Chat that follows you.</h3>
             <p>Chat, joins, deaths and staff actions relay straight to Discord through our own bot. Talk to the server from your phone.</p>
@@ -276,7 +284,7 @@
           </ul>
         </article>
 
-        <article class="tile tile--kit">
+        <article class="tile tile--kit" data-reveal>
           <img class="tile__img" src="media/features/feature3.webp" alt="The CrabSMP starter kit menu" loading="lazy" />
           <div class="tile__body">
             <h3 class="tile__title">A free kit on day one.</h3>
@@ -284,7 +292,7 @@
           </div>
         </article>
 
-        <article class="tile tile--spawn">
+        <article class="tile tile--spawn" data-reveal>
           <img class="tile__img" src="media/features/feature5.webp" alt="The CrabSMP spawn from above" loading="lazy" />
           <div class="tile__body">
             <h3 class="tile__title">A spawn built to last.</h3>
@@ -292,7 +300,7 @@
           </div>
         </article>
 
-        <article class="tile tile--devices">
+        <article class="tile tile--devices" data-reveal>
           <div class="tile__body">
             <h3 class="tile__title">One world. Every device.</h3>
             <p>Console, mobile and PC players share one world and one economy.</p>
@@ -306,7 +314,7 @@
           </ul>
         </article>
 
-        <article class="tile tile--levels">
+        <article class="tile tile--levels" data-reveal>
           <div class="tile__body">
             <p class="tile__stat tile__stat--xp"><span data-count="100">100</span></p>
             <h3 class="tile__title">Battle pass tiers a season.</h3>
@@ -321,11 +329,12 @@
   <section class="section section--deep reviews" aria-labelledby="reviews-title">
     <div class="shell">
       <header class="head head--center">
-        <h2 class="display-2" id="reviews-title" data-reveal data-split>Heard in chat.</h2>
+        <p class="label">Reviews</p>
+        <h2 class="display-2" id="reviews-title" data-reveal data-split>Heard in <em>chat.</em></h2>
       </header>
 
       <div class="review-grid">
-        <figure class="review">
+        <figure class="review" data-reveal>
           <p class="review__hearts" role="img" aria-label="5 out of 5 hearts"><span></span><span></span><span></span><span></span><span></span></p>
           <blockquote><p>I love this server, it&rsquo;s my first SMP and I refuse to switch. I love the chaos, the active player base, and the shop lets you buy back lost items while still encouraging grinding.</p></blockquote>
           <figcaption>
@@ -333,7 +342,7 @@
             <span><b>Dungeness Crash</b><small>9/10</small></span>
           </figcaption>
         </figure>
-        <figure class="review">
+        <figure class="review" data-reveal>
           <p class="review__hearts" role="img" aria-label="5 out of 5 hearts"><span></span><span></span><span></span><span></span><span></span></p>
           <blockquote><p>Very nice server with a great community. Most people are friendly and fun to play with. The overall experience is enjoyable and keeps me coming back for more.</p></blockquote>
           <figcaption>
@@ -341,7 +350,7 @@
             <span><b>TheSlimeBeans</b><small>9.5/10</small></span>
           </figcaption>
         </figure>
-        <figure class="review">
+        <figure class="review" data-reveal>
           <p class="review__hearts" role="img" aria-label="4 out of 5 hearts"><span></span><span></span><span></span><span></span><span class="is-empty"></span></p>
           <blockquote><p>I love the community and especially the owner Ozz, great guy. The only thing that brings down my grade is the anti-cheat isn&rsquo;t that great.</p></blockquote>
           <figcaption>
@@ -349,7 +358,7 @@
             <span><b><i class="tag tag--admin">Admin</i> UPJAY2012</b><small>8.5/10</small></span>
           </figcaption>
         </figure>
-        <figure class="review">
+        <figure class="review" data-reveal>
           <p class="review__hearts" role="img" aria-label="5 out of 5 hearts"><span></span><span></span><span></span><span></span><span></span></p>
           <blockquote><p>CrabSMP is a really good server. When I first started playing I knew from the beginning this was going to be an amazing journey. I love how the admins and owners always listen to people to try to make the server better and keep improving it. There&rsquo;s way more to come, very good server, I recommend it.</p></blockquote>
           <figcaption>
@@ -364,16 +373,17 @@
   <section class="section founder" id="about" aria-labelledby="founder-title">
     <div class="shell">
       <div class="founder__grid">
-        <div class="founder__portrait">
+        <div class="founder__portrait" data-reveal="zoom">
           <img src="https://relaxed-kataifi-f99935.netlify.app/avatar.png" alt="Ozorical, the owner of CrabSMP" loading="lazy" width="320" height="320" />
           <span class="chip chip--red founder__badge"><img class="glyph glyph--1" src="media/icons/glyph/crab_chestplate.png" alt="" /> Owner</span>
         </div>
         <div class="founder__text">
           <header class="head">
-            <h2 class="display-2" id="founder-title" data-reveal data-split>Run by a player.</h2>
+            <p class="label">The team</p>
+            <h2 class="display-2" id="founder-title" data-reveal data-split>Run by <em>a player.</em></h2>
           </header>
-          <p class="founder__name"><a class="link" href="https://relaxed-kataifi-f99935.netlify.app/">Ozorical</a></p>
-          <div class="prose founder__bio">
+          <p class="founder__name" data-reveal><a class="link" href="https://relaxed-kataifi-f99935.netlify.app/">Ozorical</a></p>
+          <div class="prose founder__bio" data-reveal>
             <p>Hi, I&rsquo;m Ozz (Jacob). I&rsquo;m the manager and sole operator of our mainstream Minecraft server, handling everything from funding and development to infrastructure, branding, social media, and community engagement. I&rsquo;m currently studying Computer Science and IT systems, with a strong interest in software development, backend systems, cybersecurity, and automation.</p>
             <p>I work across technologies including JavaScript, TypeScript, Python, Java, Node.js, Discord.js, MongoDB, Redis, and the Minecraft Script API. Outside of CrabSMP, I enjoy building websites, experimenting with new technologies, and working on personal projects. My goal is to keep improving CrabSMP and build a community that players genuinely enjoy being part of.</p>
           </div>
@@ -387,15 +397,16 @@
       <div class="community__grid">
         <div class="community__pitch">
           <header class="head">
-            <h2 class="display-2" id="discord-title" data-reveal data-split>The server never sleeps. Neither does the chat.</h2>
+            <p class="label">Community</p>
+            <h2 class="display-2" id="discord-title" data-reveal data-split>The server never sleeps. <em>Neither does the chat.</em></h2>
           </header>
           <ul class="perks">
-            <li><img class="glyph" src="media/icons/glyph/friends.png" alt="" /><span>Meet the rest of CrabSMP and find a team.</span></li>
-            <li><img class="glyph" src="media/icons/glyph/incoming.png" alt="" /><span>Game chat relayed live, in both directions.</span></li>
-            <li><img class="glyph" src="media/icons/glyph/billboard.png" alt="" /><span>Updates and announcements, first.</span></li>
-            <li><img class="glyph" src="media/icons/glyph/shield.png" alt="" /><span>Priority support when something breaks.</span></li>
+            <li data-reveal><img class="glyph" src="media/icons/glyph/friends.png" alt="" /><span>Meet the rest of CrabSMP and find a team.</span></li>
+            <li data-reveal><img class="glyph" src="media/icons/glyph/incoming.png" alt="" /><span>Game chat relayed live, in both directions.</span></li>
+            <li data-reveal><img class="glyph" src="media/icons/glyph/billboard.png" alt="" /><span>Updates and announcements, first.</span></li>
+            <li data-reveal><img class="glyph" src="media/icons/glyph/shield.png" alt="" /><span>Priority support when something breaks.</span></li>
           </ul>
-          <div class="community__cta">
+          <div class="community__cta" data-reveal>
             <a class="mc-btn mc-btn--blue mc-btn--lg" href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener">
               <i class="i i-discord" aria-hidden="true"></i> Join the Discord
             </a>
@@ -403,7 +414,7 @@
           </div>
         </div>
 
-        <div class="discord-card">
+        <div class="discord-card" data-reveal="zoom">
           <div class="discord-card__head">
             <img class="glyph" src="media/icons/glyph/discord.png" alt="" />
             <span>CrabSMP on Discord</span>
@@ -424,11 +435,12 @@
   <section class="section rules" id="rules" aria-labelledby="rules-title">
     <div class="shell">
       <header class="head">
-        <h2 class="display-2" id="rules-title" data-reveal data-split>House rules.</h2>
-        <p class="lead">The short version: be decent and play fair. The full version is below.</p>
+        <p class="label">Rules</p>
+        <h2 class="display-2" id="rules-title" data-reveal data-split>House <em>rules.</em></h2>
+        <p class="lead" data-reveal>The short version: be decent and play fair. The full version is below.</p>
       </header>
 
-      <div class="rulebook">
+      <div class="rulebook" data-reveal>
         <div class="tabs" role="tablist" aria-label="Rules and terms of service">
           <button class="tabs__tab" role="tab" id="tab-rules" aria-controls="panel-rules" aria-selected="true" type="button"><img class="glyph glyph--1" src="media/icons/glyph/sword.png" alt="" /> Server rules</button>
           <button class="tabs__tab" role="tab" id="tab-tos" aria-controls="panel-tos" aria-selected="false" type="button"><img class="glyph glyph--1" src="media/icons/glyph/logs.png" alt="" /> Terms of service</button>
@@ -436,15 +448,15 @@
 
         <div class="rulebook__panel" role="tabpanel" id="panel-rules" aria-labelledby="tab-rules">
           <ol class="rule-list">
-            <li><span class="rule-list__n">1</span><div><h3>Be respectful</h3><p>Treat all players and staff with kindness. No toxicity, harassment, or personal attacks.</p></div></li>
-            <li><span class="rule-list__n">2</span><div><h3>No hate speech</h3><p>Discrimination, slurs, or offensive language will not be tolerated under any circumstance.</p></div></li>
-            <li><span class="rule-list__n">3</span><div><h3>No griefing</h3><p>Destroying or altering others&rsquo; builds without permission is strictly prohibited.</p></div></li>
-            <li><span class="rule-list__n">4</span><div><h3>No hacking or exploits</h3><p>Cheats, hacks, or third-party software granting unfair advantage are forbidden.</p></div></li>
-            <li><span class="rule-list__n">5</span><div><h3>No AFKing</h3><p>Staying AFK for long periods to occupy player slots will result in a kick.</p></div></li>
-            <li><span class="rule-list__n">6</span><div><h3>No duping or glitch abuse</h3><p>Exploiting bugs, including item duplication, is not allowed. Report glitches instead.</p></div></li>
-            <li><span class="rule-list__n">7</span><div><h3>No racism or discrimination</h3><p>Respect everyone. Racist or offensive behavior will lead to punishment.</p></div></li>
-            <li><span class="rule-list__n">8</span><div><h3>No spamming</h3><p>Avoid excessive messages, chat flooding, or bypassing the spam filter.</p></div></li>
-            <li><span class="rule-list__n">9</span><div><h3>Privacy matters</h3><p>Do not share personal information or ask others for theirs.</p></div></li>
+            <li><span class="rule-list__n">01</span><div><h3>Be respectful</h3><p>Treat all players and staff with kindness. No toxicity, harassment, or personal attacks.</p></div></li>
+            <li><span class="rule-list__n">02</span><div><h3>No hate speech</h3><p>Discrimination, slurs, or offensive language will not be tolerated under any circumstance.</p></div></li>
+            <li><span class="rule-list__n">03</span><div><h3>No griefing</h3><p>Destroying or altering others&rsquo; builds without permission is strictly prohibited.</p></div></li>
+            <li><span class="rule-list__n">04</span><div><h3>No hacking or exploits</h3><p>Cheats, hacks, or third-party software granting unfair advantage are forbidden.</p></div></li>
+            <li><span class="rule-list__n">05</span><div><h3>No AFKing</h3><p>Staying AFK for long periods to occupy player slots will result in a kick.</p></div></li>
+            <li><span class="rule-list__n">06</span><div><h3>No duping or glitch abuse</h3><p>Exploiting bugs, including item duplication, is not allowed. Report glitches instead.</p></div></li>
+            <li><span class="rule-list__n">07</span><div><h3>No racism or discrimination</h3><p>Respect everyone. Racist or offensive behavior will lead to punishment.</p></div></li>
+            <li><span class="rule-list__n">08</span><div><h3>No spamming</h3><p>Avoid excessive messages, chat flooding, or bypassing the spam filter.</p></div></li>
+            <li><span class="rule-list__n">09</span><div><h3>Privacy matters</h3><p>Do not share personal information or ask others for theirs.</p></div></li>
             <li><span class="rule-list__n">10</span><div><h3>No real-world trading</h3><p>Selling in-game items or currency for real money is prohibited: permanent ban.</p></div></li>
           </ol>
 
@@ -469,15 +481,15 @@
 
         <div class="rulebook__panel" role="tabpanel" id="panel-tos" aria-labelledby="tab-tos">
           <ol class="rule-list rule-list--terms">
-            <li><span class="rule-list__n">1</span><div><h3>Acceptance of terms</h3><p>By accessing CrabSMP, you agree to comply with these Terms of Service and all applicable laws.</p></div></li>
-            <li><span class="rule-list__n">2</span><div><h3>Account responsibility</h3><p>You are responsible for all activities under your account. Sharing accounts is prohibited.</p></div></li>
-            <li><span class="rule-list__n">3</span><div><h3>One account, one device</h3><p>CrabSMP does not support using one account across multiple devices. Each account is intended for use on a single device only. If you join the server from a different device than the one you normally play on, you do so entirely at your own risk: this may result in the loss of your progress, items, or other stored data, and you accept full responsibility for any such loss.</p></div></li>
-            <li><span class="rule-list__n">4</span><div><h3>Data we store</h3><p>To operate the server, we store the following data for each player in our database: ender chest contents, inventory contents, ranks, player name and XUID (your unique player identifier).</p></div></li>
-            <li><span class="rule-list__n">5</span><div><h3>IP addresses</h3><p>We do not have access to your IP address. Connections to the server are handled through Verixen (<a class="link" href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">https://dashboard.verixen.com</a>), and any collection or processing of IP addresses is governed by Verixen&rsquo;s own terms and privacy policy. We encourage you to review Verixen&rsquo;s terms to understand how they handle this information.</p></div></li>
-            <li><span class="rule-list__n">6</span><div><h3>Content ownership</h3><p>All builds and creations remain property of their creators. CrabSMP may showcase community content.</p></div></li>
-            <li><span class="rule-list__n">7</span><div><h3>Changes to the service</h3><p>CrabSMP reserves the right to modify or discontinue any aspect of the service without notice.</p></div></li>
-            <li><span class="rule-list__n">8</span><div><h3>Termination</h3><p>We may terminate or suspend access immediately for violations of these Terms without prior notice.</p></div></li>
-            <li><span class="rule-list__n">9</span><div><h3>Limitation of liability</h3><p>CrabSMP is not liable for any damages resulting from use of the service, including data loss.</p></div></li>
+            <li><span class="rule-list__n">01</span><div><h3>Acceptance of terms</h3><p>By accessing CrabSMP, you agree to comply with these Terms of Service and all applicable laws.</p></div></li>
+            <li><span class="rule-list__n">02</span><div><h3>Account responsibility</h3><p>You are responsible for all activities under your account. Sharing accounts is prohibited.</p></div></li>
+            <li><span class="rule-list__n">03</span><div><h3>One account, one device</h3><p>CrabSMP does not support using one account across multiple devices. Each account is intended for use on a single device only. If you join the server from a different device than the one you normally play on, you do so entirely at your own risk: this may result in the loss of your progress, items, or other stored data, and you accept full responsibility for any such loss.</p></div></li>
+            <li><span class="rule-list__n">04</span><div><h3>Data we store</h3><p>To operate the server, we store the following data for each player in our database: ender chest contents, inventory contents, ranks, player name and XUID (your unique player identifier).</p></div></li>
+            <li><span class="rule-list__n">05</span><div><h3>IP addresses</h3><p>We do not have access to your IP address. Connections to the server are handled through Verixen (<a class="link" href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">https://dashboard.verixen.com</a>), and any collection or processing of IP addresses is governed by Verixen&rsquo;s own terms and privacy policy. We encourage you to review Verixen&rsquo;s terms to understand how they handle this information.</p></div></li>
+            <li><span class="rule-list__n">06</span><div><h3>Content ownership</h3><p>All builds and creations remain property of their creators. CrabSMP may showcase community content.</p></div></li>
+            <li><span class="rule-list__n">07</span><div><h3>Changes to the service</h3><p>CrabSMP reserves the right to modify or discontinue any aspect of the service without notice.</p></div></li>
+            <li><span class="rule-list__n">08</span><div><h3>Termination</h3><p>We may terminate or suspend access immediately for violations of these Terms without prior notice.</p></div></li>
+            <li><span class="rule-list__n">09</span><div><h3>Limitation of liability</h3><p>CrabSMP is not liable for any damages resulting from use of the service, including data loss.</p></div></li>
             <li><span class="rule-list__n">10</span><div><h3>Dispute resolution</h3><p>All disputes will be handled by CrabSMP staff, whose decisions are final.</p></div></li>
             <li><span class="rule-list__n">11</span><div><h3>Changes to these terms</h3><p>We may update these Terms at any time. Continued use constitutes acceptance of changes.</p></div></li>
             <li><span class="rule-list__n">12</span><div><h3>Governing law</h3><p>These Terms are governed by the laws of the jurisdiction where CrabSMP operates.</p></div></li>
@@ -498,11 +510,12 @@
 
     <div class="shell join__inner">
       <header class="head head--center">
-        <h2 class="display-1 on-image" id="join-title" data-reveal data-split>Your world is waiting.</h2>
-        <p class="lead">Free on every Bedrock device. Pick yours.</p>
+        <p class="label">Join</p>
+        <h2 class="display-1 on-image" id="join-title" data-reveal data-split>Your world is <em>waiting.</em></h2>
+        <p class="lead" data-reveal>Free on every Bedrock device. Pick yours.</p>
       </header>
 
-      <div class="join__box">
+      <div class="join__box" data-reveal="zoom">
         <div class="seg" role="tablist" aria-label="Choose your device" data-detect>
           <button class="seg__tab" role="tab" id="jt-pc" aria-controls="join-pc" aria-selected="true" data-platform="pc" type="button"><img class="glyph glyph--1" src="media/icons/glyph/tpa.png" alt="" /> PC &amp; Mobile</button>
           <button class="seg__tab" role="tab" id="jt-console" aria-controls="join-console" aria-selected="false" data-platform="console" type="button"><img class="glyph glyph--1" src="media/icons/glyph/freeplay.png" alt="" /> Console</button>
