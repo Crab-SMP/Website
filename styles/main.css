@@ -62,9 +62,9 @@
   --xp-dark:      #2e5c0c;
   --gold:         #ffcf3a;
 
-  --tip-bg:       rgba(16, 0, 16, 0.94);
-  --tip-top:      #5000ff;
-  --tip-bottom:   #28007f;
+  --tip-bg:       rgba(20, 8, 8, 0.94);
+  --tip-top:      #e23b2c;
+  --tip-bottom:   #6b1910;
 
   --font-display: 'MinecraftTen', 'Mojangles', ui-monospace, monospace;
   --font-ui:      'Mojangles', ui-monospace, 'Courier New', monospace;

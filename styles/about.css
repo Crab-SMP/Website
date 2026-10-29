@@ -33,10 +33,15 @@
   align-content: start;
   gap: 14px 12px;
   padding: 18px 22px 22px;
-  background: rgba(16, 0, 16, 0.94);
-  border: var(--g) solid #28007f;
-  border-top-color: #5000ff;
-  box-shadow: 0 0 0 var(--g) #100010;
+  background: var(--tip-bg);
+  border: var(--g) solid;
+  border-image: linear-gradient(var(--tip-top), var(--tip-bottom)) 1;
+  box-shadow: 0 0 0 var(--g) var(--tip-bg);
+  transition: transform var(--dur-lift) var(--ease-out), box-shadow var(--dur-lift) var(--ease);
+}
+.system:hover {
+  transform: translateY(var(--lift));
+  box-shadow: 0 0 0 var(--g) var(--tip-bg), 0 28px 50px -28px rgba(0, 0, 0, 0.95);
 }
 .system h3 {
   font-family: var(--font-ui);
