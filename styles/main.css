@@ -727,6 +727,18 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
 
 .topbar__nav { margin-inline: auto; }
 
+@media (min-width: 1101px) {
+  .topbar__inner { padding-right: 18px; }
+  .topbar__nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .topbar .sound { margin-left: auto; }
+}
+
 .topbar__menu {
   display: none;
   place-items: center;
