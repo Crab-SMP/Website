@@ -965,8 +965,7 @@
   var LIVE_TTL = 120000;
   var DISCORD_API = 'https://discord.com/api/guilds/1440040951547691109/widget.json';
 
-  var SERVER = 'play.crabsmp.net:19132';
-  var STATUS_URL = 'https://' + SERVER + '/v1/join';
+  var STATUS_URL = 'https://crabsmp.net/api/status';
 
   function serverState(d) {
     var name = typeof d.name === 'string' ? d.name.replace(/§./g, '').trim() : '';
