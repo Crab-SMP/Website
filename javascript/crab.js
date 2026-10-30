@@ -576,6 +576,7 @@
     var heroes = $$('.hero, .page-hero');
     if (!heroes.length) return;
     heroes.forEach(function (hero) {
+      var movers = $$('.hero__photo, .hero__content, .page-hero__bg img, .page-hero__photo, .page-hero__content', hero);
       var top = 0;
       var height = 1;
       var last = -1;
@@ -588,7 +589,8 @@
         var p = clamp((y - top) / height, 0, 1);
         if (Math.abs(p - last) < 0.001) return;
         last = p;
-        hero.style.setProperty('--hero-p', p.toFixed(4));
+        var value = p.toFixed(4);
+        movers.forEach(function (el) { el.style.setProperty('--hero-p', value); });
       });
     });
 
