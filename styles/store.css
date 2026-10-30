@@ -94,59 +94,47 @@
 }
 
 .crests {
+  --r: clamp(120px, 12vw, 180px);
   position: relative;
   height: clamp(300px, 34vw, 440px);
+  perspective: 1200px;
 }
-.crest {
-  --tier: var(--mc-a);
+.crests__trail {
   position: absolute;
-  display: grid;
-  place-items: center;
-  animation: float 5.2s ease-in-out infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
-.crest::after {
-  content: "";
+.crests__orbit {
   position: absolute;
   left: 50%;
-  bottom: -38px;
-  width: 120%;
-  height: 26px;
-  margin-left: -60%;
-  background: radial-gradient(closest-side, color-mix(in srgb, var(--tier) 45%, transparent), transparent);
-  opacity: 0.55;
-  animation: floatShadow 5.2s ease-in-out infinite;
+  top: 50%;
+  transform-style: preserve-3d;
+  transform: rotate(-10deg) rotateX(70deg);
 }
-.crest img,
-.crest__slot {
-  display: grid;
-  place-items: center;
-  width: 128px;
-  height: 128px;
-  padding: 16px;
-  background: rgba(10, 9, 12, 0.85);
-  border: var(--border);
-  box-shadow: var(--bevel-in), 0 0 0 var(--g) rgba(255, 255, 255, 0.04), 0 30px 50px -20px rgba(0, 0, 0, 0.9);
+.crest {
+  --a: 0deg;
+  --s: 128px;
+  position: absolute;
+  left: calc(var(--s) / -2);
+  top: calc(var(--s) / -2);
+  width: var(--s);
+  max-width: none;
+  height: var(--s);
   image-rendering: pixelated;
+  filter: drop-shadow(calc(var(--g) * 2) calc(var(--g) * 2) 0 rgba(0, 0, 0, 0.6));
+  transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(0deg - var(--a))) rotateX(-70deg) rotate(10deg);
+  animation: orbit 18s linear infinite;
 }
-.crest__slot img {
-  width: 96px;
-  height: 96px;
-  padding: 0;
-  background: none;
-  border: 0;
-  box-shadow: none;
+.crest--plus  { --a: 210deg; --tier: var(--mc-a); }
+.crest--extra { --a: 330deg; --tier: var(--mc-b); }
+.crest--demon { --a: 90deg; --tier: var(--mc-c); --s: 192px; }
+@keyframes orbit {
+  to { transform: rotate(calc(var(--a) + 360deg)) translateX(var(--r)) rotate(calc(-360deg - var(--a))) rotateX(-70deg) rotate(10deg); }
 }
-.crest--plus  { --tier: var(--mc-a); left: 2%;  top: 34%; animation-delay: -1.4s; }
-.crest--extra { --tier: var(--mc-b); left: 34%; top: 4%;  animation-delay: -3.1s; }
-.crest--demon { --tier: var(--mc-c); left: 58%; top: 46%; animation-delay: 0s; }
-.crest--demon .crest__slot { width: 160px; height: 160px; }
-.crest--demon .crest__slot img { width: 128px; height: 128px; }
-.crest--plus::after, .crest--extra::after { animation-delay: inherit; }
 @keyframes float {
   50% { transform: translate3d(0, -14px, 0); }
-}
-@keyframes floatShadow {
-  50% { transform: scaleX(0.8); opacity: 0.35; }
 }
 
 .tebex {
@@ -765,11 +753,9 @@
 
 @media (max-width: 900px) {
   .store-hero__grid { grid-template-columns: 1fr; }
-  .crests { height: 240px; max-width: 480px; }
-  .crest img, .crest__slot { width: 96px; height: 96px; padding: 12px; }
-  .crest__slot img { width: 64px; height: 64px; }
-  .crest--demon .crest__slot { width: 128px; height: 128px; }
-  .crest--demon .crest__slot img { width: 96px; height: 96px; }
+  .crests { --r: min(150px, 28vw); height: 240px; max-width: 480px; }
+  .crest { --s: 64px; }
+  .crest--demon { --s: 128px; }
   .revive { grid-template-columns: 1fr; }
   .revive__art { max-width: 280px; margin-inline: auto; }
   .timeline { grid-template-columns: 1fr; }
@@ -827,7 +813,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .crest, .crest::after, .revive__slot, .revive__beam { animation: none; }
+  .crest, .revive__slot, .revive__beam { animation: none; }
   .rank { transform: none; }
 }
 

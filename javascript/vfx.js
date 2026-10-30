@@ -341,6 +341,64 @@
     popLayer.wake();
   }
 
+  var TRAIL = { rate: 70, sizes: [2, 2, 4, 4, 6], spread: 0.22, behind: 0.4, drift: 10, rise: -30, life: [0.9, 1.8] };
+
+  function mix(rgb, to, k) {
+    return rgb.map(function (c) { return Math.round(lerp(c, to, k)); });
+  }
+
+  function trail(canvas, items) {
+    if (!canvas || reduceMotion) return null;
+    var list = [];
+    var orbit = null;
+    var depth = 0;
+    var emitters = items.map(function (el) {
+      var rgb = hexToRgb(getComputedStyle(el).getPropertyValue('--tier').trim());
+      return { el: el, size: 0, carry: 0, x: 0, y: 0, colours: [rgb, rgb, mix(rgb, 255, 0.5), mix(rgb, 0, 0.35)] };
+    });
+
+    var layer = new Layer(canvas, function (dt) {
+      var w = layer.w;
+      var h = layer.h;
+      layer.ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < emitters.length; i++) {
+        var e = emitters[i];
+        var m = new DOMMatrix(getComputedStyle(e.el).transform);
+        var p = orbit.transformPoint(new DOMPoint(m.m41, m.m42, 0));
+        var k = depth / (depth - p.z);
+        var x = w / 2 + p.x * k;
+        var y = h / 2 + p.y * k;
+        var dx = x - e.x;
+        var dy = y - e.y;
+        var len = Math.sqrt(dx * dx + dy * dy) || 1;
+        var back = e.size * TRAIL.behind * k / len;
+        var r = e.size * TRAIL.spread * k;
+        e.x = x;
+        e.y = y;
+        for (e.carry += TRAIL.rate * dt; e.carry >= 1; e.carry--) {
+          list.push({
+            x: x - dx * back + rand(-r, r),
+            y: y - dy * back + rand(-r, r),
+            vx: rand(-TRAIL.drift, TRAIL.drift),
+            vy: rand(-TRAIL.drift, TRAIL.drift),
+            g: TRAIL.rise,
+            life: rand(TRAIL.life[0], TRAIL.life[1]),
+            age: 0,
+            size: Math.max(2, Math.round(pick(TRAIL.sizes) * k)),
+            rgb: pick(e.colours)
+          });
+        }
+      }
+      stepBursts(layer, list, dt);
+      return true;
+    }, function () {
+      orbit = new DOMMatrix(getComputedStyle(items[0].parentNode).transform);
+      depth = parseFloat(getComputedStyle(canvas.parentNode).perspective);
+      emitters.forEach(function (e) { e.size = e.el.offsetWidth; });
+    });
+    return layer;
+  }
+
   var T = {
     resolveFrom: 1380,
     resolveTo:   1850,
@@ -810,6 +868,7 @@
     motes: motes,
     fx: fx,
     pop: pop,
+    trail: trail,
     intro: intro,
     Layer: Layer
   };

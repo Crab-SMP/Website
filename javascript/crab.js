@@ -1306,6 +1306,9 @@
       var small = window.innerWidth < 700;
       VFX.motes(c, c.getAttribute('data-motes'), { scale: small ? 0.7 : 1, max: small ? 60 : 200 });
     });
+    $$('canvas[data-trail]').forEach(function (c) {
+      VFX.trail(c, $$('.crest', c.parentNode));
+    });
   }
 
   var INTRO_KEY = 'crab-intro-v2';
