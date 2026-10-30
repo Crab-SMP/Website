@@ -4,8 +4,6 @@
   var reduceMotion = window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function sfx(name, opts) { return window.CrabSFX ? window.CrabSFX.play(name, opts) : null; }
-
   var DPR_CAP = 2;
 
   function rand(a, b) { return a + Math.random() * (b - a); }
@@ -386,14 +384,6 @@
     var finished = false;
     var raf = 0;
 
-    var heard = {};
-    var swell = null;
-    function beat(name, at, t) {
-      if (heard[name] || t < at) return false;
-      heard[name] = true;
-      return t - at < 120;
-    }
-
     function sizeCanvas() {
       W = window.innerWidth;
       H = window.innerHeight;
@@ -644,9 +634,6 @@
         });
       }
       root.classList.add('is-shattering');
-      if (swell) swell.stop(0.08);
-      sfx('shatter', { x: origin.x });
-      sfx('debris', { delay: 0.25 });
       if (hooks.onShatter) setTimeout(hooks.onShatter, 60);
     }
 
@@ -749,18 +736,6 @@
       if (crackK > 0) drawCracks(clamp(crackK, 0, 1));
       ctx.restore();
 
-      if (beat('resolve', T.resolveFrom, t)) sfx('resolve', { x: W / 2 });
-      if (beat('glint', T.glintFrom, t)) sfx('glint');
-      for (var w = 0; w < words.length; w++) {
-        if (beat('word' + w, T.tagFrom + w * T.tagGap, t)) {
-          sfx('word', { x: wordX[w] + wordW[w] / 2, last: w === words.length - 1 });
-        }
-      }
-      if (crackK > 0 && !heard.crack) {
-        heard.crack = true;
-        sfx('crack', { x: origin.x });
-      }
-
       if (crackK >= 1) beginShatter(now);
       raf = requestAnimationFrame(frame);
     }
@@ -768,7 +743,6 @@
     function finish() {
       if (finished) return;
       finished = true;
-      if (swell) swell.stop(0.2);
       if (raf) cancelAnimationFrame(raf);
       window.removeEventListener('resize', onResize);
       if (hooks.onDone) hooks.onDone();
@@ -796,7 +770,6 @@
       crackAt = now - start;
       crackDur = 170;
       cracks = makeCracks(origin);
-      if (swell) swell.stop(0.1);
     }
 
     function begin() {
@@ -806,7 +779,6 @@
       cracks = makeCracks(origin);
       window.addEventListener('resize', onResize);
       raf = requestAnimationFrame(frame);
-      swell = sfx('assemble');
     }
 
     var ready = false;

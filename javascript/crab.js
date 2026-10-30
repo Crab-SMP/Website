@@ -9,18 +9,6 @@
   var finePointer = window.matchMedia &&
     window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var VFX = window.CrabVFX || null;
-  var SFX = window.CrabSFX || null;
-
-  function sound(name, opts) { return SFX ? SFX.play(name, opts) : null; }
-  function note(step, opts) { return SFX ? SFX.note(step, opts) : null; }
-  function whenSeen(fn) {
-    if (!document.hidden) { fn(); return; }
-    document.addEventListener('visibilitychange', function back() {
-      if (document.hidden) return;
-      document.removeEventListener('visibilitychange', back);
-      setTimeout(fn, 300);
-    });
-  }
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -189,7 +177,6 @@
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { el.classList.add('is-in'); });
     });
-    sound('toast', { x: window.innerWidth - 140 });
     setTimeout(function () {
       el.classList.add('is-out');
       setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 420);
@@ -383,19 +370,6 @@
     });
   }
 
-  function initScrollSound() {
-    if (!SFX) return;
-    var lastY = window.scrollY || window.pageYOffset;
-    var lastT = 0;
-    onScroll(function (y) {
-      var now = performance.now();
-      var dt = (now - lastT) / 1000;
-      if (lastT && dt > 0 && dt < 0.25) SFX.scroll((y - lastY) / dt);
-      lastY = y;
-      lastT = now;
-    });
-  }
-
   function initMenu() {
     var bar = $('.topbar');
     var toggle = $('.topbar__menu');
@@ -467,7 +441,6 @@
           btn.getAttribute('data-toast') || text,
           btn.getAttribute('data-toast-icon') || 'media/icons/glyph/tpa.png');
         if (VFX) VFX.pop(x, y, 'xp');
-        sound('xp', { x: x });
       });
     });
   }
@@ -476,7 +449,6 @@
     $$('[data-split]').forEach(function (el) { splitWords(el, 'split-w'); });
 
     var items = $$('[data-reveal]');
-    var headings = items.filter(function (el) { return el.hasAttribute('data-split'); });
     var parents = [];
     var counts = [];
     items.forEach(function (el) {
@@ -492,16 +464,10 @@
       if (!el.style.getPropertyValue('--step')) el.style.setProperty('--step', String(i));
     });
 
-    function reveal(el, heard) {
+    function reveal(el) {
       el.classList.add('is-revealed');
       el.dispatchEvent(new CustomEvent('crab:reveal'));
-      if (el.hasAttribute('data-split')) {
-        if (heard) {
-          var r = el.getBoundingClientRect();
-          sound('heading', { step: -3 + headings.indexOf(el), x: r.left + r.width / 2 });
-        }
-        return;
-      }
+      if (el.hasAttribute('data-split')) return;
       var step = parseInt(el.style.getPropertyValue('--step'), 10) || 0;
       setTimeout(function () {
         el.removeAttribute('data-reveal');
@@ -517,7 +483,7 @@
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        reveal(entry.target, true);
+        reveal(entry.target);
         io.unobserve(entry.target);
       });
     }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
@@ -702,10 +668,9 @@
     if (reduceMotion) { section.classList.add('is-static'); return; }
 
     var burst = VFX && canvas ? VFX.fx(canvas) : null;
-    var geo = { pos: [], stageL: 0, stageW: 0, stageH: 0 };
+    var geo = { pos: [], stageW: 0, stageH: 0 };
     onMeasure(function () {
       var s = stage.getBoundingClientRect();
-      geo.stageL = s.left;
       geo.stageW = s.width;
       geo.stageH = s.height;
       geo.pos = hearts.map(function (el) {
@@ -784,26 +749,11 @@
       if (!burst || !geo.pos[i]) return;
       burst.burst(geo.pos[i].x, geo.pos[i].y, preset, { scale: scale || 1 });
     }
-    function heartX(i) {
-      return geo.pos[i] ? geo.stageL + geo.pos[i].x : window.innerWidth / 2;
-    }
-    function stealBurst()  { burstAt(10, 'gold', 0.8); sound('steal', { x: heartX(10) }); }
-    function loseBurst()   { burstAt(10, 'heart', 0.9); sound('lose', { x: heartX(10) }); }
-    function deadBurst()   { for (var q = 0; q < 10; q += 3) burstAt(q, 'dust', 0.6); sound('death'); }
-    function reviveBurst() { for (var r = 0; r < 10; r += 2) burstAt(r, 'gold', 0.6); sound('totem'); }
-    function thirtyBurst() { for (var q = 20; q < 30; q += 3) burstAt(q, 'gold', 0.5); sound('levelup'); }
-    function bottleSound() { sound('beacon'); }
-    function enchantSound() { sound('enchant'); }
-
-    function heartSound(i, from, to) {
-      if (to === 'full' && from === 'empty') {
-        note(i < 10 ? i : 5 + Math.round((i - 10) * 0.55), { inst: 'pling', x: heartX(i), gain: 0.8 });
-      } else if (to === 'flash') {
-        sound('hurt', cur === 3 ? { x: heartX(i), step: 9 - i, gain: 0.6 } : { x: heartX(i) });
-      } else if (to === 'gold' && cur === 4) {
-        note(i, { inst: 'bell', x: heartX(i), gain: 0.7 });
-      }
-    }
+    function stealBurst()  { burstAt(10, 'gold', 0.8); }
+    function loseBurst()   { burstAt(10, 'heart', 0.9); }
+    function deadBurst()   { for (var q = 0; q < 10; q += 3) burstAt(q, 'dust', 0.6); }
+    function reviveBurst() { for (var r = 0; r < 10; r += 2) burstAt(r, 'gold', 0.6); }
+    function thirtyBurst() { for (var q = 20; q < 30; q += 3) burstAt(q, 'gold', 0.5); }
 
     function statesFor(s, t) {
       var out = [];
@@ -856,7 +806,6 @@
       var want = statesFor(s, t);
       for (var i = 0; i < N; i++) {
         if (want[i] !== states[i]) {
-          if (play) heartSound(i, states[i], want[i]);
           hearts[i].setAttribute('data-state', want[i]);
           states[i] = want[i];
         }
@@ -892,9 +841,7 @@
         fire('drain' + k, s > 3 || (s === 3 && t > DRAIN_AT[k] + 0.03), play, drainBurst[k]);
       }
       fire('dead', s > 3 || (s === 3 && t > 0.78), play, deadBurst);
-      fire('bottle', s > 4 || (s === 4 && t > 0.08), play, bottleSound);
       fire('revive', s > 4 || (s === 4 && t > 0.34), play, reviveBurst);
-      fire('full', s === 5 && t > 0.72, play, enchantSound);
       fire('thirty', s === 5 && t > 0.9, play, thirtyBurst);
       lastP = p;
     }
@@ -960,17 +907,10 @@
     }
     if (reduceMotion) { show(to); return; }
     var t0 = 0;
-    var shown = '';
-    var r = el.getBoundingClientRect();
-    var x = r.left + r.width / 2;
     function tick(now) {
       if (!t0) t0 = now;
       var k = Math.min(1, (now - t0) / dur);
       show(from + (to - from) * (k >= 1 ? 1 : 1 - Math.pow(2, -10 * k)));
-      if (el.textContent !== shown) {
-        if (shown) sound('tick', { k: k, x: x });
-        shown = el.textContent;
-      }
       if (k < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
@@ -990,40 +930,18 @@
     $$('[data-sequence]').forEach(function (list) {
       var items = $$(':scope > *', list);
       var gap = parseInt(list.getAttribute('data-sequence'), 10) || 700;
-      var boot = list.classList.contains('boot');
-      var chat = list.classList.contains('chat');
       list.classList.add('is-waiting');
       var host = list.closest('[data-reveal]') || list;
       onReveal(host, function () {
         items.forEach(function (item, i) {
-          setTimeout(function () {
-            item.classList.add('is-in');
-            if (reduceMotion) return;
-            var r = item.getBoundingClientRect();
-            var x = r.left + r.width / 2;
-            if (boot) note(5 + i, { inst: 'bit', x: x, gain: 0.8 });
-            else if (chat && item.classList.contains('chat__system')) note(8, { inst: 'pling', x: x, gain: 0.6 });
-            else if (chat) sound('chat', { x: x });
-          }, 350 + i * gap);
+          setTimeout(function () { item.classList.add('is-in'); }, 350 + i * gap);
         });
       });
     });
 
     $$('[data-xpfill]').forEach(function (el) {
       var host = el.closest('[data-reveal]') || el;
-      onReveal(host, function () {
-        el.classList.add('is-full');
-        if (reduceMotion) return;
-        var r = el.getBoundingClientRect();
-        for (var i = 0; i < 7; i++) {
-          (function (k) {
-            setTimeout(function () {
-              sound('xp', { x: r.left + r.width * (0.15 + k * 0.12) });
-            }, 260 + k * 150);
-          })(i);
-        }
-        setTimeout(function () { sound('levelup', { x: r.left + r.width }); }, 1500);
-      });
+      onReveal(host, function () { el.classList.add('is-full'); });
     });
 
     $$('[data-cycle]').forEach(function (list) {
@@ -1192,20 +1110,11 @@
     var motdIdle = motd ? motd.textContent : '';
     var busy = false;
     var last = 0;
-    var loud = false;
-    var said = null;
-
-    function cardX() {
-      var r = card.getBoundingClientRect();
-      return r.left + r.width / 2;
-    }
 
     function state(name, label) {
       card.classList.remove('is-checking', 'is-online', 'is-offline', 'is-unknown');
       card.classList.add('is-' + name);
       if (stateText) stateText.textContent = label;
-      if (loud || (said && said !== name)) sound(name, { x: cardX() });
-      said = name;
     }
 
     function paint(s) {
@@ -1234,28 +1143,25 @@
       if (checked) checked.textContent = 'Check failed';
     }
 
-    function check(heard) {
+    function check() {
       if (busy) return;
       busy = true;
-      loud = !!heard;
       last = Date.now();
       card.classList.add('is-checking');
       if (refresh) refresh.classList.add('is-spinning');
-      if (loud) sound('ping', { x: cardX() });
       var done = function () {
         busy = false;
-        loud = false;
         setTimeout(function () { if (refresh) refresh.classList.remove('is-spinning'); }, 400);
       };
       getServer(true).then(paint, fail).then(done, done);
     }
 
-    check(true);
-    setInterval(function () { if (!document.hidden) check(false); }, STATUS_EVERY);
+    check();
+    setInterval(function () { if (!document.hidden) check(); }, STATUS_EVERY);
     document.addEventListener('visibilitychange', function () {
-      if (!document.hidden && Date.now() - last >= STATUS_EVERY) check(false);
+      if (!document.hidden && Date.now() - last >= STATUS_EVERY) check();
     });
-    if (refresh) refresh.addEventListener('click', function () { check(true); });
+    if (refresh) refresh.addEventListener('click', check);
   }
 
   var VOTE_KEY = 'crab-votes';
@@ -1297,18 +1203,12 @@
       if (!link) return;
       link.addEventListener('click', function (e) {
         var id = row.getAttribute('data-vote');
-        var before = rows.filter(function (r2) { return r2.classList.contains('is-voted'); }).length;
         saved[id] = Date.now();
         writeJSON(local, VOTE_KEY, saved);
         paint();
         var r = link.getBoundingClientRect();
         var x = e.clientX || r.left + r.width / 2;
         if (VFX) VFX.pop(x, e.clientY || r.top, 'xp');
-        sound('xp', { x: x });
-        var after = rows.filter(function (r2) { return r2.classList.contains('is-voted'); }).length;
-        if (after === rows.length && before < rows.length) {
-          setTimeout(function () { whenSeen(function () { sound('levelup'); }); }, 320);
-        }
         toast('Vote opened', 'Come back to ' + (row.getAttribute('data-name') || 'this site') + ' in 24 hours', 'media/icons/glyph/star.png');
       });
     });
@@ -1502,7 +1402,6 @@
 
     initSmoothScroll();
     initTopbar();
-    initScrollSound();
     initMenu();
     initCopy();
     initReveals();

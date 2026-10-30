@@ -21,7 +21,6 @@
       var c = d.documentElement.classList;
       c.add('js');
       try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
-      try { if (localStorage.getItem('crab-sound') === 'off') c.add('sound-off'); } catch (e) {}
     })(document);
   </script>
   <script type="speculationrules">
@@ -61,9 +60,6 @@
         <li class="topbar__panel-cta"><a class="mc-btn" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
       </ul>
     </nav>
-    <button class="sound" type="button" data-sound-toggle aria-pressed="true" aria-label="Sound">
-      <span class="sound__icon" aria-hidden="true"><span class="sound__bars"><i></i><i></i><i></i></span></span>
-    </button>
     <a class="mc-btn mc-btn--sm topbar__cta" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
     <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
       <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
@@ -199,7 +195,6 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="javascript/sfx.js" defer></script>
 <script data-cfasync="false" src="javascript/vfx.js" defer></script>
 <script data-cfasync="false" src="javascript/crab.js" defer></script>
 </body>
