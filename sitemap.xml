@@ -32,7 +32,13 @@
   </url>
   <url>
     <loc>https://crabsmp.net/privacy</loc>
-    <lastmod>2026-09-28</lastmod>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://crabsmp.net/terms</loc>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

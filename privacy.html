@@ -99,7 +99,7 @@
       <p class="label" data-enter>Legal</p>
       <h1 class="display-1" id="privacy-title" data-enter data-split>Privacy <em>policy.</em></h1>
       <p class="lead" data-enter>How we handle your data, clearly and honestly.</p>
-      <p class="legal-hero__dates" data-enter>Effective <strong>1 January 2026</strong>. Last updated <strong>30 October 2026</strong>.</p>
+      <p class="legal-hero__dates" data-enter>Effective <strong>1 January 2026</strong>. Last updated <strong>3 November 2026</strong>.</p>
     </div>
   </section>
 
@@ -126,29 +126,34 @@
         <section class="policy" id="who-we-are">
           <span class="policy__num" aria-hidden="true">01</span>
           <h2>Who We Are</h2>
-          <p>CrabSMP ("<strong>we</strong>", "<strong>us</strong>", "<strong>our</strong>") operates the Minecraft server network at <strong>play.crabsmp.net</strong> and the website at <strong>crabsmp.net</strong>. The server is owned and managed by the CrabSMP team, led by Ozorical.</p>
-          <p>This Privacy Policy explains what personal data we collect when you visit our website, join our Minecraft server, or interact with our community, and how we use it.</p>
+          <p>CrabSMP ("<strong>we</strong>", "<strong>us</strong>", "<strong>our</strong>") operates the Minecraft Bedrock server at <strong>play.crabsmp.net</strong> and the website at <strong>crabsmp.net</strong>. CrabSMP is run by Ozorical, who owns and publishes the server and is the controller of the personal data described in this policy. You can reach him at <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a>.</p>
+          <p><strong>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</strong></p>
+          <p>CrabSMP, not Mojang or Microsoft, is responsible for the privacy and protection of the data described here. Mojang and Microsoft have no say in how we handle it and cannot answer for it.</p>
+          <p>This policy explains what personal data we collect when you visit our website, join our Minecraft server, or use our Discord, and how we use it. Our <a href="terms.html">Terms of Service</a> cover the rules of using CrabSMP.</p>
         </section>
 
         <section class="policy" id="data-collected">
           <span class="policy__num" aria-hidden="true">02</span>
           <h2>Data We Collect</h2>
-          <p>We collect limited data necessary to operate the server and improve the experience:</p>
+          <p>We collect what we need to run the server, keep it fair, and deliver what you buy or earn:</p>
 
           <h3>When you visit this website</h3>
           <ul class="policy-list">
-            <li><strong>IP address</strong>: logged temporarily by our web host for security and abuse prevention.</li>
-            <li><strong>Browser &amp; device info</strong>: standard web server logs (user agent, page requests, referrer). Not linked to your identity.</li>
-            <li><strong>Voluntary form data</strong>: if you submit a contact form or join a mailing list, we store your email address.</li>
+            <li><strong>IP address and request details</strong>: Cloudflare hosts the website and sees your IP address, browser, the pages you request and the page you came from, in its logs. We do not link these to your player account.</li>
+            <li><strong>Server status</strong>: the live status on the home and status pages comes from a small Cloudflare worker on crabsmp.net, so those requests are covered by the same logs.</li>
           </ul>
 
           <h3>When you play on CrabSMP</h3>
           <ul class="policy-list">
-            <li><strong>Minecraft username &amp; XUID</strong>: your player name and unique player identifier (XUID), required to identify your account and save game progress.</li>
-            <li><strong>IP address</strong>: we do <strong>not</strong> have access to your IP address. Connections to the game server are handled through Verixen (<a href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">dashboard.verixen.com</a>); any collection or processing of IP addresses is governed by Verixen&rsquo;s own terms and privacy policy.</li>
-            <li><strong>In-game activity</strong>: chat logs, inventory, economy transactions, and playtime. Used to prevent cheating and resolve disputes.</li>
-            <li><strong>Stored game data</strong>: to operate the server we save the following in our database: your <strong>Enderchest</strong> contents, <strong>Inventory</strong> contents, <strong>Ranks</strong>, <strong>Player name</strong>, and <strong>XUID</strong>.</li>
-            <li><strong>Purchase records</strong>: if you buy a rank or token bundle, the transaction reference and the rank granted are stored. Payment card details are never handled by us (see <a href="#third-parties">Third-Party Services</a>).</li>
+            <li><strong>Identity</strong>: your Minecraft username, your Xbox user ID (XUID), your client UUID, and when we first and last saw you.</li>
+            <li><strong>Device type</strong>: we read which kind of device you play on (Windows, Xbox and so on). It is kept as a tag on your player and shown on your nametag and in the Discord player list.</li>
+            <li><strong>IP address</strong>: connections to the game server pass through Verixen (<a href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">dashboard.verixen.com</a>), which handles them under its own terms and privacy policy. While you are online the server software may be able to see the address you connect from, and a data request export can include it. We do not keep your IP address in our player database. The exception is voting: vote sites pass us an address with each vote, which we do store (see below).</li>
+            <li><strong>Game progress</strong>: kills, deaths, level, experience, coins, bounty, blocks broken and placed, playtime, ranks, and the contents of your inventory, armour, off-hand, ender chest and vaults. Also your nickname, bio, faction and faction role, homes, battle pass, quests, settings, mail and auction listings.</li>
+            <li><strong>Chat</strong>: in-game chat is relayed to a channel in our Discord with your player name and rank.</li>
+            <li><strong>Block history</strong>: a record of the blocks you break, place and use, and the containers you open, with the time, dimension and coordinates. It lets staff look into griefing and roll damage back.</li>
+            <li><strong>Moderation records</strong>: bans and mutes, and the actions that automatic moderation and staff take, which are written to a private staff log in Discord.</li>
+            <li><strong>Votes</strong>: your player name, the vote site, the day and time, whether the vote was verified, whether you have claimed the reward, and the address the vote site sent with the vote. In the standard voting protocol that address is normally the voter&rsquo;s IP address. We also keep your vote streak.</li>
+            <li><strong>Purchase records</strong>: if you buy a rank or token bundle, the transaction reference and the item granted are stored. The server asks Tebex for your pending purchases using your gamertag. Payment card details are never handled by us (see <a href="#third-parties">Third-Party Services</a>).</li>
           </ul>
 
           <div class="callout">
@@ -156,51 +161,63 @@
             <p>One account is intended for use on a single device. CrabSMP does not support using one account across multiple devices: if you join from a different device than the one you normally play on, you do so at your own risk and may lose your progress, items, or other stored data. You accept full responsibility for any such loss.</p>
           </div>
 
-          <h3>When you join our Discord</h3>
-          <p>Discord's own Privacy Policy governs data collected through their platform. We do not export or store Discord member data separately.</p>
+          <h3>When you use our Discord</h3>
+          <p>Discord&rsquo;s own Privacy Policy governs data collected through its platform. Our bot also keeps some records of its own in our database:</p>
+          <ul class="policy-list">
+            <li><strong>Linked accounts</strong>: if you link your Minecraft account, your Discord ID and tag, your player name and when you linked.</li>
+            <li><strong>Invites</strong>: the invite codes members create, who joined with which code, when they joined and left, and the invite rewards claimed.</li>
+            <li><strong>Creator submissions</strong>: if you send in a video, your Discord ID and tag, your player name, the video link, the decision and who made it.</li>
+          </ul>
         </section>
 
         <section class="policy" id="how-we-use">
           <span class="policy__num" aria-hidden="true">03</span>
           <h2>How We Use Your Data</h2>
+          <p>Under the UK GDPR we need a lawful basis for each use. Ours are:</p>
           <ul class="policy-list">
-            <li>To run and maintain the Minecraft server and website.</li>
-            <li>To enforce our <a href="index.html#rules">rules</a> and handle moderation actions (bans, mutes, appeals).</li>
-            <li>To deliver purchased items (ranks, tokens) to your account.</li>
-            <li>To send service-related emails (e.g., store updates) if you opted in.</li>
-            <li>To investigate and prevent fraud, abuse, and security threats.</li>
-            <li>To improve server performance and fix bugs.</li>
+            <li><strong>Running the service</strong> (contract): to run the server and website, save your progress, deliver purchased items, and give out vote, invite and creator rewards.</li>
+            <li><strong>Keeping the server safe and fair</strong> (legitimate interests): to enforce our <a href="index.html#rules">rules</a> and <a href="terms.html">Terms of Service</a>, handle bans, mutes and appeals, review block history, prevent cheating, duplication, fraud and abuse, and fix bugs. We have weighed this against your privacy and keep only what staff need.</li>
+            <li><strong>Purchase records</strong> (legal obligation): we keep records of purchases for financial and legal compliance.</li>
+            <li><strong>Anything optional</strong> (consent): for example linking your Discord account. You can withdraw consent at any time by unlinking or by emailing us.</li>
           </ul>
-          <p>We do <strong>not</strong> sell your data, serve targeted advertisements, or use your data for automated profiling.</p>
+          <p>We do <strong>not</strong> sell your data, serve targeted advertisements, or profile you for advertising.</p>
         </section>
 
         <section class="policy" id="data-sharing">
           <span class="policy__num" aria-hidden="true">04</span>
           <h2>Data Sharing</h2>
-          <p>We do not sell or rent your personal data to third parties. We may share limited data in the following circumstances:</p>
+          <p>We do not sell or rent your personal data. We share limited data in the following circumstances:</p>
           <ul class="policy-list">
-            <li><strong>Service providers</strong>: hosting companies and payment processors that help us operate (bound by data processing agreements).</li>
+            <li><strong>Service providers</strong>: the companies listed under <a href="#third-parties">Third-Party Services</a>, which host, deliver, pay for or display parts of CrabSMP.</li>
             <li><strong>Legal obligations</strong>: if required by law or to protect the rights and safety of CrabSMP and its players.</li>
-            <li><strong>Moderation networks</strong>: shared ban lists (Minecraft username / UUID only) with partner networks to protect the community.</li>
+            <li><strong>Moderation networks</strong>: shared ban lists (Minecraft username and UUID only) with partner networks to protect the community.</li>
           </ul>
+          <p>Discord, Cloudflare, Tebex and PayPal may process data outside the UK and the European Economic Area. Their own privacy policies describe the safeguards they use.</p>
         </section>
 
         <section class="policy" id="cookies">
           <span class="policy__num" aria-hidden="true">05</span>
           <h2>Cookies &amp; Tracking</h2>
-          <p>This website uses <strong>no third-party tracking cookies</strong> and no analytics platforms (e.g., Google Analytics) that profile you across the web.</p>
-          <p>This website sets <strong>no cookies of its own</strong>. It keeps a few small preferences in your browser&rsquo;s own storage instead: whether you have seen the welcome intro, when you last opened each voting site, and a copy of the live server and Discord figures for two minutes, so moving between pages does not ask again. None of it is personal, and none of it leaves your browser. Clearing your browser&rsquo;s site data removes it.</p>
-          <p>The live Discord figures and member avatars on the homepage load straight from Discord, which may set its own cookies. You can block these in your browser settings.</p>
+          <p>This website uses <strong>no third-party tracking cookies</strong> and no analytics platforms (such as Google Analytics) that profile you across the web.</p>
+          <p>This website sets <strong>no cookies of its own</strong>. It keeps a few small items in your browser&rsquo;s own storage instead:</p>
+          <ul class="policy-list">
+            <li><strong>Session storage</strong> (gone when you close the tab): a marker that you have already opened the site this visit, and a copy of the live server and Discord figures for two minutes, so moving between pages does not ask again.</li>
+            <li><strong>Local storage</strong> (stays until you clear it): whether you have seen the welcome intro, and when you last opened each voting site, so the Vote page can show when each one is ready again.</li>
+          </ul>
+          <p>None of it is personal and none of it leaves your browser. Clearing your browser&rsquo;s site data removes it.</p>
+          <p>Some things load from other companies, which can see your IP address when your browser asks for them: the live Discord figures and member avatars on the home page (Discord), and the photo of Ozorical on the home page (Netlify). Discord may set its own cookies. You can block these in your browser settings.</p>
         </section>
 
         <section class="policy" id="data-retention">
           <span class="policy__num" aria-hidden="true">06</span>
           <h2>Data Retention</h2>
           <ul class="policy-list">
-            <li><strong>Connection &amp; IP logs</strong>: handled and retained by our infrastructure provider Verixen, not by us; see Verixen&rsquo;s own policy via <a href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">dashboard.verixen.com</a>.</li>
-            <li><strong>In-game data (player name, XUID, inventory, enderchest, ranks, economy)</strong>: retained for the lifetime of your account. Deleted upon written request (see <a href="#your-rights">Your Rights</a>).</li>
+            <li><strong>Connection &amp; IP logs</strong>: handled and retained by our infrastructure providers, Verixen for the game server (see <a href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">dashboard.verixen.com</a>) and Cloudflare for the website, not by us.</li>
+            <li><strong>In-game and Discord records</strong> (identity, progress, inventory, ender chest, vaults, ranks, linked accounts, invites, creator submissions): kept for the lifetime of your account. Deleted on request (see <a href="#your-rights">Your Rights</a>).</li>
+            <li><strong>Votes</strong>, including the address sent with each vote: we do not delete them automatically, so they are kept for the lifetime of your account. You can ask us to remove them.</li>
+            <li><strong>Block history</strong>: deleted automatically after 30 days.</li>
+            <li><strong>Chat relayed to Discord</strong>: kept in Discord until it is deleted, under Discord&rsquo;s own retention rules.</li>
             <li><strong>Purchase records</strong>: retained for 7 years for financial and legal compliance.</li>
-            <li><strong>Email addresses</strong>: retained until you unsubscribe or request deletion.</li>
             <li><strong>Ban / moderation records</strong>: retained indefinitely for community safety.</li>
           </ul>
         </section>
@@ -215,8 +232,10 @@
             <li><strong>Erasure</strong>: request deletion of your data (subject to our retention obligations).</li>
             <li><strong>Objection</strong>: object to certain uses of your data.</li>
             <li><strong>Portability</strong>: request your data in a machine-readable format.</li>
+            <li><strong>Withdrawing consent</strong>: where we rely on your consent, take it back at any time.</li>
           </ul>
-          <p>To exercise any of these rights, contact us at <a href="#contact">the address below</a> or open a ticket in our Discord. We will respond within 30 days.</p>
+          <p>To exercise any of these rights, email <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a> or open a ticket in our Discord (see <a href="#contact">Contact Us</a>). We may ask you to confirm the account is yours first. Our staff can export everything we hold about a player and erase it, and we will respond within 30 days.</p>
+          <p>If you are unhappy with how we have handled your data, you can complain to the UK Information Commissioner&rsquo;s Office at <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>. We would like the chance to put things right first.</p>
           <div class="callout">
             <i class="i i-info" aria-hidden="true"></i>
             <p>Note: Moderation records (bans, mutes) and purchase records are exempt from erasure requests due to community safety and legal obligations respectively.</p>
@@ -226,8 +245,8 @@
         <section class="policy" id="children">
           <span class="policy__num" aria-hidden="true">08</span>
           <h2>Children's Privacy</h2>
-          <p>CrabSMP is a Minecraft server. We recognise that many of our players may be under 18. We do not knowingly collect personal information beyond what is described in this policy, and we do not display targeted advertising to any user.</p>
-          <p>If you are a parent or guardian and believe your child has provided us with personal data without your consent, please <a href="#contact">contact us</a> and we will take appropriate steps to remove it.</p>
+          <p>CrabSMP is a Minecraft server, and many of our players are young. You must be old enough to play Minecraft under Mojang&rsquo;s rules. If you are under the age of digital consent in your country (13 in the UK), you may only use CrabSMP with the involvement of a parent or guardian. We do not knowingly collect personal information beyond what is described in this policy, and we do not display targeted advertising to any user.</p>
+          <p>If you are a parent or guardian and believe your child has provided us with personal data without your consent, please <a href="#contact">contact us</a>. Email <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a> and we will remove it.</p>
         </section>
 
         <section class="policy" id="third-parties">
@@ -239,28 +258,21 @@
               <span class="party__icon"><img class="glyph" src="media/icons/glyph/shield.png" alt="" /></span>
               <div>
                 <strong>Verixen</strong>
-                <p>Server hosting and proxy / anti-cheat. Handles all connections to the game server, including IP addresses, under <a href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">Verixen&rsquo;s own terms and privacy policy</a>. We do not have access to player IP addresses.</p>
+                <p>Server hosting, proxy and anti-cheat. Verixen sits in front of the game server and handles connections to it, under <a href="https://dashboard.verixen.com" target="_blank" rel="noopener noreferrer">Verixen&rsquo;s own terms and privacy policy</a>. Any connection and IP logs it keeps are its own.</p>
               </div>
             </div>
             <div class="party">
               <span class="party__icon"><i class="i i--3 i-discord" aria-hidden="true"></i></span>
               <div>
                 <strong>Discord</strong>
-                <p>Community platform. The homepage shows live figures from Discord&rsquo;s public server widget, loaded by your browser straight from Discord. Discord&rsquo;s Privacy Policy governs data collected through their service.</p>
+                <p>Our community platform and bot. In-game chat is relayed to a Discord channel, staff and automatic moderation actions go to a private staff log, and the player list is posted there. The home page also shows live figures from Discord&rsquo;s public server widget, loaded by your browser straight from Discord. Discord&rsquo;s Privacy Policy governs data collected through its service.</p>
               </div>
             </div>
             <div class="party">
               <span class="party__icon"><img class="glyph" src="media/icons/glyph/shop.png" alt="" /></span>
               <div>
                 <strong>Tebex</strong>
-                <p>Our store platform at <strong>store.crabsmp.net</strong>. Tebex runs the entire checkout, so payment card data is handled by them and never by us. We only receive a transaction reference and the purchased item details. Tebex&rsquo;s own privacy policy governs data collected during checkout.</p>
-              </div>
-            </div>
-            <div class="party">
-              <span class="party__icon"><img class="glyph" src="media/icons/glyph/mt.png" alt="" /></span>
-              <div>
-                <strong>VM6</strong>
-                <p>The VPS management software our server runs on. It is used for provisioning and administering the machine itself, not for handling player data.</p>
+                <p>Our store platform at <strong>store.crabsmp.net</strong>. Tebex runs the entire checkout, so payment card data is handled by them and never by us. We receive a transaction reference and the purchased item details, and the server calls Tebex&rsquo;s plugin service with your gamertag to collect pending purchases. Tebex&rsquo;s own privacy policy governs data collected during checkout.</p>
               </div>
             </div>
             <div class="party">
@@ -271,10 +283,38 @@
               </div>
             </div>
             <div class="party">
-              <span class="party__icon"><img class="glyph" src="media/icons/glyph/revive_beacon.png" alt="" /></span>
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/billboard.png" alt="" /></span>
               <div>
-                <strong>mcstatus.io and mcsrvstat.us</strong>
-                <p>Public server status services. To show whether the server is online and how many are playing, your browser asks them to check <strong>play.crabsmp.net</strong>. Like any website, they can see the IP address the request comes from; nothing else about you is sent.</p>
+                <strong>Cloudflare</strong>
+                <p>Hosts crabsmp.net and runs the worker that answers the server status requests. Its logs include visitor IP addresses, under <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare&rsquo;s privacy policy</a>.</p>
+              </div>
+            </div>
+            <div class="party">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/friends.png" alt="" /></span>
+              <div>
+                <strong>mc-api.io</strong>
+                <p>Draws the player skin images shown in some Discord messages. The server builds the image address with your player name, so mc-api.io and Discord can see it.</p>
+              </div>
+            </div>
+            <div class="party">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/star.png" alt="" /></span>
+              <div>
+                <strong>Vote sites</strong>
+                <p>minecraft.buzz, realmexplorer.xyz and minecraftpocket-servers.com. When you vote they see your IP address and your player name, and each sends us a vote that carries an address, as described above. Each has its own privacy policy.</p>
+              </div>
+            </div>
+            <div class="party">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/castle.png" alt="" /></span>
+              <div>
+                <strong>Netlify</strong>
+                <p>Hosts the photo of Ozorical shown on the home page. Your browser fetches it from Netlify, so Netlify sees your IP address.</p>
+              </div>
+            </div>
+            <div class="party">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/mt.png" alt="" /></span>
+              <div>
+                <strong>VM6</strong>
+                <p>The VPS management software our server runs on. It is used for provisioning and administering the machine itself, not for handling player data.</p>
               </div>
             </div>
           </div>
@@ -284,14 +324,21 @@
           <span class="policy__num" aria-hidden="true">10</span>
           <h2>Changes to This Policy</h2>
           <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page and post an announcement in our Discord server.</p>
-          <p>Continued use of CrabSMP after changes are posted constitutes your acceptance of the revised policy.</p>
+          <p>Continued use of CrabSMP after changes are posted constitutes your acceptance of the revised policy, as set out in our <a href="terms.html">Terms of Service</a>.</p>
         </section>
 
         <section class="policy" id="contact">
           <span class="policy__num" aria-hidden="true">11</span>
           <h2>Contact Us</h2>
-          <p>For any privacy-related questions, data requests, or concerns, please reach out via:</p>
+          <p>For any privacy-related questions, data requests, or concerns about the service or a purchase, please reach out via:</p>
           <div class="contacts">
+            <div class="contact">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/incoming.png" alt="" /></span>
+              <div>
+                <strong>Email</strong>
+                <span><a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></span>
+              </div>
+            </div>
             <a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener" class="contact">
               <span class="party__icon"><img class="glyph" src="media/icons/glyph/discord.png" alt="" /></span>
               <div>
@@ -299,13 +346,6 @@
                 <span>Open a support ticket in our server: fastest response.</span>
               </div>
             </a>
-            <div class="contact">
-              <span class="party__icon"><img class="glyph" src="media/icons/glyph/incoming.png" alt="" /></span>
-              <div>
-                <strong>Email</strong>
-                <span>Contact us via Discord DM to request the team's contact email.</span>
-              </div>
-            </div>
           </div>
           <p class="policy-note">We aim to respond to all privacy requests within <strong>30 days</strong>.</p>
         </section>
@@ -345,7 +385,8 @@
       <nav class="footer__col" aria-labelledby="f-more">
         <h2 id="f-more">More</h2>
         <ul>
-          <li><a href="index.html#rules">Rules &amp; terms</a></li>
+          <li><a href="index.html#rules">Rules</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
           <li><a href="privacy.html">Privacy</a></li>
           <li><a href="index.html?intro=1" data-replay-intro>Replay intro</a></li>
         </ul>
@@ -353,7 +394,8 @@
     </div>
     <div class="footer__legal">
       <p>&copy; 2026 CrabSMP. All rights reserved.</p>
-      <p>Not affiliated with Mojang or Microsoft.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
     </div>
   </div>
 </footer>
