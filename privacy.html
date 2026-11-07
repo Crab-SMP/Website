@@ -99,7 +99,7 @@
       <p class="label" data-enter>Legal</p>
       <h1 class="display-1" id="privacy-title" data-enter data-split>Privacy <em>policy.</em></h1>
       <p class="lead" data-enter>How we handle your data, clearly and honestly.</p>
-      <p class="legal-hero__dates" data-enter>Effective <strong>1 January 2026</strong>. Last updated <strong>3 November 2026</strong>.</p>
+      <p class="legal-hero__dates" data-enter>Effective <strong>1 January 2026</strong>. Last updated <strong>7 November 2026</strong>.</p>
     </div>
   </section>
 
@@ -117,6 +117,7 @@
           <li><a href="#your-rights">Your Rights</a></li>
           <li><a href="#children">Children's Privacy</a></li>
           <li><a href="#third-parties">Third-Party Services</a></li>
+          <li><a href="#use-of-ai">Our Use of AI</a></li>
           <li><a href="#changes">Changes to This Policy</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ol>
@@ -168,6 +169,7 @@
             <li><strong>Invites</strong>: the invite codes members create, who joined with which code, when they joined and left, and the invite rewards claimed.</li>
             <li><strong>Creator submissions</strong>: if you send in a video, your Discord ID and tag, your player name, the video link, the decision and who made it.</li>
           </ul>
+          <p>Our separate AI chat bot, the CrabSMP Bot, reads the channels it can see and keeps its own memory of members who talk to it. This is covered in full under <a href="#use-of-ai">Our Use of AI</a>.</p>
         </section>
 
         <section class="policy" id="how-we-use">
@@ -217,6 +219,7 @@
             <li><strong>Votes</strong>, including the address sent with each vote: we do not delete them automatically, so they are kept for the lifetime of your account. You can ask us to remove them.</li>
             <li><strong>Block history</strong>: deleted automatically after 30 days.</li>
             <li><strong>Chat relayed to Discord</strong>: kept in Discord until it is deleted, under Discord&rsquo;s own retention rules.</li>
+            <li><strong>CrabSMP Bot memory</strong>: your recent messages to the bot are trimmed as newer ones arrive, and its notes about you stay until you ask it to forget them. Say &ldquo;forget everything about me&rdquo; to the bot to wipe both at once (see <a href="#use-of-ai">Our Use of AI</a>). The bot&rsquo;s view of recent channel messages is held in memory only and is lost when it restarts.</li>
             <li><strong>Purchase records</strong>: retained for 7 years for financial and legal compliance.</li>
             <li><strong>Ban / moderation records</strong>: retained indefinitely for community safety.</li>
           </ul>
@@ -297,6 +300,20 @@
               </div>
             </div>
             <div class="party">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/compass.png" alt="" /></span>
+              <div>
+                <strong>DuckDuckGo</strong>
+                <p>The CrabSMP Bot sends it short search queries when it needs outside information. The queries come from our computer, not yours, but they can contain words from your message. See <a href="https://duckduckgo.com/privacy" target="_blank" rel="noopener noreferrer">DuckDuckGo&rsquo;s privacy policy</a>.</p>
+              </div>
+            </div>
+            <div class="party">
+              <span class="party__icon"><img class="glyph" src="media/icons/glyph/sparkles.png" alt="" /></span>
+              <div>
+                <strong>Anthropic</strong>
+                <p>Makes Claude, the AI coding assistant we use to help build CrabSMP. It receives the code and documentation we work on with it, under <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic&rsquo;s privacy policy</a>. It is not part of the running website, server or bot.</p>
+              </div>
+            </div>
+            <div class="party">
               <span class="party__icon"><img class="glyph" src="media/icons/glyph/star.png" alt="" /></span>
               <div>
                 <strong>Vote sites</strong>
@@ -320,15 +337,40 @@
           </div>
         </section>
 
-        <section class="policy" id="changes">
+        <section class="policy" id="use-of-ai">
           <span class="policy__num" aria-hidden="true">10</span>
+          <h2>Our Use of AI</h2>
+          <p>We use AI in two places: to help build CrabSMP, and in a chat bot on our Discord. This website does not run AI on your visit, and the game server does not use an AI model.</p>
+
+          <h3>Building CrabSMP</h3>
+          <p>We use AI coding assistants, such as Anthropic&rsquo;s Claude Code, to help write and review the code and documentation for this website, the game server and our Discord bot. The assistants run on our own computers and send the code they are working on to their provider. Our aim is to keep player data out of them: they work on source code and documentation, not on the player database. They are not part of the running website or server and never see you when you visit or play.</p>
+
+          <h3>The CrabSMP Bot</h3>
+          <p>Our Discord server has an AI chat bot, the CrabSMP Bot. It answers questions about CrabSMP and chats about other things. A language model writes its replies, so they can be wrong. Treat it as a helper, not as staff: it cannot ban, mute or punish anyone, and it decides nothing about your account, purchases or appeals. For those, <a href="#contact">contact us</a>.</p>
+          <ul class="policy-list">
+            <li><strong>Where it runs</strong>: the model runs on a computer we operate, using Ollama. Your messages are not sent to an AI company, and we do not use them to train or fine-tune a model.</li>
+            <li><strong>When it replies</strong>: when you mention it, in its own help channel, and in direct messages if we have turned that on. In a chat channel we choose, it may also join in unprompted.</li>
+            <li><strong>What it reads</strong>: it reads the messages in the channels it can see, from everyone, whether or not they are aimed at it. It keeps a short rolling window of the latest ones in memory only, so it can follow a conversation. That window is never saved to disk and is lost when the bot restarts.</li>
+            <li><strong>What it remembers about you</strong>: if you talk to it, it saves your Discord ID, your display name, your recent messages to it and its replies with the times, and short notes about you, such as what you like to be called, your platform, your faction or what you are building. They are kept in a file on that computer. Only the most recent messages are kept, and the notes stay until you ask it to forget them or newer notes push them out.</li>
+            <li><strong>Web search</strong>: for questions about the outside world it may send a short search query to DuckDuckGo. The model writes the query from your question, so words from your message can appear in it. It never searches for CrabSMP facts, which come from our own notes.</li>
+            <li><strong>Its log</strong>: while it runs, the start of each question and each search appears in a log window on our computer, with the sender&rsquo;s Discord name. We do not save that log to a file.</li>
+          </ul>
+          <div class="callout">
+            <i class="i i-warning" aria-hidden="true"></i>
+            <p>Each note the bot saves has to quote something you said, and code filters out private details such as age, location, school, health, family and contact details. That filter is automatic and can miss things, so do not tell the bot anything you would not post in the channel.</p>
+          </div>
+          <p>You control what it remembers. Tell it &ldquo;remember that&hellip;&rdquo; or &ldquo;forget that&hellip;&rdquo; to change a note, or &ldquo;forget everything about me&rdquo; to wipe your notes and history straight away. You can also email <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a> to have your entry exported or removed (see <a href="#your-rights">Your Rights</a>).</p>
+        </section>
+
+        <section class="policy" id="changes">
+          <span class="policy__num" aria-hidden="true">11</span>
           <h2>Changes to This Policy</h2>
           <p>We may update this Privacy Policy from time to time. When we do, we will update the "Last updated" date at the top of this page and post an announcement in our Discord server.</p>
           <p>Continued use of CrabSMP after changes are posted constitutes your acceptance of the revised policy, as set out in our <a href="terms.html">Terms of Service</a>.</p>
         </section>
 
         <section class="policy" id="contact">
-          <span class="policy__num" aria-hidden="true">11</span>
+          <span class="policy__num" aria-hidden="true">12</span>
           <h2>Contact Us</h2>
           <p>For any privacy-related questions, data requests, or concerns about the service or a purchase, please reach out via:</p>
           <div class="contacts">
