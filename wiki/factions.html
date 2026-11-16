@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Factions</title>
+  <meta name="description" content="How to make a CrabSMP faction: the command, roles, bank, home, shop upgrades, friendly fire and wars with wagers, explained step by step." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/factions" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Factions | CrabSMP Wiki" />
+  <meta property="og:description" content="Create a faction, run its bank and home, and go to war for coins." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/factions" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>PvP and teams</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/clan.png" alt="" /></span>
+        <div>
+          <h1>Factions</h1>
+          <p class="lead">Team up with up to 17 other players, share a bank and home, and fight wars for coins.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#create">Creating</a>
+      <a href="#command">Command</a>
+      <a href="#roles">Roles</a>
+      <a href="#bank">Bank</a>
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#land">Land and friendly fire</a>
+      <a href="#wars">Wars</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Creating a faction costs <strong>10,000 coins</strong>. Use <strong>/faction</strong> to open the menu.</li>
+        <li>A faction holds <strong>8 members</strong>, or up to <strong>18</strong> with bought slots.</li>
+        <li>The shared bank holds up to <strong>50,000,000 coins</strong>. Co-leaders can withdraw <strong>3 times an hour</strong> in total.</li>
+        <li><strong>No land is claimed</strong> by factions and nothing outside spawn is protected. Faction mates cannot hurt each other.</li>
+        <li>Wars last <strong>15 minutes</strong>, are started from the War button, and the most kills takes both wagers.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="create" aria-labelledby="create-title">
+      <h2 id="create-title">Creating a faction</h2>
+      <p>A faction is a team of up to 18 players with a shared bank, a shared home and a way to go to war with other factions. Run <button class="cmd" type="button" data-copy="/faction" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction</button> to open the faction menu, or create one straight from chat.</p>
+      <ol class="steps">
+        <li><strong>Have the coins</strong>Creating a faction costs <span class="money">10,000 coins</span>, taken from your own balance.</li>
+        <li><strong>Pick a name</strong>Names are 1 to 15 characters. You can rename later for <span class="money">25,000 coins</span>.</li>
+        <li><strong>Run the command</strong><button class="cmd" type="button" data-copy="/faction create " data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction create &lt;name&gt;</button></li>
+      </ol>
+      <div class="split">
+        <p>You can only be in one faction at a time. The server holds up to 500 factions. Each faction keeps a log of its last 100 events, which you can read from the Logs button in the menu.</p>
+        <dl class="facts">
+          <dt>Create</dt><dd><span class="money">10,000 coins</span></dd>
+          <dt>Rename</dt><dd><span class="money">25,000 coins</span></dd>
+          <dt>Name length</dt><dd><b>1 to 15</b> characters</dd>
+          <dt>Faction log</dt><dd>Last <b>100</b> entries</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="command" aria-labelledby="command-title">
+      <h2 id="command-title">The faction command</h2>
+      <p><button class="cmd" type="button" data-copy="/faction" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction</button> with no action opens the menu. The menu has buttons for Stats, Bank, Home, Logs, Shop, War, Manage, Invite and Leave. These are the actions you can type.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Action</th><th scope="col">What it does</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction menu" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction menu</button></th><td>Opens the faction menu. <span class="mc">open</span> does the same.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction create " data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction create &lt;name&gt;</button></th><td>Creates a faction with that name.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction invite " data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction invite &lt;player&gt;</button></th><td>Opens the invite menu. Admins and above only.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction invites" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction invites</button></th><td>Shows your pending invites so you can accept or reject them. <span class="mc">join</span> and <span class="mc">accept</span> do the same.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction info" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction info</button></th><td>Shows your faction's stats.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction manage" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction manage</button></th><td>Opens the management menu. Co-leaders and the leader only.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction home" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction home</button></th><td>Teleports you to the faction home. If there is no home yet, the leader is asked to set one.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction leave" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction leave</button></th><td>Opens the leave menu. If you are the leader it offers to disband.</td></tr>
+          <tr><th scope="row"><button class="cmd" type="button" data-copy="/faction disband" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction disband</button></th><td>Disbands the faction. Leader only.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="roles" aria-labelledby="roles-title">
+      <h2 id="roles-title">Roles and members</h2>
+      <p>Everyone in a faction has a role. The leader sets roles from Manage, then Members. A faction starts with 8 member slots and can grow to 18 by buying slots in the <a href="#shop">faction shop</a>.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Role</th><th scope="col">What they can do</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Member</th><td>Put coins in the bank, use the faction home, buy from the faction shop.</td></tr>
+          <tr><th scope="row">Admin</th><td>Everything a member can, plus invite players.</td></tr>
+          <tr><th scope="row">Co-leader</th><td>Everything an admin can, plus withdraw from the bank, promote and demote, kick, rename the faction, start or answer a war and open Manage.</td></tr>
+          <tr><th scope="row">Leader</th><td>Everything a co-leader can, plus set, move or remove the home and disband the faction.</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="bullets">
+        <li>The leader cannot be kicked or demoted.</li>
+        <li>If the leader leaves, the first remaining member becomes the leader. If the last member leaves, the faction is deleted.</li>
+        <li>Invites do not expire. They stay until they are accepted, rejected, or the faction is full or gone.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="bank" aria-labelledby="bank-title">
+      <h2 id="bank-title">The faction bank</h2>
+      <p>Every member can pay coins into the shared bank. Only co-leaders and the leader can take coins out.</p>
+      <dl class="facts">
+        <dt>Bank cap</dt><dd><span class="money">50,000,000 coins</span>. A deposit that would go over the cap is trimmed and the rest stays with you.</dd>
+        <dt>Withdrawals</dt><dd><b>3 per hour</b> for the whole faction, not per player.</dd>
+        <dt>Shop and wars</dt><dd>Buying from the faction shop and putting coins on a war do not count as withdrawals.</dd>
+        <dt>Disbanding</dt><dd>The bank is split evenly between all members and sent to each of them by mail.</dd>
+      </dl>
+    </section>
+
+    <section class="guide-sec" id="home" aria-labelledby="home-title">
+      <h2 id="home-title">The faction home</h2>
+      <p>A faction has one shared home. The leader sets it, moves it or removes it. Any member can then teleport there with <button class="cmd" type="button" data-copy="/faction home" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction home</button>.</p>
+      <ul class="bullets">
+        <li>It cannot be set in a no build zone, or on or past the world border.</li>
+        <li>It uses the normal teleport countdown. Moving cancels it, being in <a href="combat.html">combat</a> stops it, and you cannot use it during a duel.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="shop" aria-labelledby="shop-title">
+      <h2 id="shop-title">The faction shop</h2>
+      <p>The Shop button in the faction menu sells two things, both paid from the faction bank. Any member can buy them.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Upgrade</th><th scope="col">Cost</th><th scope="col">What you get</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Extra member slot</th><td><span class="money">30,000 coins</span> for the first, then <span class="money">15,000 coins</span> more each time. The tenth slot costs <span class="money">165,000 coins</span>.</td><td>One more member, up to 10 extra slots.</td></tr>
+          <tr><th scope="row">Bank Interest I</th><td><span class="money">100,000 coins</span></td><td>1% a day on the bank.</td></tr>
+          <tr><th scope="row">Bank Interest II</th><td><span class="money">250,000 coins</span>. Needs Interest I first.</td><td>2% a day on the bank.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="split">
+        <p>Interest is paid once every 24 hours on up to <span class="money">500,000 coins</span> of the bank balance, and never takes the bank over its cap. That makes the most you can earn <span class="money">5,000 coins</span> a day with Interest I and <span class="money">10,000 coins</span> a day with Interest II.</p>
+        <dl class="facts">
+          <dt>Member limit</dt><dd><b>8</b> to start, up to <b>18</b></dd>
+          <dt>Interest I</dt><dd><b>1%</b> a day</dd>
+          <dt>Interest II</dt><dd><b>2%</b> a day</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="land" aria-labelledby="land-title">
+      <h2 id="land-title">Land, protection and friendly fire</h2>
+      <p>Factions do not claim land. There are no claims, no claim slots and no protected chests. Nothing outside spawn is protected, so build and store things with that in mind.</p>
+      <p>Members of the same faction can never hurt each other. Friendly fire is always off and there is no setting for it. Your faction mates can still be hurt by anyone else.</p>
+    </section>
+
+    <section class="guide-sec" id="wars" aria-labelledby="wars-title">
+      <h2 id="wars-title">Faction wars</h2>
+      <p>A war is a timed fight between two factions with coins on the line. Whoever gets the most kills wins both wagers. Wars are started from the War button in the faction menu; there is no command for it. Only co-leaders and the leader can start or answer one.</p>
+      <ol class="steps">
+        <li><strong>Pick a rival</strong>Choose a faction that is not already at war and has a co-leader or leader online.</li>
+        <li><strong>Set the wager</strong>Choose an amount from <span class="money">10,000 coins</span> to <span class="money">5,000,000 coins</span>. Both faction banks must hold that much.</li>
+        <li><strong>Wait for an answer</strong>The challenge lasts 2 minutes. An officer of the other faction can accept it in that time.</li>
+        <li><strong>The war starts</strong>Both wagers leave the banks and are held until the end. The war runs for 15 minutes, anywhere in the world. It is announced in chat, with a warning at 1 minute left.</li>
+        <li><strong>Count the kills</strong>Only kills between members of the two warring factions count. Duel deaths do not.</li>
+      </ol>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Outcome</th><th scope="col">What happens</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">One faction has more kills</th><td>That faction wins both wagers. If that would take its bank over the <span class="money">50,000,000 coins</span> cap, the extra goes back to the loser.</td></tr>
+          <tr><th scope="row">Tie, including 0 to 0</th><td>Both wagers are returned.</td></tr>
+          <tr><th scope="row">A faction disbands during the war</th><td>It forfeits and the other faction wins.</td></tr>
+        </tbody>
+      </table></div>
+      <p>A faction can only be in one war at a time. Wars carry on through a server restart.</p>
+    </section>
+
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Need a hand?</h2>
+        <p>Ask in the Discord if your faction or a war is not working as described here.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

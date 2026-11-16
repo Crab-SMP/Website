@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Plushies, heads and the podium</title>
+  <meta name="description" content="CrabSMP collectibles: all 91 plushies and their prices, how player heads drop and what they show, and how the spawn podium score is worked out." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/collectibles" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Plushies, heads and the podium | CrabSMP Wiki" />
+  <meta property="og:description" content="Plushies, player heads and the spawn podium." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/collectibles" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Progression</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/daily_rewards.png" alt="" /></span>
+        <div>
+          <h1>Plushies, heads and the podium</h1>
+          <p class="lead">Things to collect and show off: mob plushies, player heads and the top three at spawn.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#plushies">Plushies</a>
+      <a href="#plushie-list">Every plushie</a>
+      <a href="#heads">Player heads</a>
+      <a href="#podium">The podium</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>There are <strong>91 plushies</strong> in <strong>/shop</strong>: 2,500 coins each, 7,500 for the four bosses, and free with any Crab rank.</li>
+        <li>A player who dies drops their <strong>head</strong>, with when, where and how they died in the lore.</li>
+        <li>Heads and the podium show real skins, but only classic <strong>64x64 or 128x128</strong> skins.</li>
+        <li>The <strong>podium</strong> at spawn ranks the top three players by a score out of 100.</li>
+        <li>Coins count most, then duel wins, then kills and playtime. It updates every <strong>15 minutes</strong>.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="plushies" aria-labelledby="plushies-title">
+      <h2 id="plushies-title">Plushies</h2>
+      <div class="split">
+        <div>
+          <p>Plushies are decorative blocks shaped like mobs. Place one, then use it and it squeaks with a soft cloth sound plus that mob's own sound.</p>
+          <p>There are <strong>91</strong>. Buy them from <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button> in the Plushies category. They do not drop from crates, mobs or fishing, and you cannot sell them back.</p>
+        </div>
+        <dl class="facts">
+          <dt>Total</dt><dd><b>91</b> plushies</dd>
+          <dt>Price</dt><dd><span class="money">2,500 coins</span> each</dd>
+          <dt>Bosses</dt><dd><span class="money">7,500 coins</span> each</dd>
+          <dt>Crab ranks</dt><dd>Free with any Crab rank</dd>
+        </dl>
+      </div>
+      <p>CrabPlus, CrabExtra and CrabDemon all get plushies for free. See <a href="ranks.html">Ranks</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="plushie-list" aria-labelledby="plushie-list-title">
+      <h2 id="plushie-list-title">Every plushie</h2>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Shop page</th><th class="num">Count</th><th>Plushies</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Passive mobs</th><td class="num">36</td><td>Allay, Armadillo, Bat, Bee, Black Rabbit, Brown Rabbit, Camel, Cat, Chicken, Cow, Donkey, Goat, Horse, Iron Golem, Llama, Mooshroom, Mule, Ocelot, Panda, Parrot, Pig, Polar Bear, Red Fox, 'Salt' Rabbit, Sheep, Sniffer, Snow Golem, Strider, 'Toast' Rabbit, Villager, Wandering Trader, White Fox, White Rabbit, White Splotched Rabbit, Wolf, Yellow Rabbit</td></tr>
+          <tr><th scope="row">Aquatic mobs</th><td class="num">15</td><td>Axolotl, Cod, Cold Frog, Dolphin, Temperate Frog, Glow Squid, Guardian, Large Tropical Fish, Pufferfish, Salmon, Small Tropical Fish, Squid, Tadpole, Turtle, Warm Frog</td></tr>
+          <tr><th scope="row">Hostile mobs</th><td class="num">36</td><td>Blaze, Bogged, Breeze, Cave Spider, Creeper, Drowned, Enderman, Endermite, Evoker, Ghast, Hoglin, Husk, Illusioner, Killer Bunny, Magma Cube, Phantom, Piglin Brute, Piglin, Pillager, Ravager, Shulker, Silverfish, Skeleton Horse, Skeleton, Slime, Spider, Stray, Vex, Vindicator, Witch, Wither Skeleton, Zoglin, Zombie Horse, Zombie, Zombie Villager, Zombiefied Piglin</td></tr>
+          <tr><th scope="row">Bosses</th><td class="num">4</td><td>Dragon, Elder Guardian, Warden, Wither</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="heads" aria-labelledby="heads-title">
+      <h2 id="heads-title">Player heads</h2>
+      <p>When a player dies, from any cause and not only a PvP kill, they drop their own head. Deaths inside a duel do not drop one.</p>
+      <p>The head is named after the player and its lore shows:</p>
+      <ul class="bullets">
+        <li>The player's name</li>
+        <li>When they died, in server time</li>
+        <li>Where they died, as coordinates</li>
+        <li>Who killed them, or the cause of death, such as Fell to Their Death, Blown Up by a Mob or Struck by Lightning</li>
+      </ul>
+      <p>Place the head and it shows the owner's real skin. The item in your hotbar stays a Steve head. Breaking a placed head gives the same named head back with its lore, and explosions do too. Placed heads are visible within 40 blocks.</p>
+      <div class="note note--info"><img class="glyph glyph--1" src="../media/icons/glyph/help.png" alt="" /><p class="note__label">Skins</p><p>Only classic skins show: 64x32, 64x64 and 128x128. Character Creator skins, which are usually 256x256, show as Steve.</p></div>
+    </section>
+
+    <section class="guide-sec" id="podium" aria-labelledby="podium-title">
+      <h2 id="podium-title">The podium</h2>
+      <p>Three figures at spawn show the best, second best and third best players overall, wearing their real skins. Each name tag shows the place, the name and the score, for example <span class="mc">Score 47.3</span>. An empty place reads <span class="mc">Nobody yet</span>.</p>
+      <p>Hit a figure to see that player's stats and the points they earn from each one.</p>
+      <h3>How the score works</h3>
+      <p>The score is out of 100. For each stat you earn its weight multiplied by your value, divided by the best value on the server. The best player in a stat earns that stat's full weight.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Stat</th><th class="num">Weight</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Coins</th><td class="num">25</td></tr>
+          <tr><th scope="row">Duel wins</th><td class="num">20</td></tr>
+          <tr><th scope="row">Kills</th><td class="num">15</td></tr>
+          <tr><th scope="row">Playtime</th><td class="num">15</td></tr>
+          <tr><th scope="row">Blocks broken</th><td class="num">10</td></tr>
+          <tr><th scope="row">KOTH wins</th><td class="num">10</td></tr>
+          <tr><th scope="row">Votes</th><td class="num">5</td></tr>
+        </tbody>
+      </table></div>
+      <p>Every player counts, online or not. The podium updates every 15 minutes.</p>
+      <div class="note"><img class="glyph glyph--1" src="../media/icons/glyph/help.png" alt="" /><p class="note__label">Skins</p><p>Only 64x64 and 128x128 skins are drawn. Others show as Steve, and a changed skin shows after a restart.</p></div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Head or podium figure looks wrong? Ask in the Discord.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

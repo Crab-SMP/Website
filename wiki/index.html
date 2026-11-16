@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Guides for the Bedrock lifesteal server</title>
+  <meta name="description" content="The CrabSMP wiki: how to join, lifesteal and hearts, money, crates, skills, factions, duels, events, ranks and every command, in plain guides." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="CrabSMP Wiki" />
+  <meta property="og:description" content="Everything about CrabSMP in one place: joining, hearts, money, crates, factions, duels, events and every command." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero wiki-hero" aria-labelledby="wiki-title">
+    <div class="page-hero__bg" aria-hidden="true">
+      <img class="page-hero__photo"
+           src="../media/header-images/wiki.webp"
+           srcset="../media/header-images/wiki-960.webp 960w, ../media/header-images/wiki.webp 1920w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async" />
+      <canvas data-motes="dust"></canvas>
+    </div>
+    <div class="shell page-hero__content wiki-hero__inner">
+      <span class="icon-slot icon-slot--lg wiki-hero__slot" data-enter><img class="glyph glyph--3" src="../media/icons/glyph/book.png" alt="" /></span>
+      <h1 class="display-1 on-image" id="wiki-title" data-enter data-split>CrabSMP Wiki</h1>
+      <p class="lead" data-enter>Everything about the server in one place. Short answers first, every number after.</p>
+      <div data-enter>
+        <button class="search-field" type="button" data-search aria-label="Search the wiki">
+          <i class="i i-search" aria-hidden="true"></i><span>Search the wiki</span><kbd class="kbd">/</kbd>
+        </button>
+      </div>
+      <div class="wiki-hero__actions" data-enter>
+        <a class="mc-btn" href="getting-started.html"><img class="glyph glyph--1" src="../media/icons/glyph/gift.png" alt="" />New here? Start here</a>
+        <button class="mc-btn mc-btn--ghost" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" data-toast-icon="../media/icons/glyph/tpa.png"><span class="swap"><span class="swap__idle"><i class="i i-copy" aria-hidden="true"></i> Copy IP</span><span class="swap__done"><i class="i i-check" aria-hidden="true"></i> Copied</span></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wiki-block" aria-labelledby="start-title">
+    <div class="shell">
+      <header class="wiki-block__head">
+        <h2 id="start-title">Start here</h2>
+        <p>Three pages that answer most first questions.</p>
+      </header>
+      <div class="featured">
+        <a class="map-card" href="spawn.html">
+          <img src="../media/wiki/spawn-map.webp" alt="Map of the CrabSMP spawn island from above" width="713" height="711" loading="lazy" decoding="async" />
+          <span class="map-card__caption"><strong>Spawn map</strong><span>Every NPC, warp and spot at spawn.</span></span>
+        </a>
+        <div class="featured__side">
+          <a class="advancement" href="getting-started.html">
+            <span class="advancement__icon"><img class="glyph" src="../media/icons/glyph/gift.png" alt="" /></span>
+            <h3>Getting started</h3>
+            <p>How to join on any device, your starter kit, and what to do in your first ten minutes.</p>
+          </a>
+          <a class="advancement" href="commands.html">
+            <span class="advancement__icon"><img class="glyph" src="../media/icons/glyph/chat.png" alt="" /></span>
+            <h3>Commands</h3>
+            <p>Every command you can type, grouped by what it is for. Click one to copy it.</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wiki-block" aria-labelledby="qa-title">
+    <div class="shell">
+      <header class="wiki-block__head">
+        <h2 id="qa-title">Quick answers</h2>
+        <p>The questions staff hear most.</p>
+      </header>
+      <div class="qa-list">
+        <details class="qa">
+          <summary>I died to fall damage and lost a heart. Is that a bug?</summary>
+          <div class="qa__a">
+            <p>No. Every death outside a duel costs one heart, whatever killed you: falling, lava, mobs or players. Duels never cost hearts.</p>
+            <p><a class="link" href="lifesteal.html">Lifesteal and hearts</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>I'm stuck in spectator at spawn. What now?</summary>
+          <div class="qa__a">
+            <p>You ran out of hearts. Another player can bring you back with a Soul Bottle, or a revive can be bought on the store. You come back on 10 hearts.</p>
+            <p><a class="link" href="lifesteal.html#revive">How revives work</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>Why can't I teleport or open the menu?</summary>
+          <div class="qa__a">
+            <p>You are probably combat tagged. Hitting or being hit by a player tags you for 20 seconds, and teleports and the menu are blocked until it ends. Moving during the 3 second countdown also cancels a teleport.</p>
+            <p><a class="link" href="combat.html">Combat and safe zones</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>Where is /tpa?</summary>
+          <div class="qa__a">
+            <p>There is no /tpa command. Open the menu, pick <strong>Teleport</strong>, then <strong>Send</strong> and choose the player. They accept from the same screen.</p>
+            <p><a class="link" href="teleports.html#tpa">Teleporting to a player</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>Is my base protected?</summary>
+          <div class="qa__a">
+            <p>No. There are no land claims, so anything outside spawn and the arenas can be found, raided or broken. Hide your base well and keep valuables in your vault.</p>
+            <p><a class="link" href="world.html">The world</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>Why can't I build or set a home here?</summary>
+          <div class="qa__a">
+            <p>You are too close to spawn, the PvP Arena or the duel arena (1,000 blocks), or to Freeplay (250 blocks). The message tells you how far out to go.</p>
+            <p><a class="link" href="teleports.html#homes">Homes</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>My items vanished from the ground.</summary>
+          <div class="qa__a">
+            <p>Every 20 minutes the server clears dropped items to keep it fast. Chat warns you 30, 15 and 5 seconds before.</p>
+            <p><a class="link" href="world.html#lag-clear">Lag clear</a></p>
+          </div>
+        </details>
+        <details class="qa">
+          <summary>Do I lose my items in a duel?</summary>
+          <div class="qa__a">
+            <p>No. Your inventory is saved before the fight and given back exactly as it was. Duels cost no hearts and no coins.</p>
+            <p><a class="link" href="duels.html">Duels</a></p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="wiki-block" id="guides" aria-labelledby="guides-title">
+    <div class="shell">
+      <header class="wiki-block__head">
+        <h2 id="guides-title">All guides</h2>
+        <label class="finder">
+          <i class="i i-search" aria-hidden="true"></i>
+          <span class="visually-hidden">Find a guide</span>
+          <input type="search" placeholder="Find a guide" data-finder autocomplete="off" />
+          <output data-finder-count>28 guides</output>
+        </label>
+      </header>
+      <div class="catalog">
+          <section class="catalog__group" aria-label="New players">
+            <h3>New players</h3>
+            <ul>
+              <li><a class="guide-link" href="getting-started.html" data-keys="new join first starter kit wild rtp how to play beginner"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/gift.png" alt="" /></span><strong>Getting started</strong><span>Join, your first ten minutes and what to do next.</span></a></li>
+              <li><a class="guide-link" href="spawn.html" data-keys="map hub npc warps arena pond spawn"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/compass.png" alt="" /></span><strong>Spawn map</strong><span>Every NPC, warp and spot at spawn on one map.</span></a></li>
+              <li><a class="guide-link" href="commands.html" data-keys="commands list help slash"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/chat.png" alt="" /></span><strong>Commands</strong><span>Every command you can type, and what it does.</span></a></li>
+              <li><a class="guide-link" href="rules.html" data-keys="rules ban mute hacking duping alts afk"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/warning.png" alt="" /></span><strong>Rules and fair play</strong><span>What gets you warned, muted or banned.</span></a></li>
+            </ul>
+          </section>
+          <section class="catalog__group" aria-label="Survival">
+            <h3>Survival</h3>
+            <ul>
+              <li><a class="guide-link" href="lifesteal.html" data-keys="hearts revive soul withdraw eliminated spectator lives"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/lifesteal_heart.png" alt="" /></span><strong>Lifesteal and hearts</strong><span>Hearts, the 30 heart cap, dying out and revives.</span></a></li>
+              <li><a class="guide-link" href="combat.html" data-keys="pvp combat log tag safe zone spawn protection death tax"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/sword.png" alt="" /></span><strong>Combat and safe zones</strong><span>Where PvP is on, combat tags and combat logging.</span></a></li>
+              <li><a class="guide-link" href="teleports.html" data-keys="home sethome tpa warp wild rtp back spawn teleport"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/tpa.png" alt="" /></span><strong>Homes and teleports</strong><span>Homes, TPA, warps, /wild and /back.</span></a></li>
+              <li><a class="guide-link" href="world.html" data-keys="border nether end dimension build zone"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/globe.png" alt="" /></span><strong>The world</strong><span>World border, the Nether, the End and build limits.</span></a></li>
+            </ul>
+          </section>
+          <section class="catalog__group" aria-label="Money">
+            <h3>Money</h3>
+            <ul>
+              <li><a class="guide-link" href="money.html" data-keys="money coins balance pay earn baltop"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/money.png" alt="" /></span><strong>Coins and earning</strong><span>How coins work and the best ways to earn them.</span></a></li>
+              <li><a class="guide-link" href="shop.html" data-keys="shop sell prices buy autosell"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/shop.png" alt="" /></span><strong>Shop and selling</strong><span>Buy and sell prices for everything in /shop.</span></a></li>
+              <li><a class="guide-link" href="trading.html" data-keys="trade auction ah pay bounty"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/coins_transfer.png" alt="" /></span><strong>Trading and bounties</strong><span>Trades, auctions, sending coins and bounties.</span></a></li>
+              <li><a class="guide-link" href="crates.html" data-keys="crate keys common epic mythic loot odds goodie bag"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/key_common.png" alt="" /></span><strong>Crates and keys</strong><span>Every crate, how to get keys and what is inside.</span></a></li>
+              <li><a class="guide-link" href="spawners.html" data-keys="spawner stack mob drops xp"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/spawner.png" alt="" /></span><strong>Spawners</strong><span>Smart spawners, stacking and their storage.</span></a></li>
+              <li><a class="guide-link" href="kits.html" data-keys="kit starter discord store cooldown"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/closed_chest.png" alt="" /></span><strong>Kits</strong><span>The starter kit, the Discord Kit and the store kits.</span></a></li>
+            </ul>
+          </section>
+          <section class="catalog__group" aria-label="Progression">
+            <h3>Progression</h3>
+            <ul>
+              <li><a class="guide-link" href="skills.html" data-keys="skills mining woodcutting farming combat fishing xp perk pet crab"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/pickaxe.png" alt="" /></span><strong>Skills</strong><span>Five skills to level 30, their perks and the pet crab.</span></a></li>
+              <li><a class="guide-link" href="battlepass.html" data-keys="battlepass bp quests daily premium tiers points season"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/pass_star.png" alt="" /></span><strong>Battle pass and quests</strong><span>100 tiers a season and the daily quests that fill them.</span></a></li>
+              <li><a class="guide-link" href="fishing.html" data-keys="fishing rods pond loot legendary"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/fish.png" alt="" /></span><strong>Fishing</strong><span>The seven rods and what the spawn pond gives.</span></a></li>
+              <li><a class="guide-link" href="gear.html" data-keys="crab nexus gear armour sword pickaxe 3x3 lightning"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/crab_chestplate.png" alt="" /></span><strong>Crab and Nexus gear</strong><span>Custom armour and tools, their abilities and drops.</span></a></li>
+              <li><a class="guide-link" href="cosmetics.html" data-keys="cosmetics wings halo cape pet void emotes bundles"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/elytra.png" alt="" /></span><strong>Cosmetics</strong><span>Wings, halos, capes, pets, voids and emotes.</span></a></li>
+              <li><a class="guide-link" href="collectibles.html" data-keys="plushies heads podium leaderboard statue"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/daily_rewards.png" alt="" /></span><strong>Plushies, heads and the podium</strong><span>Plushies, player heads and the top three statues.</span></a></li>
+            </ul>
+          </section>
+          <section class="catalog__group" aria-label="PvP and teams">
+            <h3>PvP and teams</h3>
+            <ul>
+              <li><a class="guide-link" href="factions.html" data-keys="faction team clan bank war wager members"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/clan.png" alt="" /></span><strong>Factions</strong><span>Make a faction, share a bank and go to war.</span></a></li>
+              <li><a class="guide-link" href="duels.html" data-keys="duel ranked elo kits bet shards custom kit arena"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/duel.png" alt="" /></span><strong>Duels</strong><span>Duels, kits, betting, ranked and custom kits.</span></a></li>
+              <li><a class="guide-link" href="events.html" data-keys="koth king of the hill boss fallen knight loot drop event"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/crown_gold.png" alt="" /></span><strong>Events</strong><span>King of the Hill, the Fallen Knight and loot drops.</span></a></li>
+            </ul>
+          </section>
+          <section class="catalog__group" aria-label="The server">
+            <h3>The server</h3>
+            <ul>
+              <li><a class="guide-link" href="ranks.html" data-keys="ranks store crabplus crabextra crabdemon buy tebex purchase"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/rank_crabdemon.png" alt="" /></span><strong>Ranks and the store</strong><span>What each rank gives and how purchases arrive.</span></a></li>
+              <li><a class="guide-link" href="voting.html" data-keys="vote voting rewards sites"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/star.png" alt="" /></span><strong>Voting</strong><span>Where to vote and what each vote pays.</span></a></li>
+              <li><a class="guide-link" href="discord.html" data-keys="discord link account verify"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span><strong>Discord</strong><span>Link your account and what linking gives you.</span></a></li>
+              <li><a class="guide-link" href="help.html" data-keys="help support report appeal ticket staff bug data request"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/help.png" alt="" /></span><strong>Getting help</strong><span>Reports, appeals, bugs and talking to staff.</span></a></li>
+              <li><a class="guide-link" href="history.html" data-keys="history realm nexus ozz smoothie"><span class="icon-slot icon-slot--dark"><img class="glyph" src="../media/icons/glyph/clock.png" alt="" /></span><strong>History of CrabSMP</strong><span>From one Realm in 2022 to the server today.</span></a></li>
+            </ul>
+          </section>
+      </div>
+      <p class="catalog__empty" hidden>No guide matches that. Try the search, or ask in the Discord.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

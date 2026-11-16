@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Crab and Nexus gear</title>
+  <meta name="description" content="Crab and Nexus gear on CrabSMP: what each piece does, its damage, durability and armour, what the 3x3 and tree felling never break, and where to get it." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/gear" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Crab and Nexus gear | CrabSMP Wiki" />
+  <meta property="og:description" content="What Crab and Nexus gear does, its stats and where to get it." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/gear" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Progression</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/crab_chestplate.png" alt="" /></span>
+        <div>
+          <h1>Crab and Nexus gear</h1>
+          <p class="lead">The two families of custom tools and armour, and how to get them.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#families">Two families</a>
+      <a href="#abilities">Abilities</a>
+      <a href="#breaking">What the 3x3 and tree felling break</a>
+      <a href="#stats">Stats</a>
+      <a href="#obtain">Where gear comes from</a>
+      <a href="#stick">Knockback Stick</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li><strong>Crab</strong> gear comes from Epic crates; <strong>Nexus</strong> gear comes from Mythic crates and does more.</li>
+        <li>Pickaxes and shovels break a <strong>3x3</strong> area, axes fell the whole tree, swords strike <strong>lightning</strong> on every 5th hit.</li>
+        <li>Nexus tools also give <strong>Haste II</strong> while held.</li>
+        <li>Extra blocks are never broken in spawn, the PvP and duel arenas, no build zones or the Nether hub, and chests, spawners and similar blocks are always safe.</li>
+        <li>You can also get gear from fishing and the Hunter dealer. All of it mends itself slowly.</li>
+        <li>The Knockback Stick comes from Common crates.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="families" aria-labelledby="families-title">
+      <h2 id="families-title">Two families</h2>
+      <p>Custom gear comes in two families. <strong>Crab</strong> gear is the red one and <strong>Nexus</strong> gear is the purple one. Nexus does everything Crab does and adds more. Each family is a full set of tools and armour: sword, pickaxe, axe, shovel, helmet, chestplate, leggings and boots.</p>
+      <div class="tiles">
+        <div class="tile tile--red">
+          <img class="glyph" src="../media/icons/glyph/crab_chestplate.png" alt="" />
+          <strong>Crab gear</strong>
+          <span>Epic crate tier. Area digging, tree felling, lightning and knockback armour.</span>
+        </div>
+        <div class="tile tile--purple">
+          <img class="glyph" src="../media/icons/glyph/sparkles.png" alt="" />
+          <strong>Nexus gear</strong>
+          <span>Mythic crate tier. Everything Crab has, plus Haste II, more damage and tougher armour.</span>
+        </div>
+      </div>
+      <p>None of it is sold for real money. Every piece lists its ability in its lore.</p>
+    </section>
+
+    <section class="guide-sec" id="abilities" aria-labelledby="abilities-title">
+      <h2 id="abilities-title">Abilities</h2>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Piece</th><th>Crab gear</th><th>Nexus gear</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Pickaxe</th><td>Breaks a 3x3 area</td><td>3x3 area, plus Haste II while held</td></tr>
+          <tr><th scope="row">Shovel</th><td>Digs a 3x3 area</td><td>3x3 area, plus Haste II while held</td></tr>
+          <tr><th scope="row">Axe</th><td>Fells the whole tree</td><td>Fells the whole tree, plus Haste II while held</td></tr>
+          <tr><th scope="row">Sword</th><td>Lightning on every 5th hit</td><td>Lightning on every 5th hit, with more damage</td></tr>
+          <tr><th scope="row">Full armour set</th><td>Attackers have a 10% chance to be thrown back</td><td>The same, plus the attacker gets Nausea for 5 seconds, and 1 in 3 hits from the Fallen Knight boss are dodged</td></tr>
+          <tr><th scope="row">Every piece</th><td>Mends itself: 1 durability every 5 seconds while worn or held</td><td>The same</td></tr>
+        </tbody>
+      </table></div>
+      <p>The armour abilities only work when you wear the full set of four pieces. The knockback only triggers when a <em>player</em> hits you; mobs never set it off.</p>
+      <p>Nexus tools give Haste II while you hold them. Haste from the Mining skill does not stack with it: you get whichever is higher. See <a href="skills.html">Skills</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="breaking" aria-labelledby="breaking-title">
+      <h2 id="breaking-title">What the 3x3 and tree felling break</h2>
+      <p>The pickaxe and shovel break a flat 3x3 square facing the way you look, and only blocks that tool is right for. The axe fells the whole tree, up to 64 extra blocks of the same kind. Each extra block costs 1 durability.</p>
+      <div class="split">
+        <div>
+          <h3>Never broken by the area or tree felling</h3>
+          <ul class="bullets">
+            <li>Bedrock and barriers</li>
+            <li>Command blocks, structure blocks and end portal frames</li>
+            <li>Chests, trapped chests, ender chests and barrels</li>
+            <li>Hoppers, dispensers and droppers</li>
+            <li>Furnaces, blast furnaces and smokers</li>
+            <li>Brewing stands, beacons and spawners</li>
+            <li>Crafting tables, enchanting tables, anvils, lecterns and bells</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Where the extra blocks are refused</h3>
+          <ul class="bullets">
+            <li>Spawn</li>
+            <li>The PvP arena and the duel arena</li>
+            <li>No build zones</li>
+            <li>The Nether hub</li>
+          </ul>
+          <p>In those places you still break the block you hit, as normal.</p>
+        </div>
+      </div>
+      <div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/pickaxe.png" alt="" /><p class="note__label">Skill XP</p><p>Only the block you actually hit counts for skill XP and the Mining perk. The extra blocks from the 3x3 or tree felling give none.</p></div>
+      <p>Lightning never strikes inside spawn. It works on mobs and players, and the hit count is kept for each player.</p>
+    </section>
+
+    <section class="guide-sec" id="stats" aria-labelledby="stats-title">
+      <h2 id="stats-title">Stats</h2>
+      <p>The full Crab armour set gives 25 armour points and the full Nexus set gives 28. All pieces repair at an anvil with iron ingots.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Item</th><th class="num">Attack damage</th><th class="num">Durability</th><th class="num">Armour points</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Crab Sword</th><td class="num">8</td><td class="num">3,400</td><td class="num">None</td></tr>
+          <tr><th scope="row">Crab Pickaxe</th><td class="num">5</td><td class="num">3,400</td><td class="num">None</td></tr>
+          <tr><th scope="row">Crab Axe</th><td class="num">7</td><td class="num">3,400</td><td class="num">None</td></tr>
+          <tr><th scope="row">Crab Shovel</th><td class="num">4</td><td class="num">3,400</td><td class="num">None</td></tr>
+          <tr><th scope="row">Crab Helmet</th><td class="num">None</td><td class="num">2,040</td><td class="num">5</td></tr>
+          <tr><th scope="row">Crab Chestplate</th><td class="num">None</td><td class="num">2,040</td><td class="num">8</td></tr>
+          <tr><th scope="row">Crab Leggings</th><td class="num">None</td><td class="num">2,040</td><td class="num">7</td></tr>
+          <tr><th scope="row">Crab Boots</th><td class="num">None</td><td class="num">2,050</td><td class="num">5</td></tr>
+          <tr><th scope="row">Nexus Sword</th><td class="num">10</td><td class="num">4,200</td><td class="num">None</td></tr>
+          <tr><th scope="row">Nexus Pickaxe</th><td class="num">5</td><td class="num">4,200</td><td class="num">None</td></tr>
+          <tr><th scope="row">Nexus Axe</th><td class="num">7</td><td class="num">4,200</td><td class="num">None</td></tr>
+          <tr><th scope="row">Nexus Shovel</th><td class="num">4</td><td class="num">4,200</td><td class="num">None</td></tr>
+          <tr><th scope="row">Nexus Helmet</th><td class="num">None</td><td class="num">2,100</td><td class="num">5</td></tr>
+          <tr><th scope="row">Nexus Chestplate</th><td class="num">None</td><td class="num">2,100</td><td class="num">10</td></tr>
+          <tr><th scope="row">Nexus Leggings</th><td class="num">None</td><td class="num">2,100</td><td class="num">8</td></tr>
+          <tr><th scope="row">Nexus Boots</th><td class="num">None</td><td class="num">2,100</td><td class="num">5</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="obtain" aria-labelledby="obtain-title">
+      <h2 id="obtain-title">Where gear comes from</h2>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th>Source</th><th>What you can get</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Epic crate</th><td>Every piece of Crab gear</td></tr>
+          <tr><th scope="row">Mythic crate</th><td>Every piece of Nexus gear</td></tr>
+          <tr><th scope="row">Fishing</th><td>Nexus Rod: Nexus Sword and Nexus Pickaxe. Crab King's Rod: Crab Sword, Pickaxe, Chestplate and Helmet, plus Nexus Sword and Chestplate</td></tr>
+          <tr><th scope="row">Hunter dealer</th><td>Crab Sword for <span class="money">250,000 coins</span>, Nexus Sword for <span class="money">500,000 coins</span>, Nexus Helmet for <span class="money">180,000 coins</span></td></tr>
+        </tbody>
+      </table></div>
+      <p>The dealer shows 3 random trades from its pool, each with 2 in stock, and refreshes every hour. For crate odds see <a href="crates.html">Crates</a>, and for the fishing rods see <a href="fishing.html">Fishing</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="stick" aria-labelledby="stick-title">
+      <h2 id="stick-title">Knockback Stick</h2>
+      <div class="split">
+        <div>
+          <p>The Knockback Stick is a weapon that launches players 3 to 6 blocks when you hit them. It is a Common crate drop.</p>
+        </div>
+        <dl class="facts">
+          <dt>Damage</dt><dd><b>2</b></dd>
+          <dt>Durability</dt><dd><b>1,600</b></dd>
+          <dt>Launch</dt><dd><b>3 to 6</b> blocks</dd>
+          <dt>Source</dt><dd>Common crate</dd>
+        </dl>
+      </div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask in the Discord and staff will help.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Getting started</title>
+  <meta name="description" content="How to join CrabSMP on PC, mobile and console, what happens on your first join, your starter kit, and a plan for your first ten minutes." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/getting-started" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Getting started | CrabSMP Wiki" />
+  <meta property="og:description" content="Join on any device, claim your starter kit and plan your first ten minutes." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/getting-started" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>New players</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/gift.png" alt="" /></span>
+        <div>
+          <h1>Getting started</h1>
+          <p class="lead">Join on any device, claim your kit and make the most of your first ten minutes.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#join">Joining</a>
+      <a href="#first-join">Your first join</a>
+      <a href="#protection">New player protection</a>
+      <a href="#starter-kit">Starter kit</a>
+      <a href="#menu-item">The MENU item</a>
+      <a href="#first-ten">Your first ten minutes</a>
+      <a href="#next">Where next</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Join at <strong>play.crabsmp.net</strong>, port <strong>19132</strong>. It is free on every device.</li>
+        <li>You start with a <strong>starter kit</strong> and <strong>5 minutes</strong> of protection from all damage.</li>
+        <li>Your kit comes back from the starter chest or <span class="mc">/starterkit</span> every 10 minutes.</li>
+        <li>The <strong>MENU</strong> item opens everything. It is given back every time you join or respawn.</li>
+        <li>Link your Discord for a free Discord Kit with diamond gear.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="join" aria-labelledby="join-title">
+      <h2 id="join-title">Joining</h2>
+      <p>CrabSMP runs on Minecraft Bedrock, so phones, consoles and PCs can all play together.</p>
+
+      <h3>PC and mobile</h3>
+      <ol class="steps">
+        <li><strong>Open the server list</strong>In Minecraft Bedrock, go to Servers, then Add Server.</li>
+        <li><strong>Enter the address</strong>Server IP is <span class="mc">play.crabsmp.net</span>.</li>
+        <li><strong>Enter the port</strong>Port is <span class="mc">19132</span>, which is already the default.</li>
+      </ol>
+      <div class="copyrow">
+        <span class="copyrow__label">Server Address</span>
+        <code class="copyrow__value">play.crabsmp.net</code>
+        <button class="mc-btn mc-btn--sm enchanted" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied"><span class="swap"><span class="swap__idle"><i class="i i-copy" aria-hidden="true"></i> Copy IP</span><span class="swap__done"><i class="i i-check" aria-hidden="true"></i> Copied!</span></span></button>
+      </div>
+
+      <h3>Console</h3>
+      <p>Consoles cannot add a server by address, so use one of these.</p>
+      <ol class="steps">
+        <li><strong>Method 1: the Realm code</strong>Join through the Realm code below and accept the invite.</li>
+        <li><strong>Method 2: add a friend</strong>Add <strong>JoinCrabMC</strong> as a friend on Minecraft, wait 30 seconds, then join their world.</li>
+        <li><strong>Method 3: BedrockTogether</strong>Use BedrockTogether with the server address and port above.</li>
+      </ol>
+      <div class="copyrow">
+        <span class="copyrow__label">Realm code</span>
+        <code class="copyrow__value">vDruZhrrg9W64Zs</code>
+        <a class="mc-btn mc-btn--sm enchanted" href="https://realms.gg/vDruZhrrg9W64Zs" target="_blank" rel="noopener">Join Realm<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+
+      <h3>Friend Connect</h3>
+      <p>This works on any device.</p>
+      <ol class="steps">
+        <li><strong>Add the friend</strong>In Minecraft, add the gamertag below as a friend.</li>
+        <li><strong>Wait</strong>Give it about 30 seconds.</li>
+        <li><strong>Join</strong>Open the Friends tab and join the world.</li>
+      </ol>
+      <div class="copyrow">
+        <span class="copyrow__label">Gamertag</span>
+        <code class="copyrow__value">JoinCrabMC</code>
+        <button class="mc-btn mc-btn--sm enchanted" type="button" data-copy="JoinCrabMC" data-toast-title="Gamertag copied" data-toast-icon="../media/icons/glyph/friends.png"><span class="swap"><span class="swap__idle"><i class="i i-copy" aria-hidden="true"></i> Copy gamertag</span><span class="swap__done"><i class="i i-check" aria-hidden="true"></i> Copied!</span></span></button>
+      </div>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Joined from a friend invite?</p><p>On the welcome screen press <span class="mc">Add Friend and Play</span>, then add the server on the profile that opens. If you skip this, you will not be able to join back.</p></div>
+    </section>
+
+    <section class="guide-sec" id="first-join" aria-labelledby="first-join-title">
+      <h2 id="first-join-title">Your first join</h2>
+      <ol class="steps">
+        <li><strong>The screen fades in</strong>Your first moments are a short fade from black.</li>
+        <li><strong>You land somewhere</strong>Staff choose where new players start: a random spot in the wild, spawn, or a mix of both. In the wild you see "You started out in the wild at X, Y, Z." If the land will not load, you start at spawn and can use <span class="mc">/rtp</span> when you are ready.</li>
+        <li><strong>You get your kit</strong>The starter kit goes straight into your inventory, along with 3 Common crate keys.</li>
+        <li><strong>The welcome screen opens</strong>It has three buttons: <span class="mc">Add Friend and Play</span>, <span class="mc">Read Tutorial</span> and <span class="mc">Terms of Service</span>. It stays open, even after you rejoin, until you press <span class="mc">Add Friend and Play</span>.</li>
+        <li><strong>You get the Discord link</strong>After you press the button you see the Discord invite and a reminder of the free Discord Kit.</li>
+        <li><strong>Tips start</strong>Short tips appear in chat as you play. Turn them off with <span class="mc">/tips off</span>, or see them all again with <span class="mc">/tips reset</span>.</li>
+      </ol>
+      <p>You can replay the welcome screen any time with <button class="cmd" type="button" data-copy="/welcome" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/welcome</button>.</p>
+      <p>When you rejoin later you are put back at spawn by default. If you rejoin in the Overworld away from spawn, you get 15 seconds where nothing can hurt you.</p>
+    </section>
+
+    <section class="guide-sec" id="protection" aria-labelledby="protection-title">
+      <h2 id="protection-title">New player protection</h2>
+      <div class="split">
+        <div>
+          <p>If you start in the wild, you cannot take damage for your first <strong>5 minutes</strong>. It counts real time, so it carries on through relogs and restarts. You can still hit other players during it. You are told when it runs out.</p>
+          <p>Spawn is always safe: no damage at all within 400 blocks. See <a href="spawn.html">Spawn map</a>.</p>
+        </div>
+        <dl class="facts">
+          <dt>Length</dt><dd><b>5</b> minutes</dd>
+          <dt>Applies</dt><dd>When you start in the wild</dd>
+          <dt>Duels</dt><dd>Duel damage still applies</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="starter-kit" aria-labelledby="starter-kit-title">
+      <h2 id="starter-kit-title">Starter kit</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Item</th><th scope="col">Enchantments</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Chainmail helmet, chestplate, leggings and boots</th><td>Protection I, Unbreaking II</td></tr>
+            <tr><th scope="row">Iron sword</th><td>Sharpness I, Unbreaking II</td></tr>
+            <tr><th scope="row">Iron pickaxe</th><td>Efficiency II, Unbreaking II</td></tr>
+            <tr><th scope="row">Iron axe</th><td>Efficiency II, Unbreaking II</td></tr>
+            <tr><th scope="row">Iron shovel</th><td>Efficiency II, Unbreaking II</td></tr>
+            <tr><th scope="row">16 bread</th><td>None</td></tr>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/key_common.png" alt="" />3 Common crate keys</span></th><td>First join only</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Getting it back</h3>
+      <p>Right click the <strong>starter chest</strong> at spawn, or run <button class="cmd" type="button" data-copy="/starterkit" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/starterkit</button>. You can do this once every <strong>10 minutes</strong>, and your first join starts that timer too. A reclaim gives the gear again but not the 3 keys.</p>
+    </section>
+
+    <section class="guide-sec" id="menu-item" aria-labelledby="menu-item-title">
+      <h2 id="menu-item-title">The MENU item</h2>
+      <p>The glinting <span class="mc">MENU</span> item (many players call it the compass) opens the main menu. You are given it every time you spawn, you keep it when you die, and extra copies are removed. If it goes missing, type <button class="cmd" type="button" data-copy="/menu" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/menu</button>.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Tile</th><th scope="col">What it leads to</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Warps</th><td>Spawn, homes, the wild, Freeplay, PvP and the AFK zone</td></tr>
+            <tr><th scope="row">Homes</th><td>Your homes</td></tr>
+            <tr><th scope="row">Teleport</th><td>Send, view and cancel teleport requests to players</td></tr>
+            <tr><th scope="row">Factions</th><td>The faction menu</td></tr>
+            <tr><th scope="row">Economy</th><td>Shop, Auction House and sending coins to a player</td></tr>
+            <tr><th scope="row">Duels</th><td>The duel menu</td></tr>
+            <tr><th scope="row">Server Store</th><td>Ranks and rank perks</td></tr>
+            <tr><th scope="row">Discord Kit</th><td>Link your Discord and claim the kit</td></tr>
+            <tr><th scope="row">Vaults</th><td>Your personal vaults</td></tr>
+            <tr><th scope="row">Lifesteal</th><td>Withdraw hearts, revive a player, the lifesteal shop and how it works</td></tr>
+            <tr><th scope="row">Tutorial</th><td>The How to Play guide</td></tr>
+            <tr><th scope="row">More stuff</th><td>Battlepass, mailbox, stats, support, bounties and settings</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>You cannot open the menu while you are in combat.</p>
+    </section>
+
+    <section class="guide-sec" id="first-ten" aria-labelledby="first-ten-title">
+      <h2 id="first-ten-title">Your first ten minutes</h2>
+      <ol class="steps">
+        <li><strong>Check your gear</strong>Your starter kit is in your inventory. Equip the armour and keep the bread for later.</li>
+        <li><strong>Head into the wild</strong>Type <button class="cmd" type="button" data-copy="/wild" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/wild</button> to teleport to a random spot. Without a rank you wait 2 minutes between uses.</li>
+        <li><strong>Set a home</strong>Use <button class="cmd" type="button" data-copy="/sethome" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sethome</button> where you plan to settle, so you can always get back. See <a href="teleports.html#homes">Teleports and homes</a>.</li>
+        <li><strong>Link your Discord</strong>Join the Discord, link your account in game, and claim the Discord Kit once: coins, full diamond armour and tools, golden apples, and Epic and Mythic keys. See <a href="discord.html">Discord</a>.</li>
+        <li><strong>Claim your daily reward</strong>Type <button class="cmd" type="button" data-copy="/daily" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/daily</button> every day to build a streak.</li>
+        <li><strong>Vote</strong>Type <button class="cmd" type="button" data-copy="/vote" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vote</button> for the vote sites and their rewards. See <a href="voting.html">Voting</a>.</li>
+      </ol>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/lifesteal_heart.png" alt="" /><p class="note__label">Every death costs a heart</p><p>You start with 10 hearts and lose 1 each time you die, including from falls and lava. At 0 you are out until someone revives you. Read <a href="lifesteal.html">Lifesteal</a> before you go exploring.</p></div>
+    </section>
+
+    <section class="guide-sec" id="next" aria-labelledby="next-title">
+      <h2 id="next-title">Where next</h2>
+      <div class="tiles">
+        <div class="tile tile--red">
+          <img class="glyph" src="../media/icons/glyph/lifesteal_heart.png" alt="" />
+          <strong><a href="lifesteal.html">Lifesteal</a></strong>
+          <span>Hearts, kills and how to come back.</span>
+        </div>
+        <div class="tile tile--green">
+          <img class="glyph" src="../media/icons/glyph/compass.png" alt="" />
+          <strong><a href="spawn.html">Spawn map</a></strong>
+          <span>Everything at spawn and the other warps.</span>
+        </div>
+        <div class="tile tile--gold">
+          <img class="glyph" src="../media/icons/glyph/chat.png" alt="" />
+          <strong><a href="commands.html">Commands</a></strong>
+          <span>Every player command.</span>
+        </div>
+        <div class="tile tile--aqua">
+          <img class="glyph" src="../media/icons/glyph/globe.png" alt="" />
+          <strong><a href="world.html">The world</a></strong>
+          <span>Borders, build zones and lag clear.</span>
+        </div>
+        <div class="tile tile--purple">
+          <img class="glyph" src="../media/icons/glyph/book.png" alt="" />
+          <strong><a href="rules.html">Rules</a></strong>
+          <span>What is allowed on the server.</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask in the Discord and someone will point you the right way.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

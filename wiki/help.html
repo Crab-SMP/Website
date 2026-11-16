@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Getting help</title>
+  <meta name="description" content="How to get help on CrabSMP: restart first, report players and bugs, open Discord tickets, appeal bans, fix purchases and ask for your data." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/help" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Getting help | CrabSMP Wiki" />
+  <meta property="og:description" content="Reports, tickets, appeals and who to ask on CrabSMP." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/help" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>The server</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/help.png" alt="" /></span>
+        <div>
+          <h1>Getting help</h1>
+          <p class="lead">Who to ask, and how, for each kind of problem.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#restart">Restart first</a>
+      <a href="#report">Reports</a>
+      <a href="#tickets">Tickets</a>
+      <a href="#appeals">Appeals</a>
+      <a href="#purchases">Purchases</a>
+      <a href="#data">Data requests</a>
+      <a href="#staff">Staff levels</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Close and reopen <strong>Minecraft</strong> first. It fixes a lot.</li>
+        <li>Report a player with <strong>/report</strong> and a bug with <strong>/bugreport</strong>.</li>
+        <li>Appeals, purchase problems and data requests go through a <strong>ticket in the Discord</strong>.</li>
+        <li>Data requests are answered within <strong>30 days</strong>.</li>
+        <li>Staff will never DM you first for your password or items.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="restart" aria-labelledby="restart-title">
+      <h2 id="restart-title">Restart the game first</h2>
+      <p>Many problems clear up after you fully close Minecraft and open it again. Do this first if a menu will not open, a screen is stuck, items look wrong or you cannot connect. If the problem is still there, use the section below that fits.</p>
+    </section>
+
+    <section class="guide-sec" id="report" aria-labelledby="report-title">
+      <h2 id="report-title">Reporting a player or a bug</h2>
+      <div class="split">
+        <div>
+          <h3>Report a player</h3>
+          <p>Type <button class="cmd" type="button" data-copy="/report" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/report</button> and fill in the form. Staff see it in a private channel. Reasons you can pick are cheating or hacking, griefing, harassment or toxicity, inappropriate chat or name, advertising and other.</p>
+          <p>Remember that griefing outside protected areas is allowed. Read the <a href="rules.html">rules</a> before you report. False reports are punished.</p>
+        </div>
+        <dl class="facts"><dt>Player</dt><dd>Their exact name</dd><dt>What happened</dt><dd>15 to 1,000 characters</dd><dt>Evidence</dt><dd>A link, up to 300 characters, optional</dd><dt>Limit</dt><dd>One report every 2 minutes</dd></dl>
+      </div>
+      <div class="split">
+        <div>
+          <h3>Report a bug</h3>
+          <p>Type <button class="cmd" type="button" data-copy="/bugreport" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bugreport</button> and fill in the form. Reporting a bug is better than using it, which breaks the rules.</p>
+        </div>
+        <dl class="facts"><dt>Title</dt><dd>6 to 90 characters</dd><dt>Description</dt><dd>15 to 1,000 characters</dd><dt>Steps</dt><dd>Up to 350 characters, optional</dd><dt>Limit</dt><dd>One report every 2 minutes</dd></dl>
+      </div>
+<div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/chat.png" alt="" /><p class="note__label">Include the details</p><p>Say who, where and when. A clip or screenshot makes it much quicker for staff to act.</p></div>
+    </section>
+
+    <section class="guide-sec" id="tickets" aria-labelledby="tickets-title">
+      <h2 id="tickets-title">Tickets in Discord</h2>
+      <p>For anything staff need to look at, open a ticket in the <a href="../discord.html" target="_blank" rel="noopener">Discord<span class="visually-hidden"> (opens in a new tab)</span></a>. A ticket is a private conversation with staff. Use it for appeals, store problems, data requests, alts on a shared connection and anything that does not fit a report.</p>
+      <p>You can also open the <span class="mc">Support</span> page in the in-game main menu, under More stuff. It has short help pages for homes, factions, economy, the mailbox and Discord.</p>
+<div class="note"><img class="glyph glyph--1" src="../media/icons/glyph/help.png" alt="" /><p class="note__label">There is no CrabSMP /help command</p><p>Typing /help shows Minecraft's own list of commands. For the server's commands, read the <a href="commands.html">commands guide</a>.</p></div>
+    </section>
+
+    <section class="guide-sec" id="appeals" aria-labelledby="appeals-title">
+      <h2 id="appeals-title">Appeals</h2>
+      <p>Every ban can be appealed. Open a support ticket in the Discord and tell staff what happened.</p>
+<ul class="bullets"><li>Bans last at least 7 days. Serious or repeat offences are permanent.</li><li>Be honest. A denied appeal can be reopened, but a dishonest one cannot.</li><li>Do not evade the ban while you appeal. Evading ends the appeal.</li><li>Staff have the final decision and do not have to share the evidence.</li><li>Arguing in public chat will not change a punishment.</li><li>Bans do not refund purchases, ranks, hearts or items.</li></ul>
+      <p>The full rules are in <a href="rules.html#punishments">Rules and fair play</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="purchases" aria-labelledby="purchases-title">
+      <h2 id="purchases-title">Purchase problems</h2>
+      <p>Purchases are delivered by the server about once a minute while you are online, and on your next join if you were offline. If yours has not arrived:</p>
+<ol class="steps"><li><strong>Rejoin and wait a few minutes</strong>Delivery also runs when you join.</li><li><strong>Check your gamertag</strong>It must match the name on your order exactly.</li><li><strong>Open a ticket in the Discord</strong>Include your Tebex transaction id and your gamertag.</li><li><strong>Email if you need to</strong>Write to <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a> with the same details.</li></ol>
+      <p>Refunds and billing are handled by Tebex. More on buying and delivery is in <a href="ranks.html#delivery">Ranks and the store</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="data" aria-labelledby="data-title">
+      <h2 id="data-title">Data requests</h2>
+      <p>You can ask staff what data CrabSMP holds about you. There is no command for it. Open a support ticket in the Discord and say you want a data request. You will get an answer within <b>30 days</b>.</p>
+      <p>If you cannot use Discord, email <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a>. Moderation and purchase records are kept even if you ask for your data to be erased. The <a href="../privacy.html">privacy policy</a> and <a href="../terms.html">terms</a> explain more.</p>
+    </section>
+
+    <section class="guide-sec" id="staff" aria-labelledby="staff-title">
+      <h2 id="staff-title">Who is who</h2>
+      <p>Staff have different levels. Each level can do everything the ones below it can.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Level</th><th scope="col">What they handle</th></tr></thead><tbody>
+<tr><th scope="row">Helper and Staff</th><td>Mute players, freeze and spectate, teleport to players, view inventories, look up block history and broadcast messages.</td></tr>
+<tr><th scope="row">Admin</th><td>Restrict accounts, view ender chests, run bounties and events, and look after server maintenance.</td></tr>
+<tr><th scope="row">Sr Admin</th><td>Roll back and restore blocks, and fix factions, homes and auctions.</td></tr>
+<tr><th scope="row">Lead</th><td>Money, donator plans, battle pass and leaderboards.</td></tr>
+<tr><th scope="row">Owner</th><td>Ranks, cosmetics, keys, and data resets.</td></tr>
+</tbody></table></div>
+      <p>Every staff action is logged. See <a href="ranks.html#staff">staff tags</a> to recognise them in chat. Staff will never message you first to ask for your password or your items.</p>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Need a person?</h2>
+        <p>Open a ticket in the Discord. Staff answer there.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Skills</title>
+  <meta name="description" content="The five CrabSMP skills: how to open the menu, the XP curve to level 30, coin rewards, every perk with its numbers, XP sources and the pet crab." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/skills" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Skills | CrabSMP Wiki" />
+  <meta property="og:description" content="Five skills, level 30, coin rewards and perks, and how to unlock the pet crab." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/skills" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Progression</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/pickaxe.png" alt="" /></span>
+        <div>
+          <h1>Skills</h1>
+          <p class="lead">Five skills to level up, a perk for each, and coins at every level.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#open">Open the menu</a>
+      <a href="#levels">Levels, XP and coin rewards</a>
+      <a href="#perks">Perks</a>
+      <a href="#xp-sources">How to earn XP</a>
+      <a href="#pet">Pet crab</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Five skills: <strong>Mining, Woodcutting, Farming, Combat and Fishing</strong>. Open them with <span class="mc">/skills</span>.</li>
+        <li>The level cap is <strong>30</strong>. Each level pays <strong>500 coins times the level</strong>.</li>
+        <li>Each skill has one perk that grows every level, such as double ore drops or a faster pickaxe.</li>
+        <li>Blocks you placed yourself give <strong>no XP</strong>.</li>
+        <li>Reach level 30 in Mining, Woodcutting and Farming to unlock the <strong>pet crab</strong>.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="open" aria-labelledby="open-title">
+      <h2 id="open-title">Open the menu</h2>
+      <p>Type <button class="cmd" type="button" data-copy="/skills" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/skills</button> or press the Skills button in your stats menu. The screen shows one skill at a time as a skill tree: your level, an XP bar, your XP and the next coin reward. Use the arrows to move between skills.</p>
+      <p>Every time you earn XP, a small card appears at the top right of the screen with your level and progress. It slides away a few seconds after you stop. Level ups are announced in chat with the coins you were paid. Creative mode earns no XP.</p>
+      <div class="split">
+        <div>
+          <p>There are five skills. Each one has a single perk that gets better with every level.</p>
+        </div>
+        <dl class="facts">
+          <dt>Skills</dt><dd><b>Mining</b>, <b>Woodcutting</b>, <b>Farming</b>, <b>Combat</b>, <b>Fishing</b></dd>
+          <dt>Level cap</dt><dd><b>30</b></dd>
+          <dt>Total XP for level 30</dt><dd><b>278,048</b></dd>
+          <dt>Coins for a maxed skill</dt><dd><span class="money">232,500 coins</span></dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="levels" aria-labelledby="levels-title">
+      <h2 id="levels-title">Levels, XP and coin rewards</h2>
+      <p>Each level costs more XP than the one before. Reaching a level pays you coins straight away: <b>500 coins times the level</b>. XP keeps counting after level 30, but there are no more levels.</p>
+      <p>A maxed skill has paid out <b>232,500 coins</b> in total, so all five maxed pay <b>1,162,500 coins</b>.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>XP for this level</th><th>Total XP</th><th>Coins paid</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">1</th><td class="num">100</td><td class="num">100</td><td class="num"><span class="money">500 coins</span></td></tr>
+          <tr><th scope="row">2</th><td class="num">303</td><td class="num">403</td><td class="num"><span class="money">1,000 coins</span></td></tr>
+          <tr><th scope="row">3</th><td class="num">580</td><td class="num">983</td><td class="num"><span class="money">1,500 coins</span></td></tr>
+          <tr><th scope="row">4</th><td class="num">919</td><td class="num">1,902</td><td class="num"><span class="money">2,000 coins</span></td></tr>
+          <tr><th scope="row">5</th><td class="num">1,313</td><td class="num">3,215</td><td class="num"><span class="money">2,500 coins</span></td></tr>
+          <tr><th scope="row">6</th><td class="num">1,758</td><td class="num">4,973</td><td class="num"><span class="money">3,000 coins</span></td></tr>
+          <tr><th scope="row">7</th><td class="num">2,250</td><td class="num">7,223</td><td class="num"><span class="money">3,500 coins</span></td></tr>
+          <tr><th scope="row">8</th><td class="num">2,786</td><td class="num">10,009</td><td class="num"><span class="money">4,000 coins</span></td></tr>
+          <tr><th scope="row">9</th><td class="num">3,363</td><td class="num">13,372</td><td class="num"><span class="money">4,500 coins</span></td></tr>
+          <tr><th scope="row">10</th><td class="num">3,981</td><td class="num">17,353</td><td class="num"><span class="money">5,000 coins</span></td></tr>
+          <tr><th scope="row">11</th><td class="num">4,637</td><td class="num">21,990</td><td class="num"><span class="money">5,500 coins</span></td></tr>
+          <tr><th scope="row">12</th><td class="num">5,330</td><td class="num">27,320</td><td class="num"><span class="money">6,000 coins</span></td></tr>
+          <tr><th scope="row">13</th><td class="num">6,058</td><td class="num">33,378</td><td class="num"><span class="money">6,500 coins</span></td></tr>
+          <tr><th scope="row">14</th><td class="num">6,820</td><td class="num">40,198</td><td class="num"><span class="money">7,000 coins</span></td></tr>
+          <tr><th scope="row">15</th><td class="num">7,616</td><td class="num">47,814</td><td class="num"><span class="money">7,500 coins</span></td></tr>
+          <tr><th scope="row">16</th><td class="num">8,445</td><td class="num">56,259</td><td class="num"><span class="money">8,000 coins</span></td></tr>
+          <tr><th scope="row">17</th><td class="num">9,305</td><td class="num">65,564</td><td class="num"><span class="money">8,500 coins</span></td></tr>
+          <tr><th scope="row">18</th><td class="num">10,196</td><td class="num">75,760</td><td class="num"><span class="money">9,000 coins</span></td></tr>
+          <tr><th scope="row">19</th><td class="num">11,117</td><td class="num">86,877</td><td class="num"><span class="money">9,500 coins</span></td></tr>
+          <tr><th scope="row">20</th><td class="num">12,068</td><td class="num">98,945</td><td class="num"><span class="money">10,000 coins</span></td></tr>
+          <tr><th scope="row">21</th><td class="num">13,048</td><td class="num">111,993</td><td class="num"><span class="money">10,500 coins</span></td></tr>
+          <tr><th scope="row">22</th><td class="num">14,056</td><td class="num">126,049</td><td class="num"><span class="money">11,000 coins</span></td></tr>
+          <tr><th scope="row">23</th><td class="num">15,093</td><td class="num">141,142</td><td class="num"><span class="money">11,500 coins</span></td></tr>
+          <tr><th scope="row">24</th><td class="num">16,156</td><td class="num">157,298</td><td class="num"><span class="money">12,000 coins</span></td></tr>
+          <tr><th scope="row">25</th><td class="num">17,247</td><td class="num">174,545</td><td class="num"><span class="money">12,500 coins</span></td></tr>
+          <tr><th scope="row">26</th><td class="num">18,364</td><td class="num">192,909</td><td class="num"><span class="money">13,000 coins</span></td></tr>
+          <tr><th scope="row">27</th><td class="num">19,507</td><td class="num">212,416</td><td class="num"><span class="money">13,500 coins</span></td></tr>
+          <tr><th scope="row">28</th><td class="num">20,675</td><td class="num">233,091</td><td class="num"><span class="money">14,000 coins</span></td></tr>
+          <tr><th scope="row">29</th><td class="num">21,869</td><td class="num">254,960</td><td class="num"><span class="money">14,500 coins</span></td></tr>
+          <tr><th scope="row">30</th><td class="num">23,088</td><td class="num">278,048</td><td class="num"><span class="money">15,000 coins</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="perks" aria-labelledby="perks-title">
+      <h2 id="perks-title">Perks</h2>
+      <p>Every skill has one perk. The chance grows by the same amount each level, so you feel it from level 1 and it tops out at level 30. The five nodes on the skill tree (levels 5, 10, 15, 25 and 30) are just markers along the way.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Skill</th><th>Perk</th><th>What it does</th><th>Per level</th><th>At level 30</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Mining</th><td>Prospector</td><td>Chance an ore drops its loot a second time</td><td class="num">1%</td><td class="num">30%</td></tr>
+          <tr><th scope="row">Mining</th><td>Haste</td><td>Haste I from level 10, Haste II from level 25, while you hold any pickaxe</td><td class="num">Fixed</td><td class="num">Haste II</td></tr>
+          <tr><th scope="row">Woodcutting</th><td>Timber</td><td>Chance a log drops its loot a second time</td><td class="num">2%</td><td class="num">60%</td></tr>
+          <tr><th scope="row">Farming</th><td>Green Thumb</td><td>Chance a crop you plant starts half grown</td><td class="num">2%</td><td class="num">60%</td></tr>
+          <tr><th scope="row">Combat</th><td>Spoils</td><td>Chance a hostile mob drops its loot a second time</td><td class="num">1%</td><td class="num">30%</td></tr>
+          <tr><th scope="row">Fishing</th><td>Double Hook</td><td>Chance a spawn pond catch hooks an extra reward from the same rod</td><td class="num">0.5%</td><td class="num">15%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="bullets">
+        <li>A bonus drop is rolled again with the tool you used, so Fortune, Silk Touch and Looting count for it too.</li>
+        <li>Prospector and Timber work on ores and logs only, not on plain stone.</li>
+        <li>Spoils works on hostile mobs, except the Warden, the Wither and the Ender Dragon.</li>
+        <li>Green Thumb works on wheat, carrots, potatoes, beetroot, nether wart and cocoa. Melons, pumpkins, sugar cane and cactus are not affected.</li>
+        <li>If a Nexus tool and Mining Haste both give you Haste, the higher one applies. They do not stack.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="xp-sources" aria-labelledby="xp-sources-title">
+      <h2 id="xp-sources-title">How to earn XP</h2>
+      <p>Only the block you hit or the mob you kill counts. Extra blocks broken by the area and tree tools of Crab and Nexus gear give no XP and no Prospector bonus.</p>
+      <div class="note note--warn">
+        <img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" />
+        <p class="note__label">Placed blocks</p>
+        <p>Blocks you placed yourself give no XP. Placing a log, ore, stone, melon, pumpkin, sugar cane or cactus and breaking it again earns nothing.</p>
+      </div>
+      <h3>Mining</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Blocks</th><th>XP</th><th>Prospector</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Stone, cobblestone, deepslate, cobbled deepslate, granite, diorite, andesite, tuff, calcite, netherrack, blackstone, basalt, end stone</th><td class="num">1</td><td>No</td></tr>
+          <tr><th scope="row">Coal ore, copper ore</th><td class="num">5</td><td>Yes</td></tr>
+          <tr><th scope="row">Nether quartz ore, nether gold ore</th><td class="num">6</td><td>Yes</td></tr>
+          <tr><th scope="row">Iron ore, redstone ore</th><td class="num">8</td><td>Yes</td></tr>
+          <tr><th scope="row">Gold ore, lapis ore</th><td class="num">10</td><td>Yes</td></tr>
+          <tr><th scope="row">Emerald ore</th><td class="num">30</td><td>Yes</td></tr>
+          <tr><th scope="row">Diamond ore</th><td class="num">40</td><td>Yes</td></tr>
+          <tr><th scope="row">Ancient debris</th><td class="num">80</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Deepslate versions of ores give the same XP as the normal ones.</p>
+      <h3>Woodcutting</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Blocks</th><th>XP</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Oak, spruce, birch, jungle, acacia, dark oak, mangrove, cherry, pale oak and poplar logs; crimson and warped stems</th><td class="num">5</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Farming</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Blocks</th><th>XP</th><th>Condition</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Wheat, carrots, potatoes, beetroot</th><td class="num">4</td><td>Fully grown</td></tr>
+          <tr><th scope="row">Nether wart</th><td class="num">5</td><td>Fully grown</td></tr>
+          <tr><th scope="row">Cocoa</th><td class="num">5</td><td>Fully grown</td></tr>
+          <tr><th scope="row">Melon block, pumpkin</th><td class="num">5</td><td>Not placed by a player</td></tr>
+          <tr><th scope="row">Sugar cane, cactus</th><td class="num">2</td><td>Not placed by a player</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Combat</h3>
+      <p>Kills by a player count, and bow kills count. Passive animals, players and custom bosses give nothing. Mobs from spawners that never die give nothing either.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Mobs</th><th>XP</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Zombie, husk, drowned, zombie villager, skeleton, stray, bogged, spider, cave spider, silverfish, endermite, slime</th><td class="num">8</td></tr>
+          <tr><th scope="row">Creeper, phantom, piglin, zombified piglin, magma cube</th><td class="num">10</td></tr>
+          <tr><th scope="row">Witch, enderman, blaze, guardian, pillager, vindicator, vex, hoglin, zoglin</th><td class="num">15</td></tr>
+          <tr><th scope="row">Wither skeleton, ghast, piglin brute, evoker, breeze, shulker</th><td class="num">25</td></tr>
+          <tr><th scope="row">Ravager, elder guardian</th><td class="num">60</td></tr>
+          <tr><th scope="row">Warden, Wither, Ender Dragon</th><td class="num">500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Fishing</h3>
+      <p>Only catches from the spawn pond with a named rod count. Fishing anywhere else earns nothing, and so does reeling in nothing. See <a href="fishing.html">Fishing</a>.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Catch</th><th>XP</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Normal catch</th><td class="num">15</td></tr>
+          <tr><th scope="row">Legendary catch</th><td class="num">100</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="pet" aria-labelledby="pet-title">
+      <h2 id="pet-title">Pet crab</h2>
+      <div class="split">
+        <div>
+          <p>Get <b>Mining, Woodcutting and Farming</b> all to level 30 and you unlock a pet crab. Combat and Fishing are not needed.</p>
+          <p>Open the menu with <button class="cmd" type="button" data-copy="/pet" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/pet</button> to summon or dismiss it and to pick a colour. Changing colour is free and you can do it whenever you like.</p>
+        </div>
+        <dl class="facts">
+          <dt>Unlock</dt><dd>Mining, Woodcutting and Farming at <b>30</b></dd>
+          <dt>Colours</dt><dd>Blue, Red, Gold, Green, Purple</dd>
+        </dl>
+      </div>
+      <ul class="bullets">
+        <li>The crab follows you and cannot be hurt, pushed, renamed or tamed by hand.</li>
+        <li>It leaves when you log off and comes back when you join.</li>
+        <li>If it falls far behind or you change dimension, it reappears beside you.</li>
+      </ul>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Want to know where the coins go?</h2>
+        <p>Spend them in the <a href="shop.html">shop</a>, or read about <a href="money.html">coins</a>.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

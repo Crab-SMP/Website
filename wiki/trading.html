@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Trading and bounties</title>
+  <meta name="description" content="How to send coins, trade items, use the auction house and buy orders, flip a coin, place a bounty and what the death tax takes when a player is killed." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/trading" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Trading and bounties | CrabSMP Wiki" />
+  <meta property="og:description" content="Sending coins, trades, the auction house, buy orders, coinflip, bounties and the death tax on CrabSMP." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/trading" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Money</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/coins_transfer.png" alt="" /></span>
+        <div>
+          <h1>Trading and bounties</h1>
+          <p class="lead">Every way to move coins and items between players.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#transfer">Sending coins</a>
+      <a href="#trade">Trade</a>
+      <a href="#auction">Auction house</a>
+      <a href="#orders">Buy orders</a>
+      <a href="#coinflip">Coinflip</a>
+      <a href="#bounties">Bounties</a>
+      <a href="#death-tax">Death tax</a>
+      <a href="#betting">Duel betting</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Send coins from the menu: <span class="mc">Economy</span>, <span class="mc">Transfer Money</span>. Up to <strong>500,000</strong> coins at a time, with a <strong>5%</strong> fee.</li>
+        <li><button class="cmd" type="button" data-copy="/trade" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/trade</button> swaps one hotbar stack each. Coins cannot go in a trade.</li>
+        <li>The <button class="cmd" type="button" data-copy="/ah" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/ah</button> and buy orders (<button class="cmd" type="button" data-copy="/order" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/order</button>) charge sellers <strong>5%</strong> when something sells.</li>
+        <li>A bounty is at least <strong>200</strong> coins and lasts <strong>14 days</strong>. A new one replaces the old one with no refund.</li>
+        <li>Killing a player with 500 or more coins takes <strong>2%</strong> of their balance, up to 25,000.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="transfer" aria-labelledby="transfer-title">
+      <h2 id="transfer-title">Sending coins</h2>
+      <p>There is no pay command. Open your menu item, then <span class="mc">Economy</span>, then <span class="mc">Transfer Money</span>, pick a player and type an amount.</p>
+      <div class="split">
+        <div>
+          <ul class="bullets">
+            <li>The other player must be online.</li>
+            <li>You pay the full amount and they receive 95% of it. If they owe debt, a quarter of what they receive goes to the debt.</li>
+            <li>A frozen balance cannot send or receive.</li>
+          </ul>
+        </div>
+        <dl class="facts">
+          <dt>Limit</dt><dd><b>500,000</b> coins per transfer</dd>
+          <dt>Fee</dt><dd><b>5%</b>, taken from what they receive</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="trade" aria-labelledby="trade-title">
+      <h2 id="trade-title">Trading items</h2>
+      <p>Use <button class="cmd" type="button" data-copy="/trade" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/trade</button> to swap items with another player. Coins cannot go into a trade, and there is no fee.</p>
+      <ol class="steps">
+        <li><strong>Send a request</strong>Run <button class="cmd" type="button" data-copy="/trade" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/trade</button> and pick an online player. The request ends after 60 seconds if they do nothing.</li>
+        <li><strong>You offer first</strong>Choose one item stack from your hotbar and how many of it to put in.</li>
+        <li><strong>They counter</strong>The other player offers one stack from their hotbar in return.</li>
+        <li><strong>You confirm</strong>Check both offers, then confirm or cancel.</li>
+      </ol>
+      <p>You cannot trade with yourself, or while you are already in a trade. To send coins, use Transfer Money above.</p>
+    </section>
+
+    <section class="guide-sec" id="auction" aria-labelledby="auction-title">
+      <h2 id="auction-title">Auction house</h2>
+      <p>Open it with <button class="cmd" type="button" data-copy="/ah" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/ah</button> or <button class="cmd" type="button" data-copy="/auctionhouse" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/auctionhouse</button>, or from the shop or the Economy menu. You can sell whole stacks in two ways: <strong>Buy It Now</strong>, which sells straight away at your price, or <strong>Auction</strong>, where players bid and the highest bid wins.</p>
+      <p>Listing is free. When something sells, <strong>5%</strong> of the price is taken from you. Your rank decides how many things you can list at once and for how long.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Rank</th><th scope="col" class="num">Listing slots</th><th scope="col" class="num">Longest listing</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">No rank</th><td class="num">3</td><td class="num">2 days</td></tr>
+          <tr><th scope="row">CRABPLUS</th><td class="num">8</td><td class="num">4 days</td></tr>
+          <tr><th scope="row">CRABEXTRA</th><td class="num">13</td><td class="num">7 days</td></tr>
+          <tr><th scope="row">CRABDEMON</th><td class="num">23</td><td class="num">14 days</td></tr>
+        </tbody>
+      </table></div>
+      <p>You choose a length of 1, 6, 12, 24, 48, 96, 168 or 336 hours, as long as your rank allows it.</p>
+      <h3>Bidding</h3>
+      <ul class="bullets">
+        <li>Your bid leaves your balance at once. If someone outbids you, you get it back.</li>
+        <li>The first bid can match the starting bid. Every bid after that must be at least 1 coin higher.</li>
+        <li>A bid in the last 2 minutes pushes the end back to 2 minutes from then. A message goes out 5 minutes before an auction ends.</li>
+      </ul>
+      <h3>Selling</h3>
+      <ul class="bullets">
+        <li>You can take a listing back if it has no bids, or end it now to sell to the top bidder.</li>
+        <li>If you are offline when something sells, your coins wait in your mailbox. Winners who are offline get their item there too. Find it under <span class="mc">More stuff</span>, then <span class="mc">Mailbox</span>.</li>
+        <li>The listing screen shows recent sales of the item, so you can price it.</li>
+      </ul>
+      <p>You cannot list spawners, potions, shulker boxes, bundles, spawn eggs, filled maps, books, player heads, or gear enchanted past Protection IV, Unbreaking III or Sharpness V.</p>
+    </section>
+
+    <section class="guide-sec" id="orders" aria-labelledby="orders-title">
+      <h2 id="orders-title">Buy orders</h2>
+      <p>A buy order is a request. You say what you want and what you will pay, and other players fill it from their inventories. Use <button class="cmd" type="button" data-copy="/order" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/order</button> or <button class="cmd" type="button" data-copy="/orders" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/orders</button>.</p>
+      <ul class="bullets">
+        <li>You can ask for any item the shop stocks, except potions, at 1 to 1,000,000 coins each, and up to 6,400 items per order.</li>
+        <li>The full cost leaves your balance when you post the order and is held until it is filled, cancelled or ends.</li>
+        <li>An order lasts 3 days. If you cancel it or it ends, you get back the coins for what was not filled.</li>
+        <li>Players who fill your order are paid at once, less a 5% fee. The items wait in the order until you collect them.</li>
+      </ul>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Rank</th><th scope="col" class="num">Active orders</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">No rank</th><td class="num">10</td></tr>
+          <tr><th scope="row">CRABPLUS</th><td class="num">15</td></tr>
+          <tr><th scope="row">CRABEXTRA</th><td class="num">20</td></tr>
+          <tr><th scope="row">CRABDEMON</th><td class="num">30</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="coinflip" aria-labelledby="coinflip-title">
+      <h2 id="coinflip-title">Coinflip</h2>
+      <p><button class="cmd" type="button" data-copy="/coinflip" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/coinflip</button> is a flip against the house, not against another player. It is a fair 50% chance at even money: win and you gain your wager, lose and you lose it. Over time you break even.</p>
+      <ul class="bullets">
+        <li>You need at least 100 coins.</li>
+        <li>You choose your wager with a slider, from 10% of your balance up to all of it.</li>
+        <li>After a short "Flipping..." the result is shown to everyone online.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="bounties" aria-labelledby="bounties-title">
+      <h2 id="bounties-title">Bounties</h2>
+      <p>A bounty puts coins on a player's head. Anyone who kills that player collects it. Open <span class="mc">More stuff</span>, then <span class="mc">Bounties</span> in your menu, or use <button class="cmd" type="button" data-copy="/bounty" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bounty</button>.</p>
+      <div class="split">
+        <div>
+          <ul class="bullets">
+            <li>The target must be online, and your coins leave your balance as soon as you place it.</li>
+            <li>The bounty is announced in chat.</li>
+            <li>The killer collects it, minus a 10% hunter fee.</li>
+            <li>If nobody collects it in 14 days it disappears, and the coins are not refunded.</li>
+          </ul>
+        </div>
+        <dl class="facts">
+          <dt>Minimum</dt><dd><b>200</b> coins</dd>
+          <dt>Lasts</dt><dd><b>14</b> days</dd>
+          <dt>Hunter fee</dt><dd><b>10%</b></dd>
+        </dl>
+      </div>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">A new bounty replaces the old one</p><p>If the player already has a bounty, yours replaces it. The coins from the earlier bounty are not refunded to whoever placed it.</p></div>
+    </section>
+
+    <section class="guide-sec" id="death-tax" aria-labelledby="death-tax-title">
+      <h2 id="death-tax-title">Death tax</h2>
+      <p>When you kill another player whose balance is at least 500 coins, you take <strong>2% of their balance</strong>, up to 25,000 coins. Another 1% of their balance is destroyed, so the player who dies loses both parts. Deaths in duels do not count.</p>
+      <p>This is why a big balance makes you a target. The lifesteal side of a kill is in <a href="lifesteal.html">Lifesteal and hearts</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="betting" aria-labelledby="betting-title">
+      <h2 id="betting-title">Duel betting</h2>
+      <p>You can bet on a duel with <button class="cmd" type="button" data-copy="/bet" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bet</button>. Your stake is 1,000 to 250,000 coins and at most 25% of your balance. Back the winner and you get 1.1 times your stake; back the loser and you get 0.9 times. How many bets you can place each day depends on your rank. The rest is in <a href="duels.html#betting">Duels</a>.</p>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/key_common.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Next: keys and crates</h2>
+        <p>Crates are another way to win coins, gear and spawners.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="crates.html">Crates and keys</a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

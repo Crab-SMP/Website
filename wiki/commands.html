@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Commands</title>
+  <meta name="description" content="Every CrabSMP player command in one place, grouped by what you want to do, with the arguments each one takes and which ranks can use it." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/commands" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Commands | CrabSMP Wiki" />
+  <meta property="og:description" content="Every player command on CrabSMP, and what it does." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/commands" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>New players</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/chat.png" alt="" /></span>
+        <div>
+          <h1>Commands</h1>
+          <p class="lead">Every player command, grouped by what you want to do. Click one to copy it.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#getting-around">Getting around</a>
+      <a href="#lifesteal">Lifesteal</a>
+      <a href="#money">Money and rewards</a>
+      <a href="#social">Social and PvP</a>
+      <a href="#settings">Settings and info</a>
+      <a href="#perks">Rank perks</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>The MENU item or <span class="mc">/menu</span> does most things without a command.</li>
+        <li>Square brackets mean the argument is optional; angle brackets mean you must give one.</li>
+        <li>Teleporting to a player is in the menu, not a <span class="mc">/tpa</span> command.</li>
+        <li><span class="mc">/back</span> needs CrabExtra or CrabDemon; <span class="mc">/nick</span> needs CrabDemon.</li>
+        <li>To report a cheater, use <span class="mc">/report</span>.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="getting-around" aria-labelledby="getting-around-title">
+      <h2 id="getting-around-title">Getting around</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/menu" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/menu</button></th>
+              <td>Opens the main menu, the same as the MENU item.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/spawn" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/spawn</button></th>
+              <td>Teleports you to spawn. Also works as <code>/hub</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/wild" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/wild</button></th>
+              <td>Opens the random teleport menu: Overworld, Nether or The End. Without a rank there is a 2 minute wait between uses. Also works as <code>/rtp</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/warps" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/warps</button></th>
+              <td>Opens the warps menu. Also works as <code>/warpmenu</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/home" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/home</button> <span class="mc">[name]</span></th>
+              <td>Teleports you to that home. On its own it opens the homes menu.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/homes" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/homes</button></th>
+              <td>Opens the homes menu.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/sethome" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sethome</button> <span class="mc">[name]</span></th>
+              <td>Sets a home where you stand. On its own it opens the homes menu. Names cannot contain spaces.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/delhome" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/delhome</button> <span class="mc">[name]</span></th>
+              <td>Deletes a home. On its own it opens the homes menu.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/back" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/back</button></th>
+              <td>Takes you to where you last died, or to where you last used a home, spawn or faction home teleport. Needs CrabExtra or CrabDemon. The point is forgotten when you log out.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/fly" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/fly</button></th>
+              <td>Turns flight on or off. Works only inside spawn and needs any Crab rank.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note note--info"><img class="glyph glyph--1" src="../media/icons/glyph/tpa.png" alt="" /><p class="note__label">Teleporting to a player</p><p>There is no <span class="mc">/tpa</span> command. Open the menu, choose <span class="mc">Teleport</span>, then <span class="mc">Send</span>, <span class="mc">View</span> or <span class="mc">Cancel</span>. See <a href="teleports.html#tpa">Teleports and homes</a>.</p></div>
+    </section>
+
+    <section class="guide-sec" id="lifesteal" aria-labelledby="lifesteal-title">
+      <h2 id="lifesteal-title">Lifesteal</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/withdraw" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/withdraw</button> <span class="mc">[amount]</span></th>
+              <td>Turns hearts into Heart items you can give or sell. The default is 1. You always keep at least 1 heart.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/withdraw_gui" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/withdraw_gui</button></th>
+              <td>The same, with a slider.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="money" aria-labelledby="money-title">
+      <h2 id="money-title">Money and rewards</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button></th>
+              <td>Opens the server shop.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/sell" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sell</button></th>
+              <td>Opens the bulk sell menu.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button></th>
+              <td>Sells everything you carry that can be sold.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/sellauto" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellauto</button></th>
+              <td>Opens the timed auto sell menu.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/ah" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/ah</button></th>
+              <td>Opens the Auction House. Also works as <code>/auctionhouse</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/order" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/order</button></th>
+              <td>Opens the buy order marketplace. Also works as <code>/orders</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/bal" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bal</button> <span class="mc">[player]</span></th>
+              <td>Shows your coin balance, or another player's.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/baltop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/baltop</button></th>
+              <td>Shows the richest players.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/coinflip" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/coinflip</button></th>
+              <td>Opens the 50/50 coinflip.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/cashout" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/cashout</button></th>
+              <td>Turns banked playtime into coins.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/debt" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/debt</button></th>
+              <td>Shows your bank debt and lets you pay it.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/bounty" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bounty</button></th>
+              <td>Opens the bounties menu.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/daily" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/daily</button></th>
+              <td>Opens your daily login reward.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/streak" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/streak</button></th>
+              <td>Shows your daily streak.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/vote" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vote</button></th>
+              <td>Shows the vote sites and their rewards.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/crates" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/crates</button></th>
+              <td>Opens a crate from anywhere: Common, Epic or Mythic.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/bp" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bp</button></th>
+              <td>Opens the Battlepass.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/vault" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vault</button></th>
+              <td>Opens your personal vaults.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/echest" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/echest</button></th>
+              <td>Opens your ender chest. Works at spawn only unless you have CrabExtra or CrabDemon.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/starterkit" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/starterkit</button></th>
+              <td>Gives your starter gear back. You can use it once every 10 minutes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="social" aria-labelledby="social-title">
+      <h2 id="social-title">Social and PvP</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/faction" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/faction</button> <span class="mc">[action]</span></th>
+              <td>Opens the faction menu, or runs an action: <span class="mc">create</span>, <span class="mc">invite</span>, <span class="mc">invites</span>, <span class="mc">join</span>, <span class="mc">accept</span>, <span class="mc">info</span>, <span class="mc">manage</span>, <span class="mc">home</span>, <span class="mc">leave</span>, <span class="mc">disband</span>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/duel" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/duel</button></th>
+              <td>Opens the duel menu so you can challenge a player.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/accept" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/accept</button></th>
+              <td>Accepts a duel request.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/decline" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/decline</button></th>
+              <td>Declines a duel request.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/leave" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/leave</button></th>
+              <td>Leaves a duel, stops spectating, or leaves the duel or ranked queue.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/bet" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bet</button></th>
+              <td>Bets on the duel that is running.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/ranked" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/ranked</button></th>
+              <td>Opens ranked duels.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/trade" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/trade</button></th>
+              <td>Lets you pick a player to send a trade request to.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/stats" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/stats</button></th>
+              <td>Opens your stats.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/bio" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bio</button></th>
+              <td>Sets or clears the bio on your profile.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/skills" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/skills</button></th>
+              <td>Opens your skills.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/pet" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/pet</button></th>
+              <td>Opens your pet crab. You need every skill at level 30.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/report" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/report</button> <span class="mc">[player]</span></th>
+              <td>Reports a player to staff.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/bugreport" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bugreport</button></th>
+              <td>Reports a bug to the team.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/discord" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/discord</button></th>
+              <td>Shows the Discord link and the Discord Kit menu.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="settings" aria-labelledby="settings-title">
+      <h2 id="settings-title">Settings and info</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/settings" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/settings</button></th>
+              <td>Opens your settings.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/tips" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/tips</button> <span class="mc">[on, off or reset]</span></th>
+              <td>Turns tips on or off, or shows them all again.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/nv" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/nv</button></th>
+              <td>Turns night vision on. You get 15 minutes in every 2 hours, 1 hour with CrabExtra, and no limit with CrabDemon.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/rules" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/rules</button></th>
+              <td>Shows the server rules.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/terms" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/terms</button></th>
+              <td>Shows the terms and privacy policy.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/welcome" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/welcome</button></th>
+              <td>Replays the welcome screen.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/credits" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/credits</button></th>
+              <td>Lists everyone who has worked on the server.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/store" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/store</button></th>
+              <td>Shows store info.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/donator" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/donator</button></th>
+              <td>Opens the donator plans menu.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="perks" aria-labelledby="perks-title">
+      <h2 id="perks-title">Rank perks</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/emote" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/emote</button></th>
+              <td>Opens the emotes menu. Needs any Crab rank.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/cosmetics" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/cosmetics</button></th>
+              <td>Opens your cosmetics wardrobe.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/rankmenu" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/rankmenu</button></th>
+              <td>Gives you the PERKS item. Needs any Crab rank.</td>
+            </tr>
+            <tr>
+              <th scope="row"><button class="cmd" type="button" data-copy="/nick" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/nick</button> <span class="mc">&lt;nickname&gt; or off</span></th>
+              <td>Sets or removes your nickname. Needs CrabDemon.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask in the Discord and someone will point you the right way.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

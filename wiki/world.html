@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | The world</title>
+  <meta name="description" content="The CrabSMP world: border sizes for the Overworld, Nether and End, no land claims, no build zones, the 20 minute lag clear, sleeping and mob stacking." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/world" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="The world | CrabSMP Wiki" />
+  <meta property="og:description" content="Borders, the Nether and End, no land claims, no build zones, lag clear and sleeping." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/world" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Survival</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/globe.png" alt="" /></span>
+        <div>
+          <h1>The world</h1>
+          <p class="lead">How big it is, where you can build, and what the server tidies up for you.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#border">World border</a>
+      <a href="#dimensions">Nether and End</a>
+      <a href="#protection">No land claims</a>
+      <a href="#no-build">No build zones</a>
+      <a href="#lag-clear">Lag clear</a>
+      <a href="#sleeping">Sleeping</a>
+      <a href="#mobs">Mob stacking</a>
+      <a href="#spawn-away">Spawn is far away</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>The Overworld border is <strong>15,000 blocks</strong> from the centre in each direction.</li>
+        <li><strong>Nothing outside spawn and the arenas is protected.</strong> There are no land claims, so hide your base and keep valuables in a vault.</li>
+        <li>You cannot build within <strong>1,000 blocks</strong> of spawn or the arenas, or within <strong>250 blocks</strong> of Freeplay.</li>
+        <li>Every <strong>20 minutes</strong> the server clears dropped items, XP orbs and some mobs. Pick up what you need first.</li>
+        <li>Night is skipped when <strong>3 players</strong> are asleep.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="border" aria-labelledby="border-title">
+      <h2 id="border-title">World border</h2>
+      <p>Each dimension has a square border centred on 0, 0. The numbers below are how far the border is from the centre along each axis.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Dimension</th><th scope="col" class="num">Border</th><th scope="col">Size</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Overworld</th><td class="num">15,000</td><td>A 30,000 by 30,000 square</td></tr>
+            <tr><th scope="row">Nether</th><td class="num">1,875</td><td>The Overworld border divided by 8</td></tr>
+            <tr><th scope="row">The End</th><td class="num">10,000</td><td>A 20,000 by 20,000 square</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li><strong>100 blocks out</strong>You get a warning: "You are approaching the world border!"</li>
+        <li><strong>50 blocks out</strong>Red particles show where the edge is.</li>
+        <li><strong>At the border</strong>You are pushed back 5 blocks inside, and staff are told.</li>
+      </ol>
+      <p>You cannot set a home on or past the border, and neither can a faction. Staff can change the border sizes, so these are the current values.</p>
+    </section>
+
+    <section class="guide-sec" id="dimensions" aria-labelledby="dimensions-title">
+      <h2 id="dimensions-title">Nether and End</h2>
+      <p>Both are ordinary survival dimensions with no extra rules beyond the border. You can walk in through a portal, or jump straight in with <span class="mc">/wild</span>, which asks which dimension you want.</p>
+      <div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/warps.png" alt="" /><p class="note__label">Tip</p><p>The Nether border is much smaller than the Overworld one, so travel there covers less ground. A random Nether teleport lands you 250 to 1,800 blocks out on each axis.</p></div>
+      <p>There is a safe hub in the Nether where PvP is off and no mobs spawn. See <a href="spawn.html#places">Spawn map</a> for the other safe places.</p>
+    </section>
+
+    <section class="guide-sec" id="protection" aria-labelledby="protection-title">
+      <h2 id="protection-title">No land claims</h2>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Nothing out there is protected</p><p>CrabSMP has no land claims. Factions do not claim land either. Anyone who finds your base can break into it and take what is inside.</p></div>
+      <p>Only spawn, the arenas and the Nether hub are protected. Everywhere else is fair game, so plan for it:</p>
+      <ul class="bullets">
+        <li>Build far from spawn and from the paths other players take. Random teleports scatter people across the whole map.</li>
+        <li>Keep your best items in a vault or your ender chest instead of a chest at home. Without CrabExtra, <span class="mc">/echest</span> works at spawn only.</li>
+        <li>Do not carry more than you are happy to lose in a fight. Every death costs a heart. See <a href="lifesteal.html">Lifesteal</a>.</li>
+        <li>Play with a faction. Faction members cannot hurt each other. See <a href="factions.html">Factions</a>.</li>
+        <li>Do not tell strangers where you live. Set a <a href="teleports.html#homes">home</a> so you can get back without a map.</li>
+      </ul>
+      <p>Hacked clients and duping get you banned. If you think someone is cheating, use <span class="mc">/report</span>.</p>
+    </section>
+
+    <section class="guide-sec" id="no-build" aria-labelledby="no-build-title">
+      <h2 id="no-build-title">No build zones</h2>
+      <p>Near some places you cannot break blocks, place blocks, use buckets or light fires. The message tells you how many blocks further out to go.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Around</th><th scope="col" class="num">No build radius</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Spawn</th><td class="num">1,000 blocks</td></tr>
+            <tr><th scope="row">PvP Arena</th><td class="num">1,000 blocks</td></tr>
+            <tr><th scope="row">Duel arena</th><td class="num">1,000 blocks</td></tr>
+            <tr><th scope="row">Freeplay and the KOTH hill</th><td class="num">250 blocks</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>You also cannot set a home inside any of these zones. Spawn and the arenas are about 100,000 blocks from the centre of the world, so you will not meet these zones while you are out exploring.</p>
+    </section>
+
+    <section class="guide-sec" id="lag-clear" aria-labelledby="lag-clear-title">
+      <h2 id="lag-clear-title">Lag clear</h2>
+      <p>Every <strong>20 minutes</strong> the server clears out clutter so it stays smooth. You get a warning at 30, 15 and 5 seconds.</p>
+      <div class="split">
+        <div>
+          <p>It removes, in all three dimensions:</p>
+          <ul class="bullets">
+            <li>Dropped items, including dropped Heart items</li>
+            <li>XP orbs, arrows and tridents</li>
+            <li>Hostile mobs that have no name tag</li>
+            <li>Some farm animals: bats, chickens, cows, mooshrooms, pigs, polar bears and sheep</li>
+          </ul>
+        </div>
+        <dl class="facts">
+          <dt>How often</dt><dd>Every <b>20 minutes</b></dd>
+          <dt>Warnings</dt><dd><b>30</b>, <b>15</b> and <b>5</b> seconds</dd>
+          <dt>Extra clears</dt><dd>If the server gets overloaded with mobs or items</dd>
+        </dl>
+      </div>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Do not leave loot on the ground</p><p>Anything dropped is gone at the next clear. Pick up your items when you see the warning. Farm animals can be cleared too, so do not rely on a large herd standing around.</p></div>
+    </section>
+
+    <section class="guide-sec" id="sleeping" aria-labelledby="sleeping-title">
+      <h2 id="sleeping-title">Sleeping</h2>
+      <p>You do not need everyone in bed. Night is skipped as soon as <strong>3 players</strong> in the Overworld are asleep. If fewer than 3 players are online, everyone online has to sleep.</p>
+    </section>
+
+    <section class="guide-sec" id="mobs" aria-labelledby="mobs-title">
+      <h2 id="mobs-title">Mob stacking</h2>
+      <p>When the server is busy, mobs of the same type crowding one chunk are merged into stacks of up to <strong>20</strong>. Killing a stack drops the items of every mob in it, but only one mob's worth of XP.</p>
+    </section>
+
+    <section class="guide-sec" id="spawn-away" aria-labelledby="spawn-away-title">
+      <h2 id="spawn-away-title">Spawn is far away</h2>
+      <p>Spawn is about 100,000 blocks from the centre of the world, well past the border, so you cannot walk back to it from your base. Use <span class="mc">/spawn</span> or the MENU item, then Warps. If you walk to within 400 blocks of the centre of the Overworld, you are sent to spawn.</p>
+      <p>Because you cannot return on foot, set a <a href="teleports.html#homes">home</a> before you go to spawn. Rejoining the server also puts you at spawn by default, and the <span class="mc">/wild</span> menu is the quickest way back out.</p>
+      <div class="note note--info"><img class="glyph glyph--1" src="../media/icons/glyph/compass.png" alt="" /><p class="note__label">See also</p><p><a href="spawn.html">Spawn map</a> lists everything at spawn and the other places you can warp to.</p></div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask in the Discord and someone will point you the right way.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

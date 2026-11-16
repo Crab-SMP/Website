@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Voting</title>
+  <meta name="description" content="How to vote for CrabSMP: the three vote sites, the reward per vote, UTC daily reset, streak bonuses and what to do if a vote does not pay." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/voting" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Voting | CrabSMP Wiki" />
+  <meta property="og:description" content="Vote sites, rewards and streaks for CrabSMP." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/voting" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>The server</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/star.png" alt="" /></span>
+        <div>
+          <h1>Voting</h1>
+          <p class="lead">Three sites, a reward on each, and bonuses for voting every day.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#sites">Vote sites</a>
+      <a href="#rewards">Rewards</a>
+      <a href="#reset">Daily reset</a>
+      <a href="#streaks">Streaks</a>
+      <a href="#how">How to vote</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Vote on <strong>3 sites</strong> once each per day. Each vote pays <strong>100,000 coins</strong> plus 3% of your balance, battle pass points and keys.</li>
+        <li>The day resets at <strong>midnight UTC</strong>, not 24 hours after your last vote.</li>
+        <li>Streaks of <strong>3, 7, 14 and 30 days</strong> pay extra coins and keys.</li>
+        <li>Your first vote gives you the permanent <strong>Voter</strong> rank.</li>
+        <li>Offline when you voted? It is paid on your next join.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="sites" aria-labelledby="sites-title">
+      <h2 id="sites-title">Where to vote</h2>
+      <p>There are three vote sites. You can vote on each one once a day, and every vote pays the same reward.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Site</th><th scope="col">Link</th></tr></thead><tbody>
+<tr><th scope="row">Minecraft Buzz</th><td><a href="https://minecraft.buzz/vote/crabsmp" target="_blank" rel="noopener" aria-label="minecraft.buzz/vote/crabsmp, opens in a new tab">minecraft.buzz/vote/crabsmp</a></td></tr>
+<tr><th scope="row">Realm Explorer</th><td><a href="https://realmexplorer.xyz/server/crabsmp-mcbe" target="_blank" rel="noopener" aria-label="realmexplorer.xyz/server/crabsmp-mcbe, opens in a new tab">realmexplorer.xyz/server/crabsmp-mcbe</a></td></tr>
+<tr><th scope="row">MinecraftPocket-Servers</th><td><a href="https://minecraftpocket-servers.com/crabsmp" target="_blank" rel="noopener" aria-label="minecraftpocket-servers.com/crabsmp, opens in a new tab">minecraftpocket-servers.com/crabsmp</a></td></tr>
+</tbody></table></div>
+      <p>You can also open the sites from the <a href="../vote.html">vote page</a> on this website, or in game with <button class="cmd" type="button" data-copy="/vote" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vote</button>.</p>
+    </section>
+
+    <section class="guide-sec" id="rewards" aria-labelledby="rewards-title">
+      <h2 id="rewards-title">What a vote pays</h2>
+      <p>Each vote gives you all of this.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Reward</th><th scope="col">Amount</th></tr></thead><tbody>
+<tr><th scope="row">Coins</th><td><span class="money">100,000 coins</span></td></tr>
+<tr><th scope="row">Balance bonus</th><td>3% of your balance, up to <span class="money">5,000,000 coins</span></td></tr>
+<tr><th scope="row">Battle pass points</th><td>250 to 500, picked at random</td></tr>
+<tr><th scope="row">Common keys</th><td>Up to 2. The second is not always given.</td></tr>
+<tr><th scope="row">Voter rank</th><td>On your first vote, permanent</td></tr>
+</tbody></table></div>
+      <p>Your vote is also announced in chat. Vote on all three sites in one day and you get the reward three times. The balance bonus grows with your coins until it reaches the cap.</p>
+    </section>
+
+    <section class="guide-sec" id="reset" aria-labelledby="reset-title">
+      <h2 id="reset-title">When votes reset</h2>
+      <p>A voting day is a calendar day in UTC, not 24 hours from your last vote. It starts at midnight UTC. After midnight you can vote on every site again, even if you voted a few hours earlier. A second vote on the same site in the same UTC day does not count.</p>
+<div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/clock.png" alt="" /><p class="note__label">Vote once a UTC day</p><p>Voting at least once in each UTC day keeps your streak alive. You do not have to vote at the same time every day.</p></div>
+    </section>
+
+    <section class="guide-sec" id="streaks" aria-labelledby="streaks-title">
+      <h2 id="streaks-title">Vote streaks</h2>
+      <p>Vote on at least one site on consecutive UTC days to build a streak. Miss a whole day and the streak goes back to 0. When you reach a streak tier you get its bonus on top of the normal reward.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Streak</th><th scope="col">Bonus coins</th><th scope="col">Bonus keys</th></tr></thead><tbody>
+<tr><th scope="row">3 days</th><td><span class="money">6,000 coins</span></td><td>1 Epic key</td></tr>
+<tr><th scope="row">7 days</th><td><span class="money">20,000 coins</span></td><td>1 Mythic key</td></tr>
+<tr><th scope="row">14 days</th><td><span class="money">40,000 coins</span></td><td>2 Epic keys</td></tr>
+<tr><th scope="row">30 days</th><td><span class="money">100,000 coins</span></td><td>2 Mythic keys and 3 Epic keys</td></tr>
+</tbody></table></div>
+      <p>The 30 day bonus repeats every 30 days after that, at 60 days, 90 days and so on. Bonus keys are the most you can get and are not always all given.</p>
+    </section>
+
+    <section class="guide-sec" id="how" aria-labelledby="how-title">
+      <h2 id="how-title">How to vote</h2>
+
+<ol class="steps"><li><strong>Open the vote menu</strong>Type <button class="cmd" type="button" data-copy="/vote" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vote</button> in game, or go to the <a href="../vote.html">vote page</a>.</li><li><strong>Pick a site</strong>Open one of the three vote sites from the menu or the table above.</li><li><strong>Enter your name</strong>Type your exact Bedrock gamertag when the site asks, and press Vote.</li><li><strong>Get paid</strong>The reward arrives in game, and chat announces your vote. Your first vote also gives you the Voter rank.</li><li><strong>Repeat on the other sites</strong>Each site counts on its own, so vote on all three for the full reward.</li></ol>
+      <p>If you vote while you are offline, the reward is paid when you next join. In the Discord you can also run <button class="cmd" type="button" data-copy="/vote claim" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vote claim</button> to collect it, and <button class="cmd" type="button" data-copy="/vote links" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/vote links</button> to see the sites, which ones you voted on today, your streak and your total votes.</p>
+<div class="note"><img class="glyph glyph--1" src="../media/icons/glyph/help.png" alt="" /><p class="note__label">Reward missing</p><p>Check the gamertag you typed, then rejoin. If it still does not arrive, open a ticket in the Discord. See <a href="help.html">Getting help</a>.</p></div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Vote didn't pay?</h2>
+        <p>Rejoin first. If it still has not arrived, ask in the Discord.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

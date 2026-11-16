@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Spawn map</title>
+  <meta name="description" content="Everything at CrabSMP spawn: the map, every NPC and what it does, what spawn does to you, and how to reach the PvP Arena, duels, Freeplay and the Nether hub." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/spawn" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Spawn map | CrabSMP Wiki" />
+  <meta property="og:description" content="The spawn map, every NPC and what it does, and how to reach the other places." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/spawn" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>New players</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/compass.png" alt="" /></span>
+        <div>
+          <h1>Spawn map</h1>
+          <p class="lead">What is at spawn, what it does for you, and how to reach the other places.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#map">The map</a>
+      <a href="#around">Getting around</a>
+      <a href="#money">Money</a>
+      <a href="#rewards">Rewards</a>
+      <a href="#pvp">PvP</a>
+      <a href="#cosmetics">Cosmetics</a>
+      <a href="#info">Information</a>
+      <a href="#effects">What spawn does to you</a>
+      <a href="#places">Other places</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Spawn is a safe hub: <strong>no damage within 400 blocks</strong> and <strong>no building within 1,000</strong>.</li>
+        <li>Click or hit an NPC to open its menu. Everything an NPC does is also in the MENU item.</li>
+        <li>You can fly with a Crab rank and double jump without one, but only at spawn.</li>
+        <li>Hitting a player at spawn opens their profile instead of hurting them.</li>
+        <li>Get back any time with <span class="mc">/spawn</span>, and out to other places with <span class="mc">/warps</span>.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="map" aria-labelledby="map-title">
+      <h2 id="map-title">The map</h2>
+      <figure>
+        <img src="../media/wiki/spawn-map.webp" width="713" height="711" loading="lazy" alt="A top down map of the CrabSMP spawn area." />
+        <figcaption>A map of spawn. The sections below list everything you can use there.</figcaption>
+      </figure>
+    </section>
+
+    <section class="guide-sec" id="around" aria-labelledby="around-title">
+      <h2 id="around-title">Getting around</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">What</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Wilderness NPC</th><td>Takes you out to explore: a random teleport, or Freeplay and KOTH. The name tag shows how many players are there.</td></tr>
+            <tr><th scope="row">Guide NPC</th><td>The server handbook: how to start, safety, factions, the economy, warps, rules and socials.</td></tr>
+            <tr><th scope="row">Lecterns</th><td>Use one to open the How to Play tutorial.</td></tr>
+            <tr><th scope="row">Parkour</th><td>Reach the top for a random reward: a Common key, an Epic key or +1 max heart. You can claim it once every 15 minutes.</td></tr>
+            <tr><th scope="row">AFK zone</th><td>Stand in it and you earn coins every 10 seconds. You cannot be put in combat there.</td></tr>
+            <tr><th scope="row">Fishing pond</th><td>Fish with custom rods. See <a href="fishing.html">Fishing</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="money" aria-labelledby="money-title">
+      <h2 id="money-title">Money</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">NPC</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Shopkeeper</th><td>The server shop. See <a href="shop.html">Shop</a>.</td></tr>
+            <tr><th scope="row">Auctioneer</th><td>The Auction House.</td></tr>
+            <tr><th scope="row">Blacksmith</th><td>Bounties.</td></tr>
+            <tr><th scope="row">Vaults NPC</th><td>Your personal vaults.</td></tr>
+            <tr><th scope="row">Farmer</th><td>Trades items for coins or XP. It offers 3 random trades and restocks every hour.</td></tr>
+            <tr><th scope="row">Hunter</th><td>Works like the Farmer with a different stock. It sometimes sells a Heart for 60,000 coins or a Soul Bottle for 20 XP levels, 3 of each at most.</td></tr>
+            <tr><th scope="row">Stats NPC</th><td>Your stats.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="rewards" aria-labelledby="rewards-title">
+      <h2 id="rewards-title">Rewards</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">What</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Starter chest</th><td>Right click it to get your starter gear back. See <a href="getting-started.html#starter-kit">Getting started</a>.</td></tr>
+            <tr><th scope="row">Daily Rewards NPC</th><td>Your daily gift. Its name tag shows the time left, "Ready to claim!" or your streak.</td></tr>
+            <tr><th scope="row">Voting NPC</th><td>The vote sites and their rewards. See <a href="voting.html">Voting</a>.</td></tr>
+            <tr><th scope="row">Battlepass NPC</th><td>Claim your season rewards on the free and premium tracks. See <a href="battlepass.html">Battlepass</a>.</td></tr>
+            <tr><th scope="row">Crates</th><td>Common, Epic and Mythic crates. Click one with a key to open it, or hit it to preview what is inside. See <a href="crates.html">Crates</a>.</td></tr>
+            <tr><th scope="row">Discord block</th><td>Click it to open the Discord and Discord Kit menu.</td></tr>
+            <tr><th scope="row">Discord Kit NPC</th><td>Wumpus, under a Discord logo sign. Link your account and claim the Discord Kit. See <a href="discord.html">Discord</a>.</td></tr>
+            <tr><th scope="row">Loot drops</th><td>Every 15 minutes a drop lands at spawn or in the PvP Arena, taking turns. It can hold keys, Hearts, golden apples, totems and spawners.</td></tr>
+            <tr><th scope="row">Creator NPC</th><td>Information on creator rewards.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="pvp" aria-labelledby="pvp-title">
+      <h2 id="pvp-title">PvP</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">NPC</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">PvP NPC</th><td>Pick the PvP Arena (free for all) or 1v1 duels. See <a href="duels.html">Duels</a>.</td></tr>
+            <tr><th scope="row">Lifesteal NPC</th><td>Withdraw hearts, revive a player, the lifesteal shop and how lifesteal works. See <a href="lifesteal.html">Lifesteal</a>.</td></tr>
+            <tr><th scope="row">Podiums</th><td>Three podiums show the top three players with their skins.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>You cannot be hurt at spawn, so a fight here is never a real one. Hitting another player opens their profile with <span class="mc">Ask to Duel</span> and <span class="mc">Trade</span> buttons.</p>
+    </section>
+
+    <section class="guide-sec" id="cosmetics" aria-labelledby="cosmetics-title">
+      <h2 id="cosmetics-title">Cosmetics</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">NPC</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Cosmetics mannequin</th><td>Shows the donator cosmetics. Click it to browse. It only opens on a click, not a hit. See <a href="cosmetics.html">Cosmetics</a>.</td></tr>
+            <tr><th scope="row">Emote NPC</th><td>A pink mannequin that dances. Crab rank holders get the emotes screen; everyone else sees what the rank adds.</td></tr>
+            <tr><th scope="row">Store NPCs</th><td>The ranks store. Two of them open the store, and the one with the floating Crab Plus sign opens the ranks page. See <a href="ranks.html">Ranks</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="info" aria-labelledby="info-title">
+      <h2 id="info-title">Information</h2>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">What</th><th scope="col">What it does</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Discord NPC</th><td>Join the Discord. A button prints the invite in chat.</td></tr>
+            <tr><th scope="row">Update board</th><td>A floating list of the last ten updates.</td></tr>
+            <tr><th scope="row">Wandering crabs</th><td>Just decoration. Do not hit them.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Hitting an NPC opens its menu just like a click does.</p>
+    </section>
+
+    <section class="guide-sec" id="effects" aria-labelledby="effects-title">
+      <h2 id="effects-title">What spawn does to you</h2>
+      <div class="split">
+        <ul class="bullets">
+          <li><strong>No damage.</strong> All damage to players is cancelled within 400 blocks of the spawn point.</li>
+          <li><strong>No building.</strong> You cannot break or place blocks within 1,000 blocks. See <a href="world.html#no-build">The world</a>.</li>
+          <li><strong>Flight and double jump.</strong> Jump twice to double jump. With a Crab rank, <span class="mc">/fly</span> turns flight on. Both work only at spawn.</li>
+          <li><strong>Full hunger.</strong> Inside the spawn area your food is kept full and fire is put out.</li>
+          <li><strong>No monsters.</strong> Hostile mobs do not spawn in the spawn area, the PvP Arena or the Nether hub.</li>
+          <li><strong>Limits.</strong> Ender pearls and chorus fruit do not work in the spawn area, and you cannot glide with an elytra.</li>
+          <li><strong>Profiles.</strong> Hitting a player opens their profile. They are told you looked unless they turned that off.</li>
+        </ul>
+        <dl class="facts">
+          <dt>No damage</dt><dd>Within <b>400</b> blocks</dd>
+          <dt>No building</dt><dd>Within <b>1,000</b> blocks</dd>
+          <dt>Parkour reward</dt><dd>Every <b>15</b> minutes</dd>
+          <dt>Loot drops</dt><dd>Every <b>15</b> minutes</dd>
+          <dt>AFK coins</dt><dd>Every <b>10</b> seconds</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="places" aria-labelledby="places-title">
+      <h2 id="places-title">Other places</h2>
+      <p>Open the MENU item, then <span class="mc">Warps</span>, or type <button class="cmd" type="button" data-copy="/warps" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/warps</button>. Each button shows how many players are there.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th scope="col">Place</th><th scope="col">What it is</th><th scope="col">How to get there</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/sword.png" alt="" />PvP Arena</span></th><td>Free for all combat. You are safe for 5 seconds after arriving, though you can attack. The Fallen Knight boss also appears here. See <a href="events.html">Events</a>.</td><td>Warps, <span class="mc">PvP Area</span>, then the arena, or the PvP NPC.</td></tr>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/duel.png" alt="" />Duel arena</span></th><td>One duel at a time. You keep your gear and lose nothing. See <a href="duels.html">Duels</a>.</td><td>Warps, <span class="mc">PvP Area</span>, then duels, or <span class="mc">/duel</span>.</td></tr>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/freeplay.png" alt="" />Freeplay and KOTH</span></th><td>Open PvP in the real world, home of King of the Hill. Bring gear you are willing to lose. The arrival spot is safe.</td><td>Warps, <span class="mc">Freeplay / KOTH</span>.</td></tr>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/globe.png" alt="" />Nether hub</span></th><td>A safe zone in the Nether with no PvP and no mobs.</td><td>There is no warp for it. It is where a random Nether teleport puts you if it cannot find a spot.</td></tr>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/clock.png" alt="" />AFK zone</span></th><td>Earns coins while you are away.</td><td>Warps, <span class="mc">AFK Zone</span>.</td></tr>
+            <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/castle.png" alt="" />Your homes</span></th><td>Places you set yourself.</td><td>Warps, <span class="mc">Your Homes</span>, or <span class="mc">/home</span>. See <a href="teleports.html#homes">Teleports and homes</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Check before you go</p><p>Taking the Server Spawn button from far away asks you to set a home first, because staff will not teleport you back to your old spot. You also cannot teleport while you are in combat. See <a href="combat.html">Combat</a>.</p></div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask in the Discord and someone will point you the right way.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

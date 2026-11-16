@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Battle pass and quests</title>
+  <meta name="description" content="How the CrabSMP battle pass works: tiers, points, free and premium rewards, Season X cosmetics, getting premium and every daily quest." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/battlepass" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Battle pass and quests | CrabSMP Wiki" />
+  <meta property="og:description" content="Tiers, points, rewards and daily quests, and how to get premium." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/battlepass" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Progression</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/pass_star.png" alt="" /></span>
+        <div>
+          <h1>Battle pass and quests</h1>
+          <p class="lead">Earn points, climb 100 tiers and claim coins, keys and Season X cosmetics.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#open">Open the battle pass</a>
+      <a href="#tiers">Tiers and point costs</a>
+      <a href="#points">How to earn points</a>
+      <a href="#rewards">Rewards</a>
+      <a href="#bonus">Bonus tiers</a>
+      <a href="#premium">Get premium</a>
+      <a href="#quests">Daily quests</a>
+      <a href="#claim">Claim your rewards</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Open it with <span class="mc">/bp</span>. There are <strong>100 tiers</strong> and endless bonus tiers after that.</li>
+        <li>Earn points from daily quests, voting, events, fishing and crates. <strong>39,700 points</strong> gets you to tier 100.</li>
+        <li>Everyone gets coins, keys and items. <strong>Premium</strong> pays more and adds the Season X cosmetics.</li>
+        <li>Get premium for <strong>$5.99</strong>, with the CrabDemon rank, or free after <strong>3 days</strong> of playtime.</li>
+        <li>Daily quests reset at <strong>midnight UTC</strong>. Claim them in <span class="mc">/bp</span> on the Quests tab.</li>
+        <li>Each earned key has a <strong>75% chance</strong> to arrive.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="open" aria-labelledby="open-title">
+      <h2 id="open-title">Open the battle pass</h2>
+      <p>Type <button class="cmd" type="button" data-copy="/bp" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bp</button>, use the battle pass NPC at spawn, or open it from the Other menu. The screen has two tabs: <b>Pass</b> for the tier list and <b>Quests</b> for your daily quests.</p>
+      <p>The Pass tab is a scrolling list of tiers. The free reward for each tier is on the left and the premium reward is on the right. <span class="mc">Claim All</span> collects every reward you have unlocked on both tracks.</p>
+      <p>The current season is <b>Season X</b>. Staff start a new season from time to time, with no fixed length. When that happens your points and claims reset. Premium and every cosmetic you earned stay.</p>
+    </section>
+
+    <section class="guide-sec" id="tiers" aria-labelledby="tiers-title">
+      <h2 id="tiers-title">Tiers and point costs</h2>
+      <p>There are <b>100 tiers</b>, and the pass never really ends: after tier 100 you keep earning bonus tiers. Each tier costs a little more than the last, starting at 100 points and rising by 6 every tier.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Tier</th><th>Cost of this tier</th><th>Total points to reach it</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">1</th><td class="num">100</td><td class="num">100</td></tr>
+          <tr><th scope="row">10</th><td class="num">154</td><td class="num">1,270</td></tr>
+          <tr><th scope="row">25</th><td class="num">244</td><td class="num">4,300</td></tr>
+          <tr><th scope="row">50</th><td class="num">394</td><td class="num">12,350</td></tr>
+          <tr><th scope="row">75</th><td class="num">544</td><td class="num">24,150</td></tr>
+          <tr><th scope="row">100</th><td class="num">694</td><td class="num">39,700</td></tr>
+          <tr><th scope="row">Bonus 1, 2, 3 and on</th><td class="num">1,000</td><td class="num">40,700, 41,700, 42,700 and on</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Tier 100 costs 694 points on its own, and you need <b>39,700 points</b> in total to get there.</p>
+    </section>
+
+    <section class="guide-sec" id="points" aria-labelledby="points-title">
+      <h2 id="points-title">How to earn points</h2>
+      <p>Premium players get <b>25% more points</b> from every source below.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Source</th><th>Points</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Daily quests</th><td>See the quest tables below</td></tr>
+          <tr><th scope="row">Voting, see <a href="voting.html">Voting</a></th><td>250 to 500 per vote</td></tr>
+          <tr><th scope="row">King of the Hill win, see <a href="events.html">Events</a></th><td>500, plus an Epic key and coins</td></tr>
+          <tr><th scope="row">King of the Hill participation (at least 30 hill points)</th><td>100</td></tr>
+          <tr><th scope="row">Boss event killer, see <a href="events.html">Events</a></th><td>5,000</td></tr>
+          <tr><th scope="row">Boss event assister</th><td>2,000</td></tr>
+          <tr><th scope="row">Spawn pond fishing, see <a href="fishing.html">Fishing</a></th><td>4 to 12 (Tide, Coral), 12 to 34 (Gilded, Prismarine), 25 to 60 (Nexus, Abyssal), 50 to 125 (Crab King's)</td></tr>
+          <tr><th scope="row">Crate prizes, see <a href="crates.html">Crates</a></th><td>Common +60 or +120, Epic +150 or +300, Mythic +500 or +1,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Creator rewards and staff grants can also give points.</p>
+    </section>
+
+    <section class="guide-sec" id="rewards" aria-labelledby="rewards-title">
+      <h2 id="rewards-title">Rewards</h2>
+      <p>Every tier pays coins on both tracks. The free track pays <b>2,500 coins plus 400 times the tier</b>. The premium track pays <b>6,000 coins plus 1,100 times the tier</b>.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Tier</th><th>Free coins</th><th>Premium coins</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">1</th><td class="num"><span class="money">2,900 coins</span></td><td class="num"><span class="money">7,100 coins</span></td></tr>
+          <tr><th scope="row">10</th><td class="num"><span class="money">6,500 coins</span></td><td class="num"><span class="money">17,000 coins</span></td></tr>
+          <tr><th scope="row">50</th><td class="num"><span class="money">22,500 coins</span></td><td class="num"><span class="money">61,000 coins</span></td></tr>
+          <tr><th scope="row">100</th><td class="num"><span class="money">42,500 coins</span></td><td class="num"><span class="money">116,000 coins</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Over a whole season the free track pays <span class="money">2,270,000 coins</span> and the premium track pays <span class="money">6,155,000 coins</span>.</p>
+      <h3>Keys</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Track</th><th>Common key</th><th>Epic key</th><th>Mythic key</th><th>Season total</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Free</th><td>Every 5 tiers</td><td>Every 10 tiers</td><td>Tier 100 only</td><td>20 Common, 10 Epic, 1 Mythic</td></tr>
+          <tr><th scope="row">Premium</th><td>Every tier</td><td>Every 5 tiers</td><td>Every 10 tiers</td><td>100 Common, 20 Epic, 10 Mythic</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="note note--info">
+        <img class="glyph glyph--1" src="../media/icons/glyph/key_common.png" alt="" />
+        <p class="note__label">Why a key did not arrive</p>
+        <p>Every key you earn has a <b>75% chance</b> to arrive, and this applies to battle pass keys too. On average three out of every four keys land. It is not a bug, so a missing key will not be added later.</p>
+      </div>
+      <h3>Free items</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Tier</th><th>Item</th></tr></thead>
+          <tbody>
+          <tr><td class="num">10</td><td>Common Goodie Bag</td></tr>
+          <tr><td class="num">20</td><td>Tide Rod</td></tr>
+          <tr><td class="num">30</td><td>6 Diamonds</td></tr>
+          <tr><td class="num">40</td><td>2 Netherite Scrap</td></tr>
+          <tr><td class="num">50</td><td>Rare Goodie Bag</td></tr>
+          <tr><td class="num">60</td><td>1 Diamond Block</td></tr>
+          <tr><td class="num">70</td><td>Rare Goodie Bag</td></tr>
+          <tr><td class="num">80</td><td>1 Netherite Ingot</td></tr>
+          <tr><td class="num">90</td><td>2 Diamond Blocks</td></tr>
+          <tr><td class="num">100</td><td>1 Netherite Block and a Rare Goodie Bag</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Premium items and cosmetics</h3>
+      <p>The premium track pays an item every 5 tiers. Four tiers also unlock a Season X cosmetic. Cosmetics are permanent and stay after the season ends. Premium never pays combat weapons or armour.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Tier</th><th>Item</th><th>Cosmetic</th></tr></thead>
+          <tbody>
+          <tr><td class="num">5</td><td>Rare Goodie Bag</td><td>None</td></tr>
+          <tr><td class="num">10</td><td>2 Diamond Blocks</td><td>None</td></tr>
+          <tr><td class="num">15</td><td>2 Rare Goodie Bags</td><td>None</td></tr>
+          <tr><td class="num">20</td><td>1 Netherite Ingot</td><td>None</td></tr>
+          <tr><td class="num">25</td><td>Gilded Rod and a Rare Goodie Bag</td><td>Season X Cape</td></tr>
+          <tr><td class="num">30</td><td>5 Diamond Blocks</td><td>None</td></tr>
+          <tr><td class="num">35</td><td>Mythic Goodie Bag</td><td>None</td></tr>
+          <tr><td class="num">40</td><td>3 Netherite Ingots</td><td>None</td></tr>
+          <tr><td class="num">45</td><td>64 XP Bottles and a Rare Goodie Bag</td><td>None</td></tr>
+          <tr><td class="num">50</td><td>Nexus Rod, 1 Netherite Block and a Mythic Goodie Bag</td><td>Season X Halo</td></tr>
+          <tr><td class="num">55</td><td>2 Mythic Goodie Bags</td><td>None</td></tr>
+          <tr><td class="num">60</td><td>8 Diamond Blocks</td><td>None</td></tr>
+          <tr><td class="num">65</td><td>2 Mythic Goodie Bags</td><td>None</td></tr>
+          <tr><td class="num">70</td><td>3 Netherite Ingots</td><td>None</td></tr>
+          <tr><td class="num">75</td><td>5 Netherite Ingots</td><td>Season X Wyrm (pet)</td></tr>
+          <tr><td class="num">80</td><td>2 Netherite Blocks and a Mythic Goodie Bag</td><td>None</td></tr>
+          <tr><td class="num">85</td><td>3 Mythic Goodie Bags</td><td>None</td></tr>
+          <tr><td class="num">90</td><td>6 Netherite Ingots</td><td>None</td></tr>
+          <tr><td class="num">95</td><td>12 Diamond Blocks</td><td>None</td></tr>
+          <tr><td class="num">100</td><td>Crab King's Rod, 4 Netherite Blocks and 4 Mythic Goodie Bags</td><td>Season X Wings</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Open your wardrobe with <button class="cmd" type="button" data-copy="/cosmetics" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/cosmetics</button> to wear them. See <a href="cosmetics.html">Cosmetics</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="bonus" aria-labelledby="bonus-title">
+      <h2 id="bonus-title">Bonus tiers</h2>
+      <p>After tier 100, a bonus tier arrives every <b>1,000 points</b>, with no limit. The free track gives <b>1 Epic key</b> for each bonus tier and the premium track gives <b>1 Mythic key</b>. Both go through the 75% key chance.</p>
+    </section>
+
+    <section class="guide-sec" id="premium" aria-labelledby="premium-title">
+      <h2 id="premium-title">Get premium</h2>
+      <p>Premium is permanent and carries over to every future season. There are three ways to get it.</p>
+      <div class="tiles">
+        <div class="tile tile--gold">
+          <img class="glyph" src="../media/icons/glyph/shop.png" alt="" />
+          <strong>Buy it</strong>
+          <span>Premium Battlepass costs $5.99 in the <a href="../store.html">store</a>.</span>
+        </div>
+        <div class="tile tile--red">
+          <img class="glyph" src="../media/icons/glyph/rank_crabdemon.png" alt="" />
+          <strong>CrabDemon</strong>
+          <span>The CrabDemon rank includes it. CrabPlus and CrabExtra do not.</span>
+        </div>
+        <div class="tile tile--green">
+          <img class="glyph" src="../media/icons/glyph/clock.png" alt="" />
+          <strong>Play for it</strong>
+          <span>It unlocks for free once you reach 3 days of total playtime.</span>
+        </div>
+      </div>
+      <p>A premium tier you reached before you had premium is not lost. Claim it once premium is yours.</p>
+    </section>
+
+    <section class="guide-sec" id="quests" aria-labelledby="quests-title">
+      <h2 id="quests-title">Daily quests</h2>
+      <p>There are <b>13 daily quests</b>, and all of them are active for everyone at once. Each one pays battle pass points. At level 1 all 13 together are worth <b>680 points a day</b> (850 with premium).</p>
+      <p>Quests reset at <b>midnight UTC</b> every day. Progress and claims reset, but quest levels do not.</p>
+      <h3>Quest levels</h3>
+      <p>Every time you claim a quest it goes up a level for good. The next level asks for <b>1.5 times as many</b> (rounded up) and pays <b>double the points</b>. Levels never reset, not daily and not between seasons. Each quest can be claimed once a day.</p>
+      <h3>How many you need</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Quest</th><th>Task</th><th>Level 1</th><th>Level 2</th><th>Level 3</th><th>Level 4</th><th>Level 5</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Zombie Slayer</th><td>Kill zombies or husks</td><td class="num">25</td><td class="num">38</td><td class="num">57</td><td class="num">85</td><td class="num">127</td></tr>
+          <tr><th scope="row">Skeleton Archer</th><td>Kill skeletons or strays</td><td class="num">20</td><td class="num">30</td><td class="num">45</td><td class="num">68</td><td class="num">102</td></tr>
+          <tr><th scope="row">Stone Miner</th><td>Mine stone, cobblestone or deepslate</td><td class="num">64</td><td class="num">96</td><td class="num">144</td><td class="num">216</td><td class="num">324</td></tr>
+          <tr><th scope="row">Coal Collector</th><td>Mine coal ore</td><td class="num">32</td><td class="num">48</td><td class="num">72</td><td class="num">108</td><td class="num">162</td></tr>
+          <tr><th scope="row">Creeper Blaster</th><td>Kill creepers</td><td class="num">20</td><td class="num">30</td><td class="num">45</td><td class="num">68</td><td class="num">102</td></tr>
+          <tr><th scope="row">Iron Digger</th><td>Mine iron ore</td><td class="num">20</td><td class="num">30</td><td class="num">45</td><td class="num">68</td><td class="num">102</td></tr>
+          <tr><th scope="row">PvP Initiate</th><td>Kill players</td><td class="num">3</td><td class="num">5</td><td class="num">7</td><td class="num">11</td><td class="num">16</td></tr>
+          <tr><th scope="row">Gold Prospector</th><td>Mine gold ore or nether gold ore</td><td class="num">10</td><td class="num">15</td><td class="num">23</td><td class="num">34</td><td class="num">51</td></tr>
+          <tr><th scope="row">Enderman Hunter</th><td>Kill endermen</td><td class="num">10</td><td class="num">15</td><td class="num">23</td><td class="num">34</td><td class="num">51</td></tr>
+          <tr><th scope="row">Wither Slayer</th><td>Kill wither skeletons</td><td class="num">5</td><td class="num">8</td><td class="num">12</td><td class="num">17</td><td class="num">26</td></tr>
+          <tr><th scope="row">Diamond Miner</th><td>Mine diamond ore</td><td class="num">8</td><td class="num">12</td><td class="num">18</td><td class="num">27</td><td class="num">41</td></tr>
+          <tr><th scope="row">Blaze Slayer</th><td>Kill blazes</td><td class="num">20</td><td class="num">30</td><td class="num">45</td><td class="num">68</td><td class="num">102</td></tr>
+          <tr><th scope="row">Ancient Digger</th><td>Mine ancient debris</td><td class="num">3</td><td class="num">5</td><td class="num">7</td><td class="num">11</td><td class="num">16</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Points paid</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Quest</th><th>Level 1</th><th>Level 2</th><th>Level 3</th><th>Level 4</th><th>Level 5</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">Zombie Slayer</th><td class="num">25</td><td class="num">50</td><td class="num">100</td><td class="num">200</td><td class="num">400</td></tr>
+          <tr><th scope="row">Skeleton Archer</th><td class="num">25</td><td class="num">50</td><td class="num">100</td><td class="num">200</td><td class="num">400</td></tr>
+          <tr><th scope="row">Stone Miner</th><td class="num">20</td><td class="num">40</td><td class="num">80</td><td class="num">160</td><td class="num">320</td></tr>
+          <tr><th scope="row">Coal Collector</th><td class="num">25</td><td class="num">50</td><td class="num">100</td><td class="num">200</td><td class="num">400</td></tr>
+          <tr><th scope="row">Creeper Blaster</th><td class="num">35</td><td class="num">70</td><td class="num">140</td><td class="num">280</td><td class="num">560</td></tr>
+          <tr><th scope="row">Iron Digger</th><td class="num">40</td><td class="num">80</td><td class="num">160</td><td class="num">320</td><td class="num">640</td></tr>
+          <tr><th scope="row">PvP Initiate</th><td class="num">50</td><td class="num">100</td><td class="num">200</td><td class="num">400</td><td class="num">800</td></tr>
+          <tr><th scope="row">Gold Prospector</th><td class="num">45</td><td class="num">90</td><td class="num">180</td><td class="num">360</td><td class="num">720</td></tr>
+          <tr><th scope="row">Enderman Hunter</th><td class="num">65</td><td class="num">130</td><td class="num">260</td><td class="num">520</td><td class="num">1,040</td></tr>
+          <tr><th scope="row">Wither Slayer</th><td class="num">80</td><td class="num">160</td><td class="num">320</td><td class="num">640</td><td class="num">1,280</td></tr>
+          <tr><th scope="row">Diamond Miner</th><td class="num">65</td><td class="num">130</td><td class="num">260</td><td class="num">520</td><td class="num">1,040</td></tr>
+          <tr><th scope="row">Blaze Slayer</th><td class="num">95</td><td class="num">190</td><td class="num">380</td><td class="num">760</td><td class="num">1,520</td></tr>
+          <tr><th scope="row">Ancient Digger</th><td class="num">110</td><td class="num">220</td><td class="num">440</td><td class="num">880</td><td class="num">1,760</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Premium players get 25% more points on top. Deepslate versions of ores count for the mining quests.</p>
+    </section>
+
+    <section class="guide-sec" id="claim" aria-labelledby="claim-title">
+      <h2 id="claim-title">Claim your rewards</h2>
+      <ol class="steps">
+        <li><strong>Finish the quest</strong>Chat tells you when a quest is complete.</li>
+        <li><strong>Open the battle pass</strong>Type <button class="cmd" type="button" data-copy="/bp" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bp</button> and open the <span class="mc">Quests</span> tab.</li>
+        <li><strong>Claim it</strong>Click the ready quest, or press <span class="mc">Claim All</span>. Points land in your pass straight away.</li>
+      </ol>
+      <p>Tier rewards are claimed on the Pass tab, with the same <span class="mc">Claim All</span> button.</p>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Missing something?</h2>
+        <p>Read about <a href="crates.html">crates</a> and <a href="ranks.html">ranks</a>, or ask in the Discord.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

@@ -9,6 +9,8 @@
   var finePointer = window.matchMedia &&
     window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var VFX = window.CrabVFX || null;
+  var ROOT = ((document.currentScript && document.currentScript.getAttribute('src')) || '')
+    .replace(/javascript\/crab\.js$/, '');
 
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -168,7 +170,7 @@
     var el = document.createElement('div');
     el.className = 'toast';
     el.innerHTML =
-      '<span class="toast__icon"><img alt="" src="' + (icon || 'media/icons/glyph/star.png') + '"></span>' +
+      '<span class="toast__icon"><img alt="" src="' + (icon || ROOT + 'media/icons/glyph/star.png') + '"></span>' +
       '<span class="toast__title"></span><span class="toast__text"></span>';
     el.querySelector('.toast__title').textContent = title;
     el.querySelector('.toast__text').textContent = text || '';
@@ -286,7 +288,8 @@
       if (!dest) return;
       e.preventDefault();
       var bar = $('.topbar');
-      var offset = (bar ? bar.offsetHeight : 0) + 12;
+      var sub = $('[data-subnav]');
+      var offset = (bar ? bar.offsetHeight : 0) + (sub ? sub.offsetHeight : 0) + 12;
       syncIfIdle();
       current = window.scrollY || window.pageYOffset;
       aimAt = dest;
@@ -439,7 +442,7 @@
         }, 1600);
         toast(btn.getAttribute('data-toast-title') || 'Copied to clipboard',
           btn.getAttribute('data-toast') || text,
-          btn.getAttribute('data-toast-icon') || 'media/icons/glyph/tpa.png');
+          btn.getAttribute('data-toast-icon') || ROOT + 'media/icons/glyph/tpa.png');
         if (VFX) VFX.pop(x, y, 'xp');
       });
     });
@@ -1210,7 +1213,7 @@
         var r = link.getBoundingClientRect();
         var x = e.clientX || r.left + r.width / 2;
         if (VFX) VFX.pop(x, e.clientY || r.top, 'xp');
-        toast('Vote opened', 'Come back to ' + (row.getAttribute('data-name') || 'this site') + ' in 24 hours', 'media/icons/glyph/star.png');
+        toast('Vote opened', 'Come back to ' + (row.getAttribute('data-name') || 'this site') + ' in 24 hours', ROOT + 'media/icons/glyph/star.png');
       });
     });
     paint();
@@ -1400,7 +1403,7 @@
 
     ['red', 'blue', 'green', 'gold', 'dark', 'purple'].forEach(function (skin) {
       ['unchecked_hover', 'default'].forEach(function (face) {
-        new Image().src = 'media/ui/buttons/' + skin + '/' + face + '.png';
+        new Image().src = ROOT + 'media/ui/buttons/' + skin + '/' + face + '.png';
       });
     });
 

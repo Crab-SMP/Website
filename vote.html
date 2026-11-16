@@ -73,6 +73,7 @@
       <ul class="topbar__links">
         <li><a class="topbar__link" href="index.html"><img class="topbar__ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
         <li><a class="topbar__link" href="about.html"><img class="topbar__ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="wiki/index.html"><img class="topbar__ico" src="media/icons/glyph/book.png" alt="" />Wiki</a></li>
         <li><a class="topbar__link" href="store.html"><img class="topbar__ico" src="media/icons/glyph/shop.png" alt="" />Store</a></li>
         <li><a class="topbar__link" href="vote.html" aria-current="page"><img class="topbar__ico" src="media/icons/glyph/star.png" alt="" />Vote<span class="topbar__mark" aria-hidden="true"></span></a></li>
         <li><a class="topbar__link" href="status.html"><img class="topbar__ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
@@ -91,13 +92,16 @@
 
   <section class="page-hero vote-hero" aria-labelledby="vote-title">
     <div class="page-hero__bg" aria-hidden="true">
-      <div class="vote-hero__sky"></div>
+      <img class="page-hero__photo"
+           src="media/header-images/vote.webp"
+           srcset="media/header-images/vote-960.webp 960w, media/header-images/vote.webp 1920w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async" />
       <canvas data-motes="stars"></canvas>
     </div>
     <div class="shell page-hero__content vote-hero__grid">
       <div>
         <p class="label" data-enter>Vote</p>
-        <h1 class="display-1" id="vote-title" data-enter data-split>Vote daily. <em>Get rewarded.</em></h1>
+        <h1 class="display-1 on-image" id="vote-title" data-enter data-split>Vote daily. <em>Get rewarded.</em></h1>
         <p class="lead" data-enter>
           Vote for CrabSMP on the sites below and earn rewards in game, while
           boosting our public visibility. Use <strong class="mc-cmd">/vote</strong>
@@ -180,6 +184,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="wiki/index.html">Wiki</a></li>
           <li><a href="store.html">Store</a></li>
           <li><a href="vote.html">Vote</a></li>
           <li><a href="status.html">Status</a></li>

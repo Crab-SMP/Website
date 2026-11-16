@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Lifesteal and hearts</title>
+  <meta name="description" content="How lifesteal works on CrabSMP: starting and maximum hearts, what a death costs, elimination, Soul Bottle revives, Heart items and the Lifesteal Shop." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/lifesteal" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Lifesteal and hearts | CrabSMP Wiki" />
+  <meta property="og:description" content="Hearts, deaths, kills, revives and Heart items on CrabSMP." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/lifesteal" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Survival</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/lifesteal_heart.png" alt="" /></span>
+        <div>
+          <h1>Lifesteal and hearts</h1>
+          <p class="lead">Win hearts from kills, lose one for every death, and know how to come back.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#rules">The rules</a>
+      <a href="#deaths">Deaths and kills</a>
+      <a href="#elimination">Elimination</a>
+      <a href="#revive">Revives</a>
+      <a href="#heart-items">Heart items</a>
+      <a href="#apple">Hearty apples</a>
+      <a href="#shop">Lifesteal shop</a>
+      <a href="#enchant">Enchantment</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>You start with <strong>10 hearts</strong> and can hold up to <strong>30</strong>.</li>
+        <li>Every death outside a duel costs <strong>1 heart</strong>, whatever killed you. A kill gives the killer <strong>1 heart</strong>.</li>
+        <li>Dying on your last heart eliminates you: you become a spectator near spawn until someone revives you.</li>
+        <li>A <a href="#revive">Soul Bottle</a> brings a fallen player back at 10 hearts.</li>
+        <li>You can turn hearts into items with <button class="cmd" type="button" data-copy="/withdraw" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/withdraw</button>, or craft and buy them.</li>
+        <li>Duels never cost hearts.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="rules" aria-labelledby="rules-title">
+      <h2 id="rules-title">The rules</h2>
+      <div class="split">
+        <div>
+          <p>Lifesteal means your health is a resource you can win and lose. You begin with 10 hearts. Every kill adds one to your maximum, every death takes one away, and there is a cap of 30. Your hearts are shown under your name as current and maximum.</p>
+          <p>These are the current rules. Staff can change them, so ask in the Discord if something looks different in game.</p>
+        </div>
+        <dl class="facts">
+          <dt>Starting hearts</dt><dd><b>10</b></dd>
+          <dt>Maximum hearts</dt><dd><b>30</b></dd>
+          <dt>Lost per death</dt><dd><b>1</b> heart</dd>
+          <dt>Gained per kill</dt><dd><b>1</b> heart</dd>
+          <dt>Lowest you can keep</dt><dd><b>1</b> heart</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section class="guide-sec" id="deaths" aria-labelledby="deaths-title">
+      <h2 id="deaths-title">Deaths and kills</h2>
+      <h3>What a death costs</h3>
+      <p>Every death outside a duel costs you one heart. It does not matter what killed you: another player, a fall, lava, a mob or the void all count the same.</p>
+      <h3>What a kill gives</h3>
+      <p>Killing a player gives you one heart. If you are already on 30, you gain nothing, and the heart drops as a <span class="mc">Heart</span> item where the other player died. The same happens whenever a gain would take you over the cap. Anyone can pick it up.</p>
+      <p>Kills also move coins and drop the loser's head; see <a href="combat.html#deaths">Combat and safe zones</a>.</p>
+      <div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/totem.png" alt="" /><p class="note__label">Duels are free</p><p>Deaths in <a href="duels.html">duels</a> never cost hearts.</p></div>
+    </section>
+
+    <section class="guide-sec" id="elimination" aria-labelledby="elimination-title">
+      <h2 id="elimination-title">Elimination</h2>
+      <p>If you die with only 1 heart left, you are out. You are put in spectator mode and cannot leave a 75 block area around spawn. A <span class="mc">Soul Bottle</span> drops where you died, and lightning strikes the spot.</p>
+      <p>Being out is not a ban. You can be <a href="#revive">revived</a> at any time.</p>
+      <h3>CrabDemon extra lives</h3>
+      <p>Players with the <a href="ranks.html">CrabDemon</a> rank survive their final death twice. Each time you come back at 10 hearts with a short burst of protection, and you are told how many extra lives you have left. The count only resets if you are eliminated for real and then revived.</p>
+    </section>
+
+    <section class="guide-sec" id="revive" aria-labelledby="revive-title">
+      <h2 id="revive-title">Revives</h2>
+      <p>A <span class="mc">Soul Bottle</span> revives one fallen player. The whole server sees "NAME has been brought back to life!" when it works.</p>
+      <h3>Where Soul Bottles come from</h3>
+      <ul class="bullets">
+        <li>A player drops one when they are eliminated, so whoever finds it can use it.</li>
+        <li>The Lifesteal Shop sells them for <span class="money">1,000,000 coins</span>.</li>
+        <li>The Hunter dealer sells them for <b>20 XP levels</b> when they are in stock.</li>
+      </ul>
+      <p>They cannot be crafted.</p>
+      <h3>How to use one</h3>
+      <ol class="steps">
+        <li><strong>Use the bottle</strong>Hold it and use it, or open the menu, go to Lifesteal and choose Revive a Player.</li>
+        <li><strong>Pick who to bring back</strong>Choose Manual entry and type the exact gamertag, or choose Player list to see every fallen player. Players who are online are marked.</li>
+        <li><strong>Confirm</strong>One bottle is used up.</li>
+      </ol>
+      <p>If the player is online they come back straight away. If not, they return the next time they join. They come back at <b>10 hearts</b> in survival mode, at their spawn point or the world spawn.</p>
+      <h3>Revive from the store</h3>
+      <p>The <a href="../store.html">store</a> sells a revive that brings a player back without a Soul Bottle. It is announced in chat when it is used.</p>
+    </section>
+
+    <section class="guide-sec" id="heart-items" aria-labelledby="heart-items-title">
+      <h2 id="heart-items-title">Heart items</h2>
+      <p>A <span class="mc">Heart</span> is an item worth one maximum heart. Use it to gain a heart, up to the cap of 30. Hearts stack to 16.</p>
+      <h3>Withdraw</h3>
+      <p>Turn some of your own hearts into items with <button class="cmd" type="button" data-copy="/withdraw" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/withdraw</button> for one, or <button class="cmd" type="button" data-copy="/withdraw 3" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/withdraw 3</button> for a chosen number. <button class="cmd" type="button" data-copy="/withdraw_gui" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/withdraw_gui</button> opens a slider, and the Lifesteal menu has Withdraw Hearts. You must keep at least 1 heart. Withdrawn hearts can be given, traded or sold.</p>
+      <h3>Craft</h3>
+      <p>Use a crafting table. Four obsidian and four diamond blocks make one Heart.</p>
+      <div class="table-wrap"><table class="table">
+        <caption class="visually-hidden">Heart recipe in a 3 by 3 crafting grid</caption>
+        <thead><tr><th scope="col">Row</th><th scope="col">Left</th><th scope="col">Middle</th><th scope="col">Right</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Top</th><td>Obsidian</td><td>Diamond block</td><td>Obsidian</td></tr>
+          <tr><th scope="row">Middle</th><td>Diamond block</td><td>Empty</td><td>Diamond block</td></tr>
+          <tr><th scope="row">Bottom</th><td>Obsidian</td><td>Diamond block</td><td>Obsidian</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Buy</h3>
+      <p>The Lifesteal Shop sells Hearts for <span class="money">500,000 coins</span> each. The Hunter dealer sometimes has a few for <span class="money">60,000 coins</span> each.</p>
+      <h3>Other sources</h3>
+      <p>Hearts also turn up in <a href="crates.html">crates</a>, from <a href="fishing.html">fishing</a>, in goodie bags, in the parkour and in arena loot drops.</p>
+    </section>
+
+    <section class="guide-sec" id="apple" aria-labelledby="apple-title">
+      <h2 id="apple-title">Hearty apples</h2>
+      <p>Breaking oak leaves by hand, or with a tool that is not enchanted, has a <b>0.3%</b> chance to drop a <span class="mc">Hearty Apple</span>. Shears do not count.</p>
+      <p>Eating one gives Health Boost for 5 minutes, one level higher than any Health Boost you already have. These are temporary hearts and do not change your maximum.</p>
+    </section>
+
+    <section class="guide-sec" id="shop" aria-labelledby="shop-title">
+      <h2 id="shop-title">Lifesteal shop</h2>
+      <p>Talk to the Lifesteal NPC, or open the menu and choose Lifesteal.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Item</th><th scope="col" class="num">Price</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/lifesteal_heart.png" alt="" />Heart</span></th><td class="num"><span class="money">500,000 coins</span></td></tr>
+          <tr><th scope="row"><span class="item"><img src="../media/icons/glyph/soul_bottle.png" alt="" />Soul Bottle</span></th><td class="num"><span class="money">1,000,000 coins</span></td></tr>
+          <tr><th scope="row">Lifesteal book I</th><td class="num"><span class="money">300,000 coins</span></td></tr>
+          <tr><th scope="row">Lifesteal book II</th><td class="num"><span class="money">750,000 coins</span></td></tr>
+          <tr><th scope="row">Lifesteal book III</th><td class="num"><span class="money">1,500,000 coins</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="enchant" aria-labelledby="enchant-title">
+      <h2 id="enchant-title">Lifesteal enchantment</h2>
+      <p>Lifesteal books come in levels I to III and go on swords and axes. Each hit has a <b>10%</b> chance to heal you, and a higher level heals more.</p>
+      <h3>How to apply one</h3>
+      <ul class="bullets">
+        <li>Drop the book onto a sword or axe lying on the ground.</li>
+        <li>Tap any anvil while holding the book. Applying it to a weapon costs 5 XP levels per book level.</li>
+        <li>Combine two equal books at an anvil: 10 XP levels makes a II, 20 makes a III.</li>
+      </ul>
+      <p>You can also get lucky at an enchanting table: enchanting a plain sword, axe or book has a 15% chance to give a Lifesteal enchantment, and level I is by far the most likely.</p>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/sword.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask in the Discord, or read how the rules work around a fight.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a class="mc-btn mc-btn--sm" href="combat.html">Combat and safe zones</a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

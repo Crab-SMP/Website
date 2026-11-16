@@ -666,8 +666,8 @@ html { scrollbar-color: #3a3b42 var(--bg-deep); }
   position: relative;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 0 15px;
+  gap: 9px;
+  padding: 0 12px;
   font-family: var(--font-ui);
   font-size: 17px;
   letter-spacing: 0.4px;
@@ -1190,7 +1190,8 @@ html.js:not(.warm).is-ready :is(.topbar__brand, .topbar__links > li, .topbar__ct
 .topbar__links > li:nth-child(5) { --step: 5; }
 .topbar__links > li:nth-child(6) { --step: 6; }
 .topbar__links > li:nth-child(7) { --step: 7; }
-.topbar__cta { --step: 8; }
+.topbar__links > li:nth-child(8) { --step: 8; }
+.topbar__cta { --step: 9; }
 @keyframes topbar-in { from { transform: translate3d(0, -100%, 0); } }
 @keyframes topbar-item-in { from { opacity: 0; transform: translate3d(0, -8px, 0); } }
 

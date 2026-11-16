@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Spawners</title>
+  <meta name="description" content="How CrabSMP spawners work: buying and selling at 40 percent, storage, stacking, the placement limit, Silk Touch, income limits, and prices for every mob." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/spawners" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Spawners | CrabSMP Wiki" />
+  <meta property="og:description" content="How spawners work on CrabSMP, what they earn, and the price of every friendly and enemy spawner." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/spawners" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Money</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/spawner.png" alt="" /></span>
+        <div>
+          <h1>Spawners</h1>
+          <p class="lead">Buy a spawner, leave it near you, and collect the drops.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#buying">Buying and selling</a>
+      <a href="#how">How they work</a>
+      <a href="#stacking">Stacking</a>
+      <a href="#limits">Placing and breaking</a>
+      <a href="#income">Income</a>
+      <a href="#friendly">Friendly prices</a>
+      <a href="#enemy">Enemy prices</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Buy spawners in <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button>, under Spawners: from <strong>300,000</strong> to <strong>5,000,000</strong> coins.</li>
+        <li>They only work with a player within <strong>16 blocks</strong>, and they store the drops for you.</li>
+        <li>You can place <strong>25</strong> within 100 blocks of each other. Breaking one needs <strong>Silk Touch</strong>.</li>
+        <li>Selling one back pays <strong>40%</strong> of the shop price.</li>
+        <li>Income is capped so a spawner takes at least about <strong>30 active hours</strong> to repay its price.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="buying" aria-labelledby="buying-title">
+      <h2 id="buying-title">Buying and selling</h2>
+      <p>Open <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button> and pick the <span class="mc">Spawners</span> tile. It has Friendly Spawners (37 mobs), Enemy Spawners (32 mobs) and Sell Spawners. You can buy up to 64 spawners at a time, and prices run from <strong>300,000</strong> coins for a cow to <strong>5,000,000</strong> coins for a warden.</p>
+      <p>Sell Spawners pays <strong>40%</strong> of the current shop price for every spawner in the item, and a stacked spawner item counts each one. The XP stored inside is not paid for. <button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button> and the auction house do not take spawners.</p>
+      <p>You can also win spawners as rare crate prizes. See <a href="crates.html">Crates and keys</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="how" aria-labelledby="how-title">
+      <h2 id="how-title">How they work</h2>
+      <p>Place a spawner like a block. No mobs appear. Every 50 seconds the spawner works out what a group of mobs would drop and stores the items and XP inside it, so there is nothing to fight.</p>
+      <ul class="bullets">
+        <li>It only works while a player is within <strong>16 blocks</strong>. When nobody is near, it waits.</li>
+        <li>Click it to see its stack size, how much it stores and its XP. From there you can collect XP, open the storage, remove the stack, turn the floating text on or off, or lock it so only you can use or break it.</li>
+        <li>Storage is 45 slots for every spawner in the stack, and XP is up to 2,500 for each. When either is full, it stops adding.</li>
+        <li>The Sell All button in the storage pays a little less than taking the items out and using <button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button>, as a fee for the convenience.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="stacking" aria-labelledby="stacking-title">
+      <h2 id="stacking-title">Stacking</h2>
+      <p>Use a spawner item of the same mob on one you have placed to add it to the stack. A bigger stack makes more per cycle, with less extra for each one you add. The biggest stack depends on the mob:</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col" class="num">Max stack</th><th scope="col">Mobs</th></tr></thead>
+        <tbody>
+          <tr><td class="num">96</td><td>Most animals and fish, and the cheaper enemies such as zombie, skeleton, spider, slime and creeper</td></tr>
+          <tr><td class="num">64</td><td>The mid tier enemies, such as enderman, blaze, ghast and the wither skeleton</td></tr>
+          <tr><td class="num">32</td><td>Guardian, piglin brute and breeze</td></tr>
+          <tr><td class="num">24</td><td>Elder guardian, ravager and warden</td></tr>
+        </tbody>
+      </table></div>
+      <p>The tables below give the max stack for every mob.</p>
+    </section>
+
+    <section class="guide-sec" id="limits" aria-labelledby="limits-title">
+      <h2 id="limits-title">Placing and breaking</h2>
+      <ul class="bullets">
+        <li>You can place at most <strong>25 spawners within 100 blocks</strong> of each other.</li>
+        <li>To break one you need a tool with <strong>Silk Touch</strong>. You get back one item that carries the whole stack.</li>
+        <li>Stored items go into a chest directly above the spawner if there is one. Otherwise they drop on the ground.</li>
+        <li>A locked spawner can only be broken by its owner, and explosions never destroy a spawner.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="income" aria-labelledby="income-title">
+      <h2 id="income-title">How much they earn</h2>
+      <p>A spawner cannot pay itself back quickly. What it produces is capped, so that selling everything it makes will never repay its price in less than about <strong>30 hours</strong> of someone standing near it. Dearer spawners take longer: about 34 hours from 1,000,000 coins, 38 from 2,000,000 and 42 from 3,500,000.</p>
+      <p>Stacking helps, but with diminishing returns, so a stack of 10 earns less than ten times one spawner. The "ceiling per hour" in the tables below is the most a spawner's sellable drops can be worth in an hour when you are near, at <button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button> prices. It is a ceiling, not a promise: a mob whose drops are worth little earns less, and a spawner with nobody near earns nothing.</p>
+    </section>
+
+    <section class="guide-sec" id="friendly" aria-labelledby="friendly-title">
+      <h2 id="friendly-title">Friendly spawners</h2>
+      <p>Animals, fish and mounts. Ceilings are in coins.</p>
+      <div class="table-wrap table-wrap--long"><table class="table">
+        <thead><tr><th scope="col">Mob</th><th scope="col" class="num">Price</th><th scope="col" class="num">Sells back for</th><th scope="col" class="num">Max stack</th><th scope="col" class="num">Ceiling per hour</th><th scope="col" class="num">Ceiling at max stack</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Cow</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
+          <tr><th scope="row">Pig</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
+          <tr><th scope="row">Chicken</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
+          <tr><th scope="row">Sheep</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
+          <tr><th scope="row">Rabbit</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
+          <tr><th scope="row">Cat</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
+          <tr><th scope="row">Bee</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Fox</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Ocelot</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Parrot</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Wolf</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Goat</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Armadillo</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Mooshroom</th><td class="num">460,000</td><td class="num">184,000</td><td class="num">96</td><td class="num">15,333</td><td class="num">742,279</td></tr>
+          <tr><th scope="row">Camel</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Panda</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
+          <tr><th scope="row">Polar Bear</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">96</td><td class="num">20,000</td><td class="num">968,190</td></tr>
+          <tr><th scope="row">Sniffer</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">96</td><td class="num">30,000</td><td class="num">1,452,285</td></tr>
+          <tr><th scope="row">Cod</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
+          <tr><th scope="row">Salmon</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
+          <tr><th scope="row">Pufferfish</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
+          <tr><th scope="row">Tropical Fish</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
+          <tr><th scope="row">Squid</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
+          <tr><th scope="row">Frog</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Glow Squid</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Turtle</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Dolphin</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
+          <tr><th scope="row">Axolotl</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
+          <tr><th scope="row">Donkey</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Llama</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Horse</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
+          <tr><th scope="row">Mule</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
+          <tr><th scope="row">Strider</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">64</td><td class="num">18,667</td><td class="num">640,206</td></tr>
+          <tr><th scope="row">Trader Llama</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">96</td><td class="num">20,000</td><td class="num">968,190</td></tr>
+          <tr><th scope="row">Zombie Horse</th><td class="num">800,000</td><td class="num">320,000</td><td class="num">96</td><td class="num">26,667</td><td class="num">1,290,920</td></tr>
+          <tr><th scope="row">Skeleton Horse</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">96</td><td class="num">30,000</td><td class="num">1,452,285</td></tr>
+          <tr><th scope="row">Happy Ghast</th><td class="num">960,000</td><td class="num">384,000</td><td class="num">96</td><td class="num">32,000</td><td class="num">1,549,104</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="enemy" aria-labelledby="enemy-title">
+      <h2 id="enemy-title">Enemy spawners</h2>
+      <p>Hostile mobs. Ceilings are in coins.</p>
+      <div class="table-wrap table-wrap--long"><table class="table">
+        <thead><tr><th scope="col">Mob</th><th scope="col" class="num">Price</th><th scope="col" class="num">Sells back for</th><th scope="col" class="num">Max stack</th><th scope="col" class="num">Ceiling per hour</th><th scope="col" class="num">Ceiling at max stack</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Silverfish</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
+          <tr><th scope="row">Zombie</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Skeleton</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Spider</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Slime</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Endermite</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
+          <tr><th scope="row">Husk</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">64</td><td class="num">18,667</td><td class="num">640,206</td></tr>
+          <tr><th scope="row">Cave Spider</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">64</td><td class="num">20,000</td><td class="num">685,935</td></tr>
+          <tr><th scope="row">Drowned</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">64</td><td class="num">20,000</td><td class="num">685,935</td></tr>
+          <tr><th scope="row">Zombie Villager</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">64</td><td class="num">20,000</td><td class="num">685,935</td></tr>
+          <tr><th scope="row">Stray</th><td class="num">660,000</td><td class="num">264,000</td><td class="num">64</td><td class="num">22,000</td><td class="num">754,529</td></tr>
+          <tr><th scope="row">Magma Cube</th><td class="num">660,000</td><td class="num">264,000</td><td class="num">96</td><td class="num">22,000</td><td class="num">1,065,009</td></tr>
+          <tr><th scope="row">Bogged</th><td class="num">760,000</td><td class="num">304,000</td><td class="num">64</td><td class="num">25,333</td><td class="num">868,851</td></tr>
+          <tr><th scope="row">Piglin</th><td class="num">760,000</td><td class="num">304,000</td><td class="num">64</td><td class="num">25,333</td><td class="num">868,851</td></tr>
+          <tr><th scope="row">Hoglin</th><td class="num">860,000</td><td class="num">344,000</td><td class="num">64</td><td class="num">28,667</td><td class="num">983,174</td></tr>
+          <tr><th scope="row">Pillager</th><td class="num">860,000</td><td class="num">344,000</td><td class="num">64</td><td class="num">28,667</td><td class="num">983,174</td></tr>
+          <tr><th scope="row">Blaze</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">64</td><td class="num">30,000</td><td class="num">1,028,903</td></tr>
+          <tr><th scope="row">Phantom</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">64</td><td class="num">30,000</td><td class="num">1,028,903</td></tr>
+          <tr><th scope="row">Witch</th><td class="num">960,000</td><td class="num">384,000</td><td class="num">64</td><td class="num">32,000</td><td class="num">1,097,496</td></tr>
+          <tr><th scope="row">Zoglin</th><td class="num">960,000</td><td class="num">384,000</td><td class="num">64</td><td class="num">32,000</td><td class="num">1,097,496</td></tr>
+          <tr><th scope="row">Enderman</th><td class="num">1,000,000</td><td class="num">400,000</td><td class="num">64</td><td class="num">29,412</td><td class="num">1,008,728</td></tr>
+          <tr><th scope="row">Creeper</th><td class="num">1,000,000</td><td class="num">400,000</td><td class="num">96</td><td class="num">29,412</td><td class="num">1,423,809</td></tr>
+          <tr><th scope="row">Guardian</th><td class="num">1,100,000</td><td class="num">440,000</td><td class="num">32</td><td class="num">32,353</td><td class="num">615,590</td></tr>
+          <tr><th scope="row">Ghast</th><td class="num">1,100,000</td><td class="num">440,000</td><td class="num">64</td><td class="num">32,353</td><td class="num">1,109,601</td></tr>
+          <tr><th scope="row">Vindicator</th><td class="num">1,100,000</td><td class="num">440,000</td><td class="num">64</td><td class="num">32,353</td><td class="num">1,109,601</td></tr>
+          <tr><th scope="row">Vex</th><td class="num">1,200,000</td><td class="num">480,000</td><td class="num">64</td><td class="num">35,294</td><td class="num">1,210,474</td></tr>
+          <tr><th scope="row">Piglin Brute</th><td class="num">1,300,000</td><td class="num">520,000</td><td class="num">32</td><td class="num">38,235</td><td class="num">727,515</td></tr>
+          <tr><th scope="row">Breeze</th><td class="num">1,500,000</td><td class="num">600,000</td><td class="num">32</td><td class="num">44,118</td><td class="num">839,440</td></tr>
+          <tr><th scope="row">Wither Skeleton</th><td class="num">2,000,000</td><td class="num">800,000</td><td class="num">64</td><td class="num">52,632</td><td class="num">1,805,092</td></tr>
+          <tr><th scope="row">Ravager</th><td class="num">2,500,000</td><td class="num">1,000,000</td><td class="num">24</td><td class="num">65,789</td><td class="num">980,248</td></tr>
+          <tr><th scope="row">Elder Guardian</th><td class="num">3,500,000</td><td class="num">1,400,000</td><td class="num">24</td><td class="num">83,333</td><td class="num">1,241,647</td></tr>
+          <tr><th scope="row">Warden</th><td class="num">5,000,000</td><td class="num">2,000,000</td><td class="num">24</td><td class="num">119,048</td><td class="num">1,773,782</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/shop.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Next: where the coins go</h2>
+        <p>Selling the drops, and everything else you can do with coins.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="shop.html#selling">Shop and selling</a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

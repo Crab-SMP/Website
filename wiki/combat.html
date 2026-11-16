@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Combat and safe zones</title>
+  <meta name="description" content="Where PvP is on, which places are safe, how the 20 second combat tag works, the combat logging penalty, death tax, heads and the item rules." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/combat" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Combat and safe zones | CrabSMP Wiki" />
+  <meta property="og:description" content="Safe zones, the combat tag, combat logging and item rules on CrabSMP." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/combat" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>Survival</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/sword.png" alt="" /></span>
+        <div>
+          <h1>Combat and safe zones</h1>
+          <p class="lead">Where you can fight, where you cannot, and what a fight does to you.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#safe">Safe zones and graces</a>
+      <a href="#pvp">Where PvP is on</a>
+      <a href="#tag">Combat tag</a>
+      <a href="#logging">Combat logging</a>
+      <a href="#deaths">After a kill</a>
+      <a href="#items">Item rules</a>
+      <a href="#pearls">Ender pearls</a>
+      <a href="#factions">Factions</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>Spawn is safe. Almost everywhere else is <strong>PvP</strong>, including the wild and Freeplay.</li>
+        <li>Hitting a player tags you both for <strong>20 seconds</strong>. You cannot teleport or open the menu while tagged.</li>
+        <li>Logging out while tagged <strong>drops some of your items</strong>.</li>
+        <li>A player kill moves coins and drops the loser's head.</li>
+        <li>Combat is plain Bedrock combat. Faction members cannot hurt each other.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="safe" aria-labelledby="safe-title">
+      <h2 id="safe-title">Safe zones and graces</h2>
+      <p>You cannot be hurt in the places below. Graces are short windows where you cannot take damage.</p>
+      <div class="table-wrap"><table class="table">
+        <caption class="visually-hidden">Safe zones and graces</caption>
+        <thead><tr><th scope="col">Where or when</th><th scope="col">What happens</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Spawn, within 400 blocks</th><td>All damage is off.</td></tr>
+          <tr><th scope="row">Nether hub</th><td>PvP is off.</td></tr>
+          <tr><th scope="row">Freeplay safe circle, 15 blocks around the Freeplay warp</th><td>You cannot hurt anyone and nobody can hurt you.</td></tr>
+          <tr><th scope="row">First join</th><td><b>5 minutes</b> of protection. It survives logging out.</td></tr>
+          <tr><th scope="row">Rejoining in the overworld outside spawn</th><td><b>15 seconds</b> of protection.</td></tr>
+          <tr><th scope="row">After a teleport lands</th><td><b>1 second</b> of protection.</td></tr>
+          <tr><th scope="row">Arriving at the PvP Arena</th><td><b>5 seconds</b> where you cannot be hurt but can attack.</td></tr>
+          <tr><th scope="row">After a duel</th><td>A few seconds where nobody can fight.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="guide-sec" id="pvp" aria-labelledby="pvp-title">
+      <h2 id="pvp-title">Where PvP is on</h2>
+      <p>PvP is on everywhere that is not listed above. That includes the wild, Freeplay outside its safe circle, the King of the Hill area and the PvP Arena. Bring only gear you can afford to lose.</p>
+      <p>Hitting a player inside spawn opens their profile, with buttons to ask for a duel or start a trade. To fight someone properly, see <a href="duels.html">duels</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="tag" aria-labelledby="tag-title">
+      <h2 id="tag-title">Combat tag</h2>
+      <div class="split">
+        <div>
+          <p>When you hit another player, with a weapon or a projectile, you are both tagged. Every hit refreshes the timer. You see "You are now in combat" when it starts and "You are no longer in combat" when it ends.</p>
+          <p>It does not apply inside spawn, in the AFK zone or in a duel.</p>
+        </div>
+        <dl class="facts">
+          <dt>Length</dt><dd><b>20 seconds</b></dd>
+          <dt>Refreshed</dt><dd>On every hit</dd>
+        </dl>
+      </div>
+      <h3>What it blocks</h3>
+      <ul class="bullets">
+        <li>Every teleport: homes, spawn, warps, the wild, TPA, /back and faction homes. A countdown already running is stopped.</li>
+        <li>Opening the menu item.</li>
+        <li>Joining the ranked duel queue.</li>
+        <li>Riding on players or being stacked on them.</li>
+      </ul>
+    </section>
+
+    <section class="guide-sec" id="logging" aria-labelledby="logging-title">
+      <h2 id="logging-title">Combat logging</h2>
+      <p>Leaving the game while tagged drops part of your inventory where you stood.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Rule</th><th scope="col">Value</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Items dropped</th><td><b>35%</b> of your droppable stacks</td></tr>
+          <tr><th scope="row">Minimum</th><td>1 stack</td></tr>
+          <tr><th scope="row">Maximum</th><td>6 stacks</td></tr>
+          <tr><th scope="row">Hearts lost</th><td>None</td></tr>
+        </tbody>
+      </table></div>
+      <p>Armour, items that are kept on death and locked slots are safe. The server announces who combat logged, and the dropped items are removed from your inventory when you rejoin.</p>
+      <div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Do not log out in a fight</p><p>Anyone nearby can pick up what drops, and staff are alerted. Wait for the tag to end first.</p></div>
+    </section>
+
+    <section class="guide-sec" id="deaths" aria-labelledby="deaths-title">
+      <h2 id="deaths-title">After a kill</h2>
+      <h3>Death tax</h3>
+      <p>When a player kills another player and the victim has at least <span class="money">500 coins</span>, the killer takes <b>2%</b> of the victim's balance, up to <span class="money">25,000 coins</span>. A further <b>1%</b> is burned and goes to nobody.</p>
+      <h3>Player heads</h3>
+      <p>Every death outside a duel drops that player's head. Its description shows the time, the place and who or what killed them.</p>
+      <h3>Hearts</h3>
+      <p>Deaths cost a heart and kills win one. See <a href="lifesteal.html">Lifesteal and hearts</a>.</p>
+      <h3>Bounties</h3>
+      <p>You can put coins on a player's head, and whoever kills them claims it. See <a href="trading.html#bounties">bounties</a>.</p>
+    </section>
+
+    <section class="guide-sec" id="items" aria-labelledby="items-title">
+      <h2 id="items-title">Item rules</h2>
+      <ul class="bullets">
+        <li><b>Bundles</b> and <b>locator maps</b> are removed from the server.</li>
+        <li><b>Wind charges</b> are capped at 128 carried at once. Extras are taken.</li>
+        <li><b>End crystals</b>, <b>respawn anchors</b> and <b>maces</b> are allowed.</li>
+        <li>Explosions do not break blocks in the PvP Arena or the duel arena.</li>
+      </ul>
+      <p>Combat is plain Bedrock combat, with normal Bedrock attacks and knockback.</p>
+    </section>
+
+    <section class="guide-sec" id="pearls" aria-labelledby="pearls-title">
+      <h2 id="pearls-title">Ender pearls in arenas</h2>
+      <p>In the PvP Arena and the duel arena, a pearl thrown at a wall within 3 blocks is cancelled. If a pearl would land you inside blocks or outside the arena, you are sent back to where you threw it. In an active duel, pearls are switched off.</p>
+    </section>
+
+    <section class="guide-sec" id="factions" aria-labelledby="factions-title">
+      <h2 id="factions-title">Factions</h2>
+      <p>Members of the same <a href="factions.html">faction</a> cannot hurt each other, ever.</p>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/shield.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Cheaters</h2>
+        <p>Hacked clients and duping get you banned. If you see someone cheating, use /report or tell staff in the Discord.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

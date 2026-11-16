@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>CrabSMP Wiki | Rules and fair play</title>
+  <meta name="description" content="The full CrabSMP rules in plain words: what is allowed, hearts, cheating, chat, real-life rules, punishments, appeals, alts and how to report." />
+  <meta name="author" content="CrabSMP" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#100f12" />
+  <link rel="canonical" href="https://crabsmp.net/wiki/rules" />
+  <link rel="icon" type="image/png" href="../media/logo.png" />
+  <link rel="apple-touch-icon" href="../media/logo.png" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="CrabSMP" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Rules and fair play | CrabSMP Wiki" />
+  <meta property="og:description" content="The CrabSMP rules, punishments, AutoMod and how to report a player." />
+  <meta property="og:url" content="https://crabsmp.net/wiki/rules" />
+  <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
+
+  <script data-cfasync="false">
+    (function (d) {
+      var c = d.documentElement.classList;
+      c.add('js');
+      try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+    })(document);
+  </script>
+  <script type="speculationrules">
+    {
+      "prefetch": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "eager" }],
+      "prerender": [{ "where": { "and": [{ "href_matches": "/*" }, { "not": { "selector_matches": "[target=_blank], [data-replay-intro]" } }] }, "eagerness": "moderate" }]
+    }
+  </script>
+  <link rel="expect" href="#main" blocking="render" />
+
+  <link rel="preload" href="../media/fonts/MinecraftTen.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Mojangles.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="../media/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin />
+
+  <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/icons.css" />
+  <link rel="stylesheet" href="../styles/glyphs.css" />
+  <link rel="stylesheet" href="../styles/wiki.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+      <img src="../media/logo.png" alt="" width="44" height="44" />
+    </a>
+    <nav class="topbar__nav" id="site-nav" aria-label="Main">
+      <ul class="topbar__links">
+        <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
+        <li><a class="topbar__link" href="../about.html"><img class="topbar__ico" src="../media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="../wiki/index.html" aria-current="page"><img class="topbar__ico" src="../media/icons/glyph/book.png" alt="" />Wiki<span class="topbar__mark" aria-hidden="true"></span></a></li>
+        <li><a class="topbar__link" href="../store.html"><img class="topbar__ico" src="../media/icons/glyph/shop.png" alt="" />Store</a></li>
+        <li><a class="topbar__link" href="../vote.html"><img class="topbar__ico" src="../media/icons/glyph/star.png" alt="" />Vote</a></li>
+        <li><a class="topbar__link" href="../status.html"><img class="topbar__ico" src="../media/icons/glyph/mt.png" alt="" />Status</a></li>
+        <li><a class="topbar__link" href="../discord.html" target="_blank" rel="noopener"><img class="topbar__ico" src="../media/icons/glyph/discord.png" alt="" />Discord<span class="visually-hidden"> (opens in a new tab)</span></a></li>
+        <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
+      </ul>
+    </nav>
+    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <header class="guide-hero">
+    <div class="guide-hero__bg" aria-hidden="true"></div>
+    <div class="shell shell--guide">
+      <nav class="crumbs" aria-label="Breadcrumb" data-enter>
+        <a href="index.html">Wiki</a><i class="i i-chevron" aria-hidden="true"></i><span>New players</span>
+      </nav>
+      <div class="guide-hero__head" data-enter>
+        <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/warning.png" alt="" /></span>
+        <div>
+          <h1>Rules and fair play</h1>
+          <p class="lead">What is allowed, what is not, and what happens if you cross the line.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subnav" aria-label="On this page" data-toc data-subnav>
+    <div class="shell shell--guide subnav__track">
+      <a href="#anarchy">The anarchy way</a>
+      <a href="#hearts">Hearts</a>
+      <a href="#hard">Cheating</a>
+      <a href="#conduct">Conduct</a>
+      <a href="#real-life">Real life</a>
+      <a href="#punishments">Punishments</a>
+      <a href="#chat">Chat and AutoMod</a>
+      <a href="#alts">Alts</a>
+      <a href="#reporting">Reporting</a>
+    </div>
+  </nav>
+
+  <div class="shell shell--guide guide">
+
+    <aside class="tldr" data-pop aria-labelledby="tldr-title">
+      <h2 id="tldr-title">In short</h2>
+      <ul>
+        <li>CrabSMP is <strong>lifesteal anarchy</strong>. Outside protected areas, griefing, raiding, stealing and scamming in trades are allowed.</li>
+        <li>Never allowed: <strong>hacked clients, duping, X-ray, macros</strong>, combat logging, alt farming and real-money trades.</li>
+        <li>Spawn, hubs and arenas are protected. No griefing or trapping there.</li>
+        <li>Punishments go from warning to mute to kick. A ban lasts <strong>7 days at least</strong>, and every ban can be appealed in the Discord.</li>
+        <li>Report cheaters with <strong>/report</strong>. Play from a shared connection? Open a ticket.</li>
+      </ul>
+    </aside>
+
+    <section class="guide-sec" id="anarchy" aria-labelledby="anarchy-title">
+      <h2 id="anarchy-title">The anarchy way</h2>
+      <p>CrabSMP is a lifesteal anarchy world. Outside the safe zones there is no truce and no referee. Everything in this section is allowed, so if it happened to you out there, it was fair play.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead><tbody>
+<tr><th scope="row">1</th><td>Griefing is allowed. Burn it, blow it up, tear it down.</td></tr>
+<tr><th scope="row">2</th><td>Raiding is allowed. Find a base, empty it, leave a crater.</td></tr>
+<tr><th scope="row">3</th><td>Stealing is allowed. If it is not claimed or locked away, it is yours.</td></tr>
+<tr><th scope="row">4</th><td>Scamming in trades is allowed. Trust is a currency; spend it carefully.</td></tr>
+<tr><th scope="row">5</th><td>Lying, betrayal and backstabbing are all fair play.</td></tr>
+<tr><th scope="row">6</th><td>Trapping players is allowed anywhere outside protected areas.</td></tr>
+<tr><th scope="row">7</th><td>PvP is open everywhere outside safe zones. No warning required.</td></tr>
+<tr><th scope="row">8</th><td>Camping and spawn killing are allowed inside PvP zones.</td></tr>
+<tr><th scope="row">9</th><td>Factions and alliances are allowed; so is betraying yours.</td></tr>
+<tr><th scope="row">10</th><td>Teaming and 10v1s are allowed. Bring friends, or do not.</td></tr>
+<tr><th scope="row">11</th><td>Base hunting, tracking and bait chests are part of the game.</td></tr>
+<tr><th scope="row">12</th><td>Placing a bounty on anyone, including an ally, is allowed.</td></tr>
+</tbody></table></div>
+<div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Protected areas are the exception</p><p>Spawn, the hubs and the arenas are protected. Griefing, building or trapping there is not allowed (rule 31).</p></div>
+    </section>
+
+    <section class="guide-sec" id="hearts" aria-labelledby="hearts-title">
+      <h2 id="hearts-title">Lifesteal and hearts</h2>
+      <p>You start with 10 hearts and can bank up to 30. Fighting for hearts is the point of the server. Manufacturing them is not. How hearts work is in the <a href="lifesteal.html">lifesteal guide</a>.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead><tbody>
+<tr><th scope="row">13</th><td>Kill a player and you take one of their hearts for yourself.</td></tr>
+<tr><th scope="row">14</th><td>Every death costs you a heart; fall damage, lava and mobs included.</td></tr>
+<tr><th scope="row">15</th><td>Reach zero hearts and you are eliminated from the world.</td></tr>
+<tr><th scope="row">16</th><td>Elimination is not the end; a Soul Bottle can bring anyone back.</td></tr>
+<tr><th scope="row">17</th><td>Revive Souls drop on a final death. Whoever picks one up decides.</td></tr>
+<tr><th scope="row">18</th><td>Hearts can be withdrawn into items, then traded, gifted, stolen or hidden.</td></tr>
+<tr><th scope="row">19</th><td>Farming hearts off alt accounts is a ban, not a strategy.</td></tr>
+<tr><th scope="row">20</th><td>Trading kills with anyone to inflate hearts is the same offence.</td></tr>
+<tr><th scope="row">21</th><td>Never use a second account to feed yourself hearts, items or bases.</td></tr>
+<tr><th scope="row">22</th><td>Killing the same player over and over is allowed; just do not arrange it.</td></tr>
+<tr><th scope="row">23</th><td>Do not exploit revives or soul drops to duplicate hearts.</td></tr>
+</tbody></table></div>
+    </section>
+
+    <section class="guide-sec" id="hard" aria-labelledby="hard-title">
+      <h2 id="hard-title">Hard rules: cheating and exploits</h2>
+      <p>Anarchy stops where the game itself stops. These rules break the server for everyone, and breaking them gets you removed by staff. Hacked clients and duping get you banned.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead><tbody>
+<tr><th scope="row">24</th><td>No hacked clients: killaura, fly, reach, speed or anything like them.</td></tr>
+<tr><th scope="row">25</th><td>No X-ray, or resource packs that reveal ores, caves, chests or players.</td></tr>
+<tr><th scope="row">26</th><td>No auto-clickers, macros or scripts for combat, farming or fishing.</td></tr>
+<tr><th scope="row">27</th><td>No duping items, coins or hearts. A dupe damages everyone's economy.</td></tr>
+<tr><th scope="row">28</th><td>No abusing bugs or glitches; report them instead.</td></tr>
+<tr><th scope="row">29</th><td>No lag machines, crash attempts or deliberate server lag.</td></tr>
+<tr><th scope="row">30</th><td>No combat logging. You stay tagged for 15 seconds after a hit.</td></tr>
+<tr><th scope="row">31</th><td>Never grief, build or trap inside protected areas: spawn, hubs and arenas.</td></tr>
+<tr><th scope="row">32</th><td>No using claims, homes or teleports to escape a fight you started.</td></tr>
+<tr><th scope="row">33</th><td>No abusing shop, auction or crate bugs to print coins.</td></tr>
+<tr><th scope="row">34</th><td>No ban or mute evasion. Alts used to evade extend the original ban.</td></tr>
+<tr><th scope="row">35</th><td>No modifying, proxying or tampering with your connection to the server.</td></tr>
+<tr><th scope="row">36</th><td>Locator maps cannot be used. They show player positions and are removed the moment you get one.</td></tr>
+</tbody></table></div>
+    </section>
+
+    <section class="guide-sec" id="conduct" aria-labelledby="conduct-title">
+      <h2 id="conduct-title">Server conduct</h2>
+      <p>These rules keep the server playable and the chat readable. They are not about combat.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead><tbody>
+<tr><th scope="row">37</th><td>AFK wherever you like. The AFK Zone at spawn pays coins; do not fake being inside it.</td></tr>
+<tr><th scope="row">38</th><td>No advertising other servers, Discords, realms or links.</td></tr>
+<tr><th scope="row">39</th><td>English only in global chat so staff can moderate it.</td></tr>
+<tr><th scope="row">40</th><td>No spamming, excessive caps or flooding chat with symbols.</td></tr>
+<tr><th scope="row">41</th><td>No bypassing the chat filter with spacing or lookalike characters.</td></tr>
+<tr><th scope="row">42</th><td>Do not impersonate staff, donators or other players.</td></tr>
+<tr><th scope="row">43</th><td>Do not beg staff for items, coins, ranks or revives.</td></tr>
+<tr><th scope="row">44</th><td>Keep farms reasonable. Staff may clear entity build-ups without notice.</td></tr>
+</tbody></table></div>
+    </section>
+
+    <section class="guide-sec" id="real-life" aria-labelledby="real-life-title">
+      <h2 id="real-life-title">Real-life rules</h2>
+      <p>These carry zero tolerance and have no debate. Whatever happens in the world, none of it follows anyone home.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead><tbody>
+<tr><th scope="row">45</th><td>No real-life threats of any kind. This is an instant permanent ban.</td></tr>
+<tr><th scope="row">46</th><td>No doxxing or sharing anyone's personal information.</td></tr>
+<tr><th scope="row">47</th><td>No hate speech, racism or discrimination.</td></tr>
+<tr><th scope="row">48</th><td>No harassment that follows a player outside the game.</td></tr>
+<tr><th scope="row">49</th><td>No NSFW or illegal content in names, skins, builds, signs or chat.</td></tr>
+<tr><th scope="row">50</th><td>No jokes about or encouragement of self-harm. Ever.</td></tr>
+<tr><th scope="row">51</th><td>No real-money trades. The store is the only place money changes hands.</td></tr>
+<tr><th scope="row">52</th><td>No buying, selling, sharing or trading accounts.</td></tr>
+</tbody></table></div>
+<div class="note note--warn"><img class="glyph glyph--1" src="../media/icons/glyph/warning.png" alt="" /><p class="note__label">Real money</p><p>Rule 51 covers any trade of real money for in-game things between players, and rule 52 covers accounts. The <a href="../store.html">store</a> is the only place money changes hands.</p></div>
+    </section>
+
+    <section class="guide-sec" id="punishments" aria-labelledby="punishments-title">
+      <h2 id="punishments-title">Punishments and appeals</h2>
+      <p>Staff hand out punishments themselves, and each one is recorded. From mildest to strongest you can expect a warning, a mute, a kick or a ban. Bans are handled separately from the rest.</p>
+<div class="tiles"><div class="tile tile--gold"><img class="glyph" src="../media/icons/glyph/warning.png" alt="" /><strong>Warning</strong><span>Staff tell you what you did wrong and ask you to stop.</span></div><div class="tile tile--aqua"><img class="glyph" src="../media/icons/glyph/chat.png" alt="" /><strong>Mute</strong><span>Blocks your chat for a set time. You see who muted you, how long is left and the reason when you try to talk.</span></div><div class="tile tile--purple"><img class="glyph" src="../media/icons/glyph/tpa.png" alt="" /><strong>Kick</strong><span>Removes you from the server. You can rejoin.</span></div><div class="tile tile--red"><img class="glyph" src="../media/icons/glyph/ban.png" alt="" /><strong>Ban</strong><span>Minimum 7 days, permanent for serious or repeat offences. You can appeal.</span></div></div>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Rule</th><th scope="col">What it says</th></tr></thead><tbody>
+<tr><th scope="row">53</th><td>The minimum ban length is 7 days. There are no shorter bans.</td></tr>
+<tr><th scope="row">54</th><td>Serious or repeated offences go straight to permanent.</td></tr>
+<tr><th scope="row">55</th><td>Every ban can be appealed in the Discord.</td></tr>
+<tr><th scope="row">56</th><td>Appeal honestly; a denied appeal can be reopened, a dishonest one cannot.</td></tr>
+<tr><th scope="row">57</th><td>Do not evade a ban while appealing it. Evading ends the appeal.</td></tr>
+<tr><th scope="row">58</th><td>Staff have the final decision on every punishment.</td></tr>
+<tr><th scope="row">59</th><td>Arguing a punishment in public chat will never change it.</td></tr>
+<tr><th scope="row">60</th><td>Staff are not required to share the evidence behind a ban.</td></tr>
+<tr><th scope="row">61</th><td>Punishment history follows the account, not the username.</td></tr>
+<tr><th scope="row">62</th><td>Bans do not refund purchases, ranks, hearts or items.</td></tr>
+</tbody></table></div>
+      <p>Staff can also restrict an account, which blocks chat, factions, auction listings, coin transfers and trades.</p>
+<div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/help.png" alt="" /><p class="note__label">Appealing a ban</p><p>Join the <a href="../discord.html" target="_blank" rel="noopener">Discord</a> and open a support ticket. The steps are in <a href="help.html#appeals">Getting help</a>.</p></div>
+    </section>
+
+    <section class="guide-sec" id="chat" aria-labelledby="chat-title">
+      <h2 id="chat-title">Chat filters and AutoMod</h2>
+      <p>Chat is checked before it is sent. You will see a message that your chat was refused, or be muted, if you hit one of these.</p>
+<ul class="bullets"><li>Messages that are mostly capitals are turned into lower case.</li><li>Sending the same or a very similar message again within 10 seconds is refused.</li><li>The same message sent five times by anyone within 5 seconds is refused.</li><li>There is a 1 second wait between messages.</li><li>A word list blocks slurs, hate, self-harm, sexual content, profanity and advertising. Advertising covers other servers, other Discord invites and outside links. <b>crabsmp.net</b> and the CrabSMP Discord are fine.</li><li>Signs are checked with the same list. A bad sign side is cleared.</li></ul>
+      <h3>Strikes</h3>
+      <p>AutoMod counts strikes. Profanity, advertising and spam are 1 strike each, and severe language is 2. Strikes reset after 24 hours with no new one. At 3 strikes you are muted automatically.</p>
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">Automatic mute</th><th scope="col">Length</th></tr></thead><tbody>
+<tr><th scope="row">First</th><td>10 minutes</td></tr>
+<tr><th scope="row">Second</th><td>30 minutes</td></tr>
+<tr><th scope="row">Third</th><td>1 hour</td></tr>
+<tr><th scope="row">Fourth</th><td>3 hours</td></tr>
+<tr><th scope="row">Fifth and after</th><td>6 hours</td></tr>
+</tbody></table></div>
+      <p>The count resets after 7 days without an automatic mute. Profanity and severe language also fine you <b>2%</b> of your balance. If you have no coins, you are lent 100 coins as debt instead, and debt grows 5% a day up to 100,000. Staff are not checked by AutoMod.</p>
+<div class="note note--tip"><img class="glyph glyph--1" src="../media/icons/glyph/chat.png" alt="" /><p class="note__label">Do not try to get round it</p><p>Spacing words out or using lookalike characters to get past the filter breaks rule 41.</p></div>
+    </section>
+
+    <section class="guide-sec" id="alts" aria-labelledby="alts-title">
+      <h2 id="alts-title">Alts and shared Wi-Fi</h2>
+      <p>Alts become a problem when you use them to feed a main account hearts, items or bases (rules 19 to 21), or to get round a ban or mute (rule 34). Using an alt to evade a ban extends the original ban.</p>
+      <p>If two or more people play from the same Wi-Fi, for example in a family, a dorm or a school, open a ticket in the Discord so staff know you are different people.</p>
+<div class="note"><img class="glyph glyph--1" src="../media/icons/glyph/help.png" alt="" /><p class="note__label">Not sure</p><p>If you are unsure whether your setup counts, ask in a ticket.</p></div>
+    </section>
+
+    <section class="guide-sec" id="reporting" aria-labelledby="reporting-title">
+      <h2 id="reporting-title">How to report</h2>
+      <p>Report hackers, dupers and rule breakers with <button class="cmd" type="button" data-copy="/report" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/report</button>. Add what happened and, if you have one, a link to a clip or screenshot. False reports are punished.</p>
+      <p>Bugs are different. Report them with <button class="cmd" type="button" data-copy="/bugreport" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/bugreport</button> rather than using them (rule 28). Full details are in <a href="help.html#report">Getting help</a>.</p>
+      <p>The full legal text is on the <a href="../terms.html">terms of service</a> page. You can read the in-game rules any time with <button class="cmd" type="button" data-copy="/rules" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/rules</button>.</p>
+    </section>
+
+    <aside class="help-box" aria-labelledby="help-title">
+      <span class="icon-slot"><img class="glyph" src="../media/icons/glyph/discord.png" alt="" /></span>
+      <div>
+        <h2 id="help-title">Still stuck?</h2>
+        <p>Ask staff in a Discord ticket, or read how to report and appeal.</p>
+      </div>
+      <div class="help-box__actions">
+        <a class="mc-btn mc-btn--sm" href="../discord.html" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i>Open Discord<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+    </aside>
+
+    <nav class="pager" aria-label="More guides" data-pager></nav>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer__bedrock" aria-hidden="true"></div>
+  <div class="shell shell--wide">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="../media/logo.png" alt="CrabSMP" width="88" height="88" loading="lazy" />
+        <p>The #1 Minecraft Bedrock Lifesteal SMP. Free to play, on every device.</p>
+        <button class="ip-chip" type="button" data-copy="play.crabsmp.net" data-toast-title="Server IP copied" aria-label="Copy server IP, play.crabsmp.net">play.crabsmp.net <i class="i i-copy" aria-hidden="true"></i></button>
+      </div>
+      <nav class="footer__col" aria-labelledby="f-server">
+        <h2 id="f-server">Server</h2>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../wiki/index.html">Wiki</a></li>
+          <li><a href="../store.html">Store</a></li>
+          <li><a href="../vote.html">Vote</a></li>
+          <li><a href="../status.html">Status</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-community">
+        <h2 id="f-community">Community</h2>
+        <ul>
+          <li><a href="https://discord.gg/es6snXqXW5" target="_blank" rel="noopener"><i class="i i-discord" aria-hidden="true"></i> Discord</a></li>
+          <li><a href="https://www.tiktok.com/@Crabrealms" target="_blank" rel="noopener"><i class="i i-tiktok" aria-hidden="true"></i> TikTok</a></li>
+          <li><a href="https://www.youtube.com/@CrabSMP-MinecraftBedrock" target="_blank" rel="noopener"><i class="i i-youtube" aria-hidden="true"></i> YouTube</a></li>
+        </ul>
+      </nav>
+      <nav class="footer__col" aria-labelledby="f-more">
+        <h2 id="f-more">More</h2>
+        <ul>
+          <li><a href="../index.html#rules">Rules</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../privacy.html">Privacy</a></li>
+          <li><a href="../index.html?intro=1" data-replay-intro>Replay intro</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__legal">
+      <p>&copy; 2026 CrabSMP. All rights reserved.</p>
+      <p>NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.</p>
+      <p>CrabSMP is run by Ozorical. Contact: <a class="link" href="mailto:ozorical@icloud.com">ozorical@icloud.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="../javascript/vfx.js" defer></script>
+<script data-cfasync="false" src="../javascript/crab.js" defer></script>
+<script data-cfasync="false" src="../javascript/wiki.js" defer></script>
+</body>
+</html>

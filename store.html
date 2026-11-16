@@ -73,6 +73,7 @@
       <ul class="topbar__links">
         <li><a class="topbar__link" href="index.html"><img class="topbar__ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
         <li><a class="topbar__link" href="about.html"><img class="topbar__ico" src="media/icons/glyph/billboard.png" alt="" />About</a></li>
+        <li><a class="topbar__link" href="wiki/index.html"><img class="topbar__ico" src="media/icons/glyph/book.png" alt="" />Wiki</a></li>
         <li><a class="topbar__link" href="store.html" aria-current="page"><img class="topbar__ico" src="media/icons/glyph/shop.png" alt="" />Store<span class="topbar__mark" aria-hidden="true"></span></a></li>
         <li><a class="topbar__link" href="vote.html"><img class="topbar__ico" src="media/icons/glyph/star.png" alt="" />Vote</a></li>
         <li><a class="topbar__link" href="status.html"><img class="topbar__ico" src="media/icons/glyph/mt.png" alt="" />Status</a></li>
@@ -91,14 +92,17 @@
 
   <section class="page-hero store-hero" aria-labelledby="store-title">
     <div class="page-hero__bg" aria-hidden="true">
-      <div class="store-hero__nether"></div>
+      <img class="page-hero__photo"
+           src="media/header-images/store.webp"
+           srcset="media/header-images/store-960.webp 960w, media/header-images/store.webp 1920w"
+           sizes="100vw" alt="" fetchpriority="high" decoding="async" />
       <canvas class="store-hero__ash" data-motes="ash"></canvas>
     </div>
 
     <div class="shell page-hero__content store-hero__grid">
       <div class="store-hero__copy">
         <p class="label" data-enter>The store</p>
-        <h1 class="display-1" id="store-title" data-enter data-split>Look the part. <em>Never pay to win.</em></h1>
+        <h1 class="display-1 on-image" id="store-title" data-enter data-split>Look the part. <em>Never pay to win.</em></h1>
         <p class="lead" data-enter>
           Three permanent ranks and a way back from elimination. Everything here
           is quality of life and cosmetics; it never touches damage, hearts or PvP.
@@ -548,6 +552,7 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="wiki/index.html">Wiki</a></li>
           <li><a href="store.html">Store</a></li>
           <li><a href="vote.html">Vote</a></li>
           <li><a href="status.html">Status</a></li>
