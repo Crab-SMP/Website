@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CrabSMP Wiki | Skills</title>
-  <meta name="description" content="The five CrabSMP skills: how to open the menu, the XP curve to level 30, coin rewards, every perk with its numbers, XP sources and the pet crab." />
+  <meta name="description" content="The five CrabSMP skills: the XP curve to level 30, coin and key rewards, every perk tree with its numbers, XP sources, leaderboards and the pet crab." />
   <meta name="author" content="CrabSMP" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#100f12" />
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="CrabSMP" />
   <meta property="og:locale" content="en_GB" />
   <meta property="og:title" content="Skills | CrabSMP Wiki" />
-  <meta property="og:description" content="Five skills, level 30, coin rewards and perks, and how to unlock the pet crab." />
+  <meta property="og:description" content="Five skills, level 30, coin and key rewards, a perk tree for each, and how to unlock the pet crab." />
   <meta property="og:url" content="https://crabsmp.net/wiki/skills" />
   <meta property="og:image" content="https://crabsmp.net/media/og.jpg" />
 
@@ -84,7 +84,7 @@
         <span class="icon-slot icon-slot--lg"><img class="glyph glyph--3" src="../media/icons/glyph/pickaxe.png" alt="" /></span>
         <div>
           <h1>Skills</h1>
-          <p class="lead">Five skills to level up, a perk for each, and coins at every level.</p>
+          <p class="lead">Five skills to level up, a perk tree for each, and coins at every level.</p>
         </div>
       </div>
     </div>
@@ -93,9 +93,10 @@
   <nav class="subnav" aria-label="On this page" data-toc data-subnav>
     <div class="shell shell--guide subnav__track">
       <a href="#open">Open the menu</a>
-      <a href="#levels">Levels, XP and coin rewards</a>
+      <a href="#levels">Levels, XP and rewards</a>
       <a href="#perks">Perks</a>
       <a href="#xp-sources">How to earn XP</a>
+      <a href="#leaderboards">Top players</a>
       <a href="#pet">Pet crab</a>
     </div>
   </nav>
@@ -106,8 +107,8 @@
       <h2 id="tldr-title">In short</h2>
       <ul>
         <li>Five skills: <strong>Mining, Woodcutting, Farming, Combat and Fishing</strong>. Open them with <span class="mc">/skills</span>.</li>
-        <li>The level cap is <strong>30</strong>. Each level pays <strong>500 coins times the level</strong>.</li>
-        <li>Each skill has one perk that grows every level, such as double ore drops or a faster pickaxe.</li>
+        <li>The level cap is <strong>30</strong>. Each level pays <strong>50 coins times the level</strong>, and levels <strong>10, 20 and 30</strong> also give crate keys.</li>
+        <li>Each skill has a root perk that grows every level, plus <strong>five tree perks</strong> that unlock at levels 5, 10, 15, 25 and 30.</li>
         <li>Blocks you placed yourself give <strong>no XP</strong>.</li>
         <li>Reach level 30 in Mining, Woodcutting and Farming to unlock the <strong>pet crab</strong>.</li>
       </ul>
@@ -115,73 +116,93 @@
 
     <section class="guide-sec" id="open" aria-labelledby="open-title">
       <h2 id="open-title">Open the menu</h2>
-      <p>Type <button class="cmd" type="button" data-copy="/skills" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/skills</button> or press the Skills button in your stats menu. The screen shows one skill at a time as a skill tree: your level, an XP bar, your XP and the next coin reward. Use the arrows to move between skills.</p>
-      <p>Every time you earn XP, a small card appears at the top right of the screen with your level and progress. It slides away a few seconds after you stop. Level ups are announced in chat with the coins you were paid. Creative mode earns no XP.</p>
+      <p>Type <button class="cmd" type="button" data-copy="/skills" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/skills</button> or press the Skills button in your stats menu. The first screen is your profile: your total level out of 150, how many of the 25 tree perks you have, how close you are to the pet crab, and a row for each skill with its level and XP. It also has a <span class="mc">Top Players</span> button.</p>
+      <p>Click a skill to open its tree. The left side shows your level, your XP, the coins for the next level and the next key reward. The tree shows every perk with its level and name. Click the root at the bottom for the full detail page, with the root perk, every tree perk, the level rewards and the XP sources. Click any other node to see that perk and how much XP you still need for it. <span class="mc">All Skills</span> takes you back to the profile.</p>
+      <p>Every time you earn XP, a small card appears at the top right of the screen with your level and progress. It slides away a few seconds after you stop. Level ups are announced in chat with the coins you were paid and any perk you unlocked. Creative mode earns no XP.</p>
       <div class="split">
         <div>
-          <p>There are five skills. Each one has a single perk that gets better with every level.</p>
+          <p>There are five skills. Each one has a root perk that gets better with every level and five tree perks that unlock along the way.</p>
         </div>
         <dl class="facts">
           <dt>Skills</dt><dd><b>Mining</b>, <b>Woodcutting</b>, <b>Farming</b>, <b>Combat</b>, <b>Fishing</b></dd>
           <dt>Level cap</dt><dd><b>30</b></dd>
           <dt>Total XP for level 30</dt><dd><b>278,048</b></dd>
-          <dt>Coins for a maxed skill</dt><dd><span class="money">232,500 coins</span></dd>
+          <dt>Coins for a maxed skill</dt><dd><span class="money">23,250 coins</span></dd>
+          <dt>Keys for a maxed skill</dt><dd><b>2</b> Common, <b>1</b> Epic, <b>1</b> Mythic</dd>
         </dl>
       </div>
     </section>
 
     <section class="guide-sec" id="levels" aria-labelledby="levels-title">
-      <h2 id="levels-title">Levels, XP and coin rewards</h2>
-      <p>Each level costs more XP than the one before. Reaching a level pays you coins straight away: <b>500 coins times the level</b>. XP keeps counting after level 30, but there are no more levels.</p>
-      <p>A maxed skill has paid out <b>232,500 coins</b> in total, so all five maxed pay <b>1,162,500 coins</b>.</p>
+      <h2 id="levels-title">Levels, XP and rewards</h2>
+      <p>Each level costs more XP than the one before. Reaching a level pays you coins straight away: <b>50 coins times the level</b>. XP keeps counting after level 30, but there are no more levels.</p>
+      <p>A maxed skill has paid out <b>23,250 coins</b> in total, so all five maxed pay <b>116,250 coins</b>.</p>
       <div class="table-wrap">
         <table class="table">
           <thead><tr><th>Level</th><th>XP for this level</th><th>Total XP</th><th>Coins paid</th></tr></thead>
           <tbody>
-          <tr><th scope="row">1</th><td class="num">100</td><td class="num">100</td><td class="num"><span class="money">500 coins</span></td></tr>
-          <tr><th scope="row">2</th><td class="num">303</td><td class="num">403</td><td class="num"><span class="money">1,000 coins</span></td></tr>
-          <tr><th scope="row">3</th><td class="num">580</td><td class="num">983</td><td class="num"><span class="money">1,500 coins</span></td></tr>
-          <tr><th scope="row">4</th><td class="num">919</td><td class="num">1,902</td><td class="num"><span class="money">2,000 coins</span></td></tr>
-          <tr><th scope="row">5</th><td class="num">1,313</td><td class="num">3,215</td><td class="num"><span class="money">2,500 coins</span></td></tr>
-          <tr><th scope="row">6</th><td class="num">1,758</td><td class="num">4,973</td><td class="num"><span class="money">3,000 coins</span></td></tr>
-          <tr><th scope="row">7</th><td class="num">2,250</td><td class="num">7,223</td><td class="num"><span class="money">3,500 coins</span></td></tr>
-          <tr><th scope="row">8</th><td class="num">2,786</td><td class="num">10,009</td><td class="num"><span class="money">4,000 coins</span></td></tr>
-          <tr><th scope="row">9</th><td class="num">3,363</td><td class="num">13,372</td><td class="num"><span class="money">4,500 coins</span></td></tr>
-          <tr><th scope="row">10</th><td class="num">3,981</td><td class="num">17,353</td><td class="num"><span class="money">5,000 coins</span></td></tr>
-          <tr><th scope="row">11</th><td class="num">4,637</td><td class="num">21,990</td><td class="num"><span class="money">5,500 coins</span></td></tr>
-          <tr><th scope="row">12</th><td class="num">5,330</td><td class="num">27,320</td><td class="num"><span class="money">6,000 coins</span></td></tr>
-          <tr><th scope="row">13</th><td class="num">6,058</td><td class="num">33,378</td><td class="num"><span class="money">6,500 coins</span></td></tr>
-          <tr><th scope="row">14</th><td class="num">6,820</td><td class="num">40,198</td><td class="num"><span class="money">7,000 coins</span></td></tr>
-          <tr><th scope="row">15</th><td class="num">7,616</td><td class="num">47,814</td><td class="num"><span class="money">7,500 coins</span></td></tr>
-          <tr><th scope="row">16</th><td class="num">8,445</td><td class="num">56,259</td><td class="num"><span class="money">8,000 coins</span></td></tr>
-          <tr><th scope="row">17</th><td class="num">9,305</td><td class="num">65,564</td><td class="num"><span class="money">8,500 coins</span></td></tr>
-          <tr><th scope="row">18</th><td class="num">10,196</td><td class="num">75,760</td><td class="num"><span class="money">9,000 coins</span></td></tr>
-          <tr><th scope="row">19</th><td class="num">11,117</td><td class="num">86,877</td><td class="num"><span class="money">9,500 coins</span></td></tr>
-          <tr><th scope="row">20</th><td class="num">12,068</td><td class="num">98,945</td><td class="num"><span class="money">10,000 coins</span></td></tr>
-          <tr><th scope="row">21</th><td class="num">13,048</td><td class="num">111,993</td><td class="num"><span class="money">10,500 coins</span></td></tr>
-          <tr><th scope="row">22</th><td class="num">14,056</td><td class="num">126,049</td><td class="num"><span class="money">11,000 coins</span></td></tr>
-          <tr><th scope="row">23</th><td class="num">15,093</td><td class="num">141,142</td><td class="num"><span class="money">11,500 coins</span></td></tr>
-          <tr><th scope="row">24</th><td class="num">16,156</td><td class="num">157,298</td><td class="num"><span class="money">12,000 coins</span></td></tr>
-          <tr><th scope="row">25</th><td class="num">17,247</td><td class="num">174,545</td><td class="num"><span class="money">12,500 coins</span></td></tr>
-          <tr><th scope="row">26</th><td class="num">18,364</td><td class="num">192,909</td><td class="num"><span class="money">13,000 coins</span></td></tr>
-          <tr><th scope="row">27</th><td class="num">19,507</td><td class="num">212,416</td><td class="num"><span class="money">13,500 coins</span></td></tr>
-          <tr><th scope="row">28</th><td class="num">20,675</td><td class="num">233,091</td><td class="num"><span class="money">14,000 coins</span></td></tr>
-          <tr><th scope="row">29</th><td class="num">21,869</td><td class="num">254,960</td><td class="num"><span class="money">14,500 coins</span></td></tr>
-          <tr><th scope="row">30</th><td class="num">23,088</td><td class="num">278,048</td><td class="num"><span class="money">15,000 coins</span></td></tr>
+          <tr><th scope="row">1</th><td class="num">100</td><td class="num">100</td><td class="num"><span class="money">50 coins</span></td></tr>
+          <tr><th scope="row">2</th><td class="num">303</td><td class="num">403</td><td class="num"><span class="money">100 coins</span></td></tr>
+          <tr><th scope="row">3</th><td class="num">580</td><td class="num">983</td><td class="num"><span class="money">150 coins</span></td></tr>
+          <tr><th scope="row">4</th><td class="num">919</td><td class="num">1,902</td><td class="num"><span class="money">200 coins</span></td></tr>
+          <tr><th scope="row">5</th><td class="num">1,313</td><td class="num">3,215</td><td class="num"><span class="money">250 coins</span></td></tr>
+          <tr><th scope="row">6</th><td class="num">1,758</td><td class="num">4,973</td><td class="num"><span class="money">300 coins</span></td></tr>
+          <tr><th scope="row">7</th><td class="num">2,250</td><td class="num">7,223</td><td class="num"><span class="money">350 coins</span></td></tr>
+          <tr><th scope="row">8</th><td class="num">2,786</td><td class="num">10,009</td><td class="num"><span class="money">400 coins</span></td></tr>
+          <tr><th scope="row">9</th><td class="num">3,363</td><td class="num">13,372</td><td class="num"><span class="money">450 coins</span></td></tr>
+          <tr><th scope="row">10</th><td class="num">3,981</td><td class="num">17,353</td><td class="num"><span class="money">500 coins</span></td></tr>
+          <tr><th scope="row">11</th><td class="num">4,637</td><td class="num">21,990</td><td class="num"><span class="money">550 coins</span></td></tr>
+          <tr><th scope="row">12</th><td class="num">5,330</td><td class="num">27,320</td><td class="num"><span class="money">600 coins</span></td></tr>
+          <tr><th scope="row">13</th><td class="num">6,058</td><td class="num">33,378</td><td class="num"><span class="money">650 coins</span></td></tr>
+          <tr><th scope="row">14</th><td class="num">6,820</td><td class="num">40,198</td><td class="num"><span class="money">700 coins</span></td></tr>
+          <tr><th scope="row">15</th><td class="num">7,616</td><td class="num">47,814</td><td class="num"><span class="money">750 coins</span></td></tr>
+          <tr><th scope="row">16</th><td class="num">8,445</td><td class="num">56,259</td><td class="num"><span class="money">800 coins</span></td></tr>
+          <tr><th scope="row">17</th><td class="num">9,305</td><td class="num">65,564</td><td class="num"><span class="money">850 coins</span></td></tr>
+          <tr><th scope="row">18</th><td class="num">10,196</td><td class="num">75,760</td><td class="num"><span class="money">900 coins</span></td></tr>
+          <tr><th scope="row">19</th><td class="num">11,117</td><td class="num">86,877</td><td class="num"><span class="money">950 coins</span></td></tr>
+          <tr><th scope="row">20</th><td class="num">12,068</td><td class="num">98,945</td><td class="num"><span class="money">1,000 coins</span></td></tr>
+          <tr><th scope="row">21</th><td class="num">13,048</td><td class="num">111,993</td><td class="num"><span class="money">1,050 coins</span></td></tr>
+          <tr><th scope="row">22</th><td class="num">14,056</td><td class="num">126,049</td><td class="num"><span class="money">1,100 coins</span></td></tr>
+          <tr><th scope="row">23</th><td class="num">15,093</td><td class="num">141,142</td><td class="num"><span class="money">1,150 coins</span></td></tr>
+          <tr><th scope="row">24</th><td class="num">16,156</td><td class="num">157,298</td><td class="num"><span class="money">1,200 coins</span></td></tr>
+          <tr><th scope="row">25</th><td class="num">17,247</td><td class="num">174,545</td><td class="num"><span class="money">1,250 coins</span></td></tr>
+          <tr><th scope="row">26</th><td class="num">18,364</td><td class="num">192,909</td><td class="num"><span class="money">1,300 coins</span></td></tr>
+          <tr><th scope="row">27</th><td class="num">19,507</td><td class="num">212,416</td><td class="num"><span class="money">1,350 coins</span></td></tr>
+          <tr><th scope="row">28</th><td class="num">20,675</td><td class="num">233,091</td><td class="num"><span class="money">1,400 coins</span></td></tr>
+          <tr><th scope="row">29</th><td class="num">21,869</td><td class="num">254,960</td><td class="num"><span class="money">1,450 coins</span></td></tr>
+          <tr><th scope="row">30</th><td class="num">23,088</td><td class="num">278,048</td><td class="num"><span class="money">1,500 coins</span></td></tr>
           </tbody>
         </table>
       </div>
+      <h3>Key rewards</h3>
+      <p>Levels 10, 20 and 30 of every skill also give crate keys, once per skill. With all five skills maxed that is 10 Common keys, 5 Epic keys and 5 Mythic keys.</p>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>Keys</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">10</th><td>2 Common keys</td></tr>
+          <tr><th scope="row">20</th><td>1 Epic key</td></tr>
+          <tr><th scope="row">30</th><td>1 Mythic key</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="bullets">
+        <li>The keys arrive as key items in your inventory. If it is full, they drop at your feet.</li>
+        <li>Skill keys always arrive in full. The 75% chance on earned keys does not apply to them; see <a href="crates.html#keys">Crates</a>.</li>
+        <li>If you were already past one of these levels when key rewards were added, you get those keys the next time you earn skill XP or open <button class="cmd" type="button" data-copy="/skills" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/skills</button>.</li>
+      </ul>
     </section>
 
     <section class="guide-sec" id="perks" aria-labelledby="perks-title">
       <h2 id="perks-title">Perks</h2>
-      <p>Every skill has one perk. The chance grows by the same amount each level, so you feel it from level 1 and it tops out at level 30. The five nodes on the skill tree (levels 5, 10, 15, 25 and 30) are just markers along the way.</p>
+      <p>Every skill has a <b>root perk</b> that is always on. Its chance grows by the same amount each level, so you feel it from level 1 and it tops out at level 30. On top of that, each skill has <b>five tree perks</b> that unlock at levels 5, 10, 15, 25 and 30 and then stay on for good.</p>
+      <p>The trees follow one pattern. Level 5 is a handy extra. Levels 10 and 25, on the left branch, are one perk in two ranks. Levels 15 and 30, on the right branch, are about loot, and the level 30 perk usually makes the root perk drop triple instead of double.</p>
+      <h3>Root perks</h3>
       <div class="table-wrap">
         <table class="table">
           <thead><tr><th>Skill</th><th>Perk</th><th>What it does</th><th>Per level</th><th>At level 30</th></tr></thead>
           <tbody>
           <tr><th scope="row">Mining</th><td>Prospector</td><td>Chance an ore drops its loot a second time</td><td class="num">1%</td><td class="num">30%</td></tr>
-          <tr><th scope="row">Mining</th><td>Haste</td><td>Haste I from level 10, Haste II from level 25, while you hold any pickaxe</td><td class="num">Fixed</td><td class="num">Haste II</td></tr>
           <tr><th scope="row">Woodcutting</th><td>Timber</td><td>Chance a log drops its loot a second time</td><td class="num">2%</td><td class="num">60%</td></tr>
           <tr><th scope="row">Farming</th><td>Green Thumb</td><td>Chance a crop you plant starts half grown</td><td class="num">2%</td><td class="num">60%</td></tr>
           <tr><th scope="row">Combat</th><td>Spoils</td><td>Chance a hostile mob drops its loot a second time</td><td class="num">1%</td><td class="num">30%</td></tr>
@@ -189,12 +210,85 @@
           </tbody>
         </table>
       </div>
+      <h3>Mining tree</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>Perk</th><th>What it does</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">5</th><td>Night Owl</td><td>Night Vision while you hold a pickaxe below Y 0</td></tr>
+          <tr><th scope="row">10</th><td>Haste I</td><td>Haste I while you hold a pickaxe</td></tr>
+          <tr><th scope="row">15</th><td>Smelter</td><td>Iron, gold and copper ore drop ingots instead of raw ore</td></tr>
+          <tr><th scope="row">25</th><td>Haste II</td><td>Haste II while you hold a pickaxe</td></tr>
+          <tr><th scope="row">30</th><td>Motherlode</td><td>Prospector triples ore drops instead of doubling them</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Woodcutting tree</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>Perk</th><th>What it does</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">5</th><td>Forager</td><td>5% chance a log also drops an apple</td></tr>
+          <tr><th scope="row">10</th><td>Haste I</td><td>Haste I while you hold an axe</td></tr>
+          <tr><th scope="row">15</th><td>Seedkeeper</td><td>10% chance a log also drops its sapling</td></tr>
+          <tr><th scope="row">25</th><td>Haste II</td><td>Haste II while you hold an axe</td></tr>
+          <tr><th scope="row">30</th><td>Heartwood</td><td>Timber triples log drops instead of doubling them</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Farming tree</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>Perk</th><th>What it does</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">5</th><td>Replant</td><td>Harvesting a grown crop replants it with a seed from your inventory</td></tr>
+          <tr><th scope="row">10</th><td>Speed I</td><td>Speed I while you stand on farmland</td></tr>
+          <tr><th scope="row">15</th><td>Bountiful</td><td>20% chance a grown crop drops double</td></tr>
+          <tr><th scope="row">25</th><td>Speed II</td><td>Speed II while you stand on farmland</td></tr>
+          <tr><th scope="row">30</th><td>Bumper Crop</td><td>Bountiful's chance rises to 40%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Combat tree</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>Perk</th><th>What it does</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">5</th><td>Second Wind</td><td>Killing a hostile mob heals one heart</td></tr>
+          <tr><th scope="row">10</th><td>Brute I</td><td>Deal 10% more damage to hostile mobs</td></tr>
+          <tr><th scope="row">15</th><td>Wisdom</td><td>Hostile mob kills give 5 extra XP points</td></tr>
+          <tr><th scope="row">25</th><td>Brute II</td><td>Deal 20% more damage to hostile mobs</td></tr>
+          <tr><th scope="row">30</th><td>Plunder</td><td>Spoils triples mob drops instead of doubling them</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>Fishing tree</h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead><tr><th>Level</th><th>Perk</th><th>What it does</th></tr></thead>
+          <tbody>
+          <tr><th scope="row">5</th><td>Steady Line</td><td>20% fewer empty reels at the spawn pond</td></tr>
+          <tr><th scope="row">10</th><td>Haggler I</td><td>Coin catches pay 20% more</td></tr>
+          <tr><th scope="row">15</th><td>Lucky Lure</td><td>Rare catches are 25% more likely</td></tr>
+          <tr><th scope="row">25</th><td>Haggler II</td><td>Coin catches pay 40% more</td></tr>
+          <tr><th scope="row">30</th><td>Triple Hook</td><td>Double Hook lands two extra rewards instead of one</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3>How the perks work</h3>
       <ul class="bullets">
-        <li>A bonus drop is rolled again with the tool you used, so Fortune, Silk Touch and Looting count for it too.</li>
-        <li>Prospector and Timber work on ores and logs only, not on plain stone.</li>
-        <li>Spoils works on hostile mobs, except the Warden, the Wither and the Ender Dragon.</li>
-        <li>Green Thumb works on wheat, carrots, potatoes, beetroot, nether wart and cocoa. Melons, pumpkins, sugar cane and cactus are not affected.</li>
-        <li>If a Nexus tool and Mining Haste both give you Haste, the higher one applies. They do not stack.</li>
+        <li>A bonus drop is rolled again with the tool you used, so Fortune, Silk Touch and Looting count for it too. With Motherlode, Heartwood or Plunder it is rolled twice.</li>
+        <li>Prospector and Timber work on ores and logs only, not on plain stone. Spoils works on hostile mobs, except the Warden, the Wither and the Ender Dragon.</li>
+        <li>Green Thumb works on wheat, carrots, potatoes, beetroot, nether wart and cocoa that you plant.</li>
+        <li>Bountiful works on grown wheat, carrots, potatoes, beetroot, nether wart and cocoa, and on melons and pumpkins you did not place. Sugar cane and cactus never drop double. Farming's double drops come only from Bountiful, not from the root perk.</li>
+        <li>Replant works on wheat, carrots, potatoes, beetroot and nether wart, not cocoa. It takes one seed from your inventory (wheat seeds, a carrot, a potato, beetroot seeds or nether wart), so keep some with you. The new crop starts from the beginning.</li>
+        <li>Smelter works on iron, gold and copper ore, deepslate versions included, and turns the Prospector bonus into ingots as well.</li>
+        <li>Seedkeeper drops the matching sapling: a mangrove propagule for mangrove logs, and a fungus for crimson and warped stems.</li>
+        <li>Haste from Mining or Woodcutting and Haste from a Nexus tool do not stack. The higher one applies.</li>
+        <li>Night Owl stops when you put the pickaxe away or climb above Y 0. It never turns off Night Vision you switched on with <button class="cmd" type="button" data-copy="/nv" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/nv</button>.</li>
+        <li>Farmland Speed wears off a few seconds after you step off. It does not replace a stronger Speed effect, such as one from a potion.</li>
+        <li>Brute, Second Wind and Wisdom only count mobs that give Combat XP, so Brute never adds damage against players.</li>
+        <li>The fishing perks only work on spawn pond catches with a named rod. Haggler raises coin catches, not the Gilded Rod's bonus coins. See <a href="fishing.html">Fishing</a>.</li>
       </ul>
     </section>
 
@@ -271,6 +365,15 @@
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section class="guide-sec" id="leaderboards" aria-labelledby="leaderboards-title">
+      <h2 id="leaderboards-title">Top players</h2>
+      <p>Press <span class="mc">Top Players</span> on the profile screen to pick a board. <b>All Skills</b> ranks everyone by total level across the five skills, with total XP breaking ties. Each skill also has its own board, ranked by XP. The <span class="mc">Top Players</span> button inside a skill tree opens that skill's board straight away.</p>
+      <ul class="bullets">
+        <li>Each board shows the top ten, then your own rank.</li>
+        <li>Boards refresh every few minutes, so a level you just reached can take up to five minutes to show.</li>
+      </ul>
     </section>
 
     <section class="guide-sec" id="pet" aria-labelledby="pet-title">

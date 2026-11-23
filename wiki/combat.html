@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CrabSMP Wiki | Combat and safe zones</title>
-  <meta name="description" content="Where PvP is on, which places are safe, how the 20 second combat tag works, the combat logging penalty, death tax, heads and the item rules." />
+  <meta name="description" content="Where PvP is on, which places are safe, the 20 second combat tag, the combat logging penalty, Siphon, death tax, wind charges and the item rules." />
   <meta name="author" content="CrabSMP" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#100f12" />
@@ -111,8 +111,8 @@
         <li>Spawn is safe. Almost everywhere else is <strong>PvP</strong>, including the wild and Freeplay.</li>
         <li>Hitting a player tags you both for <strong>20 seconds</strong>. You cannot teleport or open the menu while tagged.</li>
         <li>Logging out while tagged <strong>drops some of your items</strong>.</li>
-        <li>A player kill moves coins and drops the loser's head.</li>
-        <li>Combat is plain Bedrock combat. Faction members cannot hurt each other.</li>
+        <li>A player kill in the overworld refills your health. Every player kill moves coins and drops the loser's head.</li>
+        <li>Combat is plain Bedrock combat, except that wind charges launch you higher. Faction members cannot hurt each other.</li>
       </ul>
     </aside>
 
@@ -180,8 +180,10 @@
 
     <section class="guide-sec" id="deaths" aria-labelledby="deaths-title">
       <h2 id="deaths-title">After a kill</h2>
+      <h3>Siphon</h3>
+      <p>When you kill a player in the overworld, your health is refilled to full a moment later, and you see "Siphon restored your health". It works anywhere in the overworld, but not in duels, the Nether or the End.</p>
       <h3>Death tax</h3>
-      <p>When a player kills another player and the victim has at least <span class="money">500 coins</span>, the killer takes <b>2%</b> of the victim's balance, up to <span class="money">25,000 coins</span>. A further <b>1%</b> is burned and goes to nobody.</p>
+      <p>When a player kills another player and the victim has at least <span class="money">50 coins</span>, the killer takes <b>2%</b> of the victim's balance, up to <span class="money">2,500 coins</span>. A further <b>1%</b> is burned and goes to nobody.</p>
       <h3>Player heads</h3>
       <p>Every death outside a duel drops that player's head. Its description shows the time, the place and who or what killed them.</p>
       <h3>Hearts</h3>
@@ -198,7 +200,14 @@
         <li><b>End crystals</b>, <b>respawn anchors</b> and <b>maces</b> are allowed.</li>
         <li>Explosions do not break blocks in the PvP Arena or the duel arena.</li>
       </ul>
-      <p>Combat is plain Bedrock combat, with normal Bedrock attacks and knockback.</p>
+      <h3>Wind charges</h3>
+      <p>When your wind charge bursts on a block within about 2 blocks of you, it launches you further than it does in normal Bedrock.</p>
+      <ul class="bullets">
+        <li>Throw one at your feet while looking steeply down and you are launched straight up.</li>
+        <li>Throw one while looking ahead and you dash forward and a little up. The faster you are already moving, the further the dash goes, so you can chain them.</li>
+        <li>Other players within about 2 blocks of the burst are pushed away from it and lifted.</li>
+      </ul>
+      <p>Apart from Siphon and wind charges, combat is plain Bedrock combat, with normal Bedrock attacks and knockback.</p>
     </section>
 
     <section class="guide-sec" id="pearls" aria-labelledby="pearls-title">

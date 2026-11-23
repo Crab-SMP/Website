@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CrabSMP Wiki | Spawners</title>
-  <meta name="description" content="How CrabSMP spawners work: buying and selling at 40 percent, storage, stacking, the placement limit, Silk Touch, income limits, and prices for every mob." />
+  <meta name="description" content="How CrabSMP spawners work: buying and selling, storage, stacking, locks, Champions, bonus drops, income limits and the price of every mob." />
   <meta name="author" content="CrabSMP" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#100f12" />
@@ -94,7 +94,10 @@
       <a href="#how">How they work</a>
       <a href="#stacking">Stacking</a>
       <a href="#limits">Placing and breaking</a>
+      <a href="#locks">Locks</a>
+      <a href="#champions">Champions</a>
       <a href="#income">Income</a>
+      <a href="#bonus">Bonus drops</a>
       <a href="#friendly">Friendly prices</a>
       <a href="#enemy">Enemy prices</a>
     </div>
@@ -105,27 +108,28 @@
     <aside class="tldr" data-pop aria-labelledby="tldr-title">
       <h2 id="tldr-title">In short</h2>
       <ul>
-        <li>Buy spawners in <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button>, under Spawners: from <strong>300,000</strong> to <strong>5,000,000</strong> coins.</li>
-        <li>They only work with a player within <strong>16 blocks</strong>, and they store the drops for you.</li>
-        <li>You can place <strong>25</strong> within 100 blocks of each other. Breaking one needs <strong>Silk Touch</strong>.</li>
+        <li>Buy spawners in <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button>, under Spawners: from <strong>30,000</strong> to <strong>500,000</strong> coins.</li>
+        <li>They only work with a player within <strong>16 blocks</strong>, or further with faction upgrades, and they store the drops for you.</li>
+        <li>You can place <strong>25</strong> within 100 blocks, or 50 with a faction upgrade. Breaking one needs <strong>Silk Touch</strong>.</li>
         <li>Selling one back pays <strong>40%</strong> of the shop price.</li>
+        <li>Stand within 10 blocks and a spawner may send out a <strong>Champion</strong> mob to kill for bonus loot.</li>
         <li>Income is capped so a spawner takes at least about <strong>30 active hours</strong> to repay its price.</li>
       </ul>
     </aside>
 
     <section class="guide-sec" id="buying" aria-labelledby="buying-title">
       <h2 id="buying-title">Buying and selling</h2>
-      <p>Open <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button> and pick the <span class="mc">Spawners</span> tile. It has Friendly Spawners (37 mobs), Enemy Spawners (32 mobs) and Sell Spawners. You can buy up to 64 spawners at a time, and prices run from <strong>300,000</strong> coins for a cow to <strong>5,000,000</strong> coins for a warden.</p>
+      <p>Open <button class="cmd" type="button" data-copy="/shop" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/shop</button> and pick the <span class="mc">Spawners</span> tile. It has Friendly Spawners (37 mobs), Enemy Spawners (34 mobs) and Sell Spawners. You can buy up to 64 spawners at a time, and prices run from <strong>30,000</strong> coins for a cow to <strong>500,000</strong> coins for a warden.</p>
       <p>Sell Spawners pays <strong>40%</strong> of the current shop price for every spawner in the item, and a stacked spawner item counts each one. The XP stored inside is not paid for. <button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button> and the auction house do not take spawners.</p>
       <p>You can also win spawners as rare crate prizes. See <a href="crates.html">Crates and keys</a>.</p>
     </section>
 
     <section class="guide-sec" id="how" aria-labelledby="how-title">
       <h2 id="how-title">How they work</h2>
-      <p>Place a spawner like a block. No mobs appear. Every 50 seconds the spawner works out what a group of mobs would drop and stores the items and XP inside it, so there is nothing to fight.</p>
+      <p>Place a spawner like a block. No mobs appear. Every 50 seconds the spawner works out what a group of mobs would drop, adds any <a href="#bonus">bonus drops</a>, and stores the items and XP inside it, so there is nothing to fight. The only mob that ever appears is a <a href="#champions">Champion</a>.</p>
       <ul class="bullets">
-        <li>It only works while a player is within <strong>16 blocks</strong>. When nobody is near, it waits.</li>
-        <li>Click it to see its stack size, how much it stores and its XP. From there you can collect XP, open the storage, remove the stack, turn the floating text on or off, or lock it so only you can use or break it.</li>
+        <li>It only works while a player is within <strong>16 blocks</strong>. When nobody is near, it waits. Faction range upgrades raise this to 28, 40 or 52 blocks; see the <a href="factions.html#shop">faction shop</a>.</li>
+        <li>Click it to see its stack size, how much it stores and its XP. From there you can collect XP, open the storage, remove the stack, turn the floating text on or off, or change its <a href="#locks">lock</a>.</li>
         <li>Storage is 45 slots for every spawner in the stack, and XP is up to 2,500 for each. When either is full, it stops adding.</li>
         <li>The Sell All button in the storage pays a little less than taking the items out and using <button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button>, as a fee for the convenience.</li>
       </ul>
@@ -139,7 +143,7 @@
         <tbody>
           <tr><td class="num">96</td><td>Most animals and fish, and the cheaper enemies such as zombie, skeleton, spider, slime and creeper</td></tr>
           <tr><td class="num">64</td><td>The mid tier enemies, such as enderman, blaze, ghast and the wither skeleton</td></tr>
-          <tr><td class="num">32</td><td>Guardian, piglin brute and breeze</td></tr>
+          <tr><td class="num">32</td><td>Guardian, piglin brute, breeze and shulker</td></tr>
           <tr><td class="num">24</td><td>Elder guardian, ravager and warden</td></tr>
         </tbody>
       </table></div>
@@ -149,17 +153,89 @@
     <section class="guide-sec" id="limits" aria-labelledby="limits-title">
       <h2 id="limits-title">Placing and breaking</h2>
       <ul class="bullets">
-        <li>You can place at most <strong>25 spawners within 100 blocks</strong> of each other.</li>
+        <li>You can place at most <strong>25 spawners within 100 blocks</strong>. If your faction has bought the Spawner Cap upgrade in the <a href="factions.html#shop">faction shop</a>, you can place <strong>50</strong>.</li>
         <li>To break one you need a tool with <strong>Silk Touch</strong>. You get back one item that carries the whole stack.</li>
         <li>Stored items go into a chest directly above the spawner if there is one. Otherwise they drop on the ground.</li>
-        <li>A locked spawner can only be broken by its owner, and explosions never destroy a spawner.</li>
+        <li>A locked spawner can only be broken by the players its lock allows, and explosions never destroy a spawner.</li>
       </ul>
+    </section>
+
+    <section class="guide-sec" id="locks" aria-labelledby="locks-title">
+      <h2 id="locks-title">Locks</h2>
+      <p>The lock button in a spawner's menu sets who can open it, stack onto it and break it. Each press moves to the next setting, and the menu shows which one is on.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Setting</th><th scope="col">Who can use the spawner</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Unlocked</th><td>Anyone.</td></tr>
+          <tr><th scope="row">Locked to you</th><td>Only you.</td></tr>
+          <tr><th scope="row">Locked to your faction</th><td>You and the members of your <a href="factions.html">faction</a>. This setting is skipped if you are not in one.</td></tr>
+        </tbody>
+      </table></div>
+      <p>After the faction setting it goes back to unlocked. Only the player who locked a spawner can change its lock. Anyone else who tries to use it is told it is locked by its owner, or locked to another faction.</p>
+    </section>
+
+    <section class="guide-sec" id="champions" aria-labelledby="champions-title">
+      <h2 id="champions-title">Champions</h2>
+      <p>If you stand within <strong>10 blocks</strong> of a spawner while it makes its drops, it may send out a Champion: a real, tougher copy of its mob that appears on top of the spawner, named in gold. Everyone within 30 blocks sees this in chat:</p>
+      <div class="chat"><span><span class="c-6">» </span><span class="c-e">A </span><span class="c-6">Champion Zombie </span><span class="c-e">crawled out of a spawner! </span><span class="c-7">Kill it within 2 minutes for bonus loot.</span></span></div>
+      <div class="split">
+        <ul class="bullets">
+          <li>Kill it within <strong>2 minutes</strong> and it drops up to four cycles' worth of the spawner's loot on the ground, and you get a cycle's worth of XP straight away. After 2 minutes it disappears.</li>
+          <li>A Champion has extra health and Resistance I, and a hostile one fights back.</li>
+          <li>The chance is about <b>3%</b> each cycle for a single spawner and grows with the stack, up to <b>20%</b>. The spawner's menu shows its current chance.</li>
+          <li>A spawner only has one Champion at a time and waits 10 minutes before the next. It needs an empty block on top.</li>
+          <li>If the spawner is locked against you, its Champion drops nothing when you kill it.</li>
+        </ul>
+        <dl class="facts">
+          <dt>Stand within</dt><dd><b>10</b> blocks</dd>
+          <dt>Time to kill it</dt><dd><b>2 minutes</b></dd>
+          <dt>Chance a cycle</dt><dd><b>3%</b> to <b>20%</b></dd>
+          <dt>Wait between</dt><dd><b>10 minutes</b></dd>
+        </dl>
+      </div>
+      <p>Creeper, ghast, phantom, guardian, elder guardian and warden spawners never send out Champions, and neither do the water mobs: cod, salmon, pufferfish, tropical fish, squid, glow squid, dolphin and axolotl.</p>
     </section>
 
     <section class="guide-sec" id="income" aria-labelledby="income-title">
       <h2 id="income-title">How much they earn</h2>
-      <p>A spawner cannot pay itself back quickly. What it produces is capped, so that selling everything it makes will never repay its price in less than about <strong>30 hours</strong> of someone standing near it. Dearer spawners take longer: about 34 hours from 1,000,000 coins, 38 from 2,000,000 and 42 from 3,500,000.</p>
+      <p>A spawner cannot pay itself back quickly. What it produces is capped, so that selling everything it makes will never repay its price in less than about <strong>30 hours</strong> of someone standing near it. Dearer spawners take longer: about 34 hours from 100,000 coins, 38 from 200,000 and 42 from 350,000.</p>
       <p>Stacking helps, but with diminishing returns, so a stack of 10 earns less than ten times one spawner. The "ceiling per hour" in the tables below is the most a spawner's sellable drops can be worth in an hour when you are near, at <button class="cmd" type="button" data-copy="/sellall" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/sellall</button> prices. It is a ceiling, not a promise: a mob whose drops are worth little earns less, and a spawner with nobody near earns nothing.</p>
+    </section>
+
+    <section class="guide-sec" id="bonus" aria-labelledby="bonus-title">
+      <h2 id="bonus-title">Bonus drops</h2>
+      <p>Some spawners make extra items on top of their mob's normal drops, so that mobs whose normal drops sell for little or nothing still earn. Bonus drops count towards the income limit like everything else. Each item is a chance, not a promise.</p>
+      <div class="table-wrap"><table class="table">
+        <thead><tr><th scope="col">Spawner</th><th scope="col">Extra drops</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Zombie, Husk</th><td>Iron ingot, carrot, potato</td></tr>
+          <tr><th scope="row">Zombie Villager</th><td>Iron ingot, emerald, carrot</td></tr>
+          <tr><th scope="row">Drowned</th><td>Copper ingot, nautilus shell</td></tr>
+          <tr><th scope="row">Zombified Piglin</th><td>Gold ingot</td></tr>
+          <tr><th scope="row">Piglin</th><td>Gold ingot, nether quartz, crying obsidian</td></tr>
+          <tr><th scope="row">Piglin Brute</th><td>Gold ingot, golden apple, crying obsidian</td></tr>
+          <tr><th scope="row">Zoglin</th><td>Leather, gold ingot</td></tr>
+          <tr><th scope="row">Pillager</th><td>Emerald, iron ingot</td></tr>
+          <tr><th scope="row">Guardian</th><td>Prismarine crystals, prismarine shard, nautilus shell</td></tr>
+          <tr><th scope="row">Creeper</th><td>Music discs 13 and cat, rarely</td></tr>
+          <tr><th scope="row">Spider, Cave Spider</th><td>String, spider eye</td></tr>
+          <tr><th scope="row">Silverfish</th><td>Lapis lazuli, redstone</td></tr>
+          <tr><th scope="row">Zombie Horse</th><td>Leather, a saddle now and then</td></tr>
+          <tr><th scope="row">Skeleton Horse</th><td>Bone, a saddle now and then</td></tr>
+          <tr><th scope="row">Chicken</th><td>Egg</td></tr>
+          <tr><th scope="row">Cat</th><td>Rabbit's foot, phantom membrane</td></tr>
+          <tr><th scope="row">Fox</th><td>Glow berries, egg, rabbit's foot</td></tr>
+          <tr><th scope="row">Ocelot</th><td>Cocoa beans, bamboo, raw chicken</td></tr>
+          <tr><th scope="row">Parrot</th><td>Cocoa beans, glow berries</td></tr>
+          <tr><th scope="row">Wolf, Polar Bear</th><td>Leather</td></tr>
+          <tr><th scope="row">Panda</th><td>Bamboo, apple</td></tr>
+          <tr><th scope="row">Frog</th><td>Slimeball, magma cream</td></tr>
+          <tr><th scope="row">Dolphin</th><td>Cod, salmon, nautilus shell</td></tr>
+          <tr><th scope="row">Axolotl</th><td>Clay ball, tropical fish, nautilus shell, glow berries</td></tr>
+          <tr><th scope="row">Cod, Salmon</th><td>Bone meal, bone</td></tr>
+          <tr><th scope="row">Pufferfish, Tropical Fish</th><td>Bone meal, bone, dried kelp</td></tr>
+        </tbody>
+      </table></div>
     </section>
 
     <section class="guide-sec" id="friendly" aria-labelledby="friendly-title">
@@ -168,43 +244,43 @@
       <div class="table-wrap table-wrap--long"><table class="table">
         <thead><tr><th scope="col">Mob</th><th scope="col" class="num">Price</th><th scope="col" class="num">Sells back for</th><th scope="col" class="num">Max stack</th><th scope="col" class="num">Ceiling per hour</th><th scope="col" class="num">Ceiling at max stack</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Cow</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
-          <tr><th scope="row">Pig</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
-          <tr><th scope="row">Chicken</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
-          <tr><th scope="row">Sheep</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
-          <tr><th scope="row">Rabbit</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
-          <tr><th scope="row">Cat</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
-          <tr><th scope="row">Bee</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Fox</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Ocelot</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Parrot</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Wolf</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Goat</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Armadillo</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Mooshroom</th><td class="num">460,000</td><td class="num">184,000</td><td class="num">96</td><td class="num">15,333</td><td class="num">742,279</td></tr>
-          <tr><th scope="row">Camel</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Panda</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
-          <tr><th scope="row">Polar Bear</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">96</td><td class="num">20,000</td><td class="num">968,190</td></tr>
-          <tr><th scope="row">Sniffer</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">96</td><td class="num">30,000</td><td class="num">1,452,285</td></tr>
-          <tr><th scope="row">Cod</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
-          <tr><th scope="row">Salmon</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">96</td><td class="num">10,000</td><td class="num">484,095</td></tr>
-          <tr><th scope="row">Pufferfish</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
-          <tr><th scope="row">Tropical Fish</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
-          <tr><th scope="row">Squid</th><td class="num">360,000</td><td class="num">144,000</td><td class="num">96</td><td class="num">12,000</td><td class="num">580,914</td></tr>
-          <tr><th scope="row">Frog</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Glow Squid</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Turtle</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Dolphin</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
-          <tr><th scope="row">Axolotl</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
-          <tr><th scope="row">Donkey</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Llama</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Horse</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
-          <tr><th scope="row">Mule</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">96</td><td class="num">18,667</td><td class="num">903,644</td></tr>
-          <tr><th scope="row">Strider</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">64</td><td class="num">18,667</td><td class="num">640,206</td></tr>
-          <tr><th scope="row">Trader Llama</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">96</td><td class="num">20,000</td><td class="num">968,190</td></tr>
-          <tr><th scope="row">Zombie Horse</th><td class="num">800,000</td><td class="num">320,000</td><td class="num">96</td><td class="num">26,667</td><td class="num">1,290,920</td></tr>
-          <tr><th scope="row">Skeleton Horse</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">96</td><td class="num">30,000</td><td class="num">1,452,285</td></tr>
-          <tr><th scope="row">Happy Ghast</th><td class="num">960,000</td><td class="num">384,000</td><td class="num">96</td><td class="num">32,000</td><td class="num">1,549,104</td></tr>
+          <tr><th scope="row">Cow</th><td class="num">30,000</td><td class="num">12,000</td><td class="num">96</td><td class="num">1,000</td><td class="num">48,409</td></tr>
+          <tr><th scope="row">Pig</th><td class="num">30,000</td><td class="num">12,000</td><td class="num">96</td><td class="num">1,000</td><td class="num">48,409</td></tr>
+          <tr><th scope="row">Chicken</th><td class="num">30,000</td><td class="num">12,000</td><td class="num">96</td><td class="num">1,000</td><td class="num">48,409</td></tr>
+          <tr><th scope="row">Sheep</th><td class="num">36,000</td><td class="num">14,400</td><td class="num">96</td><td class="num">1,200</td><td class="num">58,091</td></tr>
+          <tr><th scope="row">Rabbit</th><td class="num">36,000</td><td class="num">14,400</td><td class="num">96</td><td class="num">1,200</td><td class="num">58,091</td></tr>
+          <tr><th scope="row">Cat</th><td class="num">36,000</td><td class="num">14,400</td><td class="num">96</td><td class="num">1,200</td><td class="num">58,091</td></tr>
+          <tr><th scope="row">Bee</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Fox</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Ocelot</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Parrot</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Wolf</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Goat</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Armadillo</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Mooshroom</th><td class="num">46,000</td><td class="num">18,400</td><td class="num">96</td><td class="num">1,533</td><td class="num">74,228</td></tr>
+          <tr><th scope="row">Camel</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Panda</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">96</td><td class="num">1,867</td><td class="num">90,364</td></tr>
+          <tr><th scope="row">Polar Bear</th><td class="num">60,000</td><td class="num">24,000</td><td class="num">96</td><td class="num">2,000</td><td class="num">96,819</td></tr>
+          <tr><th scope="row">Sniffer</th><td class="num">90,000</td><td class="num">36,000</td><td class="num">96</td><td class="num">3,000</td><td class="num">145,228</td></tr>
+          <tr><th scope="row">Cod</th><td class="num">30,000</td><td class="num">12,000</td><td class="num">96</td><td class="num">1,000</td><td class="num">48,409</td></tr>
+          <tr><th scope="row">Salmon</th><td class="num">30,000</td><td class="num">12,000</td><td class="num">96</td><td class="num">1,000</td><td class="num">48,409</td></tr>
+          <tr><th scope="row">Pufferfish</th><td class="num">36,000</td><td class="num">14,400</td><td class="num">96</td><td class="num">1,200</td><td class="num">58,091</td></tr>
+          <tr><th scope="row">Tropical Fish</th><td class="num">36,000</td><td class="num">14,400</td><td class="num">96</td><td class="num">1,200</td><td class="num">58,091</td></tr>
+          <tr><th scope="row">Squid</th><td class="num">36,000</td><td class="num">14,400</td><td class="num">96</td><td class="num">1,200</td><td class="num">58,091</td></tr>
+          <tr><th scope="row">Frog</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Glow Squid</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Turtle</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Dolphin</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">96</td><td class="num">1,867</td><td class="num">90,364</td></tr>
+          <tr><th scope="row">Axolotl</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">96</td><td class="num">1,867</td><td class="num">90,364</td></tr>
+          <tr><th scope="row">Donkey</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Llama</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Horse</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">96</td><td class="num">1,867</td><td class="num">90,364</td></tr>
+          <tr><th scope="row">Mule</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">96</td><td class="num">1,867</td><td class="num">90,364</td></tr>
+          <tr><th scope="row">Strider</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">64</td><td class="num">1,867</td><td class="num">64,021</td></tr>
+          <tr><th scope="row">Trader Llama</th><td class="num">60,000</td><td class="num">24,000</td><td class="num">96</td><td class="num">2,000</td><td class="num">96,819</td></tr>
+          <tr><th scope="row">Zombie Horse</th><td class="num">80,000</td><td class="num">32,000</td><td class="num">96</td><td class="num">2,667</td><td class="num">129,092</td></tr>
+          <tr><th scope="row">Skeleton Horse</th><td class="num">90,000</td><td class="num">36,000</td><td class="num">96</td><td class="num">3,000</td><td class="num">145,228</td></tr>
+          <tr><th scope="row">Happy Ghast</th><td class="num">96,000</td><td class="num">38,400</td><td class="num">96</td><td class="num">3,200</td><td class="num">154,910</td></tr>
         </tbody>
       </table></div>
     </section>
@@ -215,38 +291,40 @@
       <div class="table-wrap table-wrap--long"><table class="table">
         <thead><tr><th scope="col">Mob</th><th scope="col" class="num">Price</th><th scope="col" class="num">Sells back for</th><th scope="col" class="num">Max stack</th><th scope="col" class="num">Ceiling per hour</th><th scope="col" class="num">Ceiling at max stack</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Silverfish</th><td class="num">400,000</td><td class="num">160,000</td><td class="num">96</td><td class="num">13,333</td><td class="num">645,460</td></tr>
-          <tr><th scope="row">Zombie</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Skeleton</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Spider</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Slime</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Endermite</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">96</td><td class="num">16,667</td><td class="num">806,825</td></tr>
-          <tr><th scope="row">Husk</th><td class="num">560,000</td><td class="num">224,000</td><td class="num">64</td><td class="num">18,667</td><td class="num">640,206</td></tr>
-          <tr><th scope="row">Cave Spider</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">64</td><td class="num">20,000</td><td class="num">685,935</td></tr>
-          <tr><th scope="row">Drowned</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">64</td><td class="num">20,000</td><td class="num">685,935</td></tr>
-          <tr><th scope="row">Zombie Villager</th><td class="num">600,000</td><td class="num">240,000</td><td class="num">64</td><td class="num">20,000</td><td class="num">685,935</td></tr>
-          <tr><th scope="row">Stray</th><td class="num">660,000</td><td class="num">264,000</td><td class="num">64</td><td class="num">22,000</td><td class="num">754,529</td></tr>
-          <tr><th scope="row">Magma Cube</th><td class="num">660,000</td><td class="num">264,000</td><td class="num">96</td><td class="num">22,000</td><td class="num">1,065,009</td></tr>
-          <tr><th scope="row">Bogged</th><td class="num">760,000</td><td class="num">304,000</td><td class="num">64</td><td class="num">25,333</td><td class="num">868,851</td></tr>
-          <tr><th scope="row">Piglin</th><td class="num">760,000</td><td class="num">304,000</td><td class="num">64</td><td class="num">25,333</td><td class="num">868,851</td></tr>
-          <tr><th scope="row">Hoglin</th><td class="num">860,000</td><td class="num">344,000</td><td class="num">64</td><td class="num">28,667</td><td class="num">983,174</td></tr>
-          <tr><th scope="row">Pillager</th><td class="num">860,000</td><td class="num">344,000</td><td class="num">64</td><td class="num">28,667</td><td class="num">983,174</td></tr>
-          <tr><th scope="row">Blaze</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">64</td><td class="num">30,000</td><td class="num">1,028,903</td></tr>
-          <tr><th scope="row">Phantom</th><td class="num">900,000</td><td class="num">360,000</td><td class="num">64</td><td class="num">30,000</td><td class="num">1,028,903</td></tr>
-          <tr><th scope="row">Witch</th><td class="num">960,000</td><td class="num">384,000</td><td class="num">64</td><td class="num">32,000</td><td class="num">1,097,496</td></tr>
-          <tr><th scope="row">Zoglin</th><td class="num">960,000</td><td class="num">384,000</td><td class="num">64</td><td class="num">32,000</td><td class="num">1,097,496</td></tr>
-          <tr><th scope="row">Enderman</th><td class="num">1,000,000</td><td class="num">400,000</td><td class="num">64</td><td class="num">29,412</td><td class="num">1,008,728</td></tr>
-          <tr><th scope="row">Creeper</th><td class="num">1,000,000</td><td class="num">400,000</td><td class="num">96</td><td class="num">29,412</td><td class="num">1,423,809</td></tr>
-          <tr><th scope="row">Guardian</th><td class="num">1,100,000</td><td class="num">440,000</td><td class="num">32</td><td class="num">32,353</td><td class="num">615,590</td></tr>
-          <tr><th scope="row">Ghast</th><td class="num">1,100,000</td><td class="num">440,000</td><td class="num">64</td><td class="num">32,353</td><td class="num">1,109,601</td></tr>
-          <tr><th scope="row">Vindicator</th><td class="num">1,100,000</td><td class="num">440,000</td><td class="num">64</td><td class="num">32,353</td><td class="num">1,109,601</td></tr>
-          <tr><th scope="row">Vex</th><td class="num">1,200,000</td><td class="num">480,000</td><td class="num">64</td><td class="num">35,294</td><td class="num">1,210,474</td></tr>
-          <tr><th scope="row">Piglin Brute</th><td class="num">1,300,000</td><td class="num">520,000</td><td class="num">32</td><td class="num">38,235</td><td class="num">727,515</td></tr>
-          <tr><th scope="row">Breeze</th><td class="num">1,500,000</td><td class="num">600,000</td><td class="num">32</td><td class="num">44,118</td><td class="num">839,440</td></tr>
-          <tr><th scope="row">Wither Skeleton</th><td class="num">2,000,000</td><td class="num">800,000</td><td class="num">64</td><td class="num">52,632</td><td class="num">1,805,092</td></tr>
-          <tr><th scope="row">Ravager</th><td class="num">2,500,000</td><td class="num">1,000,000</td><td class="num">24</td><td class="num">65,789</td><td class="num">980,248</td></tr>
-          <tr><th scope="row">Elder Guardian</th><td class="num">3,500,000</td><td class="num">1,400,000</td><td class="num">24</td><td class="num">83,333</td><td class="num">1,241,647</td></tr>
-          <tr><th scope="row">Warden</th><td class="num">5,000,000</td><td class="num">2,000,000</td><td class="num">24</td><td class="num">119,048</td><td class="num">1,773,782</td></tr>
+          <tr><th scope="row">Silverfish</th><td class="num">40,000</td><td class="num">16,000</td><td class="num">96</td><td class="num">1,333</td><td class="num">64,546</td></tr>
+          <tr><th scope="row">Zombie</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Skeleton</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Spider</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Slime</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Endermite</th><td class="num">50,000</td><td class="num">20,000</td><td class="num">96</td><td class="num">1,667</td><td class="num">80,682</td></tr>
+          <tr><th scope="row">Husk</th><td class="num">56,000</td><td class="num">22,400</td><td class="num">64</td><td class="num">1,867</td><td class="num">64,021</td></tr>
+          <tr><th scope="row">Cave Spider</th><td class="num">60,000</td><td class="num">24,000</td><td class="num">64</td><td class="num">2,000</td><td class="num">68,594</td></tr>
+          <tr><th scope="row">Drowned</th><td class="num">60,000</td><td class="num">24,000</td><td class="num">64</td><td class="num">2,000</td><td class="num">68,594</td></tr>
+          <tr><th scope="row">Zombie Villager</th><td class="num">60,000</td><td class="num">24,000</td><td class="num">64</td><td class="num">2,000</td><td class="num">68,594</td></tr>
+          <tr><th scope="row">Stray</th><td class="num">66,000</td><td class="num">26,400</td><td class="num">64</td><td class="num">2,200</td><td class="num">75,453</td></tr>
+          <tr><th scope="row">Magma Cube</th><td class="num">66,000</td><td class="num">26,400</td><td class="num">96</td><td class="num">2,200</td><td class="num">106,501</td></tr>
+          <tr><th scope="row">Bogged</th><td class="num">76,000</td><td class="num">30,400</td><td class="num">64</td><td class="num">2,533</td><td class="num">86,885</td></tr>
+          <tr><th scope="row">Piglin</th><td class="num">76,000</td><td class="num">30,400</td><td class="num">64</td><td class="num">2,533</td><td class="num">86,885</td></tr>
+          <tr><th scope="row">Zombified Piglin</th><td class="num">60,000</td><td class="num">24,000</td><td class="num">64</td><td class="num">2,000</td><td class="num">68,594</td></tr>
+          <tr><th scope="row">Hoglin</th><td class="num">86,000</td><td class="num">34,400</td><td class="num">64</td><td class="num">2,867</td><td class="num">98,317</td></tr>
+          <tr><th scope="row">Pillager</th><td class="num">86,000</td><td class="num">34,400</td><td class="num">64</td><td class="num">2,867</td><td class="num">98,317</td></tr>
+          <tr><th scope="row">Blaze</th><td class="num">90,000</td><td class="num">36,000</td><td class="num">64</td><td class="num">3,000</td><td class="num">102,890</td></tr>
+          <tr><th scope="row">Phantom</th><td class="num">90,000</td><td class="num">36,000</td><td class="num">64</td><td class="num">3,000</td><td class="num">102,890</td></tr>
+          <tr><th scope="row">Witch</th><td class="num">96,000</td><td class="num">38,400</td><td class="num">64</td><td class="num">3,200</td><td class="num">109,750</td></tr>
+          <tr><th scope="row">Zoglin</th><td class="num">96,000</td><td class="num">38,400</td><td class="num">64</td><td class="num">3,200</td><td class="num">109,750</td></tr>
+          <tr><th scope="row">Enderman</th><td class="num">100,000</td><td class="num">40,000</td><td class="num">64</td><td class="num">2,941</td><td class="num">100,873</td></tr>
+          <tr><th scope="row">Creeper</th><td class="num">100,000</td><td class="num">40,000</td><td class="num">96</td><td class="num">2,941</td><td class="num">142,381</td></tr>
+          <tr><th scope="row">Guardian</th><td class="num">110,000</td><td class="num">44,000</td><td class="num">32</td><td class="num">3,235</td><td class="num">61,559</td></tr>
+          <tr><th scope="row">Ghast</th><td class="num">110,000</td><td class="num">44,000</td><td class="num">64</td><td class="num">3,235</td><td class="num">110,960</td></tr>
+          <tr><th scope="row">Vindicator</th><td class="num">110,000</td><td class="num">44,000</td><td class="num">64</td><td class="num">3,235</td><td class="num">110,960</td></tr>
+          <tr><th scope="row">Vex</th><td class="num">120,000</td><td class="num">48,000</td><td class="num">64</td><td class="num">3,529</td><td class="num">121,047</td></tr>
+          <tr><th scope="row">Piglin Brute</th><td class="num">130,000</td><td class="num">52,000</td><td class="num">32</td><td class="num">3,824</td><td class="num">72,751</td></tr>
+          <tr><th scope="row">Breeze</th><td class="num">150,000</td><td class="num">60,000</td><td class="num">32</td><td class="num">4,412</td><td class="num">83,944</td></tr>
+          <tr><th scope="row">Wither Skeleton</th><td class="num">200,000</td><td class="num">80,000</td><td class="num">64</td><td class="num">5,263</td><td class="num">180,509</td></tr>
+          <tr><th scope="row">Ravager</th><td class="num">250,000</td><td class="num">100,000</td><td class="num">24</td><td class="num">6,579</td><td class="num">98,025</td></tr>
+          <tr><th scope="row">Shulker</th><td class="num">300,000</td><td class="num">120,000</td><td class="num">32</td><td class="num">7,895</td><td class="num">150,216</td></tr>
+          <tr><th scope="row">Elder Guardian</th><td class="num">350,000</td><td class="num">140,000</td><td class="num">24</td><td class="num">8,333</td><td class="num">124,165</td></tr>
+          <tr><th scope="row">Warden</th><td class="num">500,000</td><td class="num">200,000</td><td class="num">24</td><td class="num">11,905</td><td class="num">177,378</td></tr>
         </tbody>
       </table></div>
     </section>

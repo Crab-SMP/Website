@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>CrabSMP Wiki | Discord</title>
-  <meta name="description" content="How to join the CrabSMP Discord, link your account step by step, what the Discord Kit gives, how the chat bridge works and the public Discord commands." />
+  <meta name="description" content="How to join the CrabSMP Discord, link your account, what the Discord Kit gives, how the chat bridge works, the leaderboards and the public commands." />
   <meta name="author" content="CrabSMP" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <meta name="theme-color" content="#100f12" />
@@ -96,6 +96,7 @@
       <a href="#link">Linking</a>
       <a href="#kit">Discord Kit</a>
       <a href="#bridge">Chat bridge</a>
+      <a href="#leaderboards">Leaderboards</a>
       <a href="#commands">Commands</a>
     </div>
   </nav>
@@ -122,7 +123,7 @@
     <section class="guide-sec" id="link" aria-labelledby="link-title">
       <h2 id="link-title">Linking your account</h2>
       <p>Linking connects your Discord account to your Minecraft account. Each Discord account links to one Minecraft account.</p>
-<ol class="steps"><li><strong>Join the Discord</strong>Use the invite above.</li><li><strong>Run /link</strong>Type <button class="cmd" type="button" data-copy="/link" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/link</button> in Discord. The bot replies privately with a 6 character code. It expires after 10 minutes.</li><li><strong>Open the Discord menu in game</strong>Type <button class="cmd" type="button" data-copy="/discord" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/discord</button>, or open it from the main menu, and press <span class="mc">Link Account</span>.</li><li><strong>Enter the code</strong>Type the code and press <span class="mc">Link Account</span> again.</li><li><strong>Done</strong>The game says your account is linked, announces it in chat and gives you the Discord Kit.</li></ol>
+<ol class="steps"><li><strong>Join the Discord</strong>Use the invite above.</li><li><strong>Run /link</strong>Type <button class="cmd" type="button" data-copy="/link" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/link</button> in Discord. The bot replies privately with a 6 character code. It expires after 10 minutes.</li><li><strong>Open the Discord menu in game</strong>Type <button class="cmd" type="button" data-copy="/discord" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/discord</button>, open it from the main menu, or press <span class="mc">Link Discord</span> on the welcome screen. Then press <span class="mc">Link Account</span>.</li><li><strong>Enter the code</strong>Type the code and press <span class="mc">Link Account</span> again.</li><li><strong>Done</strong>The game says your account is linked, announces it in chat and gives you the Discord Kit.</li></ol>
       <h3>If linking fails</h3>
 <div class="table-wrap"><table class="table"><thead><tr><th scope="col">Message</th><th scope="col">What to do</th></tr></thead><tbody>
 <tr><th scope="row">Invalid or expired code.</th><td>Check the code, or run /link again for a new one.</td></tr>
@@ -153,7 +154,13 @@
       <h2 id="bridge-title">The chat bridge</h2>
       <p>In-game chat and a Discord channel are joined together. What you type in game appears in Discord, and what is typed there appears in game.</p>
 <div class="chat"><span><span class="c-7">[ Discord]</span> Name <span class="c-7">»</span> hello from Discord</span></div>
-<ul class="bullets"><li>Your in-game messages show in Discord under your name, with your skin as the picture. Only your first tag shows, such as <span class="mc">[Member]</span>.</li><li>Discord users do not need to be linked. They show under their Discord display name.</li><li>A reply shows who it replies to, and mentions show in yellow.</li><li>A picture posted in Discord is drawn in game as a small pixel card.</li><li>A name that contains the word discord or clyde cannot be relayed, because Discord refuses those names.</li><li>Discord messages are checked for scams.</li></ul>
+<ul class="bullets"><li>Your in-game messages show in Discord under your name, with your skin as the picture. Only your first tag shows, such as <span class="mc">[Member]</span>.</li><li>Discord users do not need to be linked. They show under their Discord display name.</li><li>A reply shows who it replies to, and mentions show in yellow.</li><li>A picture posted in Discord is not shown in game. The message shows with <span class="mc">[Image attachment]</span> after its text.</li><li>A name that contains the word discord or clyde cannot be relayed, because Discord refuses those names.</li><li>Discord messages are checked for scams.</li></ul>
+    </section>
+
+    <section class="guide-sec" id="leaderboards" aria-labelledby="leaderboards-title">
+      <h2 id="leaderboards-title">Leaderboards</h2>
+      <p>The Discord has a leaderboard channel with seven boards. Each one is a picture of the top 10 players, with the top three on a podium and every player's face from their skin. They update every 10 minutes.</p>
+<ul class="bullets"><li><b>Top CrabSMP Players</b>: the overall score out of 100, the same ranking as the <a href="collectibles.html#podium">podium at spawn</a>.</li><li><b>Top Money</b>, <b>Top Kills</b>, <b>Top Duel Wins</b>, <b>Top Miners</b>, <b>Top Playtime</b> and <b>Top Voters</b>.</li></ul>
     </section>
 
     <section class="guide-sec" id="commands" aria-labelledby="commands-title">
@@ -167,12 +174,12 @@
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/invite create" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/invite create</button></th><td>Makes an invite link. Use <button class="cmd" type="button" data-copy="/invite track" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/invite track</button> to watch it and <button class="cmd" type="button" data-copy="/invite claim" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/invite claim</button> to collect.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/submit" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/submit</button></th><td>Sends a Short for creator rewards. See <a href="ranks.html#earned">earned ranks</a>.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/player" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/player</button></th><td>Shows a profile: ranks, stats, faction and bio. Works for players who are offline.</td></tr>
-<tr><th scope="row"><button class="cmd" type="button" data-copy="/stats" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/stats</button></th><td>Server stats.</td></tr>
+<tr><th scope="row"><button class="cmd" type="button" data-copy="/stats" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/stats</button></th><td>Shows a player's kills, deaths, battle pass tier, coins, bounty and blocks broken and placed.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/list" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/list</button></th><td>Who is online.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/ping" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/ping</button></th><td>Checks the connection.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/tps" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/tps</button></th><td>Server speed.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/uptime" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/uptime</button></th><td>How long the server has been up.</td></tr>
-<tr><th scope="row"><button class="cmd" type="button" data-copy="/help" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/help</button></th><td>The bot's own help.</td></tr>
+<tr><th scope="row"><button class="cmd" type="button" data-copy="/help" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/help</button></th><td>A link to this wiki.</td></tr>
 <tr><th scope="row"><button class="cmd" type="button" data-copy="/coinflip" data-toast-title="Command copied" data-toast-icon="../media/icons/glyph/chat.png">/coinflip</button></th><td>A 50/50 coin flip for your in-game coins.</td></tr>
 </tbody></table></div>
       <h3>Invite and bump rewards</h3>
@@ -181,8 +188,8 @@
 <tr><th scope="row">3 invites</th><td><span class="money">5,000,000 coins</span></td></tr>
 <tr><th scope="row">10 invites</th><td><span class="money">25,000,000 coins</span></td></tr>
 <tr><th scope="row">15 invites</th><td><span class="money">100,000,000 coins</span></td></tr>
-<tr><th scope="row">Bump on DISBOARD or Discadia</th><td><span class="money">5,000,000 coins</span></td></tr>
-<tr><th scope="row">Bump with Sentry</th><td><span class="money">1,250,000 coins</span></td></tr>
+<tr><th scope="row">Bump on DISBOARD or Discadia</th><td><span class="money">500,000 coins</span></td></tr>
+<tr><th scope="row">Bump with Sentry</th><td><span class="money">125,000 coins</span></td></tr>
 </tbody></table></div>
     </section>
 
