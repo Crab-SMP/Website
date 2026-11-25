@@ -1,5 +1,14 @@
 {
   "version": 1,
-  "include": ["/api/*"],
+  "include": [
+    "/api/*",
+    "/.git/*",
+    "/.gitignore",
+    "/.gitattributes",
+    "/tools/*",
+    "/CLAUDE.md",
+    "/AGENTS.md",
+    "/README.md"
+  ],
   "exclude": []
 }
