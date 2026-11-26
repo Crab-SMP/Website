@@ -537,15 +537,13 @@
       if (!tabs.length) return;
 
       function select(tab, focus) {
-        tabs.forEach(function (t, i) {
+        tabs.forEach(function (t) {
           var on = t === tab;
           t.setAttribute('aria-selected', on ? 'true' : 'false');
           t.tabIndex = on ? 0 : -1;
           var panel = document.getElementById(t.getAttribute('aria-controls'));
           if (panel) panel.hidden = !on;
-          if (on) list.style.setProperty('--seg-i', String(i));
         });
-        list.style.setProperty('--seg-n', String(tabs.length));
         if (focus) tab.focus();
         list.dispatchEvent(new CustomEvent('crab:tab', { detail: tab }));
         requestMeasure();
@@ -1226,55 +1224,16 @@
     if (!bar || !grid) return;
     var buttons = $$('[data-filter]', bar);
     var tiles = $$('[data-tier]', grid);
-    buttons.forEach(function (btn, i) {
+    buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var f = btn.getAttribute('data-filter');
         buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
-        bar.style.setProperty('--seg-i', String(i));
         var order = ['plus', 'extra', 'demon'];
         tiles.forEach(function (tile) {
           var t = tile.getAttribute('data-tier');
           var show = f === 'all' || order.indexOf(t) <= order.indexOf(f);
           tile.classList.toggle('is-dim', !show);
         });
-      });
-    });
-    bar.style.setProperty('--seg-n', String(buttons.length));
-  }
-
-  function initTilt() {
-    if (reduceMotion || !finePointer) return;
-    $$('[data-tilt]').forEach(function (card) {
-      var raf = null;
-      var tx = 0, ty = 0, cx = 0, cy = 0, mx = 50, my = 50;
-      var rect = null;
-      function tick() {
-        cx += (tx - cx) * 0.18;
-        cy += (ty - cy) * 0.18;
-        card.style.setProperty('--rx', cx.toFixed(3) + 'deg');
-        card.style.setProperty('--ry', cy.toFixed(3) + 'deg');
-        card.style.setProperty('--mx', mx.toFixed(1) + '%');
-        card.style.setProperty('--my', my.toFixed(1) + '%');
-        if (Math.abs(tx - cx) > 0.01 || Math.abs(ty - cy) > 0.01) raf = requestAnimationFrame(tick);
-        else raf = null;
-      }
-      card.addEventListener('pointerenter', function () { rect = card.getBoundingClientRect(); card.classList.add('is-tilting'); });
-      window.addEventListener('scroll', function () { rect = null; }, { passive: true });
-      card.addEventListener('pointermove', function (e) {
-        if (!rect) rect = card.getBoundingClientRect();
-        var x = clamp((e.clientX - rect.left) / rect.width, 0, 1);
-        var y = clamp((e.clientY - rect.top) / rect.height, 0, 1);
-        var max = parseFloat(card.getAttribute('data-tilt')) || 5;
-        ty = (x - 0.5) * 2 * max;
-        tx = (0.5 - y) * 2 * max;
-        mx = x * 100;
-        my = y * 100;
-        if (!raf) raf = requestAnimationFrame(tick);
-      });
-      card.addEventListener('pointerleave', function () {
-        tx = 0; ty = 0; rect = null;
-        card.classList.remove('is-tilting');
-        if (!raf) raf = requestAnimationFrame(tick);
       });
     });
   }
@@ -1424,7 +1383,6 @@
     initStatus();
     initVotes();
     initCosmetics();
-    initTilt();
     initToc();
     initAmbient();
     initIntro();

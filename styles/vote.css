@@ -2,7 +2,6 @@
   font-family: var(--font-ui);
   font-weight: 400;
   color: var(--mc-e);
-  text-shadow: 1px 1px 0 #3f3f15;
 }
 
 .vote-hero { min-height: min(70vh, 640px); align-items: center; }
@@ -13,48 +12,52 @@
   align-items: center;
   gap: clamp(32px, 6vw, 90px);
 }
-.vote-hero__grid > div > * + * { margin-top: 22px; }
+.vote-hero__grid > div:first-child > * + * { margin-top: 22px; }
 
 .vote-meter {
   justify-self: end;
   width: 100%;
   max-width: 340px;
-  padding: 26px 28px;
-  background: rgba(10, 9, 12, 0.88);
+  background: var(--surface);
   border: var(--border);
-  box-shadow: var(--bevel);
 }
 .vote-meter__label {
+  padding: 10px 20px 12px;
   font-family: var(--font-ui);
   font-size: 16px;
   color: var(--text-dim);
+  background: var(--panel);
+  border-bottom: var(--border);
+  box-shadow: var(--bevel-bar);
 }
 .vote-meter__count {
-  margin-top: 8px;
+  margin: 22px 20px 0;
   font-family: var(--font-display);
   line-height: 1;
   color: var(--white);
 }
-.vote-meter__count b { font-size: 84px; font-weight: 400; text-shadow: var(--txt-shadow-lg); }
+.vote-meter__count b { font-size: 84px; font-weight: 400; }
 .vote-meter__count span { font-size: 40px; color: var(--text-faint); }
 .vote-meter__pips {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
   gap: 6px;
-  margin-top: 18px;
+  margin: 18px 20px 0;
 }
 .vote-meter__pip {
-  height: 12px;
+  height: 16px;
   background: var(--bg-deep);
-  box-shadow: 0 0 0 var(--g) var(--black), inset var(--g) var(--g) 0 rgba(0, 0, 0, 0.6);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
   transition: background var(--dur-lift) var(--ease);
 }
 .vote-meter__pip.is-on {
   background: var(--xp);
-  box-shadow: 0 0 0 var(--g) var(--black), inset 0 var(--g) 0 var(--xp-hi), inset 0 calc(var(--g) * -1) 0 var(--xp-dark);
+  box-shadow: inset 0 var(--g) 0 var(--xp-hi), inset 0 calc(var(--g) * -1) 0 var(--xp-dark);
 }
 .vote-meter__note {
-  margin-top: 14px;
+  margin: 14px 20px 20px;
   font-size: 13px;
   color: var(--text-faint);
 }
@@ -72,9 +75,7 @@
   background: var(--surface);
   border: var(--border);
   box-shadow: var(--bevel);
-  transition: box-shadow var(--dur-lift) var(--ease), background var(--dur-lift) var(--ease);
 }
-.vote-row:hover { background: #1a1a1f; }
 
 .vote-row__slot {
   position: relative;
@@ -98,7 +99,6 @@
   font-size: 19px;
   font-weight: 400;
   color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
 }
 .vote-row__desc {
   margin-top: 4px;
@@ -114,10 +114,11 @@
   font-size: 13px;
 }
 .vote-row__meta code {
-  padding: 3px 8px;
+  padding: calc(var(--g) * 2) 8px var(--g);
   color: var(--text-dim);
   background: var(--bg-deep);
-  border: 1px solid var(--black);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
   overflow-wrap: anywhere;
 }
 .vote-row__status {
@@ -125,14 +126,15 @@
   color: var(--text-faint);
 }
 
-.vote-row.is-voted { box-shadow: var(--bevel), inset calc(var(--g) * 2) 0 0 var(--mc-a); }
+.vote-row.is-voted { box-shadow: inset calc(var(--g) * 2) 0 0 var(--mc-a), var(--bevel); }
 .vote-row.is-voted .vote-row__tick { opacity: 1; transform: scale(1); }
 .vote-row.is-voted .vote-row__status { color: var(--mc-a); }
 .vote-row.is-voted .vote-row__btn {
-  --btn-face:       url('../media/ui/buttons/dark/unchecked.png');
-  --btn-face-hover: url('../media/ui/buttons/dark/unchecked_hover.png');
-  --btn-face-down:  url('../media/ui/buttons/dark/default.png');
-  color: var(--text-dim);
+  --btn-face: var(--key);
+  --btn-face-hover: var(--key-bright);
+  --btn-face-down: var(--key-shade);
+  --btn-lip: var(--key-dark);
+  --btn-ink: var(--text-dim);
 }
 
 .rewards {
@@ -140,10 +142,10 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: 18px 20px;
   margin-top: 28px;
-  padding: 24px;
-  background: linear-gradient(180deg, rgba(255, 207, 58, 0.06), transparent), var(--surface);
+  padding: 26px 24px 24px;
+  background: var(--surface);
   border: var(--border);
-  box-shadow: var(--bevel), inset 0 calc(var(--g) * 2) 0 var(--gold);
+  box-shadow: inset 0 calc(var(--g) * 2) 0 var(--gold), var(--bevel);
 }
 .rewards__slot {
   display: grid;
@@ -160,10 +162,13 @@
   font-size: 17px;
   font-weight: 400;
   color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
 }
 .rewards p { font-size: var(--fs-small); color: var(--text-dim); }
 .rewards__chip { grid-column: 2; justify-self: start; }
+
+@media (hover: hover) {
+  .vote-row:hover { background: var(--panel); }
+}
 
 @media (max-width: 860px) {
   .vote-hero__grid { grid-template-columns: 1fr; }

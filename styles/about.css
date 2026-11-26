@@ -32,23 +32,17 @@
   align-items: center;
   align-content: start;
   gap: 14px 12px;
-  padding: 18px 22px 22px;
+  padding: 20px 24px 24px;
   background: var(--tip-bg);
-  border: var(--g) solid;
-  border-image: linear-gradient(var(--tip-top), var(--tip-bottom)) 1;
-  box-shadow: 0 0 0 var(--g) var(--tip-bg);
-  transition: transform var(--dur-lift) var(--ease-out), box-shadow var(--dur-lift) var(--ease);
-}
-.system:hover {
-  transform: translateY(var(--lift));
-  box-shadow: 0 0 0 var(--g) var(--tip-bg), 0 28px 50px -28px rgba(0, 0, 0, 0.95);
+  border: var(--border);
+  box-shadow: inset 0 0 0 var(--g) var(--red-dark);
+  clip-path: var(--notch);
 }
 .system h3 {
   font-family: var(--font-ui);
   font-size: 19px;
   font-weight: 400;
   color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
 }
 .system p {
   grid-column: 1 / -1;
@@ -79,14 +73,16 @@
   font-size: 16px;
   font-weight: 400;
   color: var(--white);
-  text-shadow: var(--txt-shadow-sm);
 }
 .tip p { font-size: 14.5px; color: var(--text-dim); }
 .tip code {
-  padding: 1px 6px;
+  display: inline-block;
+  padding: calc(var(--g) * 2) 6px 0;
+  line-height: 16px;
   color: var(--mc-e);
   background: var(--bg-deep);
-  border: 1px solid var(--black);
+  border: var(--border);
+  box-shadow: var(--bevel-in);
 }
 
 .support {
@@ -104,7 +100,7 @@
   height: 104px;
   background: var(--bg-deep);
   border: var(--border);
-  box-shadow: var(--bevel-in), 0 30px 60px -20px rgba(226, 59, 44, 0.35);
+  box-shadow: var(--bevel-in);
 }
 .support__slot .glyph { filter: none; }
 .support__actions {
