@@ -87,7 +87,9 @@
   border: var(--border);
   box-shadow: var(--bevel-in);
 }
+.vote-row__icon { transition: opacity var(--dur-move) var(--ease); }
 .vote-row__tick {
+  --s: 3;
   position: absolute;
   color: var(--mc-a);
   opacity: 0;
@@ -127,6 +129,7 @@
 }
 
 .vote-row.is-voted { box-shadow: inset calc(var(--g) * 2) 0 0 var(--mc-a), var(--bevel); }
+.vote-row.is-voted .vote-row__icon { opacity: 0.25; }
 .vote-row.is-voted .vote-row__tick { opacity: 1; transform: scale(1); }
 .vote-row.is-voted .vote-row__status { color: var(--mc-a); }
 .vote-row.is-voted .vote-row__btn {
