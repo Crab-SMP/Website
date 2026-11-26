@@ -201,6 +201,7 @@ html.js.is-ready .hero__world { transform: none; }
   background: var(--surface);
   box-shadow: 0 0 0 var(--g) var(--black);
 }
+.hero__live:not(.is-live) { visibility: hidden; }
 .live-pill.is-live { animation: liveIn var(--dur-enter) var(--ease-out) both; }
 @keyframes liveIn { from { opacity: 0; transform: translateY(6px); } }
 

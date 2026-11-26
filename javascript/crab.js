@@ -1117,6 +1117,9 @@
       card.classList.remove('is-checking', 'is-online', 'is-offline', 'is-unknown');
       card.classList.add('is-' + name);
       if (stateText) stateText.textContent = label;
+      if (sub) $$('[data-state]', sub).forEach(function (el) {
+        el.classList.toggle('is-shown', el.getAttribute('data-state') === name);
+      });
     }
 
     function paint(s) {
@@ -1126,12 +1129,10 @@
         state('online', 'Online');
         if (players) players.textContent = s.players ? s.players.online + '/' + s.players.max : '';
         if (motd) motd.textContent = s.motd && s.motd.length ? s.motd.join('\n') : motdIdle;
-        if (sub) sub.textContent = 'CrabSMP is up and taking players. See you in there.';
       } else {
         state('offline', 'Offline');
         if (players) players.textContent = '';
         if (motd) motd.textContent = motdIdle;
-        if (sub) sub.textContent = 'The server is not answering right now. Updates go out on Discord first.';
       }
       if (versionEl && s.version) versionEl.textContent = s.version;
       document.dispatchEvent(new CustomEvent('crab:server', { detail: s }));
@@ -1141,7 +1142,6 @@
       state('unknown', 'Unknown');
       if (players) players.textContent = '';
       if (motd) motd.textContent = motdIdle;
-      if (sub) sub.textContent = 'Could not get an answer from the server. Try again in a moment.';
       if (checked) checked.textContent = 'Check failed';
     }
 

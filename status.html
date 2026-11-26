@@ -81,7 +81,12 @@
     <div class="shell page-hero__content status-hero__content">
       <p class="label" data-enter>Status</p>
       <h1 class="display-1 on-image" id="status-title" data-enter data-split>Server <em>status.</em></h1>
-      <p class="lead" data-enter data-status-sub>Live status for CrabSMP. Check before you join.</p>
+      <p class="lead status-sub" data-enter data-status-sub>
+        <span class="is-shown" data-state="checking">Live status for CrabSMP. Check before you join.</span>
+        <span data-state="online">CrabSMP is up and taking players. See you in there.</span>
+        <span data-state="offline">The server is not answering right now. Updates go out on Discord first.</span>
+        <span data-state="unknown">Could not get an answer from the server. Try again in a moment.</span>
+      </p>
 
       <div class="server is-checking" data-status data-enter role="status" aria-live="polite">
         <img class="server__icon" src="media/logo.png" alt="" width="64" height="64" />
@@ -98,8 +103,8 @@
       </div>
 
       <div class="status-bar" data-enter>
-        <span data-status-checked>Checking…</span>
         <button class="mc-btn mc-btn--sm mc-btn--ghost status-refresh" type="button" data-status-refresh><i class="i i-refresh" aria-hidden="true"></i> Refresh</button>
+        <span data-status-checked>Checking…</span>
       </div>
 
       <div class="status-actions" data-enter>

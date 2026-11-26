@@ -7,6 +7,10 @@
 }
 .status-hero__content > * + * { margin-top: 22px; }
 
+.status-sub { display: grid; }
+.status-sub > span { grid-area: 1 / 1; visibility: hidden; }
+.status-sub > .is-shown { visibility: visible; }
+
 .server {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -58,6 +62,7 @@
   gap: 8px;
 }
 .server__players {
+  min-height: 1lh;
   font-family: var(--font-ui);
   font-size: 16px;
   color: var(--mc-7);
