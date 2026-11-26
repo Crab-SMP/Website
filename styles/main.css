@@ -696,14 +696,6 @@ a, button, summary, [role="button"], [role="tab"] { -webkit-tap-highlight-color:
 
 @media (min-width: 1101px) {
   .topbar__inner { padding-right: 18px; }
-  .topbar__nav {
-    position: absolute;
-    top: var(--g);
-    bottom: calc(var(--g) * 2);
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  .topbar__cta { margin-left: auto; }
 }
 
 .topbar__menu {
