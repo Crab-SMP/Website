@@ -1,5 +1,5 @@
 .status-hero { min-height: min(86vh, 820px); align-items: center; }
-.status-hero .page-hero__photo { filter: saturate(0.9) brightness(0.8); }
+.status-hero .page-hero__photo { opacity: 0.8; }
 .status-hero__content {
   display: flex;
   flex-direction: column;

@@ -28,6 +28,7 @@
       var c = d.documentElement.classList;
       c.add('js');
       try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+      try { if (localStorage.getItem('crab-sound') === 'off') c.add('sound-off'); } catch (e) {}
       try { if (/[?&]intro=1(&|$)/.test(location.search) || !localStorage.getItem('crab-intro-v2')) c.add('has-intro'); } catch (e) { c.add('has-intro'); }
     })(document);
   </script>
@@ -78,9 +79,12 @@
 
 <header class="topbar">
   <div class="topbar__inner">
-    <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
-      <img src="media/logo.png" alt="" width="44" height="44" />
-    </a>
+    <div class="topbar__side">
+      <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
+        <img src="media/logo.png" alt="" width="44" height="44" />
+      </a>
+      <a class="topbar__live live-pill" href="status.html" data-live></a>
+    </div>
     <nav class="topbar__nav" id="site-nav" aria-label="Main">
       <ul class="topbar__links">
         <li><a class="topbar__link" href="index.html" aria-current="page"><img class="topbar__ico" src="media/icons/glyph/castle.png" alt="" />Home<span class="topbar__mark" aria-hidden="true"></span></a></li>
@@ -93,10 +97,15 @@
         <li class="topbar__panel-cta"><a class="mc-btn" href="#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
       </ul>
     </nav>
-    <a class="mc-btn mc-btn--sm topbar__cta" href="#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
-    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
-      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
-    </button>
+    <div class="topbar__side topbar__side--end">
+      <button class="topbar__key sound" type="button" data-sound-toggle aria-pressed="true" aria-label="Sound">
+        <span class="sound__icon" aria-hidden="true"><span class="sound__bars"><i></i><i></i><i></i></span></span>
+      </button>
+      <a class="mc-btn topbar__cta" href="#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+      <button class="topbar__key topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+        <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -118,7 +127,6 @@
         <img class="hero__logo" src="media/logo.png" alt="CrabSMP" width="840" height="840" />
         <span class="splash" aria-hidden="true">Free to play!</span>
       </div>
-      <p class="hero__live live-pill" data-live></p>
       <h1 class="hero__title display-hero on-image" id="hero-title" data-enter data-split>The #1 Bedrock Lifesteal SMP</h1>
       <p class="hero__lead lead" data-enter>
         Fight for hearts, hunt bounties and run the auction house, on Xbox,
@@ -602,6 +610,7 @@
   </div>
 </footer>
 
+<script data-cfasync="false" src="javascript/sfx.js" defer></script>
 <script data-cfasync="false" src="javascript/vfx.js" defer></script>
 <script data-cfasync="false" src="javascript/crab.js" defer></script>
 </body>

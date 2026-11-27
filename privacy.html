@@ -34,6 +34,7 @@
       var c = d.documentElement.classList;
       c.add('js');
       try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+      try { if (localStorage.getItem('crab-sound') === 'off') c.add('sound-off'); } catch (e) {}
     })(document);
   </script>
   <script type="speculationrules">
@@ -70,9 +71,12 @@
 
 <header class="topbar">
   <div class="topbar__inner">
-    <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
-      <img src="media/logo.png" alt="" width="44" height="44" />
-    </a>
+    <div class="topbar__side">
+      <a class="topbar__brand" href="index.html" aria-label="CrabSMP home">
+        <img src="media/logo.png" alt="" width="44" height="44" />
+      </a>
+      <a class="topbar__live live-pill" href="status.html" data-live></a>
+    </div>
     <nav class="topbar__nav" id="site-nav" aria-label="Main">
       <ul class="topbar__links">
         <li><a class="topbar__link" href="index.html"><img class="topbar__ico" src="media/icons/glyph/castle.png" alt="" />Home</a></li>
@@ -85,10 +89,15 @@
         <li class="topbar__panel-cta"><a class="mc-btn" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
       </ul>
     </nav>
-    <a class="mc-btn mc-btn--sm topbar__cta" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
-    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
-      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
-    </button>
+    <div class="topbar__side topbar__side--end">
+      <button class="topbar__key sound" type="button" data-sound-toggle aria-pressed="true" aria-label="Sound">
+        <span class="sound__icon" aria-hidden="true"><span class="sound__bars"><i></i><i></i><i></i></span></span>
+      </button>
+      <a class="mc-btn topbar__cta" href="index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+      <button class="topbar__key topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+        <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -100,7 +109,7 @@
       <p class="label" data-enter>Legal</p>
       <h1 class="display-1" id="privacy-title" data-enter data-split>Privacy <em>policy.</em></h1>
       <p class="lead" data-enter>How we handle your data, clearly and honestly.</p>
-      <p class="legal-hero__dates" data-enter>Effective <strong>1 January 2026</strong>. Last updated <strong>7 November 2026</strong>.</p>
+      <p class="legal-hero__dates" data-enter>Effective <strong>1 January 2026</strong>. Last updated <strong>27 November 2026</strong>.</p>
     </div>
   </section>
 
@@ -142,7 +151,7 @@
           <h3>When you visit this website</h3>
           <ul class="policy-list">
             <li><strong>IP address and request details</strong>: Cloudflare hosts the website and sees your IP address, browser, the pages you request and the page you came from, in its logs. We do not link these to your player account.</li>
-            <li><strong>Server status</strong>: the live status on the home and status pages comes from a small Cloudflare worker on crabsmp.net, so those requests are covered by the same logs.</li>
+            <li><strong>Server status</strong>: the live player count in the top bar of every page, and the status page, come from a small Cloudflare worker on crabsmp.net, so those requests are covered by the same logs.</li>
           </ul>
 
           <h3>When you play on CrabSMP</h3>
@@ -204,11 +213,11 @@
           <p>This website uses <strong>no third-party tracking cookies</strong> and no analytics platforms (such as Google Analytics) that profile you across the web.</p>
           <p>This website sets <strong>no cookies of its own</strong>. It keeps a few small items in your browser&rsquo;s own storage instead:</p>
           <ul class="policy-list">
-            <li><strong>Session storage</strong> (gone when you close the tab): a marker that you have already opened the site this visit, and a copy of the live server and Discord figures for two minutes, so moving between pages does not ask again.</li>
-            <li><strong>Local storage</strong> (stays until you clear it): whether you have seen the welcome intro, and when you last opened each voting site, so the Vote page can show when each one is ready again.</li>
+            <li><strong>Session storage</strong> (gone when you close the tab): a marker that you have already opened the site this visit, a marker that you have pressed something so the site&rsquo;s sounds may play, and a copy of the live server and Discord figures for two minutes, so moving between pages does not ask again.</li>
+            <li><strong>Local storage</strong> (stays until you clear it): whether you have seen the welcome intro, whether you muted the site&rsquo;s sounds, and when you last opened each voting site, so the Vote page can show when each one is ready again.</li>
           </ul>
           <p>None of it is personal and none of it leaves your browser. Clearing your browser&rsquo;s site data removes it.</p>
-          <p>Some things load from other companies, which can see your IP address when your browser asks for them: the live Discord figures and member avatars on the home page (Discord), and the photo of Ozorical on the home page (Netlify). Discord may set its own cookies. You can block these in your browser settings.</p>
+          <p>Some things load from other companies, which can see your IP address when your browser asks for them: the live Discord figures, which the top bar of any page shows when nobody is on the server, and member avatars on the home page (Discord), and the photo of Ozorical on the home page (Netlify). Discord may set its own cookies. You can block these in your browser settings.</p>
         </section>
 
         <section class="policy" id="data-retention">
@@ -444,6 +453,7 @@
   </div>
 </footer>
 
+<script data-cfasync="false" src="javascript/sfx.js" defer></script>
 <script data-cfasync="false" src="javascript/vfx.js" defer></script>
 <script data-cfasync="false" src="javascript/crab.js" defer></script>
 </body>

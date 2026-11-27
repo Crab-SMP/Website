@@ -25,6 +25,7 @@
       var c = d.documentElement.classList;
       c.add('js');
       try { if (sessionStorage.getItem('crab-visit')) c.add('warm'); sessionStorage.setItem('crab-visit', '1'); } catch (e) {}
+      try { if (localStorage.getItem('crab-sound') === 'off') c.add('sound-off'); } catch (e) {}
     })(document);
   </script>
   <script type="speculationrules">
@@ -50,9 +51,12 @@
 
 <header class="topbar">
   <div class="topbar__inner">
-    <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
-      <img src="../media/logo.png" alt="" width="44" height="44" />
-    </a>
+    <div class="topbar__side">
+      <a class="topbar__brand" href="../index.html" aria-label="CrabSMP home">
+        <img src="../media/logo.png" alt="" width="44" height="44" />
+      </a>
+      <a class="topbar__live live-pill" href="../status.html" data-live></a>
+    </div>
     <nav class="topbar__nav" id="site-nav" aria-label="Main">
       <ul class="topbar__links">
         <li><a class="topbar__link" href="../index.html"><img class="topbar__ico" src="../media/icons/glyph/castle.png" alt="" />Home</a></li>
@@ -65,10 +69,15 @@
         <li class="topbar__panel-cta"><a class="mc-btn" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a></li>
       </ul>
     </nav>
-    <a class="mc-btn mc-btn--sm topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
-    <button class="topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
-      <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
-    </button>
+    <div class="topbar__side topbar__side--end">
+      <button class="topbar__key sound" type="button" data-sound-toggle aria-pressed="true" aria-label="Sound">
+        <span class="sound__icon" aria-hidden="true"><span class="sound__bars"><i></i><i></i><i></i></span></span>
+      </button>
+      <a class="mc-btn topbar__cta" href="../index.html#join"><i class="i i-play" aria-hidden="true"></i>Join Server</a>
+      <button class="topbar__key topbar__menu" type="button" aria-expanded="false" aria-controls="site-nav">
+        <i class="i i-menu" aria-hidden="true"></i><span class="visually-hidden">Menu</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -330,6 +339,7 @@
   </div>
 </footer>
 
+<script data-cfasync="false" src="../javascript/sfx.js" defer></script>
 <script data-cfasync="false" src="../javascript/vfx.js" defer></script>
 <script data-cfasync="false" src="../javascript/crab.js" defer></script>
 <script data-cfasync="false" src="../javascript/wiki.js" defer></script>

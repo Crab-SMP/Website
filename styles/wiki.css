@@ -5,7 +5,7 @@ html { scroll-padding-top: calc(var(--topbar-h) + 72px); }
   min-height: min(74vh, 720px);
   text-align: center;
 }
-.wiki-hero .page-hero__photo { filter: saturate(0.9) brightness(0.72); }
+.wiki-hero .page-hero__photo { opacity: 0.72; }
 .guide-hero__bg {
   position: absolute;
   inset: 0;
@@ -354,7 +354,7 @@ html.js .catalog.is-dealing .guide-link {
 
 .subnav {
   position: sticky;
-  top: var(--topbar-h-tight);
+  top: var(--topbar-h);
   z-index: 50;
   background: var(--panel);
   border-bottom: var(--border);

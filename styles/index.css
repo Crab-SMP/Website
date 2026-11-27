@@ -101,7 +101,9 @@ html.js.is-ready .hero__world { transform: none; }
   transform:
     translate3d(calc(var(--px, 0) * -14px), calc(var(--hero-p, 0) * 16vh + var(--py, 0) * -10px), 0)
     scale(calc(1.06 + var(--hero-p, 0) * 0.14));
-  filter: saturate(1.08) contrast(1.05);
+}
+@media (hover: hover) and (pointer: fine) {
+  .hero__photo { filter: saturate(1.08) contrast(1.05); }
 }
 
 .hero__rays {
@@ -192,18 +194,6 @@ html.js.is-ready .hero__world { transform: none; }
   gap: 14px;
   margin-top: 6px;
 }
-
-.hero__live {
-  min-height: 32px;
-  margin-bottom: -8px;
-  padding: 0 12px 2px;
-  color: var(--white);
-  background: var(--surface);
-  box-shadow: 0 0 0 var(--g) var(--black);
-}
-.hero__live:not(.is-live) { visibility: hidden; }
-.live-pill.is-live { animation: liveIn var(--dur-enter) var(--ease-out) both; }
-@keyframes liveIn { from { opacity: 0; transform: translateY(6px); } }
 
 .hero__cue {
   position: absolute;
@@ -926,7 +916,7 @@ html.js.is-ready .hero__cue { opacity: 1; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.95) brightness(0.62);
+  opacity: 0.62;
 }
 .join__world::after {
   content: "";
@@ -1020,6 +1010,32 @@ html.js.is-ready .hero__cue { opacity: 1; }
   .story { --h: 27px; --bottle: 32px; }
   .hero__actions { flex-direction: column; align-items: stretch; width: 100%; max-width: 340px; }
   .hero__actions .mc-btn { justify-content: center; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .hero__rays { display: none; }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @media (hover: none), (pointer: coarse) {
+      .hero { view-timeline: --hero block; }
+      .hero__photo {
+        animation: hero-photo linear both;
+        animation-timeline: --hero;
+        animation-range: exit 0% exit 100%;
+      }
+      .hero__content {
+        animation: hero-content linear both;
+        animation-timeline: --hero;
+        animation-range: exit 0% exit 100%;
+      }
+    }
+  }
+}
+@keyframes hero-photo { to { transform: translate3d(0, 16vh, 0) scale(1.2); } }
+@keyframes hero-content {
+  59% { opacity: 0; }
+  to { opacity: 0; transform: translate3d(0, -18vh, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

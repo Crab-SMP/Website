@@ -6,7 +6,7 @@
 .mc-8 { color: var(--mc-8); }
 
 .store-hero { min-height: min(92vh, 860px); align-items: center; }
-.store-hero .page-hero__photo { filter: saturate(0.9) brightness(0.72); }
+.store-hero .page-hero__photo { opacity: 0.72; }
 
 .store-hero__grid {
   display: grid;
